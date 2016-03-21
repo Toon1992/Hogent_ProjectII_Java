@@ -5,11 +5,18 @@
  */
 package main;
 
-import controller.DomeinController;
+import domein.Beheerder;
+import domein.BeheerderRepository;
+import domein.DomeinController;
+import domein.Firma;
+import domein.HoofdBeheerder;
+import domein.Materiaal;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.paint.Material;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import persistentie.Mapping;
 import view.RegistreerSchermController;
 
 /**
@@ -31,16 +38,7 @@ public class StartUp extends Application{
             primaryStage.setMinWidth(primaryStage.getWidth());
             primaryStage.setMinHeight(primaryStage.getHeight());
         });
-        primaryStage.show();
-        
-        
-        
-        
-//        RegistreerSchermController root = new RegistreerSchermController(new DomeinController());
-//        Scene scene = new Scene(root, 1082, 1053);    
-//        primaryStage.setTitle("Didactische Leermiddelen");
-//        primaryStage.setScene(scene);
-//        primaryStage.setResizable(false);
-//        primaryStage.show();
+        //primaryStage.show();
+        Mapping.persistObject(new HoofdBeheerder("naam", "email", "wachtwoord","bijnaam"));
     }
 }
