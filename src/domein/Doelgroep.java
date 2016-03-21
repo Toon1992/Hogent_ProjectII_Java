@@ -5,13 +5,21 @@
  */
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Thomas
  */
+@Entity
 public class Doelgroep {
+    @Id
     private int doelgroepId;
     private String naam;
+    
+    protected Doelgroep()
+    {}
     
     public Doelgroep(String naam)
     {

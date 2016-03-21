@@ -5,12 +5,21 @@
  */
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Thomas
  */
+@Entity
 public class Firma {
+    @Id
+    private int firmaId;
     private String naam, emailContact;
+    
+    protected Firma()
+    {}
     
     public Firma(String naam, String emailContact)
     {

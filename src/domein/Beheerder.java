@@ -6,14 +6,20 @@
 package domein;
 
 import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  *
  * @author Thomas
  */
-public class Beheerder {
+@Entity
+public abstract class  Beheerder {
+    @Id
     private int gebruikersId;
     private String email, naam, wachtwoord;
+    
+    protected Beheerder(){}
     
     public Beheerder(String email, String naam, String wachtwoord)
     {

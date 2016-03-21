@@ -5,13 +5,20 @@
  */
 package domein;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 /**
  *
  * @author Thomas
  */
+@Entity
 public class Leergebied {
+    @Id
     private int leergebiedId;
     private String naam;
+    
+    protected Leergebied(){}
     
     public Leergebied(String naam)
     {
