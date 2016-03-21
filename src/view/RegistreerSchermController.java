@@ -40,6 +40,8 @@ public class RegistreerSchermController extends GridPane {
     @FXML
     private Label lblWachtwoord2;
     private DomeinController dc;
+    @FXML
+    private TextField txfNaam;
     public RegistreerSchermController(DomeinController dc){
         FXMLLoader loader = new FXMLLoader(getClass().getResource("RegistreerScherm.fxml"));
         loader.setRoot(this);
@@ -58,6 +60,7 @@ public class RegistreerSchermController extends GridPane {
         String email = txfEmail.getText();
         String wachtwoord = txfWachtwoord.getText();
         String confirmWachtwoord = txfWachtwoord2.getText();
+        String naam = txfNaam.getText();
         Boolean flag = true;
         if(email.isEmpty()){
             lblEmail.setText("Email is verplicht in te vullen");
@@ -72,7 +75,7 @@ public class RegistreerSchermController extends GridPane {
             flag = false;
         }
         if(flag)
-            dc.registreer(email, wachtwoord);
+            dc.registreer(email, wachtwoord, naam);
     }
 
     @FXML

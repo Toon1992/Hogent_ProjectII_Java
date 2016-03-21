@@ -14,19 +14,22 @@ import persistentie.Mapping;
  *
  * @author donovandesmedt
  */
-public class GebruikerRepository {
-    private Gebruiker gebruiker;
-    public GebruikerRepository(){
+public class BeheerderRepository {
+    private Beheerder beheerder;
+    public BeheerderRepository(){
         
     }
-    public Gebruiker getGebruiker() {
-        return gebruiker;
+
+    public Beheerder getBeheerder() {
+        return beheerder;
     }
-    private void setGebruiker(Gebruiker gebruiker) {
-        this.gebruiker = gebruiker;
+
+    public void setBeheerder(Beheerder beheerder) {
+        this.beheerder = beheerder;
     }
-    public void voegGebruikerToe(Gebruiker gebruiker){
-        setGebruiker(gebruiker);
-        Mapping.persistObject(gebruiker);
+    
+    public void voegGebruikerToe(Beheerder beheerder){
+        setBeheerder(beheerder);
+        Mapping.persistObject(beheerder);
     }
 }

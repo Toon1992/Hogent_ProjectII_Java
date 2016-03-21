@@ -5,19 +5,19 @@
  */
 package controller;
 
-import domein.Gebruiker;
-import domein.GebruikerRepository;
+import domein.BeheerderRepository;
+import domein.HoofdBeheerder;
 
 /**
  *
  * @author donovandesmedt
  */
 public class DomeinController {
-    private GebruikerRepository gebruikerRepository;
+    private BeheerderRepository beheerderRepository;
     public DomeinController(){
-        gebruikerRepository = new GebruikerRepository();
+        beheerderRepository = new BeheerderRepository();
     }
-    public void registreer(String email, String password){
-        gebruikerRepository.voegGebruikerToe(new Gebruiker(email, password));
+    public void registreer(String email, String password, String naam){
+        beheerderRepository.voegGebruikerToe(new HoofdBeheerder(email, password, naam));
     }
 }

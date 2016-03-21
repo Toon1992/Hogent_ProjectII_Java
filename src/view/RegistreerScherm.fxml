@@ -16,6 +16,7 @@
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="200.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -23,37 +24,43 @@
     <RowConstraints maxHeight="100.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Label text="Email" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <Label text="Email" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Label>
-      <Label text="Wachtwoord" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+      <Label text="Wachtwoord" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Label>
-      <Label text="Confirmeer wachtwoord" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+      <Label text="Confirmeer wachtwoord" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </Label>
-      <TextField fx:id="txfEmail" maxWidth="200.0" minWidth="0.0" prefHeight="27.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <TextField fx:id="txfEmail" maxWidth="200.0" minWidth="0.0" prefHeight="27.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </TextField>
-      <TextField fx:id="txfWachtwoord" maxWidth="200.0" minWidth="0.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <TextField fx:id="txfWachtwoord2" maxWidth="200.0" minWidth="0.0" prefHeight="27.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Button fx:id="btnRegistreer" mnemonicParsing="false" onAction="#registreer" text="Registreeer" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="5" />
-      <Button fx:id="btnAnnuleer" mnemonicParsing="false" onAction="#annuleer" text="Annuleer" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+      <TextField fx:id="txfWachtwoord" maxWidth="200.0" minWidth="0.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <TextField fx:id="txfWachtwoord2" maxWidth="200.0" minWidth="0.0" prefHeight="27.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+      <Button fx:id="btnRegistreer" mnemonicParsing="false" onAction="#registreer" text="Registreeer" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="6" />
+      <Button fx:id="btnAnnuleer" mnemonicParsing="false" onAction="#annuleer" text="Annuleer" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
       <Label text="Registreer" GridPane.columnIndex="1" GridPane.halignment="CENTER">
          <font>
             <Font size="28.0" />
          </font>
       </Label>
-      <Label fx:id="lblWachtwoord" textFill="#f20606" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-      <Label fx:id="lblEmail" textFill="#f20606" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP" />
-      <Label fx:id="lblWachtwoord2" textFill="#f20606" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="BOTTOM" />
+      <Label fx:id="lblWachtwoord" textFill="#f20606" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
+      <Label fx:id="lblEmail" textFill="#f20606" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP" />
+      <Label fx:id="lblWachtwoord2" textFill="#f20606" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+      <TextField fx:id="txfNaam" maxWidth="200.0" prefHeight="27.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+      <Label text="Naam" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
    </children>
 </fx:root>
