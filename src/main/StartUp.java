@@ -17,7 +17,7 @@ import javafx.scene.paint.Material;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import persistentie.Mapping;
-import view.RegistreerSchermController;
+import gui.RegistreerSchermController;
 
 /**
  *
@@ -38,7 +38,7 @@ public class StartUp extends Application{
             primaryStage.setMinWidth(primaryStage.getWidth());
             primaryStage.setMinHeight(primaryStage.getHeight());
         });
-        //primaryStage.show();
-        Mapping.persistObject(new HoofdBeheerder("naam", "email", "wachtwoord","bijnaam"));
+        primaryStage.show();
+        Mapping.persistObject(new HoofdBeheerder("admin", "admin@hogent.be", "admin"));
     }
 }

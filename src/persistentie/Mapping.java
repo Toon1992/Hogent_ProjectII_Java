@@ -27,6 +27,7 @@ public class Mapping {
     }
     public static <E> void persistObject(E object){
         openPersistentie();
+        em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();
         closePersistentie();

@@ -13,7 +13,13 @@ import java.util.List;
  */
 public class DomeinController {
     private Beheerder beheerder;
-    
+    private BeheerderRepository beheerderRepository;
+    public DomeinController(){
+        beheerderRepository = new BeheerderRepository();
+    }
+    public void registreer(String email, String password, String naam){
+        beheerderRepository.voegGebruikerToe(new HoofdBeheerder(email, password, naam));
+    }
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
     {
         beheerder.voegMateriaalToe(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);

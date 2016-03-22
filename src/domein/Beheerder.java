@@ -6,6 +6,7 @@
 package domein;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,6 +27,8 @@ public abstract class  Beheerder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gebruikersId;
     private String email, naam, wachtwoord;
+    @Column(name = "DTYPE")
+    private String type;
     
     protected Beheerder(){}
     
