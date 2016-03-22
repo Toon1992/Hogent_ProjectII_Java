@@ -19,5 +19,6 @@ public class DomeinController {
     }
     public void registreer(String email, String password, String naam){
         beheerderRepository.voegGebruikerToe(new HoofdBeheerder(email, password, naam));
+        
     }
 }
