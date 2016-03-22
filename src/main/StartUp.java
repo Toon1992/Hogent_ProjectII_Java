@@ -30,7 +30,7 @@ public class StartUp extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(new RegistreerSchermController(new DomeinController()));
+        Scene scene = new Scene(new RegistreerSchermController(new controller.DomeinController()));
         primaryStage.setScene(scene);
 
         // The stage will not get smaller than its preferred (initial) size.
