@@ -6,6 +6,7 @@
 package domein;
 
 import java.util.List;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,11 +22,18 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQueries({
+    @NamedQuery(name="Beheerder.findBeheerder", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord" )
+})
 public abstract class  Beheerder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gebruikersId;
-    private String email, naam, wachtwoord;
+    @Column(name = "Email")
+    private String email;
+    @Column(name = "Wachtwoord")
+    private String wachtwoord;
+    private String naam;
     
     protected Beheerder(){}
     
@@ -41,4 +49,29 @@ public abstract class  Beheerder {
         Materiaal m = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
         
     }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getWachtwoord() {
+        return wachtwoord;
+    }
+
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
+    }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
+    
 }

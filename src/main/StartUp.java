@@ -5,12 +5,21 @@
  */
 package main;
 
-import controller.DomeinController;
+import domein.Beheerder;
+import domein.BeheerderRepository;
+import domein.DomeinController;
+import domein.Firma;
+import domein.HoofdBeheerder;
+import domein.Materiaal;
+import gui.LoginSchermController;
+import gui.MateriaalSchermController;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.paint.Material;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import view.RegistreerSchermController;
+import persistentie.Mapping;
+import gui.RegistreerSchermController;
 
 /**
  *
@@ -23,7 +32,8 @@ public class StartUp extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(new RegistreerSchermController(new DomeinController()));
+        Mapping.persistObject(new HoofdBeheerder("admin@hogent.be", "admin", "admin"));
+        Scene scene = new Scene(new LoginSchermController(new DomeinController()));
         primaryStage.setScene(scene);
 
         // The stage will not get smaller than its preferred (initial) size.
@@ -33,14 +43,5 @@ public class StartUp extends Application{
         });
         primaryStage.show();
         
-        
-        
-        
-//        RegistreerSchermController root = new RegistreerSchermController(new DomeinController());
-//        Scene scene = new Scene(root, 1082, 1053);    
-//        primaryStage.setTitle("Didactische Leermiddelen");
-//        primaryStage.setScene(scene);
-//        primaryStage.setResizable(false);
-//        primaryStage.show();
     }
 }

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
+package gui;
 
-import controller.DomeinController;
+import domein.DomeinController;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
@@ -25,7 +26,6 @@ public class RegistreerSchermController extends GridPane {
 
     @FXML
     private TextField txfEmail;
-    @FXML
     private TextField txfWachtwoord2;
     @FXML
     private TextField txfWachtwoord;
@@ -33,26 +33,23 @@ public class RegistreerSchermController extends GridPane {
     private Button btnRegistreer;
     @FXML
     private Button btnAnnuleer;
-    @FXML
-    private Label lblWachtwoord;
-    @FXML
-    private Label lblEmail;
-    @FXML
-    private Label lblWachtwoord2;
     private DomeinController dc;
     @FXML
     private TextField txfNaam;
+    @FXML
+    private PasswordField txfWachtwoord1;
+    @FXML
+    private Label lblNaam;
+    @FXML
+    private Label lblEmail;
+    @FXML
+    private Label lblWachtwoord;
+    @FXML
+    private Label lblWachtwoord1;
     public RegistreerSchermController(DomeinController dc){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegistreerScherm.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
-        try {
-            loader.load();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        LoaderSchermen.getInstance().setLocation("RegistreerScherm.fxml", this);
         this.dc = dc;
-        //LoaderSchermen.getInstance().setLocation("RegistreerScherm.fxml", this);
+        
     }  
 
     @FXML
@@ -61,20 +58,24 @@ public class RegistreerSchermController extends GridPane {
         String wachtwoord = txfWachtwoord.getText();
         String confirmWachtwoord = txfWachtwoord2.getText();
         String naam = txfNaam.getText();
-        Boolean flag = true;
+        Boolean geldig = true;
+        if(naam.isEmpty()){
+            lblNaam.setText("Naam is verplicht");
+            geldig = false;
+        }
         if(email.isEmpty()){
-            lblEmail.setText("Email is verplicht in te vullen");
-            flag = false;
+            lblEmail.setText("Email is verplicht");
+            geldig = false;
         }
         if(wachtwoord.isEmpty()){
-            lblEmail.setText("Wachtwoord is verplicht in te vullen");
-            flag = false;
+            lblWachtwoord.setText("Wachtwoord is verplicht");
+            geldig = false;
         }
-        if(wachtwoord != confirmWachtwoord){
-            lblEmail.setText("Wachtwoorden komen niet overeen");
-            flag = false;
+        if(!wachtwoord.equals(confirmWachtwoord)){
+            lblWachtwoord1.setText("Wachtwoorden komen niet overeen");
+            geldig = false;
         }
-        if(flag)
+        if(geldig)
             dc.registreer(email, wachtwoord, naam);
     }
 
