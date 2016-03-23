@@ -6,6 +6,9 @@
 package persistentie;
 
 import domein.Beheerder;
+import domein.Materiaal;
+import java.util.List;
+import javafx.collections.transformation.SortedList;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -38,5 +41,9 @@ public class Mapping {
         loginBeheerder.setParameter("Email", email);
         loginBeheerder.setParameter("Wachtwoord", wachtwoord);
         return loginBeheerder.getSingleResult();
+    }
+    public static List<Materiaal> getMaterialen(){
+        TypedQuery<Materiaal> materialenQuery = em.createNamedQuery("Materiaal.findAll", Materiaal.class);
+        return materialenQuery.getResultList();
     }
 }

@@ -6,15 +6,20 @@
 package domein;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author Thomas
  */
 @Entity
+@Table(name = "Doelgroep")
 public class Doelgroep {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int doelgroepId;
     private String naam;
     
