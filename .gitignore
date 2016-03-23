@@ -2,11 +2,11 @@
 *.jar
 *.war
 *.ear
+*.vpp
 
 /nbproject/private/
 /manifest.mf
 /build.xml
 /nbproject/
-/vpproject/
 /build/
 /dist/
