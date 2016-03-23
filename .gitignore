@@ -1,4 +1,12 @@
+# Package Files #
+*.jar
+*.war
+*.ear
+
+/nbproject/private/
+/manifest.mf
+/build.xml
 /nbproject/
-/vppproject/
-/build/
 /vpproject/
+/build/
+/dist/
