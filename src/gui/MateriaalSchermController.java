@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -100,7 +101,7 @@ public class MateriaalSchermController extends HBox {
 
     @FXML
     private void voegMateriaalToe(MouseEvent event) {
-        System.out.println("print");
+        LoaderSchermen.getInstance().load("Materiaal toevoegen", new MateriaalToevoegenSchermController(dc), 1166, 643, this);
     }
 
     @FXML

@@ -5,12 +5,12 @@
  */
 package gui;
 
+import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 import domein.DomeinController;
-import exceptions.EmailException;
 import java.util.Arrays;
 import java.util.Collection;
-import org.junit.Test;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameters;
