@@ -5,9 +5,11 @@
  */
 package persistentie;
 
+import domein.Beheerder;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -30,6 +32,11 @@ public class Mapping {
         em.getTransaction().begin();
         em.persist(object);
         em.getTransaction().commit();
-        closePersistentie();
+    }
+    public static Beheerder loginQuery(String email, String wachtwoord){
+        TypedQuery<Beheerder> loginBeheerder = em.createNamedQuery("Beheerder.findBeheerder", Beheerder.class);
+        loginBeheerder.setParameter("Email", email);
+        loginBeheerder.setParameter("Wachtwoord", wachtwoord);
+        return loginBeheerder.getSingleResult();
     }
 }

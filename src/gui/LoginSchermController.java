@@ -6,6 +6,8 @@
 package gui;
 
 import domein.DomeinController;
+import exceptions.EmailException;
+import exceptions.WachtwoordException;
 import java.lang.invoke.MethodHandles;
 import java.net.URL;
 import java.util.Optional;
@@ -51,28 +53,22 @@ public class LoginSchermController extends GridPane {
     }
 
     @FXML
-    private void login(ActionEvent event) {
+    private void login(ActionEvent event) throws Exception {
+        lblEmail.setText("");
+        lblLogin.setText("");
+        lblWachtwoord.setText("");
         String email = txfEmail.getText();
         String wachtwoord = txfWachtwoord.getText();
-        Boolean geldig = true;
         Boolean success = false;
-
-        if (email.isEmpty()) {
-            lblEmail.setText("Email verplicht");
-            geldig = false;
-        }
-        if (wachtwoord.isEmpty()) {
-            lblWachtwoord.setText("Wachtwoord verplicht");
-            geldig = false;
-        }
-        if (geldig) {
-            try {
-                dc.login(email, wachtwoord);
-                //ga naar volgend scherm
-                lblLogin.setText("Login succesvol");
-            } catch (NoResultException e) {
-                lblLogin.setText("Email of wachtwoord ongelidg");
-            }
+        try {
+            dc.login(email, wachtwoord);
+            LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(dc), 1166, 643, this);
+        } catch (EmailException e) {
+            lblEmail.setText(e.getLocalizedMessage());
+        } catch (WachtwoordException e) {
+            lblWachtwoord.setText(e.getLocalizedMessage());
+        } catch (NoResultException e) {
+            lblLogin.setText("Email of wachtwoord ongelidg");
         }
     }
 
@@ -86,9 +82,8 @@ public class LoginSchermController extends GridPane {
         ButtonType Ok = new ButtonType("Ok");
         boodschap.getButtonTypes().setAll(Annuleer, Ok);
         Optional<ButtonType> result = boodschap.showAndWait();
-        
-        if (result.get() == Ok)
-        {
+
+        if (result.get() == Ok) {
             System.exit(0);
         }
     }

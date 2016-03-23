@@ -15,10 +15,16 @@ public class DomeinController {
     private Beheerder beheerder;
     private BeheerderRepository beheerderRepository;
     public DomeinController(){
-        beheerderRepository = new BeheerderRepository();
+        setBeheerderRepository(new BeheerderRepository());
+    }
+    public void setBeheerderRepository(BeheerderRepository beheerderRepository){
+        this.beheerderRepository = beheerderRepository;
     }
     public void registreer(String email, String password, String naam){
         beheerderRepository.voegGebruikerToe(new HoofdBeheerder(email, password, naam));
+    }
+    public void login(String email, String wachtwoord) throws Exception{
+        beheerderRepository.login(email, wachtwoord);
     }
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, List<Doelgroep> doelgroepen, List<Leergebied> leergebieden)
     {

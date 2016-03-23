@@ -11,6 +11,8 @@ import domein.DomeinController;
 import domein.Firma;
 import domein.HoofdBeheerder;
 import domein.Materiaal;
+import gui.LoginSchermController;
+import gui.MateriaalSchermController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.paint.Material;
@@ -30,7 +32,8 @@ public class StartUp extends Application{
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        Scene scene = new Scene(new RegistreerSchermController(new controller.DomeinController()));
+        Mapping.persistObject(new HoofdBeheerder("admin@hogent.be", "admin", "admin"));
+        Scene scene = new Scene(new LoginSchermController(new DomeinController()));
         primaryStage.setScene(scene);
 
         // The stage will not get smaller than its preferred (initial) size.
@@ -39,6 +42,6 @@ public class StartUp extends Application{
             primaryStage.setMinHeight(primaryStage.getHeight());
         });
         primaryStage.show();
-        Mapping.persistObject(new HoofdBeheerder("admin", "admin@hogent.be", "admin"));
+        
     }
 }

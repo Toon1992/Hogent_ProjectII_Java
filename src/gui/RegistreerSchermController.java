@@ -37,20 +37,19 @@ public class RegistreerSchermController extends GridPane {
     @FXML
     private TextField txfNaam;
     @FXML
-    private Label lblMessage;
-    @FXML
     private PasswordField txfWachtwoord1;
+    @FXML
+    private Label lblNaam;
+    @FXML
+    private Label lblEmail;
+    @FXML
+    private Label lblWachtwoord;
+    @FXML
+    private Label lblWachtwoord1;
     public RegistreerSchermController(DomeinController dc){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegistreerScherm.fxml"));
-        loader.setRoot(this);
-        loader.setController(this);
-        try {
-            loader.load();
-        } catch (IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        LoaderSchermen.getInstance().setLocation("RegistreerScherm.fxml", this);
         this.dc = dc;
-        //LoaderSchermen.getInstance().setLocation("RegistreerScherm.fxml", this);
+        
     }  
 
     @FXML
@@ -59,20 +58,24 @@ public class RegistreerSchermController extends GridPane {
         String wachtwoord = txfWachtwoord.getText();
         String confirmWachtwoord = txfWachtwoord2.getText();
         String naam = txfNaam.getText();
-        Boolean flag = true;
+        Boolean geldig = true;
+        if(naam.isEmpty()){
+            lblNaam.setText("Naam is verplicht");
+            geldig = false;
+        }
         if(email.isEmpty()){
-            lblMessage.setText("Email is verplicht in te vullen");
-            flag = false;
+            lblEmail.setText("Email is verplicht");
+            geldig = false;
         }
         if(wachtwoord.isEmpty()){
-            lblMessage.setText("Wachtwoord is verplicht in te vullen");
-            flag = false;
+            lblWachtwoord.setText("Wachtwoord is verplicht");
+            geldig = false;
         }
         if(!wachtwoord.equals(confirmWachtwoord)){
-            lblMessage.setText("Wachtwoorden komen niet overeen");
-            flag = false;
+            lblWachtwoord1.setText("Wachtwoorden komen niet overeen");
+            geldig = false;
         }
-        if(flag)
+        if(geldig)
             dc.registreer(email, wachtwoord, naam);
     }
 
