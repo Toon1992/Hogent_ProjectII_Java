@@ -5,8 +5,11 @@
  */
 package domein;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.Observable;
 import java.util.Set;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -16,7 +19,7 @@ import javafx.collections.transformation.SortedList;
  *
  * @author Thomas
  */
-public class DomeinController {
+public class DomeinController extends Observable{
     private Beheerder beheerder;
     private BeheerderRepository beheerderRepository;
     private MateriaalRepository materiaalRepository;
@@ -42,5 +45,12 @@ public class DomeinController {
     }
     public SortedList<Materiaal> getMateriaalFilterList(){
         return materiaalRepository.geefMaterialen();
+    }
+    public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list){
+        return materiaalRepository.objectCollectionToObservableList(list);
+    }
+    public void setCurrentMateriaal(Materiaal materiaal){
+        setChanged();
+        notifyObservers(materiaal);
     }
 }

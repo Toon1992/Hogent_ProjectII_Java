@@ -5,7 +5,9 @@
  */
 package domein;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,5 +26,9 @@ public class MateriaalRepository {
     public SortedList<Materiaal> geefMaterialen(){
         ObservableList<Materiaal> filterMateriaal = FXCollections.observableList(Mapping.getMaterialen());
         return new SortedList<>(new FilteredList(filterMateriaal, p -> true));
+    }
+    public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list){
+        List<String> stringLijst = list.stream().map(e -> e.toString()).collect(Collectors.toList());
+        return FXCollections.observableArrayList(stringLijst);
     }
 }

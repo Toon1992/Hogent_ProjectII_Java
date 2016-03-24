@@ -37,6 +37,9 @@ public class Leergebied {
     public void setNaam(String naam) {
         this.naam = naam;
     }
-    
+    @Override
+    public String toString(){
+        return naam;
+    }
     
 }

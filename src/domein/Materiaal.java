@@ -5,22 +5,26 @@
  */
 package domein;
 
-import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-
+import javax.persistence.Transient;
 /**
  *
  * @author Thomas
@@ -29,7 +33,7 @@ import javax.persistence.OneToMany;
 @NamedQueries({
     @NamedQuery(name="Materiaal.findAll", query = "Select a FROM Materiaal a" )
 })
-public class Materiaal implements Serializable{
+public class Materiaal{
     @Id
     private int materiaalId;
     private String naam, plaats, foto, omschrijving;
@@ -59,11 +63,17 @@ public class Materiaal implements Serializable{
     public StringProperty naamProperty() {
         return new SimpleStringProperty(getNaam());
     }
+    public void setPlaats(String plaats){
+        this.plaats = plaats;
+    }
     public String getPlaats(){
         return plaats;
     }
     public StringProperty plaatsProperty() {
         return new SimpleStringProperty(getPlaats());
+    }
+    public void setUitleenbaarheid(boolean uitLeenbaar){
+        this.uitleenbaar = uitLeenbaar;
     }
     public Boolean getUitleenbaarheid(){
         return uitleenbaar;
@@ -78,17 +88,105 @@ public class Materiaal implements Serializable{
     }
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
+        setFoto(foto);
+        setOmschrijving(omschrijving);
+        setArtikelNr(artikelNr);
+        setAantal(aantal);
+        setAantalOnbeschikbaar(aantalOnbeschikbaar);
+        setPrijs(prijs);
+        setPlaats(plaats);
+        setUitleenbaar(uitleenbaar);
+        setFirma(firma);
+        setDoelgroepen(doelgroepen);
+        setLeergebieden(leergebieden);
+        setNaam(naam);
+    }
+
+    public int getMateriaalId() {
+        return materiaalId;
+    }
+
+    public void setMateriaalId(int materiaalId) {
+        this.materiaalId = materiaalId;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getOmschrijving() {
+        return omschrijving;
+    }
+
+    public void setOmschrijving(String omschrijving) {
         this.omschrijving = omschrijving;
-        this.plaats = plaats;
+    }
+
+    public int getArtikelNr() {
+        return artikelNr;
+    }
+
+    public void setArtikelNr(int artikelNr) {
         this.artikelNr = artikelNr;
-        this.aantalOnbeschikbaar = aantalOnbeschikbaar;
-        this.prijs = prijs;
-        this.uitleenbaar = uitleenbaar;
-        this.firma = firma;
-        this.doelgroepen = doelgroepen;
-        this.leergebieden = leergebieden;
-        this.naam = naam;
+    }
+
+    public int getAantal() {
+        return aantal;
+    }
+
+    public void setAantal(int aantal) {
         this.aantal = aantal;
+    }
+
+    public int getAantalOnbeschikbaar() {
+        return aantalOnbeschikbaar;
+    }
+
+    public void setAantalOnbeschikbaar(int aantalOnbeschikbaar) {
+        this.aantalOnbeschikbaar = aantalOnbeschikbaar;
+    }
+
+    public double getPrijs() {
+        return prijs;
+    }
+
+    public void setPrijs(double prijs) {
+        this.prijs = prijs;
+    }
+
+    public boolean isUitleenbaar() {
+        return uitleenbaar;
+    }
+
+    public void setUitleenbaar(boolean uitleenbaar) {
+        this.uitleenbaar = uitleenbaar;
+    }
+
+    public Firma getFirma() {
+        return firma;
+    }
+
+    public void setFirma(Firma firma) {
+        this.firma = firma;
+    }
+
+    public Set<Doelgroep> getDoelgroepen() {
+        return doelgroepen;
+    }
+
+    public void setDoelgroepen(Set<Doelgroep> doelgroepen) {
+        this.doelgroepen = doelgroepen;
+    }
+
+    public Set<Leergebied> getLeergebieden() {
+        return leergebieden;
+    }
+
+    public void setLeergebieden(Set<Leergebied> leergebieden) {
+        this.leergebieden = leergebieden;
     }
 }

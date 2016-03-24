@@ -29,4 +29,21 @@ public class Firma {
         this.naam = naam;
         this.emailContact = emailContact;
     }
+
+    public String getNaam() {
+        return naam;
+    }
+
+    private void setNaam(String naam) {
+        this.naam = naam;
+    }
+
+    public String getEmailContact() {
+        return emailContact;
+    }
+
+    private void setEmailContact(String emailContact) {
+        this.emailContact = emailContact;
+    }
+    
 }
