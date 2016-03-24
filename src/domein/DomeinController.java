@@ -49,6 +49,9 @@ public class DomeinController extends Observable{
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list){
         return materiaalRepository.objectCollectionToObservableList(list);
     }
+    public void zoek(String zoekterm){
+        materiaalRepository.zoek(zoekterm);
+    }
     public void setCurrentMateriaal(Materiaal materiaal){
         setChanged();
         notifyObservers(materiaal);

@@ -100,6 +100,7 @@ public class Materiaal{
         setDoelgroepen(doelgroepen);
         setLeergebieden(leergebieden);
         setNaam(naam);
+        setMateriaalId(artikelNr);
     }
 
     public int getMateriaalId() {

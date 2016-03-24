@@ -5,7 +5,6 @@
  */
 package gui;
 
-import static com.sun.xml.internal.ws.dump.LoggingDumpTube.Position.Before;
 import domein.DomeinController;
 import java.util.Arrays;
 import java.util.Collection;

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="Derby (Remote) - jdbc:derby://localhost:1527/Derby - DidactischeLeermiddelen;create=true@localhost;create=true" uuid="bc23b540-c32f-4008-b22a-e1a287eca163">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+    </data-source>
+  </component>
+</project>
