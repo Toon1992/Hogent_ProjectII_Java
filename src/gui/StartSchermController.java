@@ -10,6 +10,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
@@ -21,6 +22,9 @@ import javafx.scene.layout.GridPane;
 public class StartSchermController extends GridPane
 {
     private DomeinController dc;
+    
+    @FXML
+    private ImageView imgViewMateriaal;
     
     public StartSchermController(DomeinController dc)
     {
@@ -43,6 +47,12 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedBeheerder(MouseEvent event)
     {
+    }
+
+    @FXML
+    private void hoverMateriaal(MouseEvent event)
+    {
+        imgViewMateriaal.setOpacity(50.0);
     }
     
 }
