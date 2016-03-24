@@ -36,6 +36,7 @@ public abstract class  Beheerder {
     private String wachtwoord;
     private String naam;
     
+    
     protected Beheerder(){}
     
     public Beheerder(String email, String naam, String wachtwoord)
