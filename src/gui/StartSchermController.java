@@ -36,7 +36,9 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedMateriaal(MouseEvent event)
     {
-         LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(dc), 1300, 640, this);
+        MateriaalSchermController msc = new MateriaalSchermController(dc);
+        dc.addObserver(msc);
+         LoaderSchermen.getInstance().load("Materialen", msc, 1300, 740, this);
     }
 
     @FXML

@@ -7,29 +7,17 @@ package gui;
 
 import domein.DomeinController;
 import domein.Materiaal;
-import java.io.File;
-import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -84,15 +72,14 @@ public class MateriaalSchermController extends HBox implements Observer{
     private ListView<String> listDoelgroep;
     @FXML
     private ListView<String> listLeergbedied;
-    
+    private ToggleGroup group = new ToggleGroup();
     
     public MateriaalSchermController(DomeinController dc){
         LoaderSchermen.getInstance().setLocation("MateriaalScherm.fxml", this);
         this.dc = dc;
-        imgViewAdd.setImage(new Image("/images/plus.png"));
-        imgViewAdd.setFitWidth(100);
         sortedMateriaal = dc.getMateriaalFilterList();
         materiaalTable.setItems(sortedMateriaal);
+        sortedMateriaal.comparatorProperty().bind(materiaalTable.comparatorProperty());
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
         this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
@@ -107,9 +94,6 @@ public class MateriaalSchermController extends HBox implements Observer{
         });
     }
 
-    @FXML
-    private void zoeken(ActionEvent event) {
-    }
 
     @FXML
     private void voegMateriaalToe(MouseEvent event) {
@@ -139,7 +123,21 @@ public class MateriaalSchermController extends HBox implements Observer{
         txfOnbeschikbaar.setText(String.format("%d", m.getAantalOnbeschikbaar()));
         txfPlaats.setText(m.getPlaats());
         txfPrijs.setText(String.format("%.2f", m.getPrijs()));
-       
+        radioStudent.setToggleGroup(group);
+        radioStudent.setSelected(m.getUitleenbaarheid());
+        radioLector.setSelected(!m.getUitleenbaarheid());
+        radioLector.setToggleGroup(group);
+
+    }
+
+    @FXML
+    private void zoeken(KeyEvent event) {
+        String zoekterm = txfZoek.getText() + event.getCharacter().trim();
+        dc.zoek(zoekterm);
+    }
+
+    @FXML
+    private void zoekenButton(ActionEvent event) {
     }
     
 }

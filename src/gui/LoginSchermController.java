@@ -66,9 +66,7 @@ public class LoginSchermController extends GridPane
         try
         {
             dc.login(email, wachtwoord);
-            MateriaalSchermController msc = new MateriaalSchermController(dc);
-            dc.addObserver(msc);
-            LoaderSchermen.getInstance().load("start", new StartSchermController(dc), 1024, 600, this);
+            LoaderSchermen.getInstance().load("start", new StartSchermController(dc), 1300, 600, this);
         } catch (EmailException e) {
             lblEmail.setText(e.getLocalizedMessage());
         } catch (WachtwoordException e)

@@ -19,16 +19,34 @@ import persistentie.Mapping;
  * @author donovandesmedt
  */
 public class MateriaalRepository {
-    private List<Materiaal> materialen;
+    private FilteredList<Materiaal> filteredmaterialen;
     public MateriaalRepository(){
         
     }
     public SortedList<Materiaal> geefMaterialen(){
         ObservableList<Materiaal> filterMateriaal = FXCollections.observableList(Mapping.getMaterialen());
-        return new SortedList<>(new FilteredList(filterMateriaal, p -> true));
+        filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
+        return new SortedList<>(filteredmaterialen);
     }
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list){
         List<String> stringLijst = list.stream().map(e -> e.toString()).collect(Collectors.toList());
         return FXCollections.observableArrayList(stringLijst);
+    }
+    public void zoek(String zoekterm){
+        filteredmaterialen.setPredicate(m -> {
+            if(zoekterm == null || zoekterm.isEmpty())
+                return true;
+            if(m.getNaam().toLowerCase().contains(zoekterm.toLowerCase()) || m.getOmschrijving().toLowerCase().contains(zoekterm.toLowerCase())){
+                return true;
+            }
+            if(m.leergebieden.stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
+                return true;
+            }
+            if(m.doelgroepen.stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
+                return true;
+            }
+            return false;
+        });
+
     }
 }
