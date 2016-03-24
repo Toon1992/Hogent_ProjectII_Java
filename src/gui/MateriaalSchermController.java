@@ -9,11 +9,15 @@ import domein.DomeinController;
 import domein.Materiaal;
 import java.io.File;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -32,7 +36,7 @@ import javafx.stage.Stage;
  *
  * @author donovandesmedt
  */
-public class MateriaalSchermController extends HBox {
+public class MateriaalSchermController extends HBox implements Observer{
 
     @FXML
     private TextField txfZoek;
@@ -47,10 +51,6 @@ public class MateriaalSchermController extends HBox {
     private TextField txfNaam;
     @FXML
     private TextArea txfOmschrijving;
-    @FXML
-    private TextField txfDoelgroep;
-    @FXML
-    private TextField txfLeergebied;
     @FXML
     private TextField txfFirma;
     @FXML
@@ -80,6 +80,10 @@ public class MateriaalSchermController extends HBox {
     private ImageView imgViewAdd;
     @FXML
     private ImageView imgViewMateriaal;
+    @FXML
+    private ListView<String> listDoelgroep;
+    @FXML
+    private ListView<String> listLeergbedied;
     
     
     public MateriaalSchermController(DomeinController dc){
@@ -92,7 +96,15 @@ public class MateriaalSchermController extends HBox {
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
         this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
-        
+        materiaalTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
+            if (newValue != null) {
+                if (oldValue == null || !oldValue.equals(newValue)) {
+                    Materiaal materiaal = newValue;
+                    dc.setCurrentMateriaal(materiaal);
+                }
+            }
+
+        });
     }
 
     @FXML
@@ -110,6 +122,24 @@ public class MateriaalSchermController extends HBox {
 
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
+    }
+
+    @Override
+    public void update(Observable o, Object obj) {
+        Materiaal m = (Materiaal) obj;
+        imgViewMateriaal.setImage(new Image(m.getFoto()));
+        txfAantal.setText(String.format("%d", m.getAantal()));
+        txfArtikelNummer.setText(String.format("%d", m.getArtikelNr()));
+        txfContactPersoon.setText(m.getFirma().getEmailContact());
+        listDoelgroep.setItems(dc.objectCollectionToObservableList(m.getDoelgroepen()).sorted());
+        listLeergbedied.setItems(dc.objectCollectionToObservableList(m.getLeergebieden()).sorted());
+        txfFirma.setText(m.getFirma().getNaam());
+        txfNaam.setText(m.getNaam());
+        txfOmschrijving.setText(m.getOmschrijving());
+        txfOnbeschikbaar.setText(String.format("%d", m.getAantalOnbeschikbaar()));
+        txfPlaats.setText(m.getPlaats());
+        txfPrijs.setText(String.format("%.2f", m.getPrijs()));
+       
     }
     
 }
