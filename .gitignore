@@ -3,7 +3,7 @@
 *.war
 *.ear
 
-/nbproject/private/
+/nbproject/
 /manifest.mf
 /build.xml
 /nbproject/

@@ -29,7 +29,8 @@ import javax.persistence.NoResultException;
  *
  * @author donovandesmedt
  */
-public class LoginSchermController extends GridPane {
+public class LoginSchermController extends GridPane
+{
 
     @FXML
     private Button btnLogin;
@@ -47,35 +48,41 @@ public class LoginSchermController extends GridPane {
     @FXML
     private Label lblLogin;
 
-    public LoginSchermController(DomeinController dc) {
+    public LoginSchermController(DomeinController dc)
+    {
         LoaderSchermen.getInstance().setLocation("LoginScherm.fxml", this);
         this.dc = dc;
     }
 
     @FXML
-    private void login(ActionEvent event) throws Exception {
+    private void login(ActionEvent event) throws Exception
+    {
         lblEmail.setText("");
         lblLogin.setText("");
         lblWachtwoord.setText("");
         String email = txfEmail.getText();
         String wachtwoord = txfWachtwoord.getText();
         Boolean success = false;
-        try {
+        try
+        {
             dc.login(email, wachtwoord);
             MateriaalSchermController msc = new MateriaalSchermController(dc);
             dc.addObserver(msc);
             LoaderSchermen.getInstance().load("Materialen", msc, 1300, 640, this);
         } catch (EmailException e) {
             lblEmail.setText(e.getLocalizedMessage());
-        } catch (WachtwoordException e) {
+        } catch (WachtwoordException e)
+        {
             lblWachtwoord.setText(e.getLocalizedMessage());
-        } catch (NoResultException e) {
+        } catch (NoResultException e)
+        {
             lblLogin.setText("Email of wachtwoord ongelidg");
         }
     }
 
     @FXML
-    private void annuleer(ActionEvent event) {
+    private void annuleer(ActionEvent event)
+    {
         Alert boodschap = new Alert(Alert.AlertType.CONFIRMATION);
         boodschap.setTitle("Annuleer");
         boodschap.setHeaderText("Weet u zeker dat het programma mag afgesloten worden?");
@@ -85,7 +92,8 @@ public class LoginSchermController extends GridPane {
         boodschap.getButtonTypes().setAll(Annuleer, Ok);
         Optional<ButtonType> result = boodschap.showAndWait();
 
-        if (result.get() == Ok) {
+        if (result.get() == Ok)
+        {
             System.exit(0);
         }
     }
