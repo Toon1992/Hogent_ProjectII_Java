@@ -26,6 +26,7 @@ public class StartSchermController extends GridPane
     {
        LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
        this.dc = dc;
+       
     }
 
     @FXML
