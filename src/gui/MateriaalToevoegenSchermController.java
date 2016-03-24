@@ -10,7 +10,9 @@ import domein.DomeinController;
 import domein.Firma;
 import domein.Leergebied;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -117,8 +119,8 @@ public class MateriaalToevoegenSchermController extends VBox {
         double prijs = 0;
         boolean uitleenbaar;
         Firma firma = null;
-        List<Doelgroep> doelgroepen = new ArrayList<>();
-        List<Leergebied> leergebieden = new ArrayList<>();
+        Set<Doelgroep> doelgroepen = new HashSet<>();
+        Set<Leergebied> leergebieden = new HashSet<>();
         if (txfNaam.getText() != null) {
             naam = txfNaam.getText();
         }
