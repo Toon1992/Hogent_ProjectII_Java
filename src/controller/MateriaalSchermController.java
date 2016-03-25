@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import domein.DomeinController;
 import domein.Materiaal;
-import java.util.Observable;
-import java.util.Observer;
+
+import gui.LoaderSchermen;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -24,7 +22,7 @@ import javafx.scene.layout.HBox;
  *
  * @author donovandesmedt
  */
-public class MateriaalSchermController extends HBox implements Observer{
+public class MateriaalSchermController extends HBox{
 
     @FXML
     private TextField txfZoek;
@@ -34,31 +32,16 @@ public class MateriaalSchermController extends HBox implements Observer{
     private TableView<Materiaal> materiaalTable;
     @FXML
     private TableColumn<Materiaal, String> columnNaam;
-    private DomeinController dc;
-    @FXML
+    private MateriaalController mc;
     private TextField txfNaam;
-    @FXML
     private TextArea txfOmschrijving;
-    @FXML
-    private TextField txfFirma;
-    @FXML
     private TextField txfArtikelNummer;
-    @FXML
     private TextField txfAantal;
-    @FXML
     private TextField txfOnbeschikbaar;
-    @FXML
     private TextField txfContactPersoon;
-    @FXML
     private RadioButton radioStudent;
-    @FXML
-    private RadioButton radioLector;
-    @FXML
     private TextField txfPlaats;
-    @FXML
     private TextField txfPrijs;
-    @FXML
-    private Button btnOpslaan;
     @FXML
     private TableColumn<Materiaal, String> columnPlaats;
     @FXML
@@ -66,18 +49,19 @@ public class MateriaalSchermController extends HBox implements Observer{
     private SortedList<Materiaal> sortedMateriaal;
     @FXML
     private ImageView imgViewAdd;
-    @FXML
-    private ImageView imgViewMateriaal;
-    @FXML
-    private ListView<String> listDoelgroep;
-    @FXML
-    private ListView<String> listLeergbedied;
     private ToggleGroup group = new ToggleGroup();
+    private Materiaal materiaal;
+    private Label lblError;
     
-    public MateriaalSchermController(DomeinController dc){
+    public MateriaalSchermController(MateriaalController mc){
         LoaderSchermen.getInstance().setLocation("MateriaalScherm.fxml", this);
-        this.dc = dc;
-        sortedMateriaal = dc.getMateriaalFilterList();
+        this.mc = mc;
+
+        MateriaalDetailSchermController mdsc = new MateriaalDetailSchermController(mc);
+        mc.addObserver(mdsc);
+        this.getChildren().add(mdsc);
+
+        sortedMateriaal = mc.getMateriaalFilterList();
         materiaalTable.setItems(sortedMateriaal);
         sortedMateriaal.comparatorProperty().bind(materiaalTable.comparatorProperty());
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
@@ -87,7 +71,7 @@ public class MateriaalSchermController extends HBox implements Observer{
             if (newValue != null) {
                 if (oldValue == null || !oldValue.equals(newValue)) {
                     Materiaal materiaal = newValue;
-                    dc.setCurrentMateriaal(materiaal);
+                    mc.setCurrentMateriaal(materiaal);
                 }
             }
 
@@ -97,43 +81,14 @@ public class MateriaalSchermController extends HBox implements Observer{
 
     @FXML
     private void voegMateriaalToe(MouseEvent event) {
-        LoaderSchermen.getInstance().load("Materiaal toevoegen", new MateriaalToevoegenSchermController(dc), 1166, 643, this);
+        LoaderSchermen.getInstance().load("Materiaal toevoegen", new MateriaalToevoegenSchermController(mc), 1166, 643, this);
     }
 
-    @FXML
-    private void wijzigFoto(MouseEvent event) {
-    }
-
-    @FXML
-    private void materiaalWijzigen(ActionEvent event) {
-    }
-
-    @Override
-    public void update(Observable o, Object obj) {
-        Materiaal m = (Materiaal) obj;
-        imgViewMateriaal.setImage(new Image(m.getFoto()));
-        txfAantal.setText(String.format("%d", m.getAantal()));
-        txfArtikelNummer.setText(String.format("%d", m.getArtikelNr()));
-        txfContactPersoon.setText(m.getFirma().getEmailContact());
-        listDoelgroep.setItems(dc.objectCollectionToObservableList(m.getDoelgroepen()).sorted());
-        listLeergbedied.setItems(dc.objectCollectionToObservableList(m.getLeergebieden()).sorted());
-        txfFirma.setText(m.getFirma().getNaam());
-        txfNaam.setText(m.getNaam());
-        txfOmschrijving.setText(m.getOmschrijving());
-        txfOnbeschikbaar.setText(String.format("%d", m.getAantalOnbeschikbaar()));
-        txfPlaats.setText(m.getPlaats());
-        txfPrijs.setText(String.format("%.2f", m.getPrijs()));
-        radioStudent.setToggleGroup(group);
-        radioStudent.setSelected(m.getUitleenbaarheid());
-        radioLector.setSelected(!m.getUitleenbaarheid());
-        radioLector.setToggleGroup(group);
-
-    }
 
     @FXML
     private void zoeken(KeyEvent event) {
         String zoekterm = txfZoek.getText() + event.getCharacter().trim();
-        dc.zoek(zoekterm);
+        mc.zoek(zoekterm);
     }
 
     @FXML

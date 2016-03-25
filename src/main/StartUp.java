@@ -5,8 +5,9 @@
  */
 package main;
 
+import controller.GebruikerController;
 import domein.*;
-import gui.LoginSchermController;
+import controller.LoginSchermController;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -27,7 +28,7 @@ public class StartUp extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
         initializeDatabase();
-        Scene scene = new Scene(new LoginSchermController(new DomeinController()));
+        Scene scene = new Scene(new LoginSchermController(new GebruikerController()));
         primaryStage.setScene(scene);
 
         // The stage will not get smaller than its preferred (initial) size.

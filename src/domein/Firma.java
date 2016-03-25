@@ -42,7 +42,7 @@ public class Firma {
         return emailContact;
     }
 
-    private void setEmailContact(String emailContact) {
+    public void setEmailContact(String emailContact) {
         this.emailContact = emailContact;
     }
     

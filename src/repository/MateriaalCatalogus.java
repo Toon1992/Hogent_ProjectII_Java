@@ -27,9 +27,16 @@ public class MateriaalCatalogus {
         materiaalDao = new MateriaalDaoJpa();
     }
     public SortedList<Materiaal> geefMaterialen(){
-        ObservableList<Materiaal> filterMateriaal = FXCollections.observableList(materiaalDao.findAll());
-        filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
+        if(filteredmaterialen == null){
+            ObservableList<Materiaal> filterMateriaal = FXCollections.observableList(materiaalDao.findAll());
+            filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
+        }
         return new SortedList<>(filteredmaterialen);
+    }
+    public void voegMateriaalToe(Materiaal materiaal){
+        materiaalDao.insert(materiaal);
+        materiaalDao.commitTransaction();
+        filteredmaterialen.add(materiaal);
     }
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list){
         List<String> stringLijst = list.stream().map(e -> e.toString()).collect(Collectors.toList());

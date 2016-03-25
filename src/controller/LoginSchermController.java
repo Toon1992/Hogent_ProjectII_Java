@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import domein.DomeinController;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
-import java.lang.invoke.MethodHandles;
-import java.net.URL;
+
 import java.util.Optional;
-import java.util.ResourceBundle;
+
+import gui.LoaderSchermen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
@@ -24,7 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 import javax.persistence.EntityNotFoundException;
-import javax.persistence.NoResultException;
 
 /**
  * FXML Controller class
@@ -38,7 +35,7 @@ public class LoginSchermController extends GridPane
     private Button btnLogin;
     @FXML
     private Button btnAnnuleer;
-    private DomeinController dc;
+    private GebruikerController gc;
     @FXML
     private Label lblEmail;
     @FXML
@@ -50,10 +47,10 @@ public class LoginSchermController extends GridPane
     @FXML
     private Label lblLogin;
 
-    public LoginSchermController(DomeinController dc)
+    public LoginSchermController(GebruikerController gc)
     {
         LoaderSchermen.getInstance().setLocation("LoginScherm.fxml", this);
-        this.dc = dc;
+        this.gc = gc;
     }
 
     @FXML
@@ -67,8 +64,8 @@ public class LoginSchermController extends GridPane
         Boolean success = false;
         try
         {
-            dc.login(email, wachtwoord);
-            LoaderSchermen.getInstance().load("start", new StartSchermController(dc), 1300, 600, this);
+            gc.login(email, wachtwoord);
+            LoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
         } catch (EmailException e) {
             lblEmail.setText(e.getLocalizedMessage());
         } catch (WachtwoordException e)
