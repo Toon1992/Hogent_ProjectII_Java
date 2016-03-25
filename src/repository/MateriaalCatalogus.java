@@ -3,28 +3,31 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domein;
+package repository;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import domein.Materiaal;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
-import persistentie.Mapping;
+import persistentie.MateriaalDaoJpa;
 
 /**
  *
  * @author donovandesmedt
  */
-public class MateriaalRepository {
+public class MateriaalCatalogus {
     private FilteredList<Materiaal> filteredmaterialen;
-    public MateriaalRepository(){
-        
+    private MateriaalDaoJpa materiaalDao;
+    public MateriaalCatalogus(){
+        materiaalDao = new MateriaalDaoJpa();
     }
     public SortedList<Materiaal> geefMaterialen(){
-        ObservableList<Materiaal> filterMateriaal = FXCollections.observableList(Mapping.getMaterialen());
+        ObservableList<Materiaal> filterMateriaal = FXCollections.observableList(materiaalDao.findAll());
         filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
         return new SortedList<>(filteredmaterialen);
     }
@@ -38,11 +41,11 @@ public class MateriaalRepository {
                 return true;
             if(m.getNaam().toLowerCase().contains(zoekterm.toLowerCase()) || m.getOmschrijving().toLowerCase().contains(zoekterm.toLowerCase())){
                 return true;
-            }
-            if(m.leergebieden.stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
+            }          
+            if(m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
                 return true;
             }
-            if(m.doelgroepen.stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
+            if(m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
                 return true;
             }
             return false;

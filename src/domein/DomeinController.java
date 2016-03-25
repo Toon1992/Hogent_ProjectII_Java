@@ -6,14 +6,13 @@
 package domein;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Observable;
 import java.util.Set;
-import java.util.stream.Collectors;
-import javafx.collections.FXCollections;
+
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import repository.BeheerderRepository;
+import repository.MateriaalCatalogus;
 
 /**
  *
@@ -22,19 +21,19 @@ import javafx.collections.transformation.SortedList;
 public class DomeinController extends Observable{
     private Beheerder beheerder;
     private BeheerderRepository beheerderRepository;
-    private MateriaalRepository materiaalRepository;
+    private MateriaalCatalogus materiaalRepository;
     public DomeinController(){
         setBeheerderRepository(new BeheerderRepository());
-        setMateriaalRepository(new MateriaalRepository());
+        setMateriaalRepository(new MateriaalCatalogus());
     }
     public void setBeheerderRepository(BeheerderRepository beheerderRepository){
         this.beheerderRepository = beheerderRepository;
     }
-    public void setMateriaalRepository(MateriaalRepository materiaalRepository){
+    public void setMateriaalRepository(MateriaalCatalogus materiaalRepository){
         this.materiaalRepository = materiaalRepository;
     } 
     public void registreer(String email, String password, String naam){
-        beheerderRepository.voegGebruikerToe(new HoofdBeheerder(email, password, naam));
+        beheerderRepository.voegGebruikerToe(new Beheerder(email, password, naam));
     }
     public void login(String email, String wachtwoord) throws Exception{
         beheerderRepository.login(email, wachtwoord);

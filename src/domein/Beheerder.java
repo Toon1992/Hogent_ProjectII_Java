@@ -22,11 +22,10 @@ import javax.persistence.NamedQuery;
  * @author Thomas
  */
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
 @NamedQueries({
-    @NamedQuery(name="Beheerder.findBeheerder", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord" )
+    @NamedQuery(name="Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord" )
 })
-public abstract class  Beheerder {
+public class  Beheerder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gebruikersId;

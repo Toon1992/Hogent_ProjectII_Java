@@ -22,6 +22,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+
+import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;
 
 /**
@@ -72,7 +74,7 @@ public class LoginSchermController extends GridPane
         } catch (WachtwoordException e)
         {
             lblWachtwoord.setText(e.getLocalizedMessage());
-        } catch (NoResultException e)
+        } catch (EntityNotFoundException e)
         {
             lblLogin.setText("Email of wachtwoord ongelidg");
         }

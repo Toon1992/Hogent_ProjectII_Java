@@ -1,2 +1,4 @@
-/dist/
+/.idea/
+/lib/
+/out/
 /nbproject/private/
