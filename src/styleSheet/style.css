@@ -1,7 +1,7 @@
 .StartButton
 {
     -fx-opacity: 1.0;
-    -fx-cursor: hand;
+    -fx-cursor: pointer;
 }
 
 .StartButton:hover
