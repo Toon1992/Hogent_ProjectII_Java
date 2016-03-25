@@ -3,16 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package domein;
+package repository;
 
+import domein.Beheerder;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
 import java.util.regex.Pattern;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.TypedQuery;
-import persistentie.Mapping;
+
+import persistentie.BeheerderDaoJpa;
 
 /**
  *
@@ -20,12 +18,10 @@ import persistentie.Mapping;
  */
 public class BeheerderRepository{
     private Beheerder beheerder;
+    private BeheerderDaoJpa beheerderDao;
     public BeheerderRepository(){
-        
+        beheerderDao = new BeheerderDaoJpa();
     }
-    
-
-
     public Beheerder getBeheerder() {
         return beheerder;
     }
@@ -41,10 +37,12 @@ public class BeheerderRepository{
         if(wachtwoord.isEmpty()){
             throw new WachtwoordException("Wachtwoord verplicht");
         }
-        beheerder = Mapping.loginQuery(email, wachtwoord);
+        beheerder = beheerderDao.getBeheerderByEmail(email, wachtwoord);//Mapping.loginQuery(email, wachtwoord);
     }
     public void voegGebruikerToe(Beheerder beheerder){
         setBeheerder(beheerder);
-        Mapping.persistObject(beheerder);
+        beheerderDao.startTransaction();
+        beheerderDao.insert(beheerder);
+        beheerderDao.commitTransaction();
     }
 }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component name="dataSourceStorage">
-  <data-source name="Derby (Remote) - jdbc:derby://localhost:1527/Derby - DidactischeLeermiddelen;create=true@localhost;create=true" uuid="bc23b540-c32f-4008-b22a-e1a287eca163">
+  <data-source name="Derby (Remote) - DidactischeLeermiddelen@localhost" uuid="bc23b540-c32f-4008-b22a-e1a287eca163">
     <database-info product="Apache Derby" version="10.11.1.2 - (1629631)" jdbc-version="4.2" driver-name="Apache Derby Network Client JDBC Driver" driver-version="10.11.1.1 - (1616546)">
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>

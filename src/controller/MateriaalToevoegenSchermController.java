@@ -3,16 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
 import domein.Doelgroep;
-import domein.DomeinController;
 import domein.Firma;
 import domein.Leergebied;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -60,7 +61,7 @@ public class MateriaalToevoegenSchermController extends VBox {
     private Button btnFoto;
     @FXML
     private Button btnToevoegen;
-    private DomeinController dc;
+    private MateriaalController mc;
     private List<Doelgroep> doelgroepen;
     private List<Leergebied> leergebieden;
     private FileChooser fileChooser;
@@ -76,9 +77,9 @@ public class MateriaalToevoegenSchermController extends VBox {
     /**
      * Initializes the controller class.
      */
-    public MateriaalToevoegenSchermController(DomeinController dc) {
+    public MateriaalToevoegenSchermController(MateriaalController mc) {
         LoaderSchermen.getInstance().setLocation("MateriaalToevoegenScherm.fxml", this);
-        this.dc = dc;
+        this.mc = mc;
         
         //Scene scene = this.getScene();
         doelgroepen = new ArrayList<>();
@@ -160,7 +161,7 @@ public class MateriaalToevoegenSchermController extends VBox {
         });
         
         uitleenbaar = radioJa.isSelected();
-        dc.voegMateriaalToe(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
+        mc.voegMateriaalToe(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
         //LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(dc), 1166, 643, this);
         System.out.println("toegevoegd");
     }

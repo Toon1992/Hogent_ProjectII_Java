@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import domein.DomeinController;
-import java.net.URL;
-import java.util.ResourceBundle;
+import gui.LoaderSchermen;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -21,24 +18,23 @@ import javafx.scene.layout.GridPane;
  */
 public class StartSchermController extends GridPane
 {
-    private DomeinController dc;
+    private GebruikerController gc;
+    private MateriaalController mc;
     
     @FXML
     private ImageView imgViewMateriaal;
     
-    public StartSchermController(DomeinController dc)
+    public StartSchermController(GebruikerController gc)
     {
-       LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
-       this.dc = dc;
-       
+        LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
+        this.gc = gc;
+        this.mc = new MateriaalController();
     }
 
     @FXML
     private void clickedMateriaal(MouseEvent event)
     {
-        MateriaalSchermController msc = new MateriaalSchermController(dc);
-        dc.addObserver(msc);
-         LoaderSchermen.getInstance().load("Materialen", msc, 1300, 740, this);
+         LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(mc), 1300, 740, this);
     }
 
     @FXML

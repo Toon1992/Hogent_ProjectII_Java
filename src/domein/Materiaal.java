@@ -43,10 +43,10 @@ public class Materiaal{
     @ManyToOne(cascade=CascadeType.PERSIST)
     private Firma firma;
     
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.PERSIST)
     Set<Doelgroep> doelgroepen = new HashSet<>();
     
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.PERSIST)
     Set<Leergebied> leergebieden = new HashSet<>();
     protected Materiaal()
     {

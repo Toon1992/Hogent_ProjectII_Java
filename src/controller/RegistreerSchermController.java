@@ -3,14 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import domein.DomeinController;
-import java.io.IOException;
+import gui.LoaderSchermen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -34,7 +31,7 @@ public class RegistreerSchermController extends GridPane
     private Button btnRegistreer;
     @FXML
     private Button btnAnnuleer;
-    private DomeinController dc;
+    private GebruikerController gc;
     @FXML
     private TextField txfNaam;
     @FXML
@@ -48,10 +45,10 @@ public class RegistreerSchermController extends GridPane
     @FXML
     private Label lblWachtwoord1;
 
-    public RegistreerSchermController(DomeinController dc)
+    public RegistreerSchermController(GebruikerController gc)
     {
         LoaderSchermen.getInstance().setLocation("RegistreerScherm.fxml", this);
-        this.dc = dc;
+        this.gc = gc;
 
     }
 
@@ -85,7 +82,7 @@ public class RegistreerSchermController extends GridPane
         }
         if (geldig)
         {
-            dc.registreer(email, wachtwoord, naam);
+            gc.registreer(email, wachtwoord, naam);
         }
     }
 
