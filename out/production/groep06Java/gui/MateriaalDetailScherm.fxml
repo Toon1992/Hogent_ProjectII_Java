@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="740.0" type="VBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+       <GridPane prefHeight="463.0" prefWidth="622.0" VBox.vgrow="ALWAYS">
+           <columnConstraints>
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="40.0" />
+           </columnConstraints>
+           <rowConstraints>
+               <RowConstraints maxHeight="60.0" minHeight="1.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="60.0" minHeight="1.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+           <children>
+               <ImageView fx:id="imgViewMateriaal" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#wijzigFoto" pickOnBounds="true" preserveRatio="true" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                   <GridPane.margin>
+                       <Insets left="35.0" />
+                   </GridPane.margin>
+               </ImageView>
+               <TextArea fx:id="txfOmschrijving" maxHeight="100.0" prefHeight="100.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+               <Label text="Omschrijving" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Label text="Doelgroep" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                   <GridPane.margin>
+                       <Insets />
+                   </GridPane.margin>
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Label text="Leergebied" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <TextField fx:id="txfFirma" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+               <Label text="Firma" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Label text="ArtikelNummer firma" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <TextField fx:id="txfAantal" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+               <TextField fx:id="txfOnbeschikbaar" maxWidth="1.7976931348623157E308" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
+               <Label text="Aantal" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Label text="Aantal onbeschikbaar" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+                   <GridPane.margin>
+                       <Insets left="10.0" />
+                   </GridPane.margin>
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Label text="Email contactpersoon" GridPane.halignment="RIGHT" GridPane.rowIndex="13">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+               <Label text="Plaats" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Label text="Uitleenbaarheid:" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="12">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <RadioButton fx:id="radioStudent" mnemonicParsing="false" text="Student" GridPane.columnIndex="3" GridPane.rowIndex="12" GridPane.valignment="TOP">
+                   <GridPane.margin>
+                       <Insets top="10.0" />
+                   </GridPane.margin>
+               </RadioButton>
+               <RadioButton fx:id="radioLector" mnemonicParsing="false" text="Lector" GridPane.columnIndex="3" GridPane.rowIndex="12" GridPane.rowSpan="2" GridPane.valignment="BOTTOM">
+                   <GridPane.margin>
+                       <Insets bottom="10.0" />
+                   </GridPane.margin>
+               </RadioButton>
+               <TextField fx:id="txfPlaats" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+               <TextField fx:id="txfPrijs" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+               <Label text="Prijs" GridPane.halignment="RIGHT" GridPane.rowIndex="14">
+                   <padding>
+                       <Insets right="10.0" />
+                   </padding>
+               </Label>
+               <Button fx:id="btnOpslaan" mnemonicParsing="false" onAction="#materiaalWijzigen" text="Opslaan" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
+               <ListView fx:id="listDoelgroep" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.rowSpan="2" />
+               <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="4" GridPane.rowSpan="3" />
+               <Label fx:id="lblError" prefHeight="21.0" prefWidth="637.0" textFill="RED" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+            <TextField fx:id="txfNaam" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
+            <Label text="Naam" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets right="10.0" />
+               </GridPane.margin>
+            </Label>
+           </children>
+       </GridPane>
+   </children>
+</fx:root>

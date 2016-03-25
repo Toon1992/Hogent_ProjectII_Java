@@ -5,9 +5,10 @@
  */
 package gui;
 
-import domein.DomeinController;
 import java.util.Arrays;
 import java.util.Collection;
+
+import controller.GebruikerController;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +23,7 @@ import org.junit.runners.Parameterized.Parameters;
 @RunWith(value = Parameterized.class)
 public class LoginSchermControllerTest {
     private String email,wachtwoord;
-    private DomeinController dc;
+    private GebruikerController gc;
     
     @Parameters
     public static Collection<Object[]> getTestParameters() {
@@ -44,11 +45,11 @@ public class LoginSchermControllerTest {
     }
     @Before
     public void before(){
-        dc = new DomeinController();
+        gc = new GebruikerController();
     }
     @Test(expected = IllegalArgumentException.class)
     public void testSlechteBeheerders() throws Exception {
-        dc.login(email, wachtwoord);
+        gc.login(email, wachtwoord);
     }
     
 }
