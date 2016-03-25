@@ -1,5 +1,5 @@
-/.idea/
-/lib/
-/out/
-/nbproject/private/
 
+/dist/
+/build/
+/lib/
+/nbproject/
