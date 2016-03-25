@@ -176,6 +176,7 @@
                   <Button fx:id="btnOpslaan" mnemonicParsing="false" onAction="#materiaalWijzigen" text="Opslaan" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="14" />
                   <ListView fx:id="listDoelgroep" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
                   <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="3" />
+                  <Label fx:id="lblError" prefHeight="21.0" prefWidth="637.0" textFill="RED" GridPane.columnIndex="1" GridPane.columnSpan="3" />
                </children>
             </GridPane>
          </children></VBox>

@@ -5,10 +5,13 @@
  */
 package gui;
 
+import domein.Doelgroep;
 import domein.DomeinController;
 import domein.Materiaal;
+import java.util.HashSet;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.Set;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -73,6 +76,9 @@ public class MateriaalSchermController extends HBox implements Observer{
     @FXML
     private ListView<String> listLeergbedied;
     private ToggleGroup group = new ToggleGroup();
+    private Materiaal m;
+    @FXML
+    private Label lblError;
     
     public MateriaalSchermController(DomeinController dc){
         LoaderSchermen.getInstance().setLocation("MateriaalScherm.fxml", this);
@@ -106,11 +112,39 @@ public class MateriaalSchermController extends HBox implements Observer{
 
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
+        
+        try{
+            m.setNaam(txfNaam.getText());
+            m.setOmschrijving(txfOmschrijving.getText());
+            m.setAantal(Integer.parseInt(txfAantal.getText()));
+            m.setAantalOnbeschikbaar(Integer.parseInt(txfOnbeschikbaar.getText()));
+            m.setPlaats(txfPlaats.getText());
+            m.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
+            String prijs=txfPrijs.getText().replace(",", ".");
+            m.setPrijs(Double.valueOf(prijs));
+            m.getFirma().setEmailContact(txfContactPersoon.getText());
+            m.setUitleenbaarheid(radioStudent.isSelected());
+            lblError.setText("");
+            Alert succesvol=new Alert(Alert.AlertType.CONFIRMATION);
+            succesvol.setTitle("Materiaal gewijzigd");
+            succesvol.setHeaderText(m.getNaam());
+            succesvol.setContentText("Al uw wijzigingen zijn correct doorgevoerd!");
+            succesvol.showAndWait();
+            
+        }
+        catch(NumberFormatException ex){
+            lblError.setText("Er werd een foute waarde ingegeven.");
+        }
+        catch(IllegalArgumentException ex){
+            lblError.setText(ex.getMessage());
+        }
+        
+        
     }
 
     @Override
     public void update(Observable o, Object obj) {
-        Materiaal m = (Materiaal) obj;
+        m = (Materiaal) obj;
         imgViewMateriaal.setImage(new Image(m.getFoto()));
         txfAantal.setText(String.format("%d", m.getAantal()));
         txfArtikelNummer.setText(String.format("%d", m.getArtikelNr()));

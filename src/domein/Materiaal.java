@@ -57,6 +57,9 @@ public class Materiaal{
     }
 
     public void setNaam(String naam) {
+        if(naam.isEmpty()){
+            throw new IllegalArgumentException("Naam moet ingevuld zijn!");
+        }
         this.naam = naam;
     }
 
@@ -95,7 +98,7 @@ public class Materiaal{
         setAantalOnbeschikbaar(aantalOnbeschikbaar);
         setPrijs(prijs);
         setPlaats(plaats);
-        setUitleenbaar(uitleenbaar);
+        setUitleenbaarheid(uitleenbaar);
         setFirma(firma);
         setDoelgroepen(doelgroepen);
         setLeergebieden(leergebieden);
@@ -140,6 +143,9 @@ public class Materiaal{
     }
 
     public void setAantal(int aantal) {
+        if(aantal<0){
+            throw new IllegalArgumentException("Aantal moet groter zijn dan 0");
+        }
         this.aantal = aantal;
     }
 
@@ -163,9 +169,6 @@ public class Materiaal{
         return uitleenbaar;
     }
 
-    public void setUitleenbaar(boolean uitleenbaar) {
-        this.uitleenbaar = uitleenbaar;
-    }
 
     public Firma getFirma() {
         return firma;
