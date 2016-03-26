@@ -133,6 +133,7 @@
                   <Insets right="10.0" />
                </GridPane.margin>
             </Label>
+            <Button fx:id="btnVerwijder" mnemonicParsing="false" onAction="#btnVerwijderOnAction" text="Verwijderen" textFill="RED" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="15" />
            </children>
        </GridPane>
    </children>
