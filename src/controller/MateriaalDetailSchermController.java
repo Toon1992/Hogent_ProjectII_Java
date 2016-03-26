@@ -70,7 +70,7 @@ public class MateriaalDetailSchermController extends VBox implements Observer {
     public MateriaalDetailSchermController(MateriaalController mc) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
         this.mc = mc;
-        materiaalCatalogus=mc.getMateriaalCatalogus();
+        materiaalCatalogus = mc.getMateriaalCatalogus();
     }
 
     @FXML
@@ -94,17 +94,26 @@ public class MateriaalDetailSchermController extends VBox implements Observer {
             materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
             materiaal.setUitleenbaarheid(radioStudent.isSelected());
             lblError.setText("");
-            materiaalCatalogus.wijzigMateriaal(materiaal);
+            
             Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
             succesvol.setTitle("Materiaal gewijzigd");
             succesvol.setHeaderText(materiaal.getNaam());
             succesvol.setContentText("Al uw wijzigingen zijn correct doorgevoerd!");
-            succesvol.showAndWait();
+            ButtonType bevestig = new ButtonType("Ok");
+            succesvol.getButtonTypes().setAll(bevestig);
+            Optional<ButtonType> resultaat = succesvol.showAndWait();
+            if(resultaat.get()==bevestig){
+                materiaalCatalogus.wijzigMateriaal(materiaal);
+            }
+            
+            
 
         } catch (NumberFormatException ex) {
             lblError.setText("Er werd een foute waarde ingegeven.");
         } catch (IllegalArgumentException ex) {
             lblError.setText(ex.getMessage());
+        } catch (NullPointerException ex) {
+            lblError.setText("Selecteer een materiaal!");
         }
 
     }
@@ -134,20 +143,24 @@ public class MateriaalDetailSchermController extends VBox implements Observer {
     @FXML
     private void btnVerwijderOnAction(ActionEvent event) {
 
-        
-        Alert verwijderd = new Alert(Alert.AlertType.CONFIRMATION);
-        verwijderd.setTitle("Materiaal verwijderen");
-        verwijderd.setHeaderText(materiaal.getNaam());
-        verwijderd.setContentText("Weet u zeker dat u dit materiaal wil verwijderen?");
-        ButtonType annuleer=new ButtonType("Annuleer");
-        ButtonType verwijder=new ButtonType("Verwijder");
-        verwijderd.getButtonTypes().setAll(annuleer,verwijder);
-        Optional<ButtonType> resultaat=verwijderd.showAndWait();
-        
-        if(resultaat.get()==verwijder){
-            materiaalCatalogus.verwijderMateriaal(materiaal);
-            
+        try {
+            Alert verwijderd = new Alert(Alert.AlertType.CONFIRMATION);
+            verwijderd.setTitle("Materiaal verwijderen");
+            verwijderd.setHeaderText(materiaal.getNaam());
+            verwijderd.setContentText("Weet u zeker dat u dit materiaal wil verwijderen?");
+            ButtonType annuleer = new ButtonType("Annuleer");
+            ButtonType verwijder = new ButtonType("Verwijder");
+            verwijderd.getButtonTypes().setAll(annuleer, verwijder);
+            Optional<ButtonType> resultaat = verwijderd.showAndWait();
+
+            if (resultaat.get() == verwijder) {
+                materiaalCatalogus.verwijderMateriaal(materiaal);
+
+            }
+        } catch (NullPointerException ex) {
+            lblError.setText("Selecteer een materiaal!");
         }
+
     }
 
 }
