@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package controller.schermen;
 
+import controller.GebruikerController;
+import controller.MateriaalController;
+import controller.ReservatieController;
 import gui.LoaderSchermen;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -20,6 +23,7 @@ public class StartSchermController extends GridPane
 {
     private GebruikerController gc;
     private MateriaalController mc;
+    private ReservatieController rc;
     
     @FXML
     private ImageView imgViewMateriaal;
@@ -29,6 +33,7 @@ public class StartSchermController extends GridPane
         LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
         this.gc = gc;
         this.mc = new MateriaalController();
+        this.rc = new ReservatieController();
     }
 
     @FXML
@@ -40,6 +45,7 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedReservaties(MouseEvent event)
     {
+         LoaderSchermen.getInstance().load("Reservaties", new ReservatieSchermController(rc), 1300, 740, this);
     }
 
     @FXML

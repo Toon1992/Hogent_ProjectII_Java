@@ -40,4 +40,8 @@ public class MateriaalController extends Observable{
         setChanged();
         notifyObservers(materiaal);
     }
+    
+    public MateriaalCatalogus getMateriaalCatalogus(){
+        return materiaalCatalogus;
+    }
 }
