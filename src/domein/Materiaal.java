@@ -24,6 +24,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 /**
  *
@@ -48,6 +49,11 @@ public class Materiaal{
     
     @ManyToMany(cascade=CascadeType.PERSIST)
     Set<Leergebied> leergebieden = new HashSet<>();
+    
+    @OneToOne
+    private Reservatie reservatie;
+    
+    
     protected Materiaal()
     {
         

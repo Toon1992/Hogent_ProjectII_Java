@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1315.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="770.0" prefWidth="1315.0">
+         <children>
+            <GridPane>
+              <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" prefWidth="1.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.0" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="5.0" prefWidth="1.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label alignment="CENTER" text="Zoek:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <TextField fx:id="txfZoek" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" text="BeginDatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <Label alignment="CENTER" text="EindDatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="datePickerBegin" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="datePickerEind" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <TableView minHeight="-Infinity" prefHeight="680.0" prefWidth="1315.0">
+              <columns>
+                <TableColumn fx:id="reservatieTable" prefWidth="360.0" text="Naam" />
+                <TableColumn fx:id="materiaalColumn" minWidth="0.0" prefWidth="450.0" text="Materiaal" />
+                  <TableColumn fx:id="aantalColumn" minWidth="0.0" prefWidth="106.0" text="Aantal" />
+                  <TableColumn fx:id="BeginDatumColumn" minWidth="0.0" prefWidth="200.0" text="Begin Datum" />
+                  <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="200.0" text="Eind Datum" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </children>
+</fx:root>
