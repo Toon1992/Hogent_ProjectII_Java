@@ -14,6 +14,7 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -77,5 +78,12 @@ public class ReservatieSchermController extends HBox
             }
 
         });
+    }
+
+    @FXML
+    private void zoeken(KeyEvent event)
+    {
+        String zoekterm = txfZoek.getText() + event.getCharacter().trim();
+        rc.zoek(zoekterm);
     }
 }

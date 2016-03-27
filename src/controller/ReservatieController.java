@@ -28,6 +28,11 @@ public class ReservatieController
         return repository.geefMaterialen();
     }
     
+    public void zoek(String zoekterm)
+    {
+        repository.Zoek(zoekterm);
+    }
+    
      public void setCurrentReservatie(Reservatie reservatie){
 //        setChanged();
 //        notifyObservers(reservatie);

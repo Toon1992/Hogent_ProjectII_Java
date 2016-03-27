@@ -29,7 +29,7 @@
               </rowConstraints>
                <children>
                   <Label alignment="CENTER" text="Zoek:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <TextField fx:id="txfZoek" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                  <TextField fx:id="txfZoek" onKeyTyped="#zoeken" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" text="BeginDatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" text="EindDatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <DatePicker fx:id="datePickerBegin" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
