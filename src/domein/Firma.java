@@ -15,35 +15,42 @@ import javax.persistence.Id;
  * @author Thomas
  */
 @Entity
-public class Firma {
+public class Firma
+{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int firmaId;
     private String naam, emailContact;
-    
+
     protected Firma()
-    {}
-    
+    {
+    }
+
     public Firma(String naam, String emailContact)
     {
         this.naam = naam;
         this.emailContact = emailContact;
     }
 
-    public String getNaam() {
+    public String getNaam()
+    {
         return naam;
     }
 
-    private void setNaam(String naam) {
+    private void setNaam(String naam)
+    {
         this.naam = naam;
     }
 
-    public String getEmailContact() {
+    public String getEmailContact()
+    {
         return emailContact;
     }
 
-    public void setEmailContact(String emailContact) {
+    public void setEmailContact(String emailContact)
+    {
         this.emailContact = emailContact;
     }
-    
+
 }
