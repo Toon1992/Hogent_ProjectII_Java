@@ -9,3 +9,8 @@
     -fx-opacity:0.5;
     -fx-cursor: hand;
 }
+
+#my-table .table-Column
+{
+    -fx-alignment: CENTER;
+}

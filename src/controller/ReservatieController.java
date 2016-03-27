@@ -5,6 +5,7 @@
  */
 package controller;
 
+import domein.Materiaal;
 import domein.Reservatie;
 import javafx.collections.transformation.SortedList;
 import repository.ReservatieRepository;
@@ -25,5 +26,10 @@ public class ReservatieController
     public SortedList<Reservatie> getReservaties()
     {
         return repository.geefMaterialen();
+    }
+    
+     public void setCurrentReservatie(Reservatie reservatie){
+//        setChanged();
+//        notifyObservers(reservatie);
     }
 }

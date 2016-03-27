@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1315.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1315.0" stylesheets="@../styleSheet/style.css" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox prefHeight="770.0" prefWidth="1315.0">
          <children>
@@ -36,14 +36,17 @@
                   <DatePicker fx:id="datePickerEind" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
                </children>
             </GridPane>
-            <TableView minHeight="-Infinity" prefHeight="680.0" prefWidth="1315.0">
+            <TableView id="my-table" fx:id="reservatieTable" minHeight="-Infinity" prefHeight="680.0" prefWidth="1315.0" stylesheets="@../styleSheet/style.css" VBox.vgrow="ALWAYS">
               <columns>
-                <TableColumn fx:id="reservatieTable" prefWidth="360.0" text="Naam" />
-                <TableColumn fx:id="materiaalColumn" minWidth="0.0" prefWidth="450.0" text="Materiaal" />
-                  <TableColumn fx:id="aantalColumn" minWidth="0.0" prefWidth="106.0" text="Aantal" />
-                  <TableColumn fx:id="BeginDatumColumn" minWidth="0.0" prefWidth="200.0" text="Begin Datum" />
-                  <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="200.0" text="Eind Datum" />
+                <TableColumn fx:id="naamColumn" prefWidth="257.0" styleClass="table-Column" text="Naam" />
+                <TableColumn fx:id="materiaalColumn" minWidth="0.0" prefWidth="332.0" styleClass="table-Column" text="Materiaal" />
+                  <TableColumn fx:id="aantalColumn" minWidth="0.0" prefWidth="115.0" styleClass="table-Column" text="Aantal" />
+                  <TableColumn fx:id="BeginDatumColumn" minWidth="0.0" prefWidth="310.0" styleClass="table-Column" text="Begin Datum" />
+                  <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="310.0" styleClass="table-Column" text="Eind Datum" />
               </columns>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" />
+               </VBox.margin>
             </TableView>
          </children>
       </VBox>

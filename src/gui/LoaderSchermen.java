@@ -32,12 +32,14 @@ public class LoaderSchermen {
         Scene scene = new Scene(scherm, width, height);
         stage.setScene(scene);
     }
+    
     public void setLocation(String fxmlBestand, Node node)
     {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(fxmlBestand));
         loader.setRoot(node);
         loader.setController(node);
+        
         try
         {
             loader.load();

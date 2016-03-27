@@ -5,16 +5,20 @@
  */
 package domein;
 
-import java.sql.Date;
+
+import java.util.Date;
+import java.util.GregorianCalendar;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.StringProperty;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -27,15 +31,18 @@ public class Reservatie
    private int reservatieID;
    
    private int aantal;
+   
+   @Temporal(javax.persistence.TemporalType.DATE)
    private Date beginDatum,eindDatum;
+   
    private int reservatieEnum;
    
-    @OneToOne
-    @JoinColumn(name = "Gebruiker")
+    @OneToOne(cascade=CascadeType.PERSIST)
+    @JoinColumn(name = "Gebruiker")   
    private Gebruiker gebruiker;
    
    
-   @OneToOne
+   @OneToOne(cascade=CascadeType.PERSIST)
    @JoinColumn(name = "Materiaal")
    private Materiaal materiaal;
    

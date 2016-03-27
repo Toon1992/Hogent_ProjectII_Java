@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller.schermen;
+package gui;
 
 import controller.GebruikerController;
 import controller.MateriaalController;
 import controller.ReservatieController;
+import gui.ReservatieSchermController;
 import gui.LoaderSchermen;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
@@ -31,6 +32,7 @@ public class StartSchermController extends GridPane
     public StartSchermController(GebruikerController gc)
     {
         LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
+        
         this.gc = gc;
         this.mc = new MateriaalController();
         this.rc = new ReservatieController();
