@@ -5,17 +5,22 @@
  */
 package controller;
 
+import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
+import java.util.ResourceBundle;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
 /**
@@ -23,7 +28,7 @@ import javafx.scene.layout.VBox;
  *
  * @author donovandesmedt
  */
-public class MateriaalDetailSchermController extends VBox implements Observer {
+public class MateriaalDetailSchermController extends VBox{
 
     @FXML
     private ImageView imgViewMateriaal;
@@ -57,14 +62,18 @@ public class MateriaalDetailSchermController extends VBox implements Observer {
     private Label lblError;
     @FXML
     private TextField txfNaam;
+    @FXML
+    private Button btnTerug;
     private MateriaalController mc;
     private Materiaal materiaal;
     private ToggleGroup group = new ToggleGroup();
 
 
-    public MateriaalDetailSchermController(MateriaalController mc){
+    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal){
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml",this);
+        this.materiaal = materiaal;
         this.mc = mc;
+        update(materiaal);
     }
 
     @FXML
@@ -100,9 +109,7 @@ public class MateriaalDetailSchermController extends VBox implements Observer {
         }
 
     }
-    @Override
-    public void update(Observable o, Object obj) {
-        materiaal = (Materiaal) obj;
+    public void update(Materiaal materiaal) {
         imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
@@ -121,5 +128,9 @@ public class MateriaalDetailSchermController extends VBox implements Observer {
         radioLector.setToggleGroup(group);
 
     }
-    
+    @FXML
+    private void terugNaarOverzicht(ActionEvent event) {
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new MateriaalOverzichtSchermController(mc));
+    }
 }

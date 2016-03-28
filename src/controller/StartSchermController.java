@@ -9,6 +9,8 @@ import gui.LoaderSchermen;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -34,7 +36,8 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedMateriaal(MouseEvent event)
     {
-         LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(mc), 1300, 740, this);
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new MateriaalOverzichtSchermController(mc));
     }
 
     @FXML

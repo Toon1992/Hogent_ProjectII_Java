@@ -46,13 +46,16 @@ public class MateriaalCatalogus {
         filteredmaterialen.setPredicate(m -> {
             if(zoekterm == null || zoekterm.isEmpty())
                 return true;
-            if(m.getNaam().toLowerCase().contains(zoekterm.toLowerCase()) || m.getOmschrijving().toLowerCase().contains(zoekterm.toLowerCase())){
+            if(m.getNaam().toLowerCase().contains(zoekterm) || m.getOmschrijving().toLowerCase().contains(zoekterm)){
                 return true;
             }          
-            if(m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
+            if(m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm))){
                 return true;
             }
-            if(m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase()))){
+            if(m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm))){
+                return true;
+            }
+            if(m.getPlaats().toLowerCase().equals(zoekterm) || m.uitleenbaarProperty().toString().equals(zoekterm) || m.getFirma().getNaam().equals(zoekterm)){
                 return true;
             }
             return false;

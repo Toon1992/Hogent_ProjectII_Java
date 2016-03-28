@@ -34,7 +34,7 @@ public class MateriaalController extends Observable{
         return materiaalCatalogus.objectCollectionToObservableList(list);
     }
     public void zoek(String zoekterm){
-        materiaalCatalogus.zoek(zoekterm);
+        materiaalCatalogus.zoek(zoekterm.toLowerCase());
     }
     public void setCurrentMateriaal(Materiaal materiaal){
         setChanged();

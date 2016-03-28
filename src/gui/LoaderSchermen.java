@@ -18,6 +18,7 @@ import javafx.stage.Stage;
  */
 public class LoaderSchermen {
     private static LoaderSchermen instance = null;
+    private boolean loggedIn;
     protected LoaderSchermen(){}
     public static LoaderSchermen getInstance(){
         if(instance == null){
@@ -45,6 +46,12 @@ public class LoaderSchermen {
         {
             throw new RuntimeException();
         }
+    }
+    public boolean isLoggedIn(){
+        return loggedIn;
+    }
+    public void setLoggedIn(boolean loggedIn){
+        this.loggedIn = loggedIn;
     }
     
 }

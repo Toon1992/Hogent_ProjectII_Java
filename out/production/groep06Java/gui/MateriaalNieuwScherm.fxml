@@ -36,11 +36,6 @@
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <children>
-               <ImageView fx:id="imgViewMateriaal" fitHeight="150.0" fitWidth="150.0" onMouseClicked="#wijzigFoto" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
-                   <GridPane.margin>
-                       <Insets />
-                   </GridPane.margin>
-               </ImageView>
                <TextArea fx:id="txfOmschrijving" maxHeight="100.0" prefHeight="100.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="15.0" />
@@ -126,7 +121,7 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Button fx:id="btnOpslaan" mnemonicParsing="false" onAction="#materiaalWijzigen" text="Opslaan" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+               <Button fx:id="btnToevoegen" mnemonicParsing="false" onAction="#voegToe" text="Voeg toe" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
                <ListView fx:id="listDoelgroep" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" />
                <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="3" />
             <TextField fx:id="txfNaam" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP">
@@ -154,6 +149,17 @@
                </padding>
             </Label>
             <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
+            <TextField fx:id="txfUrl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label text="Foto" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets right="15.0" />
+               </GridPane.margin>
+            </Label>
+            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" text="Open" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets top="85.0" />
+               </GridPane.margin>
+            </Button>
            </children>
        </GridPane>
    </children>

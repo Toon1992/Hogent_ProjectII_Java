@@ -13,10 +13,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import javafx.beans.Observable;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.image.Image;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -48,7 +53,7 @@ public class Materiaal{
     
     @ManyToMany(cascade=CascadeType.PERSIST)
     Set<Leergebied> leergebieden = new HashSet<>();
-    protected Materiaal()
+    public Materiaal()
     {
         
     }
@@ -106,6 +111,10 @@ public class Materiaal{
         setMateriaalId(artikelNr);
     }
 
+    public ObjectProperty getImage(){
+        SimpleObjectProperty obj = new SimpleObjectProperty(new Image(getFoto()));
+        return obj;
+    }
     public int getMateriaalId() {
         return materiaalId;
     }
