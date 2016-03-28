@@ -72,28 +72,23 @@ public class MateriaalCatalogus
         List<String> stringLijst = list.stream().map(e -> e.toString()).collect(Collectors.toList());
         return FXCollections.observableArrayList(stringLijst);
     }
-
-    public void zoek(String zoekterm)
-    {
-        filteredmaterialen.setPredicate(m -> 
-                {
-                    if (zoekterm == null || zoekterm.isEmpty())
-                    {
-                        return true;
-                    }
-                    if (m.getNaam().toLowerCase().contains(zoekterm.toLowerCase()) || m.getOmschrijving().toLowerCase().contains(zoekterm.toLowerCase()))
-                    {
-                        return true;
-                    }
-                    if (m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase())))
-                    {
-                        return true;
-                    }
-                    if (m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm.toLowerCase())))
-                    {
-                        return true;
-                    }
-                    return false;
+    public void zoek(String zoekterm){
+        filteredmaterialen.setPredicate(m -> {
+            if(zoekterm == null || zoekterm.isEmpty())
+                return true;
+            if(m.getNaam().toLowerCase().contains(zoekterm) || m.getOmschrijving().toLowerCase().contains(zoekterm)){
+                return true;
+            }          
+            if(m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm))){
+                return true;
+            }
+            if(m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm))){
+                return true;
+            }
+            if(m.getPlaats().toLowerCase().equals(zoekterm) || m.uitleenbaarProperty().get().toLowerCase().equals(zoekterm) || m.getFirma().getNaam().equals(zoekterm)){
+                return true;
+            }
+            return false;
         });
 
     }

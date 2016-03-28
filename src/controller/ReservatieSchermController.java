@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 import controller.ReservatieController;
 import domein.Reservatie;
 import java.time.LocalDate;
 import java.util.Date;
+
+import gui.LoaderSchermen;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,7 +29,7 @@ import javafx.util.Callback;
  *
  * @author ToonDT
  */
-public class ReservatieSchermController extends HBox
+public class ReservatieSchermController extends VBox
 {
 
     @FXML

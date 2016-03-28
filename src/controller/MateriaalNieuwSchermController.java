@@ -3,28 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import controller.MateriaalController;
+import java.net.URL;
+import java.util.*;
+
 import domein.Doelgroep;
 import domein.Firma;
 import domein.Leergebied;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
 import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.SelectionMode;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -32,36 +26,47 @@ import javafx.stage.Stage;
 /**
  * FXML Controller class
  *
- * @author Thomas
+ * @author donovandesmedt
  */
-public class MateriaalToevoegenSchermController extends VBox {
+public class MateriaalNieuwSchermController extends VBox {
 
     @FXML
-    private TextField txfNaam;
+    private TextArea txfOmschrijving;
     @FXML
-    private TextField txfOmschrijving;
+    private TextField txfFirma;
     @FXML
-    private TextField txfAantalCatalogus;
+    private TextField txfArtikelNummer;
+    @FXML
+    private TextField txfAantal;
+    @FXML
+    private TextField txfOnbeschikbaar;
+    @FXML
+    private TextField txfContactPersoon;
+    @FXML
+    private RadioButton radioStudent;
+    @FXML
+    private RadioButton radioLector;
     @FXML
     private TextField txfPlaats;
     @FXML
-    private TextField txfAantalOnbeschikbaar;
-    @FXML
-    private TextField txfArtikelNr;
-    @FXML
     private TextField txfPrijs;
     @FXML
-    private RadioButton radioJa;
+    private Button btnOpslaan;
     @FXML
-    private RadioButton radioNee;
+    private ListView<String> listDoelgroep;
     @FXML
-    private TextField txfFirmaNaam;
+    private ListView<String> listLeergbedied;
     @FXML
-    private TextField txfFirmaEmail;
+    private TextField txfNaam;
     @FXML
-    private Button btnFoto;
+    private Button btnTerug;
+    @FXML
+    private TextField txfUrl;
+    @FXML
+    private Button btnAddImage;
     @FXML
     private Button btnToevoegen;
+
     private MateriaalController mc;
     private List<Doelgroep> doelgroepen;
     private List<Leergebied> leergebieden;
@@ -69,19 +74,10 @@ public class MateriaalToevoegenSchermController extends VBox {
     private Stage stage = new Stage();
     private String foto = "test";
     private ToggleGroup group = new ToggleGroup();
-    @FXML
-    private ListView<String> listViewDoelgroepen = new ListView<>();
-    @FXML
-    private ListView<String> listViewLeergebieden = new ListView<>();
-    
-
-    /**
-     * Initializes the controller class.
-     */
-    public MateriaalToevoegenSchermController(MateriaalController mc) {
-        LoaderSchermen.getInstance().setLocation("MateriaalToevoegenScherm.fxml", this);
+    public MateriaalNieuwSchermController(MateriaalController mc){
+        LoaderSchermen.getInstance().setLocation("MateriaalNieuwScherm.fxml", this);
         this.mc = mc;
-        
+
         //Scene scene = this.getScene();
         doelgroepen = new ArrayList<>();
         doelgroepen.add(new Doelgroep("test"));
@@ -90,9 +86,9 @@ public class MateriaalToevoegenSchermController extends VBox {
         doelgroepen.stream().forEach((d) -> {
             doelgroepenString.add(d.getNaam());
         });
-        listViewDoelgroepen.setItems(doelgroepenString);
-        listViewDoelgroepen.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
+        listDoelgroep.setItems(doelgroepenString);
+        listDoelgroep.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         leergebieden = new ArrayList<>();
         leergebieden.add(new Leergebied("test"));
         leergebieden.add(new Leergebied("test2"));
@@ -100,18 +96,18 @@ public class MateriaalToevoegenSchermController extends VBox {
         leergebieden.stream().forEach((d) -> {
             leergebiedenString.add(d.getNaam());
         });
-        listViewLeergebieden.setItems(leergebiedenString);
-        listViewLeergebieden.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        
+        listLeergbedied.setItems(leergebiedenString);
+        listLeergbedied.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+
         fileChooser = new FileChooser();
         fileChooser.setTitle("Kies een foto");
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"),
                 new FileChooser.ExtensionFilter("GIF", "*.gif"),
                 new FileChooser.ExtensionFilter("BMP", "*.bmp"),
                 new FileChooser.ExtensionFilter("PNG", "*.png"));
-        radioJa.setToggleGroup(group);
-        radioJa.setSelected(true);
-        radioNee.setToggleGroup(group);
+        radioStudent.setToggleGroup(group);
+        radioStudent.setSelected(true);
+        radioLector.setToggleGroup(group);
     }
 
     @FXML
@@ -132,45 +128,51 @@ public class MateriaalToevoegenSchermController extends VBox {
         if (txfPlaats.getText() != null) {
             plaats = txfPlaats.getText();
         }
-        if (txfArtikelNr.getText() != null) {
-            artikelNr = Integer.parseInt(txfArtikelNr.getText());
+        if (txfArtikelNummer.getText() != null) {
+            artikelNr = Integer.parseInt(txfArtikelNummer.getText());
         }
-        if (txfAantalCatalogus.getText() != null) {
-            aantal = Integer.parseInt(txfAantalCatalogus.getText());
+        if (txfAantal.getText() != null) {
+            aantal = Integer.parseInt(txfAantal.getText());
         }
-        if (txfAantalOnbeschikbaar.getText() != null) {
-            aantalOnbeschikbaar = Integer.parseInt(txfAantalOnbeschikbaar.getText());
+        if (txfOnbeschikbaar.getText() != null) {
+            aantalOnbeschikbaar = Integer.parseInt(txfOnbeschikbaar.getText());
         }
         if (txfPrijs.getText() != null) {
             prijs = Double.parseDouble(txfPrijs.getText());
         }
-        if (txfFirmaNaam.getText() != null) {
-            firmaNaam = txfFirmaNaam.getText();
+        if (txfFirma.getText() != null) {
+            firmaNaam = txfFirma.getText();
         }
-        if (txfFirmaEmail.getText() != null) {
-            firmaContact = txfFirmaEmail.getText();
+        if (txfContactPersoon.getText() != null) {
+            firmaContact = txfContactPersoon.getText();
         }
-        if (txfFirmaNaam.getText() != null && txfFirmaEmail.getText() != null) {
+        if (txfFirma.getText() != null && txfContactPersoon.getText() != null) {
             firma = new Firma(firmaNaam, firmaContact);
         }
-        listViewDoelgroepen.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
+        listDoelgroep.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
             doelgroepen.add(new Doelgroep(s));
         });
-        
-        listViewLeergebieden.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
+
+        listLeergbedied.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
             leergebieden.add(new Leergebied(s));
         });
-        
-        uitleenbaar = radioJa.isSelected();
+
+        uitleenbaar = radioStudent.isSelected();
         mc.voegMateriaalToe(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
-        //LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(dc), 1166, 643, this);
+        terugNaarOverzicht(null);
         System.out.println("toegevoegd");
     }
 
     @FXML
-    private void fotoToevoegen(ActionEvent event) {
-//        File file = fileChooser.showOpenDialog(stage);
-//        foto = file.getAbsolutePath();
+    private void terugNaarOverzicht(ActionEvent event) {
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new MateriaalOverzichtSchermController(mc));
     }
 
+    @FXML
+    private void voegFotoToe(ActionEvent event) {
+        //        File file = fileChooser.showOpenDialog(stage);
+//        foto = file.getAbsolutePath();
+    }
+    
 }

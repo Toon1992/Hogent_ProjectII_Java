@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import controller.GebruikerController;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
 
@@ -20,6 +19,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 import javax.persistence.EntityNotFoundException;
@@ -47,6 +47,7 @@ public class LoginSchermController extends GridPane
     private PasswordField txfWachtwoord;
     @FXML
     private Label lblLogin;
+    private Label lblUitloggen;
 
     public LoginSchermController(GebruikerController gc)
     {
@@ -66,7 +67,13 @@ public class LoginSchermController extends GridPane
         try
         {
             gc.login(email, wachtwoord);
-            LoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
+            BorderPane bp = (BorderPane) this.getParent();
+            GridPane gp = (GridPane) bp.getTop();
+            lblUitloggen = (Label) gp.getChildren().get(gp.getChildren().size() -1 );
+            lblUitloggen.setText("Uitloggen");
+            LoaderSchermen.getInstance().setLoggedIn(true);
+            bp.setCenter(new StartSchermController(gc));
+            //aLoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
         } catch (EmailException e) {
             lblEmail.setText(e.getLocalizedMessage());
         } catch (WachtwoordException e)
@@ -81,17 +88,8 @@ public class LoginSchermController extends GridPane
     @FXML
     private void annuleer(ActionEvent event)
     {
-        Alert boodschap = new Alert(Alert.AlertType.CONFIRMATION);
-        boodschap.setTitle("Annuleer");
-        boodschap.setHeaderText("Weet u zeker dat het programma mag afgesloten worden?");
-
-        ButtonType Annuleer = new ButtonType("Annuleer");
-        ButtonType Ok = new ButtonType("Ok");
-        boodschap.getButtonTypes().setAll(Annuleer, Ok);
-        Optional<ButtonType> result = boodschap.showAndWait();
-
-        if (result.get() == Ok)
-        {
+        boolean ok = LoaderSchermen.getInstance().popupMessage("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Annuleer", "Ok");
+        if(ok){
             System.exit(0);
         }
     }

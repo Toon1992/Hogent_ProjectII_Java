@@ -3,16 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package controller;
 
-import controller.GebruikerController;
-import controller.MateriaalController;
-import controller.ReservatieController;
-import gui.ReservatieSchermController;
 import gui.LoaderSchermen;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
 /**
@@ -32,7 +29,6 @@ public class StartSchermController extends GridPane
     public StartSchermController(GebruikerController gc)
     {
         LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
-        
         this.gc = gc;
         this.mc = new MateriaalController();
         this.rc = new ReservatieController();
@@ -41,13 +37,16 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedMateriaal(MouseEvent event)
     {
-         LoaderSchermen.getInstance().load("Materialen", new MateriaalSchermController(mc), 1300, 740, this);
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new MateriaalOverzichtSchermController(mc));
     }
 
     @FXML
     private void clickedReservaties(MouseEvent event)
     {
-         LoaderSchermen.getInstance().load("Reservaties", new ReservatieSchermController(rc), 1300, 740, this);
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new ReservatieSchermController(rc));
+        //LoaderSchermen.getInstance().load("Reservaties", new ReservatieSchermController(rc), 1300, 740, this);
     }
 
     @FXML

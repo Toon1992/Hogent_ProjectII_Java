@@ -6,10 +6,14 @@
 package gui;
 
 import java.io.IOException;
+import java.util.Optional;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 /**
@@ -18,6 +22,7 @@ import javafx.stage.Stage;
  */
 public class LoaderSchermen {
     private static LoaderSchermen instance = null;
+    private boolean loggedIn;
     protected LoaderSchermen(){}
     public static LoaderSchermen getInstance(){
         if(instance == null){
@@ -47,6 +52,24 @@ public class LoaderSchermen {
         {
             throw new RuntimeException();
         }
+    }
+    public boolean popupMessage(String title, String message, String button1, String button2){
+        Alert boodschap = new Alert(Alert.AlertType.CONFIRMATION);
+        boodschap.setTitle(title);
+        boodschap.setHeaderText(message);
+
+        ButtonType Annuleer = new ButtonType(button1);
+        ButtonType Ok = new ButtonType(button2);
+        boodschap.getButtonTypes().setAll(Annuleer, Ok);
+        Optional<ButtonType> result = boodschap.showAndWait();
+
+        return result.get() == Ok;
+    }
+    public boolean isLoggedIn(){
+        return loggedIn;
+    }
+    public void setLoggedIn(boolean loggedIn){
+        this.loggedIn = loggedIn;
     }
     
 }
