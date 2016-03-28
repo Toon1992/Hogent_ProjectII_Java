@@ -9,7 +9,6 @@ import gui.LoaderSchermen;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -22,6 +21,7 @@ public class StartSchermController extends GridPane
 {
     private GebruikerController gc;
     private MateriaalController mc;
+    private ReservatieController rc;
     
     @FXML
     private ImageView imgViewMateriaal;
@@ -31,6 +31,7 @@ public class StartSchermController extends GridPane
         LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
         this.gc = gc;
         this.mc = new MateriaalController();
+        this.rc = new ReservatieController();
     }
 
     @FXML
@@ -43,6 +44,9 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedReservaties(MouseEvent event)
     {
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new ReservatieSchermController(rc));
+        //LoaderSchermen.getInstance().load("Reservaties", new ReservatieSchermController(rc), 1300, 740, this);
     }
 
     @FXML

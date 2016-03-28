@@ -22,57 +22,69 @@ import javax.persistence.NamedQuery;
  * @author Thomas
  */
 @Entity
-@NamedQueries({
-    @NamedQuery(name="Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord" )
+@NamedQueries(
+{
+    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord")
 })
-public class  Beheerder {
+public class Beheerder
+{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int gebruikersId;
+    
     @Column(name = "Email")
     private String email;
+    
     @Column(name = "Wachtwoord")
     private String wachtwoord;
     private String naam;
-    
-    
-    protected Beheerder(){}
-    
+
+    protected Beheerder()
+    {
+    }
+
     public Beheerder(String email, String naam, String wachtwoord)
     {
         this.email = email;
         this.naam = naam;
         this.wachtwoord = wachtwoord;
     }
-    
+
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
         Materiaal m = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
-        
+
     }
 
-    public String getEmail() {
+    public String getEmail()
+    {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         this.email = email;
     }
 
-    public String getWachtwoord() {
+    public String getWachtwoord()
+    {
         return wachtwoord;
     }
 
-    public void setWachtwoord(String wachtwoord) {
+    public void setWachtwoord(String wachtwoord)
+    {
         this.wachtwoord = wachtwoord;
     }
 
-    public String getNaam() {
+    public String getNaam()
+    {
         return naam;
     }
 
-    public void setNaam(String naam) {
+    public void setNaam(String naam)
+    {
         this.naam = naam;
     }
-    
+
 }

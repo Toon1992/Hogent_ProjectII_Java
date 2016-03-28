@@ -24,22 +24,22 @@
         </rowConstraints>
          <children>
             <Label styleClass="label-header-inverse" text="HoGent" GridPane.halignment="CENTER" />
-            <ImageView fx:id="btnHome" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarStartScherm" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnHome" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarStartScherm" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/home.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnCatalogus" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarCatalogus" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnCatalogus" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarCatalogus" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/catalogus.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnReserveren" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarReservaties" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnReserveren" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/reservaties.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/NieuweGebruikers.jpg" />
                </image>
@@ -61,7 +61,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Faculteit mense en welzijn" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
+            <Label text="Faculteit mens en welzijn" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS" />
          </children>
       </GridPane>
    </bottom>

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import controller.GebruikerController;
 import gui.LoaderSchermen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

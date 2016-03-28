@@ -5,16 +5,11 @@
  */
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import gui.LoaderSchermen;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Border;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 
@@ -61,7 +56,7 @@ public class LayoutFrameController extends BorderPane {
     @FXML
     private void gaNaarReservaties(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
-
+            this.setCenter(new ReservatieSchermController(new ReservatieController()));
         }
     }
 

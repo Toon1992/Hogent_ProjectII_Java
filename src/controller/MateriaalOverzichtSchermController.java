@@ -157,7 +157,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void wijzigMateriaal(ActionEvent event) {
         if(materiaal == null){
-            System.out.println("Error");
+            LoaderSchermen.getInstance().popupMessage("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
@@ -180,7 +180,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void toonDetailsMateriaal(ActionEvent event) {
         if(materiaal == null){
-            System.out.println("Error");
+            LoaderSchermen.getInstance().popupMessage("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
