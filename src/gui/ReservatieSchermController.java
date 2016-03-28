@@ -48,9 +48,12 @@ public class ReservatieSchermController extends HBox
     private TableColumn<Reservatie, String> EindDatumColumn;
     @FXML
     private TableColumn<Reservatie, String> naamColumn;
+    @FXML
+    private TableColumn<Reservatie, String> statusColumn;
 
     private ReservatieController rc;
     private SortedList<Reservatie> sortedReservatie;
+   
 
     public ReservatieSchermController(ReservatieController rc)
     {
@@ -71,7 +74,8 @@ public class ReservatieSchermController extends HBox
         this.BeginDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().beginDatumProperty());
         this.EindDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().eindDatumProperty());
         this.naamColumn.setCellValueFactory(reservatie->reservatie.getValue().naamGebruikerProperty());
-
+        this.statusColumn.setCellValueFactory(reservatie->reservatie.getValue().statusProperty());
+        
         reservatieTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 if (oldValue == null || !oldValue.equals(newValue)) {
