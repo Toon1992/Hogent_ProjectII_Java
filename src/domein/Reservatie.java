@@ -6,12 +6,15 @@
 package domein;
 
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -74,14 +77,16 @@ public class Reservatie
        return new SimpleIntegerProperty(getAantal());
    }
    
-   public ObjectProperty beginDatumProperty()
-   {
-       return new SimpleObjectProperty(getBeginDatum());
+   public StringProperty beginDatumProperty()
+   {     
+       DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+       return new SimpleStringProperty(dateFormat.format(eindDatum));
    }
    
-     public ObjectProperty eindDatumProperty()
+     public StringProperty eindDatumProperty()
    {
-       return new SimpleObjectProperty(getEindDatum());
+       DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+       return new SimpleStringProperty(dateFormat.format(eindDatum));
    }
 
     public int getReservatieID()

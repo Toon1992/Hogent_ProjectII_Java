@@ -98,9 +98,9 @@ public class StartUp extends Application {
         jpa.insert(new Materiaal("/images/geo.jpg", "Bordgeodriehoek", "Bordgeodriehoek Wissner 80cm", "B2.13", 5431, 4, 0, 26.15, true, wissner, new HashSet<Doelgroep>(Arrays.asList(lager, secundair)), new HashSet<Leergebied>(Arrays.asList(wiskunde, fysica, techniek))));
 
         
-        jpa.insert(new Reservatie(1,2,new Date(2016, 3, 23), new Date(2016,4,1),1,new Gebruiker("Toon",25),wereldbol));
-        jpa.insert(new Reservatie(5,10,new Date(2016, 1, 14), new Date(2016,2,5),1,new Gebruiker("De True",36),wereldbol));
-        jpa.insert(new Reservatie(4,2,new Date(2016, 2, 23), new Date(2016,3,6),1,new Gebruiker("Toon",58),rekenMachine));
+        jpa.insert(new Reservatie(1,2,new Date(116, 3, 23), new Date(116,4,1),1,new Gebruiker("Toon",25),wereldbol));
+        jpa.insert(new Reservatie(5,10,new Date(116, 1, 14), new Date(116,2,5),1,new Gebruiker("De True",36),wereldbol));
+        jpa.insert(new Reservatie(4,2,new Date(116, 2, 23), new Date(116,3,6),1,new Gebruiker("Toon",58),rekenMachine));
         
         jpa.commitTransaction();
 

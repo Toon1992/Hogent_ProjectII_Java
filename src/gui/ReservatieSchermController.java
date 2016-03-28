@@ -6,7 +6,10 @@
 package gui;
 import controller.ReservatieController;
 import domein.Reservatie;
+import java.time.LocalDate;
+import java.util.Date;
 import javafx.collections.transformation.SortedList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.DatePicker;
@@ -40,9 +43,9 @@ public class ReservatieSchermController extends HBox
     @FXML
     private TableColumn<Reservatie, Number> aantalColumn;
     @FXML
-    private TableColumn<Reservatie, Object> BeginDatumColumn;
+    private TableColumn<Reservatie, String> BeginDatumColumn;
     @FXML
-    private TableColumn<Reservatie, Object> EindDatumColumn;
+    private TableColumn<Reservatie, String> EindDatumColumn;
     @FXML
     private TableColumn<Reservatie, String> naamColumn;
 
@@ -53,8 +56,7 @@ public class ReservatieSchermController extends HBox
     {
         LoaderSchermen.getInstance().setLocation("ReservatieScherm.fxml",this);
         this.rc = rc;
-        
-        
+             
         invullenTable();
     }
     
@@ -63,6 +65,7 @@ public class ReservatieSchermController extends HBox
         sortedReservatie = rc.getReservaties();
         reservatieTable.setItems(sortedReservatie);
         sortedReservatie.comparatorProperty().bind(reservatieTable.comparatorProperty());
+        
         this.materiaalColumn.setCellValueFactory(reservatie->reservatie.getValue().naamMateriaalProperty());    
         this.aantalColumn.setCellValueFactory(reservatie->reservatie.getValue().aantalProperty());
         this.BeginDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().beginDatumProperty());
@@ -85,5 +88,19 @@ public class ReservatieSchermController extends HBox
     {
         String zoekterm = txfZoek.getText() + event.getCharacter().trim();
         rc.zoek(zoekterm);
+    }
+
+    @FXML
+    private void zoekOpBeginDatum(ActionEvent event)
+    {
+        LocalDate date = datePickerBegin.getValue();
+        rc.zoekOpEindDatum(date);
+    }
+
+    @FXML
+    private void zoekOpEindDatum(ActionEvent event)
+    {
+        LocalDate date = datePickerEind.getValue();
+        rc.zoekOpEindDatum(date);
     }
 }

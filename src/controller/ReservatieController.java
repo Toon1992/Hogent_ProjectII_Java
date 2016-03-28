@@ -7,6 +7,8 @@ package controller;
 
 import domein.Materiaal;
 import domein.Reservatie;
+import java.time.LocalDate;
+import java.util.Date;
 import javafx.collections.transformation.SortedList;
 import repository.ReservatieRepository;
 
@@ -31,6 +33,16 @@ public class ReservatieController
     public void zoek(String zoekterm)
     {
         repository.Zoek(zoekterm);
+    }
+    
+    public void zoekOpBeginDatum(LocalDate datum)
+    {
+        repository.zoekOpBeginDatum(datum);
+    }
+    
+    public void zoekOpEindDatum(LocalDate datum)
+    {
+        repository.zoekOpEindDatum(datum);
     }
     
      public void setCurrentReservatie(Reservatie reservatie){

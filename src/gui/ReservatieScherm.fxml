@@ -32,8 +32,8 @@
                   <TextField fx:id="txfZoek" onKeyTyped="#zoeken" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" text="BeginDatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
                   <Label alignment="CENTER" text="EindDatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-                  <DatePicker fx:id="datePickerBegin" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                  <DatePicker fx:id="datePickerEind" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="datePickerBegin" onAction="#zoekOpBeginDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                  <DatePicker fx:id="datePickerEind" onAction="#zoekOpEindDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" GridPane.rowIndex="1" />
                </children>
             </GridPane>
             <TableView id="my-table" fx:id="reservatieTable" minHeight="-Infinity" prefHeight="680.0" prefWidth="1315.0" stylesheets="@../styleSheet/style.css" VBox.vgrow="ALWAYS">
