@@ -103,6 +103,7 @@ public class MateriaalOverzichtSchermController extends HBox {
                 "Student", "Lector"));
         choicePlaats.setItems(FXCollections.observableArrayList(
                 "B2.1012", "B2.036", "B4.039"));
+        
         materiaalTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 if (oldValue == null || !oldValue.equals(newValue)) {
@@ -157,7 +158,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void wijzigMateriaal(ActionEvent event) {
         if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessage("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
@@ -180,7 +181,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void toonDetailsMateriaal(ActionEvent event) {
         if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessage("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();

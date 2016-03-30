@@ -88,7 +88,7 @@ public class LoginSchermController extends GridPane
     @FXML
     private void annuleer(ActionEvent event)
     {
-        boolean ok = LoaderSchermen.getInstance().popupMessage("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Annuleer", "Ok");
+        boolean ok = LoaderSchermen.getInstance().popupMessageTwoButtons("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Annuleer", "Ok");
         if(ok){
             System.exit(0);
         }

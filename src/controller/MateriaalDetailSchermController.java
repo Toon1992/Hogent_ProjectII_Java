@@ -28,7 +28,8 @@ import javafx.scene.layout.VBox;
  *
  * @author donovandesmedt
  */
-public class MateriaalDetailSchermController extends VBox{
+public class MateriaalDetailSchermController extends VBox
+{
 
     @FXML
     private ImageView imgViewMateriaal;
@@ -68,48 +69,53 @@ public class MateriaalDetailSchermController extends VBox{
     private Materiaal materiaal;
     private ToggleGroup group = new ToggleGroup();
 
-
-    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal){
-        LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml",this);
+    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal)
+    {
+        LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
         this.materiaal = materiaal;
         this.mc = mc;
         update(materiaal);
     }
 
     @FXML
-    private void wijzigFoto(MouseEvent event) {
+    private void wijzigFoto(MouseEvent event)
+    {
     }
 
     @FXML
-    private void materiaalWijzigen(ActionEvent event) {
-        try{
+    private void materiaalWijzigen(ActionEvent event)
+    {
+        try
+        {
             materiaal.setNaam(txfNaam.getText());
             materiaal.setOmschrijving(txfOmschrijving.getText());
             materiaal.setAantal(Integer.parseInt(txfAantal.getText()));
             materiaal.setAantalOnbeschikbaar(Integer.parseInt(txfOnbeschikbaar.getText()));
             materiaal.setPlaats(txfPlaats.getText());
             materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
-            String prijs=txfPrijs.getText().replace(",", ".");
+            String prijs = txfPrijs.getText().replace(",", ".");
             materiaal.setPrijs(Double.valueOf(prijs));
             materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
             materiaal.setUitleenbaarheid(radioStudent.isSelected());
             lblError.setText("");
-            Alert succesvol=new Alert(Alert.AlertType.CONFIRMATION);
+            Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
             succesvol.setTitle("Materiaal gewijzigd");
             succesvol.setHeaderText(materiaal.getNaam());
             succesvol.setContentText("Al uw wijzigingen zijn correct doorgevoerd!");
             succesvol.showAndWait();
 
-        }
-        catch(NumberFormatException ex){
+        } catch (NumberFormatException ex)
+        {
             lblError.setText("Er werd een foute waarde ingegeven.");
-        }
-        catch(IllegalArgumentException ex){
+        } catch (IllegalArgumentException ex)
+        {
             lblError.setText(ex.getMessage());
         }
 
     }
-    public void update(Materiaal materiaal) {
+
+    public void update(Materiaal materiaal)
+    {
         imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
@@ -128,8 +134,10 @@ public class MateriaalDetailSchermController extends VBox{
         radioLector.setToggleGroup(group);
 
     }
+
     @FXML
-    private void terugNaarOverzicht(ActionEvent event) {
+    private void terugNaarOverzicht(ActionEvent event)
+    {
         BorderPane bp = (BorderPane) this.getParent();
         bp.setCenter(new MateriaalOverzichtSchermController(mc));
     }

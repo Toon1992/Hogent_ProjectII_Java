@@ -49,4 +49,9 @@ public class ReservatieController
 //        setChanged();
 //        notifyObservers(reservatie);
     }
+    
+     public void verwijderReservatie(Reservatie reservatie)
+     {
+         repository.verwijderReservatue(reservatie);
+     }
 }
