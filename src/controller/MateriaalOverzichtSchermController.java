@@ -53,8 +53,6 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private Button btnNieuw;
     @FXML
-    private Button btnDetails;
-    @FXML
     private TextField txfZoek;
 
     private SortedList<Materiaal> sortedMateriaal;
@@ -65,6 +63,10 @@ public class MateriaalOverzichtSchermController extends HBox {
     private CheckComboBox<String> checkPlaats;
     private CheckComboBox<String> checkUitleenbaarheid;
     private CheckComboBox<String> checkFirma;
+    @FXML
+    private GridPane gridFilters;
+    @FXML
+    private Button btnVerwijder;
     public MateriaalOverzichtSchermController(MateriaalController mc){
         LoaderSchermen.getInstance().setLocation("MateriaalOverzichtScherm.fxml", this);
         this.mc = mc;
@@ -156,17 +158,16 @@ public class MateriaalOverzichtSchermController extends HBox {
         String zoekterm = txfZoek.getText() + event.getCharacter().trim();
         mc.zoek(Arrays.asList(zoekterm));
     }
-    @FXML
-    private void toonDetailsMateriaal(ActionEvent event) {
-        if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
-        }
-        else{
-            BorderPane bp = (BorderPane) this.getParent();
-            LoaderSchermen.getInstance().setNode(this);
-            bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
-        }
-    }
+//    private void toonDetailsMateriaal(ActionEvent event) {
+//        if(materiaal == null){
+//            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+//        }
+//        else{
+//            BorderPane bp = (BorderPane) this.getParent();
+//            LoaderSchermen.getInstance().setNode(this);
+//            bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
+//        }
+//    }
     private <E> void checkcomboboxListener(CheckComboBox<E> check, String name){
 
         check.getCheckModel().getCheckedItems().addListener(new ListChangeListener<E>() {
@@ -182,6 +183,21 @@ public class MateriaalOverzichtSchermController extends HBox {
                 mc.filter(filterName, check.getCheckModel().getCheckedItems().stream().map(e -> e.toString()).collect(Collectors.toList()));
             }
         });
+    }
+
+    @FXML
+    private void verwijderMateriaal(ActionEvent event) {
+        if(materiaal == null){
+            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+        }
+        else {
+            try{
+                 mc.verwijderMateriaal(materiaal);
+            }catch(Exception ex){
+                LoaderSchermen.getInstance().popupMessageOneButton("Verwijderen", String.format("Er zijn nog openstaande reservaties voor materiaal: %s",materiaal.getNaam()), "Ok");
+            }
+           
+        }
     }
 
 

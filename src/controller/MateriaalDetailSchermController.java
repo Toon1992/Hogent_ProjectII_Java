@@ -61,14 +61,14 @@ public class MateriaalDetailSchermController extends VBox
     @FXML
     private ListView<String> listLeergbedied;
     @FXML
-    private Label lblError;
-    @FXML
     private TextField txfNaam;
     @FXML
     private Button btnTerug;
     private MateriaalController mc;
     private Materiaal materiaal;
     private ToggleGroup group = new ToggleGroup();
+    @FXML
+    private Label lblErrorMessage;
 
     public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal)
     {
@@ -98,7 +98,7 @@ public class MateriaalDetailSchermController extends VBox
             materiaal.setPrijs(Double.valueOf(prijs));
             materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
             materiaal.setUitleenbaarheid(radioStudent.isSelected());
-            lblError.setText("");
+            lblErrorMessage.setText("");
             Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
             succesvol.setTitle("Materiaal gewijzigd");
             succesvol.setHeaderText(materiaal.getNaam());
@@ -107,10 +107,10 @@ public class MateriaalDetailSchermController extends VBox
 
         } catch (NumberFormatException ex)
         {
-            lblError.setText("Er werd een foute waarde ingegeven.");
+            lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
         } catch (IllegalArgumentException ex)
         {
-            lblError.setText(ex.getMessage());
+            lblErrorMessage.setText(ex.getMessage());
         }
 
     }

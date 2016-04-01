@@ -85,7 +85,7 @@ public class ReservatieDetailsController extends GridPane
             LoaderSchermen.getInstance().popupMessageOneButton("Reservatie verwijderen", "Je moet eerst een reservatie selecteren", "Ok");
         } else
         {
-            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("ReservatieVerwijderen", "Ben je zeker dat je de reservatie wilt verwijderen", "Yes", "No");
+            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie verwijderen", "Ben je zeker dat je de reservatie wilt verwijderen?","Nee", "Ja");
             if (!isOk)
             {
                 rc.verwijderReservatie(reservatie);
