@@ -7,15 +7,10 @@ package domein;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
-import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.scene.image.Image;
 
 import javax.persistence.CascadeType;

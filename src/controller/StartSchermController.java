@@ -45,7 +45,7 @@ public class StartSchermController extends GridPane
     private void clickedReservaties(MouseEvent event)
     {
         BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter(new ReservatieSchermController(rc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController(rc));
     }
 
     @FXML

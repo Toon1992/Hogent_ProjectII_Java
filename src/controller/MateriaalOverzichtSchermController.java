@@ -135,10 +135,11 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void wijzigMateriaal(ActionEvent event) {
         if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessage("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
+            LoaderSchermen.getInstance().setNode(this);
             bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
         }
 
@@ -158,10 +159,11 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void toonDetailsMateriaal(ActionEvent event) {
         if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessage("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
+            LoaderSchermen.getInstance().setNode(this);
             bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
         }
     }

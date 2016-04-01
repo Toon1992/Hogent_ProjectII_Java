@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 import gui.LoaderSchermen;
+import gui.ReservatieDetailsController;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ import javafx.util.Callback;
  *
  * @author ToonDT
  */
-public class ReservatieSchermController extends VBox
+public class ReservatieSchermController extends HBox
 {
 
     @FXML
@@ -55,13 +56,21 @@ public class ReservatieSchermController extends VBox
 
     private ReservatieController rc;
     private SortedList<Reservatie> sortedReservatie;
-   
+    private ReservatieDetailsController reservatieDetailController;
+    private Reservatie currentReservatie;
 
     public ReservatieSchermController(ReservatieController rc)
     {
         LoaderSchermen.getInstance().setLocation("ReservatieScherm.fxml",this);
         this.rc = rc;
-             
+
+        reservatieDetailController = new ReservatieDetailsController(rc);
+        reservatieDetailController.setPrefWidth(LoaderSchermen.getInstance().getScreenWidth());
+
+        VBox vBox = (VBox) this.getChildren().get(0);
+
+        vBox.getChildren().add(reservatieDetailController);
+
         invullenTable();
     }
     
@@ -81,8 +90,9 @@ public class ReservatieSchermController extends VBox
         reservatieTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 if (oldValue == null || !oldValue.equals(newValue)) {
-                    Reservatie reservatie = newValue;
-                    rc.setCurrentReservatie(reservatie);
+                    currentReservatie = newValue;
+                    rc.setCurrentReservatie(currentReservatie);
+                    reservatieDetailController.setCurrenReservatie(currentReservatie);
                 }
             }
 

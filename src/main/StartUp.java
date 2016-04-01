@@ -30,6 +30,7 @@ public class StartUp extends Application {
     public void start(Stage primaryStage) throws Exception {
         initializeDatabase();
         Scene scene = new Scene(new LayoutFrameController());
+        primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
 
         // The stage will not get smaller than its preferred (initial) size.

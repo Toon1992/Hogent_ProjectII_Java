@@ -72,6 +72,7 @@ public class LoginSchermController extends GridPane
             lblUitloggen = (Label) gp.getChildren().get(gp.getChildren().size() -1 );
             lblUitloggen.setText("Uitloggen");
             LoaderSchermen.getInstance().setLoggedIn(true);
+            LoaderSchermen.getInstance().setWidthAndHeight(bp);
             bp.setCenter(new StartSchermController(gc));
             //aLoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
         } catch (EmailException e) {
@@ -88,7 +89,7 @@ public class LoginSchermController extends GridPane
     @FXML
     private void annuleer(ActionEvent event)
     {
-        boolean ok = LoaderSchermen.getInstance().popupMessage("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Annuleer", "Ok");
+        boolean ok = LoaderSchermen.getInstance().popupMessageTwoButtons("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Annuleer", "Ok");
         if(ok){
             System.exit(0);
         }
