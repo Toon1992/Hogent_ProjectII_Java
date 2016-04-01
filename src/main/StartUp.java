@@ -93,7 +93,7 @@ public class StartUp extends Application {
         Materiaal rekenMachine = new Materiaal("/images/texas.jpg", "TI 84 plus", "Grafisch rekentoestel van Texas instrument", "B3.43", 2345, 10, 1, 116.99, true, texas, new HashSet<Doelgroep>(Arrays.asList(secundair)), new HashSet<Leergebied>(Arrays.asList(wiskunde, fysica, techniek)));     
         jpa.insert(rekenMachine);
         
-        jpa.insert(new Materiaal("/images/erlenmeyer.jpg", "Erlenmeyer", "Starter pack contains one flask each of 50, 125, 250, 500, and 1000mL sizes.", "B1.00", 3445, 20, 0, 43.55, false, kimax, new HashSet<Doelgroep>(Arrays.asList(secundair)), new HashSet<Leergebied>(Arrays.asList(wetenschap,biologie))));
+        jpa.insert(new Materiaal("/images/erlenmeyer.jpg", "Erlenmeyer", "geschiedenis pack contains one flask each of 50, 125, 250, 500, and 1000mL sizes.", "B1.00", 3445, 20, 0, 43.55, false, kimax, new HashSet<Doelgroep>(Arrays.asList(secundair)), new HashSet<Leergebied>(Arrays.asList(wetenschap,biologie))));
         jpa.insert(new Materiaal("/images/prisma.jpg", "Prisma Duits-Nederlands", "Pocketwoordenboek Duits-Nederlands Prisma", "B2.13", 4566, 22, 0, 9.50, true, prisma, new HashSet<Doelgroep>(Arrays.asList(lager, secundair)), new HashSet<Leergebied>(Arrays.asList(mens,maatschappij))));
         jpa.insert(new Materiaal("/images/geo.jpg", "Bordgeodriehoek", "Bordgeodriehoek Wissner 80cm", "B2.13", 5431, 4, 0, 26.15, true, wissner, new HashSet<Doelgroep>(Arrays.asList(lager, secundair)), new HashSet<Leergebied>(Arrays.asList(wiskunde, fysica, techniek))));
 

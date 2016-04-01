@@ -8,12 +8,14 @@ package gui;
 import java.io.IOException;
 import java.util.Optional;
 
+import controller.MateriaalOverzichtSchermController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
@@ -64,6 +66,13 @@ public class LoaderSchermen {
         Optional<ButtonType> result = boodschap.showAndWait();
 
         return result.get() == Ok;
+    }
+    public void setMateriaalOvezichtScherm(BorderPane bp, MateriaalOverzichtSchermController mco){
+        double width = bp.getScene().getWidth();
+        double height = bp.getScene().getHeight();
+        mco.setPrefWidth(width);
+        mco.setPrefHeight(height*0.85);
+        bp.setCenter(mco);
     }
     public boolean isLoggedIn(){
         return loggedIn;

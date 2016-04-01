@@ -9,8 +9,11 @@ import javafx.collections.transformation.SortedList;
 import repository.MateriaalCatalogus;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Observable;
 import java.util.Set;
+import java.util.stream.Collectors;
+import repository.MateriaalCatalogus.MateriaalFilter;
 
 /**
  * Created by donovandesmedt on 25/03/16.
@@ -33,8 +36,11 @@ public class MateriaalController extends Observable{
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list){
         return materiaalCatalogus.objectCollectionToObservableList(list);
     }
-    public void zoek(String zoekterm){
-        materiaalCatalogus.zoek(zoekterm.toLowerCase());
+    public void zoek(List<String> zoekterm){
+        materiaalCatalogus.zoek(zoekterm.stream().map(String::toLowerCase).collect(Collectors.toSet()));
+    }
+    public void filter(MateriaalFilter filterNaam, List<String> filters){
+        materiaalCatalogus.filterMaterialen(filterNaam, filters.stream().map(String::toLowerCase).collect(Collectors.toSet()));
     }
     public void setCurrentMateriaal(Materiaal materiaal){
         setChanged();

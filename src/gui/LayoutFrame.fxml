@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styleSheet/style.css" type="BorderPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <GridPane fx:id="layoutTop" styleClass="background" BorderPane.alignment="CENTER">
         <columnConstraints>
@@ -17,13 +17,13 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="700.0" minWidth="10.0" prefWidth="400.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="700.0" minWidth="10.0" prefWidth="400.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label styleClass="label-header-inverse" text="HoGent" GridPane.halignment="CENTER" />
+            <Label styleClass="label-header-inverse" text="HoGent" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
             <ImageView fx:id="btnHome" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarStartScherm" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/home.png" />

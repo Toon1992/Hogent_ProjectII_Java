@@ -49,7 +49,10 @@ public class LayoutFrameController extends BorderPane {
     @FXML
     private void gaNaarCatalogus(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()) {
-            this.setCenter(new MateriaalOverzichtSchermController(new MateriaalController()));
+            MateriaalOverzichtSchermController mco = new MateriaalOverzichtSchermController(new MateriaalController());
+            mco.setPrefWidth(this.getScene().getWidth());
+            mco.setPrefHeight(this.getScene().getHeight()*0.85);
+            this.setCenter(mco);
         }
     }
 

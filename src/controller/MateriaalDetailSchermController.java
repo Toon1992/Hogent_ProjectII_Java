@@ -131,6 +131,6 @@ public class MateriaalDetailSchermController extends VBox{
     @FXML
     private void terugNaarOverzicht(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter(new MateriaalOverzichtSchermController(mc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController(mc));
     }
 }
