@@ -21,7 +21,7 @@ public class Firma
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int firmaId;
-    private String naam, emailContact;
+    private String naam, email;
 
     protected Firma()
     {
@@ -30,7 +30,7 @@ public class Firma
     public Firma(String naam, String emailContact)
     {
         this.naam = naam;
-        this.emailContact = emailContact;
+        this.email= emailContact;
     }
 
     public String getNaam()
@@ -45,12 +45,12 @@ public class Firma
 
     public String getEmailContact()
     {
-        return emailContact;
+        return email;
     }
 
     public void setEmailContact(String emailContact)
     {
-        this.emailContact = emailContact;
+        this.email = emailContact;
     }
 
 }
