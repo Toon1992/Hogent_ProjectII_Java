@@ -97,7 +97,7 @@ public class MateriaalDetailSchermController extends VBox
             String prijs = txfPrijs.getText().replace(",", ".");
             materiaal.setPrijs(Double.valueOf(prijs));
             materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
-            materiaal.setUitleenbaarheid(radioStudent.isSelected());
+            materiaal.setIsReserveerbaar(radioStudent.isSelected());
             lblError.setText("");
             Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
             succesvol.setTitle("Materiaal gewijzigd");
@@ -130,8 +130,8 @@ public class MateriaalDetailSchermController extends VBox
         txfPlaats.setText(materiaal.getPlaats());
         txfPrijs.setText(String.format("%.2f", materiaal.getPrijs()));
         radioStudent.setToggleGroup(group);
-        radioStudent.setSelected(materiaal.getUitleenbaarheid());
-        radioLector.setSelected(!materiaal.getUitleenbaarheid());
+        radioStudent.setSelected(materiaal.getIsReserveerbaar());
+        radioLector.setSelected(!materiaal.getIsReserveerbaar());
         radioLector.setToggleGroup(group);
 
     }

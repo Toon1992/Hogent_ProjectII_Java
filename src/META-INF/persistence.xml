@@ -7,13 +7,15 @@
     <class>domein.Firma</class>
     <class>domein.Leergebied</class>
     <class>domein.Materiaal</class>
+    <class>domein.HoofdBeheerder</class>
     <class>domein.Gebruiker</class>
     <class>domein.Reservatie</class>
     <properties>
-      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
-      <property name="javax.persistence.jdbc.url"    value="jdbc:sqlserver://localhost:1433;databaseName=DidactischeLeermiddelen;create=true" />
-      <property name="eclipselink.ddl-generation" value="create-tables" />
-      <property name="eclipselink.ddl-generation.output-mode" value="database" />
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://DONOVANDESM2906\SQLEXPRESS:1433;databaseName=DidactischeLeermiddelen"/>
+      <property name="javax.persistence.jdbc.user" value="sa"/>
+      <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+      <property name="javax.persistence.jdbc.password" value="P@ssword123"/>
+      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>
   </persistence-unit>
 </persistence>
