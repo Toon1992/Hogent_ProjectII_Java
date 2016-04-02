@@ -6,6 +6,7 @@
     <class>domein.Doelgroep</class>
     <class>domein.Leergebied</class>
     <class>domein.Materiaal</class>
+    <class>domein.HoofdBeheerder</class>
     <class>domein.Gebruiker</class>
     <class>domein.Reservatie</class>
     <class>domein.Firma</class>
