@@ -22,16 +22,18 @@ public class Gebruiker
     @OneToOne(mappedBy = "gebruiker")
     private Reservatie reservatie;
     @Id
-    private int gebruikerID;
+    private String email;
     
     private String naam;
+    private String type;
     
     protected Gebruiker(){}
 
-    public Gebruiker(String naam, int gebruikerID)
+    public Gebruiker(String naam, String email, String type)
     {
         setNaam(naam);
-        setGebruikerID(gebruikerID);
+        setEmail(email);
+        setType(type);
     }
     
     public StringProperty naamProperty()
@@ -39,14 +41,14 @@ public class Gebruiker
         return new SimpleStringProperty(getNaam());
     }
     
-    public int getGebruikerID()
+    public String getEmail()
     {
-        return gebruikerID;
+        return email;
     }
 
-    public void setGebruikerID(int gebruikerID)
+    public void setEmail(String email)
     {
-        this.gebruikerID = gebruikerID;
+        this.email = email;
     }
 
     public String getNaam()
@@ -58,6 +60,15 @@ public class Gebruiker
     {
         this.naam = naam;
     }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+    
     
     
 }

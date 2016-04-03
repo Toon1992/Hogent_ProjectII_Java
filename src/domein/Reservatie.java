@@ -17,6 +17,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -26,6 +28,7 @@ import stateMachine.Geblokkeerd;
 import stateMachine.Gereserveerd;
 import stateMachine.Opgehaald;
 import stateMachine.Overruled;
+import stateMachine.ReservatieGebruikerEnum;
 import stateMachine.ReservatieState;
 import stateMachine.ReservatieStateEnum;
 import static stateMachine.ReservatieStateEnum.Overruled;
@@ -40,44 +43,48 @@ public class Reservatie
 {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservatieID;
 
     private int aantal;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date beginDatum, eindDatum;
+    private Date startDatum, eindDatum, aanmaakDatum;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name="Status")
-    private ReservatieStateEnum reservatieEnum;
+    @Enumerated(EnumType.ORDINAL)
+    private ReservatieStateEnum reservatieStateEnum;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Gebruiker")
+    @JoinColumn(name = "GebruikerEmail")
     private Gebruiker gebruiker;
 
     @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Materiaal")
+    @JoinColumn(name = "MateriaalId")
     private Materiaal materiaal;
 
     @Transient
     private ReservatieState reservatieState;
-
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "Discriminator")
+    private ReservatieGebruikerEnum discriminator;
+    
     protected Reservatie()
     {
     }
 
     ;
    
-   public Reservatie(int reservatieID, int aantal, Date beginDatum, Date eindDatum, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
+   public Reservatie( int aantal, Date startDatum, Date eindDatum, Date aanmaakDatum, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
     {
-        setReservatieID(reservatieID);
         setAantal(aantal);
-        setBeginDatum(beginDatum);
+        setStartDatum(startDatum);
         setEindDatum(eindDatum);
-        setReservatieEnum(reservatieEnum);
+        setAanmaakDatum(aanmaakDatum);
+        setReservatieStateEnum(reservatieEnum);
         setGebruiker(gebruiker);
         setMateriaal(materiaal);
-        
+        setDiscriminator(gebruiker.getType());
         reservatieState = getReservatieState();
     }
 
@@ -89,7 +96,8 @@ public class Reservatie
 
     public StringProperty statusProperty()
     {
-        return new SimpleStringProperty(reservatieState.getClass().getSimpleName());
+        System.out.println(getReservatieState().getClass().getSimpleName());
+        return new SimpleStringProperty(getReservatieState().getClass().getSimpleName());
     }
     public StringProperty naamGebruikerProperty()
     {
@@ -120,7 +128,7 @@ public class Reservatie
 
     public ReservatieState getReservatieState()
     {
-        switch (reservatieEnum)
+        switch (reservatieStateEnum)
         {
             case Geblokkeerd:
                 return new Geblokkeerd(this);
@@ -143,19 +151,19 @@ public class Reservatie
         switch (reservatieState.getClass().getSimpleName())
         {
             case "Geblokkeerd":
-                reservatieEnum = ReservatieStateEnum.Geblokkeerd;
+                reservatieStateEnum = ReservatieStateEnum.Geblokkeerd;
                 break;
             case "Gereserveerd":
-                reservatieEnum = ReservatieStateEnum.Gereserveerd;
+                reservatieStateEnum = ReservatieStateEnum.Gereserveerd;
                 break;
             case "TeLaat":
-                reservatieEnum = ReservatieStateEnum.TeLaat;
+                reservatieStateEnum = ReservatieStateEnum.TeLaat;
                 break;
             case "Opgehaald":
-                reservatieEnum = ReservatieStateEnum.Opgehaald;
+                reservatieStateEnum = ReservatieStateEnum.Opgehaald;
                 break;
             case "Overruled":
-                reservatieEnum = ReservatieStateEnum.Overruled;
+                reservatieStateEnum = ReservatieStateEnum.Overruled;
                 break;
 
         }
@@ -164,11 +172,6 @@ public class Reservatie
     public int getReservatieID()
     {
         return reservatieID;
-    }
-
-    protected void setReservatieID(int reservatieID)
-    {
-        this.reservatieID = reservatieID;
     }
 
     public int getAantal()
@@ -183,12 +186,12 @@ public class Reservatie
 
     public Date getBeginDatum()
     {
-        return beginDatum;
+        return startDatum;
     }
 
-    protected void setBeginDatum(Date beginDatum)
+    protected void setStartDatum(Date startDatum)
     {
-        this.beginDatum = beginDatum;
+        this.startDatum = startDatum;
     }
 
     public Date getEindDatum()
@@ -201,14 +204,14 @@ public class Reservatie
         this.eindDatum = eindDatum;
     }
 
-    public ReservatieStateEnum getReservatieEnum()
+    public ReservatieStateEnum getReservatieStateEnum()
     {
-        return reservatieEnum;
+        return reservatieStateEnum;
     }
 
-    protected void setReservatieEnum(ReservatieStateEnum reservatieEnum)
+    protected void setReservatieStateEnum(ReservatieStateEnum reservatieStateEnum)
     {
-        this.reservatieEnum = reservatieEnum;
+        this.reservatieStateEnum = reservatieStateEnum;
     }
 
     public Gebruiker getGebruiker()
@@ -229,6 +232,25 @@ public class Reservatie
     protected void setMateriaal(Materiaal materiaal)
     {
         this.materiaal = materiaal;
+    }
+
+    public Date getAanmaakDatum() {
+        return aanmaakDatum;
+    }
+
+    public void setAanmaakDatum(Date aanmaakDatum) {
+        this.aanmaakDatum = aanmaakDatum;
+    }
+
+    public ReservatieGebruikerEnum getDiscriminator() {
+        return discriminator;
+    }
+
+    public void setDiscriminator(String type) {
+        switch(type.toLowerCase()){
+            case "st": this.discriminator = discriminator.ReservatieStudent;break;
+            case "le": this.discriminator = discriminator.BlokkeringLector; break;
+        }
     }
 
 }

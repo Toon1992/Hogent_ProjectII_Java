@@ -7,7 +7,6 @@
     <class>domein.Firma</class>
     <class>domein.Leergebied</class>
     <class>domein.Materiaal</class>
-    <class>domein.HoofdBeheerder</class>
     <class>domein.Gebruiker</class>
     <class>domein.Reservatie</class>
     <properties>

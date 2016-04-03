@@ -50,14 +50,14 @@ public class Materiaal
     private Firma firma;
 
     @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
-//    @JoinTable(name="MateriaalDoelgroep", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
-//     inverseJoinColumns=@JoinColumn(name="DoelgroepId", referencedColumnName="doelgroepId"))
-    Set<Doelgroep> doelgroepen = new HashSet<>();
+    @JoinTable(name="MateriaalDoelgroep", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
+     inverseJoinColumns=@JoinColumn(name="DoelgroepId", referencedColumnName="doelgroepId"))
+    Set<Doelgroep> doelgroepen;
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(name="MateriaalLeergebied", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
-//      inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
-    Set<Leergebied> leergebieden = new HashSet<>();
+    @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @JoinTable(name="MateriaalLeergebied", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
+      inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
+    Set<Leergebied> leergebieden;
 
 
 
