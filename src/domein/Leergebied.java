@@ -12,6 +12,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 /**
@@ -19,6 +21,10 @@ import javax.persistence.Table;
  * @author Thomas
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(name = "Leergebied.findAll", query = "Select a FROM Leergebied a")
+})
 @Table(name = "Leergebied")
 public class Leergebied {
     @Id

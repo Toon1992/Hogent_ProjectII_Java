@@ -7,6 +7,10 @@ package main;
 
 import controller.LayoutFrameController;
 import domein.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -89,9 +93,11 @@ public class StartUp extends Application {
         jpa.insert(mens);
 //
         Materiaal wereldbol = new Materiaal("/images/wereldbol.png", "Wereldbol", "Globe met verlichting, boldoorsnede 26cm", "B2.13", 1234, 4, 0, 26.56, true, globe, new HashSet<>(Arrays.asList(lager, secundair)), new HashSet<>(Arrays.asList(aardrijkskunde,maatschappij,mens,geschiedenis)));
+        
         jpa.insert(wereldbol);
         
-        Materiaal rekenMachine = new Materiaal("/images/texas.jpg", "TI 84 plus", "Grafisch rekentoestel van Texas instrument", "B3.43", 2345, 10, 1, 116.99, true, texas, new HashSet<Doelgroep>(Arrays.asList(secundair)), new HashSet<Leergebied>(Arrays.asList(wiskunde, fysica, techniek)));     
+        Materiaal rekenMachine = new Materiaal("/images/texas.jpg", "TI 84 plus", "Grafisch rekentoestel van Texas instrument", "B3.43", 2345, 10, 1, 116.99, true, texas, new HashSet<>(Arrays.asList(secundair)), new HashSet<>(Arrays.asList(wiskunde, fysica, techniek)));
+        
         jpa.insert(rekenMachine);
 //        
 //        jpa.insert(new Materiaal("/images/erlenmeyer.jpg", "Erlenmeyer", "geschiedenis pack contains one flask each of 50, 125, 250, 500, and 1000mL sizes.", "B1.00", 3445, 20, 0, 43.55, false, kimax, new HashSet<Doelgroep>(Arrays.asList(secundair)), new HashSet<Leergebied>(Arrays.asList(wetenschap,biologie))));
