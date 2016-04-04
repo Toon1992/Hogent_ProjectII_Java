@@ -12,6 +12,7 @@ import java.util.ResourceBundle;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -117,7 +118,7 @@ public class MateriaalDetailSchermController extends VBox
 
     public void update(Materiaal materiaal)
     {
-        imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
+        imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getImage(), null));
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
         txfContactPersoon.setText(materiaal.getFirma().getEmailContact());

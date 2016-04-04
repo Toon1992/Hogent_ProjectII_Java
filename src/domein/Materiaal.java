@@ -5,26 +5,16 @@
  */
 package domein;
 
-import java.util.HashSet;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Set;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.image.Image;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.imageio.ImageIO;
+import javax.persistence.*;
 
 
 /**
@@ -59,7 +49,8 @@ public class Materiaal
       inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
     Set<Leergebied> leergebieden;
 
-
+    @Lob
+    private byte[] image;
 
     protected Materiaal()
     {
@@ -124,6 +115,7 @@ public class Materiaal
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
         setFoto(foto);
+        setImage(foto);
         setOmschrijving(omschrijving);
         setArtikelNr(artikelNr);
         setAantal(aantal);
@@ -137,10 +129,6 @@ public class Materiaal
         setNaam(naam);
     }
 
-    public ObjectProperty getImage(){
-        SimpleObjectProperty obj = new SimpleObjectProperty(new Image(getFoto()));
-        return obj;
-    }
     public int getMateriaalId() {
         return materiaalId;
     }
@@ -247,5 +235,25 @@ public class Materiaal
     public void setLeergebieden(Set<Leergebied> leergebieden)
     {
         this.leergebieden = leergebieden;
+    }
+
+    public void setImage(String url) {
+        File fi = new File(url);
+        byte[] fileContent = null;
+        try {
+            fileContent = Files.readAllBytes(fi.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.image = fileContent;
+    }
+    public BufferedImage getImage(){
+        BufferedImage bufferedImage=null;
+        try {
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(image));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bufferedImage;
     }
 }

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.awt.image.BufferedImage;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,6 +19,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,7 +43,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private TableView<Materiaal> materiaalTable;
     @FXML
-    private TableColumn<Materiaal,String> columnImg;
+    private TableColumn<Materiaal,BufferedImage> columnImg;
     @FXML
     private TableColumn<Materiaal, String> columnNaam;
     @FXML
@@ -75,15 +77,15 @@ public class MateriaalOverzichtSchermController extends HBox {
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
         this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
-        this.columnImg.setCellValueFactory(new PropertyValueFactory("foto"));
-        this.columnImg.setCellFactory(materiaal -> new TableCell<Materiaal, String>(){
+        this.columnImg.setCellValueFactory(new PropertyValueFactory("image"));
+        this.columnImg.setCellFactory(materiaal -> new TableCell<Materiaal,BufferedImage>(){
             @Override
-            protected void updateItem(String item, boolean empty) {
+            protected void updateItem(BufferedImage item, boolean empty) {
                 if(item != null){
                     super.updateItem(item, empty);
                     VBox box= new VBox();
                     box.setAlignment(Pos.CENTER);
-                    ImageView imageview = new ImageView(new Image(item));
+                    ImageView imageview = new ImageView(SwingFXUtils.toFXImage(item, null));
                     imageview.setFitHeight(75);
                     imageview.setFitWidth(75);
                     box.getChildren().addAll(imageview);
