@@ -32,7 +32,7 @@ public class Materiaal
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int materiaalId;
-    private String naam, plaats, foto, omschrijving;
+    private String naam, plaats, omschrijving;
     private int artikelNr, aantalInCatalogus, aantalOnbeschikbaar;
     private double prijs;
     private boolean isReserveerbaar;
@@ -50,7 +50,7 @@ public class Materiaal
     Set<Leergebied> leergebieden;
 
     @Lob
-    private byte[] image;
+    private byte[] foto;
 
     protected Materiaal()
     {
@@ -115,7 +115,7 @@ public class Materiaal
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
         setFoto(foto);
-        setImage(foto);
+        setFoto(foto);
         setOmschrijving(omschrijving);
         setArtikelNr(artikelNr);
         setAantal(aantal);
@@ -136,16 +136,6 @@ public class Materiaal
     public void setMateriaalId(int materiaalId)
     {
         this.materiaalId = materiaalId;
-    }
-
-    public String getFoto()
-    {
-        return foto;
-    }
-
-    public void setFoto(String foto)
-    {
-        this.foto = foto;
     }
 
     public String getOmschrijving()
@@ -237,7 +227,7 @@ public class Materiaal
         this.leergebieden = leergebieden;
     }
 
-    public void setImage(String url) {
+    public void setFoto(String url) {
         File fi = new File(url);
         byte[] fileContent = null;
         try {
@@ -245,12 +235,12 @@ public class Materiaal
         } catch (IOException e) {
             e.printStackTrace();
         }
-        this.image = fileContent;
+        this.foto = fileContent;
     }
-    public BufferedImage getImage(){
+    public BufferedImage getFoto(){
         BufferedImage bufferedImage=null;
         try {
-            bufferedImage = ImageIO.read(new ByteArrayInputStream(image));
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -118,7 +118,7 @@ public class MateriaalDetailSchermController extends VBox
 
     public void update(Materiaal materiaal)
     {
-        imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getImage(), null));
+        imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getFoto(), null));
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
         txfContactPersoon.setText(materiaal.getFirma().getEmailContact());

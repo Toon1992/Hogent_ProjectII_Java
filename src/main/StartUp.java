@@ -50,6 +50,7 @@ public class StartUp extends Application {
         //Gebruiker toevoegen
         GenericDaoJpa<Object> jpa = new GenericDaoJpa<>(Object.class);
         jpa.startTransaction();
+
         jpa.insert(new Beheerder("admin@hogent.be", "admin", "admin"));
 
         Firma globe = new Firma("Globe atmosphere", "globe@atmosphere.com");
@@ -78,7 +79,7 @@ public class StartUp extends Application {
         jpa.insert(kimax);
         jpa.insert(wissner);
 
-//        jpa.insert(kleuter);
+        jpa.insert(kleuter);
 //        jpa.insert(lager);
 //        jpa.insert(secundair);
 

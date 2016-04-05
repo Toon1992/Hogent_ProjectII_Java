@@ -77,7 +77,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
         this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
-        this.columnImg.setCellValueFactory(new PropertyValueFactory("image"));
+        this.columnImg.setCellValueFactory(new PropertyValueFactory("foto"));
         this.columnImg.setCellFactory(materiaal -> new TableCell<Materiaal,BufferedImage>(){
             @Override
             protected void updateItem(BufferedImage item, boolean empty) {
