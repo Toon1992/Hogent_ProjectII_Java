@@ -52,10 +52,7 @@ public class LayoutFrameController extends BorderPane {
     private void gaNaarCatalogus(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()) {
             LoaderSchermen.getInstance().setWidthAndHeight(this);
-            MateriaalOverzichtSchermController mco = new MateriaalOverzichtSchermController(new MateriaalController());
-            mco.setPrefWidth(LoaderSchermen.getInstance().getScreenWidth());
-            mco.setPrefHeight(LoaderSchermen.getInstance().getScreenHeight()*0.85);
-            this.setCenter(mco);
+            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(this, new MateriaalOverzichtSchermController(new MateriaalController()));
         }
     }
 
