@@ -13,6 +13,7 @@ import java.time.ZoneId;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -145,7 +146,16 @@ public class ReservatieRepository
         Instant instant = Instant.from(datum.atStartOfDay(ZoneId.of("GMT")));
         return Date.from(instant);
     }
-
+    public void voegReservatieToe(Reservatie reservatie){
+        reservatieDao.startTransaction();
+        reservatieDao.insert(reservatie);
+        reservatieDao.commitTransaction();
+        filterReservatie.add(reservatie);
+        filterReservaties = new FilteredList(filterReservatie, p -> true);
+    }
+    public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
+        return reservatieDao.getReservaties(startDatum, eindDatum, materiaal);
+    }
     public void verwijderReservatue(Reservatie reservatie)
     {
         reservatieDao.startTransaction();

@@ -12,18 +12,9 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.Transient;
+
+import javax.persistence.*;
+
 import stateMachine.Geblokkeerd;
 import stateMachine.Gereserveerd;
 import stateMachine.Opgehaald;
@@ -39,6 +30,10 @@ import stateMachine.TeLaat;
  * @author ToonDT
  */
 @Entity
+@NamedQueries(
+        {
+                @NamedQuery(name = "Reservatie.findBydatum", query = "Select r FROM Reservatie r WHERE r.materiaal = :Materiaal  AND (:EindDatum >= r.startDatum AND :StartDatum <= r.eindDatum)")
+        })
 public class Reservatie
 {
 
@@ -117,7 +112,7 @@ public class Reservatie
     public StringProperty beginDatumProperty()
     {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        return new SimpleStringProperty(dateFormat.format(eindDatum));
+        return new SimpleStringProperty(dateFormat.format(startDatum));
     }
 
     public StringProperty eindDatumProperty()

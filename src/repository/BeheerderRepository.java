@@ -6,11 +6,16 @@
 package repository;
 
 import domein.Beheerder;
+import domein.Gebruiker;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
 import java.util.regex.Pattern;
 
+import javafx.collections.FXCollections;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import persistentie.BeheerderDaoJpa;
+import persistentie.GenericDaoJpa;
 
 /**
  *
@@ -21,10 +26,11 @@ public class BeheerderRepository
 
     private Beheerder beheerder;
     private BeheerderDaoJpa beheerderDao;
-
+    private GenericDaoJpa<Gebruiker> gebruikerDoa;
     public BeheerderRepository()
     {
         beheerderDao = new BeheerderDaoJpa();
+        gebruikerDoa = new GenericDaoJpa<>(Gebruiker.class);
     }
 
     public Beheerder getBeheerder()
@@ -56,5 +62,8 @@ public class BeheerderRepository
         beheerderDao.startTransaction();
         beheerderDao.insert(beheerder);
         beheerderDao.commitTransaction();
+    }
+    public SortedList<Gebruiker> getGebruikers(){
+        return new SortedList<Gebruiker>(new FilteredList<Gebruiker>(FXCollections.observableArrayList(gebruikerDoa.findAll())));
     }
 }

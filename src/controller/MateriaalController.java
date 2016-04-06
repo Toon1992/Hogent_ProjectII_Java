@@ -43,7 +43,7 @@ public class MateriaalController extends Observable
 
     public SortedList<Materiaal> getMateriaalFilterList()
     {
-        return materiaalCatalogus.geefMaterialen();
+        return materiaalCatalogus.geefMaterialen().sorted();
     }
 
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list)

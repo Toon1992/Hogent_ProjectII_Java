@@ -246,4 +246,8 @@ public class Materiaal
         }
         return bufferedImage;
     }
+    @Override
+    public String toString(){
+        return naam;
+    }
 }

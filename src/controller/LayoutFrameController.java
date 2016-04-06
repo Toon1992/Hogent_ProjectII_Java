@@ -6,6 +6,7 @@
 package controller;
 
 import gui.LoaderSchermen;
+import gui.ReservatieSchermController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -62,7 +63,7 @@ public class LayoutFrameController extends BorderPane {
     private void gaNaarReservaties(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
             LoaderSchermen.getInstance().setWidthAndHeight(this);
-            this.setCenter(new ReservatieSchermController(new ReservatieController()));
+            this.setCenter(new ReservatieSchermController(new ReservatieController(), new MateriaalController()));
         }
     }
 

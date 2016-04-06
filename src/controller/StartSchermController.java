@@ -6,6 +6,7 @@
 package controller;
 
 import gui.LoaderSchermen;
+import gui.ReservatieSchermController;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -45,7 +46,7 @@ public class StartSchermController extends GridPane
     private void clickedReservaties(MouseEvent event)
     {
         BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController(rc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController(rc, mc));
     }
 
     @FXML
