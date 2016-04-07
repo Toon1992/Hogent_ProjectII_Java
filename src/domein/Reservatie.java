@@ -174,7 +174,7 @@ public class Reservatie
         return aantal;
     }
 
-    protected void setAantal(int aantal)
+    public void setAantal(int aantal)
     {
         this.aantal = aantal;
     }
@@ -184,7 +184,7 @@ public class Reservatie
         return startDatum;
     }
 
-    protected void setStartDatum(Date startDatum)
+    public void setStartDatum(Date startDatum)
     {
         this.startDatum = startDatum;
     }
@@ -194,7 +194,7 @@ public class Reservatie
         return eindDatum;
     }
 
-    protected void setEindDatum(Date eindDatum)
+    public void setEindDatum(Date eindDatum)
     {
         this.eindDatum = eindDatum;
     }
@@ -204,7 +204,7 @@ public class Reservatie
         return reservatieStateEnum;
     }
 
-    protected void setReservatieStateEnum(ReservatieStateEnum reservatieStateEnum)
+    public void setReservatieStateEnum(ReservatieStateEnum reservatieStateEnum)
     {
         this.reservatieStateEnum = reservatieStateEnum;
     }
@@ -214,7 +214,7 @@ public class Reservatie
         return gebruiker;
     }
 
-    protected void setGebruiker(Gebruiker gebruiker)
+    public void setGebruiker(Gebruiker gebruiker)
     {
         this.gebruiker = gebruiker;
     }
@@ -224,7 +224,7 @@ public class Reservatie
         return materiaal;
     }
 
-    protected void setMateriaal(Materiaal materiaal)
+    public void setMateriaal(Materiaal materiaal)
     {
         this.materiaal = materiaal;
     }

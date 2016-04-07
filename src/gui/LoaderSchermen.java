@@ -6,9 +6,12 @@
 package gui;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Optional;
 
 import controller.MateriaalOverzichtSchermController;
+import domein.Gebruiker;
+import domein.Materiaal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -18,6 +21,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import stateMachine.ReservatieStateEnum;
 
 /**
  *
@@ -119,6 +123,31 @@ public class LoaderSchermen
         mco.setPrefWidth(getScreenWidth());
         mco.setPrefHeight(getScreenHeight()*0.85);
         bp.setCenter(mco);
+    }
+    public String reservatieInvoerControle(int aantal, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker){
+        if(aantal == 0){
+            return "Voer een positief aantal in groter dan 0";
+        }
+        if(eindDatum == null){
+            return "Selecteer een terugbrengdatum";
+
+        }
+        if(startDatum == null){
+            return "Selecteer een ophaaldatum";
+        }
+        if(eindDatum != null && startDatum != null && eindDatum.before(startDatum)){
+            return "Tergubrengdatum moet groter zijn dat ophaaldatum";
+        }
+        if(status == null){
+            return "Selecteer een status";
+        }
+        if(materiaal == null){
+            return "Selecteer een materiaal";
+        }
+        if(gebruiker == null){
+            return "Selecteer een gebruiker";
+        }
+        return "";
     }
     public boolean isLoggedIn(){
         return loggedIn;

@@ -102,50 +102,20 @@ public class ReservatieNieuwSchermController extends GridPane {
         catch (NumberFormatException e){
             aantal = 0;
         }
+        String controle = LoaderSchermen.getInstance().reservatieInvoerControle(aantal, startDate, endDate, status, materiaal, gebruiker);
+        if(!controle.isEmpty()){
+            flag = false;
+            lblOnvolledigheid.setText(controle);
+        }
 
-        if(aantal == 0){
-            lblOnvolledigheid.setText("Voer een positief aantal in groter dan 0");
-            flag = false;
-        }
-        if(endDate == null){
-            lblOnvolledigheid.setText("Selecteer een terugbrengdatum");
-            flag = false;
-        }
-        if(startDate == null){
-            lblOnvolledigheid.setText("Selecteer een ophaaldatum");
-            flag = false;
-        }
-        if(endDate != null && startDate != null && endDate.before(startDate)){
-            lblOnvolledigheid.setText("Tergubrengdatum moet groter zijn dat ophaaldatum");
-            flag = false;
-        }
-        if(status == null){
-            lblOnvolledigheid.setText("Selecteer een status");
-            flag = false;
-        }
-        if(materiaal == null){
-            lblOnvolledigheid.setText("Selecteer een materiaal");
-            flag = false;
-        }
-        if(gebruiker == null){
-            lblOnvolledigheid.setText("Selecteer een gebruiker");
-            flag = false;
-        }
         berekenBeschikbaarheden(startDate, endDate, materiaal, gebruiker, aantal, status, flag);
 
 
     }
     private void berekenBeschikbaarheden(Date startDate, Date endDate, Materiaal materiaal, Gebruiker gebruiker, int aantal, ReservatieStateEnum status, boolean flag){
-        List<Reservatie> overschrijvendeReservaties = rc.getReservatiesByDatum(startDate, endDate, materiaal);
-        int aantalStudent = 0;
-        //Indien lector enkel de reservaties van lector opvragen
-        if(gebruiker.getType().equals("LE")){
-            aantalStudent = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantal()).sum();
-            overschrijvendeReservaties = overschrijvendeReservaties.stream().filter(r -> r.getGebruiker().getType().equals("LE")).collect(Collectors.toList());
-        }
-        //Aantal stuks dat reeds onbeschikbaar zijn voor de gebruiker (lector of student)
-        int aantalGereserveerdeStuks = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantal()).sum();
-        int aantalBeschikbaar = materiaal.getAantal() - materiaal.getAantalOnbeschikbaar() - aantalGereserveerdeStuks;
+        int[] beschikbaarheden = rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, aantal);
+        int aantalBeschikbaar = beschikbaarheden[0];
+        int aantalOverruled = beschikbaarheden[1];
 
         //Kijken of alle geselecteerde materialen beschikbaar zijn
         if(aantalBeschikbaar < aantal){
@@ -156,7 +126,6 @@ public class ReservatieNieuwSchermController extends GridPane {
 
         //Indien lector wordt er gekeken of hij een student zal overrulen
         if(gebruiker.getType().equals("LE") && flag){
-            int aantalOverruled = aantalStudent+ aantal - materiaal.getAantal() - materiaal.getAantalOnbeschikbaar();
             if(aantalOverruled > 0){
                 lblOnbeschikbaarheid.setText("");
                 lblOnvolledigheid.setText("");
@@ -169,7 +138,6 @@ public class ReservatieNieuwSchermController extends GridPane {
                 }
             }
         }
-
         if(flag){
             lblOnvolledigheid.setText("");
             lblOnbeschikbaarheid.setText("");

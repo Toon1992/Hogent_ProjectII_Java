@@ -5,6 +5,7 @@
  */
 package controller;
 
+import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
 import java.time.LocalDate;
@@ -12,11 +13,13 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
 
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
 import repository.ReservatieRepository;
+import stateMachine.ReservatieStateEnum;
 
 /**
  *
@@ -33,7 +36,7 @@ public class ReservatieController
     
     public SortedList<Reservatie> getReservaties()
     {
-        return repository.geefMaterialen();
+        return repository.geefReservaties();
     }
     
     public void zoek(String zoekterm)
@@ -58,12 +61,18 @@ public class ReservatieController
     public void maakReservatie(Reservatie reservatie){
         repository.voegReservatieToe(reservatie);
     }
+    public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
+        repository.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
+    }
     public void verwijderReservatie(Reservatie reservatie)
      {
          repository.verwijderReservatue(reservatie);
      }
     public List<Reservatie> getReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
         return repository.geefReservatiesByDatum(startDatum, eindDatum, materiaal);
+    }
+    public int[] berekenAantalBeschikbaar(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal){
+        return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal);
     }
     public void setFormatDatepicker(DatePicker dp){
         dp.setOnShowing(e-> Locale.setDefault(Locale.Category.FORMAT,Locale.FRANCE));

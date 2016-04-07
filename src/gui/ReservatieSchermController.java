@@ -11,19 +11,20 @@ import controller.ReservatieNieuwSchermController;
 import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -69,6 +70,8 @@ public class ReservatieSchermController extends HBox
     private ComboBox<Gebruiker> cmbNaam;
     @FXML
     private TextField txfAantal;
+    @FXML
+    private Label lblMelding;
 
     private ReservatieController rc;
     private MateriaalController mc;
@@ -76,6 +79,7 @@ public class ReservatieSchermController extends HBox
     private SortedList<Reservatie> sortedReservatie;
     private Reservatie currentReservatie;
     private Reservatie reservatie;
+    private final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
     public ReservatieSchermController(ReservatieController rc, MateriaalController mc)
     {
@@ -196,8 +200,60 @@ public class ReservatieSchermController extends HBox
 
     @FXML
     private void wijzigReservatie(ActionEvent event) {
+        boolean flag = true;
+        Gebruiker gebruiker = cmbNaam.getSelectionModel().getSelectedItem();
+        Materiaal materiaal = cmbMateriaal.getSelectionModel().getSelectedItem();
+        ReservatieStateEnum status = cmbStatus.getSelectionModel().getSelectedItem();
+        Date startDate = dtpOphaal.getValue() == null ? null :Date.from(dtpOphaal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        Date endDate = dtpTerugbreng.getValue() == null ? null :Date.from(dtpTerugbreng.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
+        int aantal;
+        try{
+            aantal = Integer.parseInt(txfAantal.getText());
+        }
+        catch (NumberFormatException e){
+            aantal = 0;
+        }
+        String controle = LoaderSchermen.getInstance().reservatieInvoerControle(aantal, startDate, endDate, status, materiaal, gebruiker);
+        if(!controle.isEmpty()){
+            flag = false;
+            lblMelding.setText(controle);
+        }
+        berekenBeschikbaarheden(startDate, endDate, materiaal, gebruiker, aantal, status, flag);
     }
+    private void berekenBeschikbaarheden(Date startDate, Date endDate, Materiaal materiaal, Gebruiker gebruiker, int aantal, ReservatieStateEnum status, boolean flag){
+        int[] beschikbaarheden = rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, aantal);
+        int aantalBeschikbaar = beschikbaarheden[0];
+        int aantalOverruled = beschikbaarheden[1];
 
+        //Kijken of alle geselecteerde materialen beschikbaar zijn
+        if(aantalBeschikbaar < aantal){
+            lblMelding.setText(String.format("Slechts %d stuks beschikbaar van materiaal %s van %s tot %s ", aantalBeschikbaar, materiaal.getNaam(), df.format(startDate), df.format(endDate)));
+            flag = false;
+        }
+        
+        //Indien lector wordt er gekeken of hij een student zal overrulen
+        if(gebruiker.getType().equals("LE") && flag){
+            if(aantalOverruled > 0){
+                lblMelding.setText("");
+                boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Blokkering maken", String.format("Blokkering mogelijk maar er zullen %d stuk(s) van student(en) moeten overruled worden, wilt u doorgaan?", aantalOverruled), "Nee", "Ja");
+                flag = false;
+                if (isOk)
+                {
+                    rc.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
+                }
+            }
+        }
+        if(flag){
+            lblMelding.setText("");
+            lblMelding.setText("");
+            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie maken", "Ben je zeker dat je de reservatie wilt opslaan", "Nee", "Ja");
+            if (isOk)
+            {
+                rc.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
+            }
+
+        }
+    }
     @FXML
     private void nieuweReservatie(ActionEvent event) {
         BorderPane bp = (BorderPane)this.getParent();

@@ -5,6 +5,7 @@
  */
 package repository;
 
+import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
 import java.time.Instant;
@@ -15,11 +16,14 @@ import java.time.temporal.WeekFields;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import persistentie.ReservatieDaoJpa;
+import stateMachine.ReservatieStateEnum;
 
 /**
  *
@@ -37,7 +41,7 @@ public class ReservatieRepository
         reservatieDao = new ReservatieDaoJpa();
     }
 
-    public SortedList<Reservatie> geefMaterialen()
+    public SortedList<Reservatie> geefReservaties()
     {
         if (filterReservaties == null)
         {
@@ -146,15 +150,49 @@ public class ReservatieRepository
         Instant instant = Instant.from(datum.atStartOfDay(ZoneId.of("GMT")));
         return Date.from(instant);
     }
+
+    public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
+        return reservatieDao.getReservaties(startDatum, eindDatum, materiaal);
+    }
+    public int[] berekenAantalbeschikbaarMateriaal(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal){
+        List<Reservatie> overschrijvendeReservaties = geefReservatiesByDatum(startDate, endDate, materiaal);
+        int aantalStudent = 0;
+        //Indien lector enkel de reservaties van lector opvragen
+        if(gebruiker.getType().equals("LE")){
+            aantalStudent = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantal()).sum();
+            overschrijvendeReservaties = overschrijvendeReservaties.stream().filter(r -> r.getGebruiker().getType().equals("LE")).collect(Collectors.toList());
+        }
+        //Aantal stuks dat reeds onbeschikbaar zijn voor de gebruiker (lector of student)
+        int aantalGereserveerdeStuks = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantal()).sum();
+        int aantalBeschikbaar = materiaal.getAantal() - materiaal.getAantalOnbeschikbaar() - aantalGereserveerdeStuks;
+        int aantalOverruled = aantalStudent+ aantal - materiaal.getAantal() - materiaal.getAantalOnbeschikbaar();
+        return new int[]{aantalBeschikbaar, aantalOverruled};
+    }
     public void voegReservatieToe(Reservatie reservatie){
         reservatieDao.startTransaction();
         reservatieDao.insert(reservatie);
         reservatieDao.commitTransaction();
+        filterReservatie.remove(reservatie);
         filterReservatie.add(reservatie);
         filterReservaties = new FilteredList(filterReservatie, p -> true);
     }
-    public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
-        return reservatieDao.getReservaties(startDatum, eindDatum, materiaal);
+    public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
+        Reservatie oldReservatie = reservatie;
+        //De parameters setten
+        reservatie.setAantal(aantal);
+        reservatie.setGebruiker(gebruiker);
+        reservatie.setStartDatum(startDate);
+        reservatie.setEindDatum(endDate);
+        reservatie.setMateriaal(materiaal);
+        reservatie.setReservatieStateEnum(status);
+
+        reservatieDao.startTransaction();
+        reservatieDao.update(reservatie);
+        reservatieDao.commitTransaction();
+
+        filterReservatie.remove(oldReservatie);
+        filterReservatie.add(reservatie);
+        filterReservaties = new FilteredList(filterReservatie, p -> true);
     }
     public void verwijderReservatue(Reservatie reservatie)
     {
