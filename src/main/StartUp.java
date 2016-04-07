@@ -106,10 +106,10 @@ public class StartUp extends Application {
         jpa.insert(new Materiaal("/Users/donovandesmedt/NetBeansProjects/groep06Java/groep06Java/src/images/geo.jpg", "Bordgeodriehoek", "Bordgeodriehoek Wissner 80cm", "B2.13", 5431, 4, 0, 26.15, true, wissner, new HashSet<Doelgroep>(Arrays.asList(lager, secundair)), new HashSet<Leergebied>(Arrays.asList(wiskunde, fysica, techniek))));
 
         jpa.insert(new Gebruiker("Lector", "lector@hogent.be", "LE"));
-        jpa.insert(new Reservatie(2,new Date(116, 3, 23), new Date(116,4,1),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Toon","toondetrue@gmail.com","ST"),wereldbol));
-        jpa.insert(new Reservatie(1,new Date(116, 1, 14), new Date(116,2,5),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Donovan","donovandesmedt@gmail.com","ST"),wereldbol));
-        jpa.insert(new Reservatie(2,new Date(116, 2, 23), new Date(116,3,6),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Manu","manuschoenmakers@gmail.com","ST"),rekenMachine));
-        jpa.insert(new Reservatie(3,new Date(116, 3, 23), new Date(116,4,6),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Thomas","thomasledoux@gmail.com","ST"),rekenMachine));
+        jpa.insert(new Reservatie(2,new Date(116, 3, 11), new Date(116,3,15),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Toon","toondetrue@gmail.com","ST"),wereldbol));
+        jpa.insert(new Reservatie(1,new Date(116, 3, 11), new Date(116,3,15),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Donovan","donovandesmedt@gmail.com","ST"),wereldbol));
+        //jpa.insert(new Reservatie(2,new Date(116, 2, 23), new Date(116,3,6),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Manu","manuschoenmakers@gmail.com","ST"),rekenMachine));
+        //jpa.insert(new Reservatie(3,new Date(116, 3, 23), new Date(116,4,6),new Date(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Thomas","thomasledoux@gmail.com","ST"),rekenMachine));
         
         jpa.commitTransaction();
 

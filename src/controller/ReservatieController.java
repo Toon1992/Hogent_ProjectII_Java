@@ -64,6 +64,9 @@ public class ReservatieController
     public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
         repository.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
     }
+    public void overruleStudent(int aantalOverruled){
+        repository.overruleStudent(aantalOverruled);
+    }
     public void verwijderReservatie(Reservatie reservatie)
      {
          repository.verwijderReservatue(reservatie);
@@ -71,8 +74,8 @@ public class ReservatieController
     public List<Reservatie> getReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
         return repository.geefReservatiesByDatum(startDatum, eindDatum, materiaal);
     }
-    public int[] berekenAantalBeschikbaar(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal){
-        return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal);
+    public int[] berekenAantalBeschikbaar(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal, int origineelAantal){
+        return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal, origineelAantal);
     }
     public void setFormatDatepicker(DatePicker dp){
         dp.setOnShowing(e-> Locale.setDefault(Locale.Category.FORMAT,Locale.FRANCE));

@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.awt.*;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -12,12 +13,6 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
-import java.util.concurrent.ExecutorService;
-import java.util.stream.Collectors;
-
 import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
@@ -28,6 +23,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -61,6 +59,9 @@ public class ReservatieNieuwSchermController extends GridPane {
     private Label lblOnvolledigheid;
     @FXML
     private Label lblOnbeschikbaarheid;
+    @FXML
+    private CheckBox checkOverruul;
+
     private ReservatieController rc;
     private MateriaalController mc;
     private GebruikerController gc;
@@ -113,9 +114,10 @@ public class ReservatieNieuwSchermController extends GridPane {
 
     }
     private void berekenBeschikbaarheden(Date startDate, Date endDate, Materiaal materiaal, Gebruiker gebruiker, int aantal, ReservatieStateEnum status, boolean flag){
-        int[] beschikbaarheden = rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, aantal);
+        int[] beschikbaarheden = rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, aantal, 0);
         int aantalBeschikbaar = beschikbaarheden[0];
         int aantalOverruled = beschikbaarheden[1];
+        boolean automatischOverrulen = checkOverruul.isSelected();
 
         //Kijken of alle geselecteerde materialen beschikbaar zijn
         if(aantalBeschikbaar < aantal){
@@ -129,11 +131,16 @@ public class ReservatieNieuwSchermController extends GridPane {
             if(aantalOverruled > 0){
                 lblOnbeschikbaarheid.setText("");
                 lblOnvolledigheid.setText("");
-                boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Blokkering maken", String.format("Blokkering mogelijk maar er zullen %d stuk(s) van student(en) moeten overruled worden, wilt u doorgaan?", aantalOverruled), "Nee", "Ja");
+                String nietAutomatisch = String.format("OPGELET: Blokkering mogelijk maar er zullen %d stuk(s) van student(en) manueel moeten overruled worden, wilt u doorgaan?", aantalOverruled);
+                String automatisch = String.format("OPGELET: Blokkering mogelijk maar er zullen automatisch %d stuk(s) van student(en) overruled worden, wilt u doorgaan?", aantalOverruled);
+                boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Blokkering maken",automatischOverrulen? automatisch : nietAutomatisch , "Nee", "Ja");
                 flag = false;
                 if (isOk)
                 {
                     rc.maakReservatie(new Reservatie(aantal, startDate, endDate, new Date(), status, gebruiker, materiaal));
+                    if(automatischOverrulen){
+                        rc.overruleStudent(aantalOverruled);
+                    }
                     terug(null);
                 }
             }

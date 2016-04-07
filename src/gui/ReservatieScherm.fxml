@@ -103,6 +103,7 @@
                         <TextField fx:id="txfAantal" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                         <Button mnemonicParsing="false" onAction="#nieuweReservatie" text="Nieuw" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                   <Label fx:id="lblMelding" styleClass="label-error" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <CheckBox fx:id="checkOverruul" mnemonicParsing="false" text="Automatisch overrulen" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
                     </children>
                     <padding>
                         <Insets left="10.0" right="10.0" />
