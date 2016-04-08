@@ -9,12 +9,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Thomas
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(name = "Firma.findByName", query = "Select a FROM Firma a WHERE a.naam= :Naam")
+})
 public class Firma
 {
 
@@ -38,7 +44,7 @@ public class Firma
         return naam;
     }
 
-    private void setNaam(String naam)
+    public void setNaam(String naam)
     {
         this.naam = naam;
     }

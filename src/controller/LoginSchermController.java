@@ -82,7 +82,7 @@ public class LoginSchermController extends GridPane
             lblWachtwoord.setText(e.getLocalizedMessage());
         } catch (EntityNotFoundException e)
         {
-            lblLogin.setText("Email of wachtwoord ongelidg");
+            lblLogin.setText("Email of wachtwoord ongeldig");
         }
     }
 

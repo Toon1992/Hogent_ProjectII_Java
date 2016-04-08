@@ -15,9 +15,9 @@
        <GridPane maxHeight="650.0" prefHeight="700.0" prefWidth="1197.0" VBox.vgrow="ALWAYS">
            <columnConstraints>
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="240.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="336.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="266.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="40.0" />
            </columnConstraints>
            <rowConstraints>
@@ -154,6 +154,7 @@
                </padding>
             </Label>
             <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
+            <Label fx:id="lblErrorMessage" prefHeight="21.0" prefWidth="591.0" styleClass="label-error" GridPane.columnIndex="2" GridPane.columnSpan="2" />
            </children>
        </GridPane>
    </children>
