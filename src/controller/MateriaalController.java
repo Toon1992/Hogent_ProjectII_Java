@@ -40,7 +40,9 @@ public class MateriaalController extends Observable
     {
         materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats,firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
     }
-
+    public <E> void voegObjectToe(E element){
+        materiaalCatalogus.saveObject(element);
+    }
     public SortedList<Materiaal> getMateriaalFilterList()
     {
         return materiaalCatalogus.geefMaterialen().sorted();

@@ -27,6 +27,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import persistentie.GenericDaoJpa;
 import persistentie.MateriaalDaoJpa;
 
 import javax.imageio.ImageIO;
@@ -43,10 +44,12 @@ public class MateriaalCatalogus {
     private Set<Materiaal> nonFilteredSet;
     private Map<String, Set<Materiaal>> filterMap = new HashMap<>();
     private MateriaalDaoJpa materiaalDao;
+    private GenericDaoJpa<Object> objectDao;
     private ObservableList<Materiaal> filterMateriaal;
 
     public MateriaalCatalogus() {
         materiaalDao = new MateriaalDaoJpa();
+        objectDao = new GenericDaoJpa<>(Object.class);
     }
 
     public SortedList<Materiaal> geefMaterialen() {
@@ -80,17 +83,18 @@ public class MateriaalCatalogus {
             Firma f = new Firma(firmaNaam, firmaContact);
             Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, f, doelgroepen, leergebieden);
             opgehaaldeMaterialen.add(materiaal);
-            materiaalDao.startTransaction();
-            materiaalDao.insert(materiaal);
-            materiaalDao.commitTransaction();
+            saveObject(materiaal);
         }
     }
-
+    public <E> void saveObject(E element){
+        objectDao.startTransaction();
+        objectDao.insert(element);
+        objectDao.commitTransaction();
+    }
     public void wijzigMateriaal(Materiaal materiaal) {
         materiaalDao.startTransaction();
         materiaalDao.update(materiaal);
         materiaalDao.commitTransaction();
-
     }
 
     public void verwijderMateriaal(Materiaal materiaal) {
