@@ -2,26 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="[Sprint1] Implementeren van feedback">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistentie/FirmaDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistentie/FirmaDaoJpa.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistentie/GeneriekeGebieden.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/persistentie/GeneriekeGebiedenInterface.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/repository/FirmaRepository.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/repository/GebiedenRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/private/private.properties" afterPath="$PROJECT_DIR$/nbproject/private/private.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/nbproject/project.properties" afterPath="$PROJECT_DIR$/nbproject/project.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/out/production/groep06Java/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/LoginSchermController.java" afterPath="$PROJECT_DIR$/src/controller/LoginSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MateriaalController.java" afterPath="$PROJECT_DIR$/src/controller/MateriaalController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MateriaalDetailSchermController.java" afterPath="$PROJECT_DIR$/src/controller/MateriaalDetailSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MateriaalOverzichtSchermController.java" afterPath="$PROJECT_DIR$/src/controller/MateriaalOverzichtSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/Firma.java" afterPath="$PROJECT_DIR$/src/domein/Firma.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalOverzichtScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/MateriaalOverzichtScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/StartUp.java" afterPath="$PROJECT_DIR$/src/main/StartUp.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -95,18 +77,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ReservatieNieuwSchermController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ReservatieNieuwSchermController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="116" column="53" selection-start-line="116" selection-start-column="53" selection-end-line="116" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Reservatie.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/domein/Reservatie.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -117,21 +87,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MateriaalDetailSchermController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MateriaalDetailSchermController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/MateriaalDetailSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="0.61593175">
               <caret line="142" column="8" selection-start-line="142" selection-start-column="8" selection-end-line="143" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartUp.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="StartUp.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4238976">
+            <state vertical-scroll-proportion="0.0">
               <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaalOverzichtSchermController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/MateriaalOverzichtSchermController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="141" column="55" selection-start-line="141" selection-start-column="55" selection-end-line="141" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -1135,7 +1115,7 @@
       <workItem from="1460055346509" duration="885000" />
       <workItem from="1460103444582" duration="5453000" />
       <workItem from="1460113904338" duration="80000" />
-      <workItem from="1460114296940" duration="9000" />
+      <workItem from="1460114296940" duration="70000" />
     </task>
     <servers />
   </component>
@@ -1157,7 +1137,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="150529000" />
+    <option name="totallyTimeSpent" value="150590000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="800" extended-state="6" />
@@ -1424,6 +1404,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="167" column="54" selection-start-line="167" selection-start-column="54" selection-end-line="167" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1492,16 +1473,6 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="142" column="115" selection-start-line="142" selection-start-column="8" selection-end-line="142" selection-end-column="115" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalOverzichtSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="141" column="55" selection-start-line="141" selection-start-column="55" selection-end-line="141" selection-end-column="55" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1635,18 +1606,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalDetailSchermController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="142" column="8" selection-start-line="142" selection-start-column="8" selection-end-line="143" selection-end-column="0" />
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalOverzichtSchermController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4238976">
-          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="141" column="55" selection-start-line="141" selection-start-column="55" selection-end-line="141" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalDetailSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61593175">
+          <caret line="142" column="8" selection-start-line="142" selection-start-column="8" selection-end-line="143" selection-end-column="0" />
           <folding />
         </state>
       </provider>
