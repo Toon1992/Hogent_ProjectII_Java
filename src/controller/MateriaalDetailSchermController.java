@@ -15,9 +15,7 @@ import java.util.ResourceBundle;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -114,6 +112,7 @@ public class MateriaalDetailSchermController extends VBox {
             materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
             String prijs = txfPrijs.getText().replace(",", ".");
             materiaal.setPrijs(Double.valueOf(prijs));
+
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
             
             //firma
@@ -128,16 +127,27 @@ public class MateriaalDetailSchermController extends VBox {
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(),"Al uw wijzigingen zijn correct doorgevoerd", "Ok");
             
 
+            materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
+            materiaal.setIsReserveerbaar(radioStudent.isSelected());
+            lblErrorMessage.setText("");
+            Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
+            succesvol.setTitle("Materiaal gewijzigd");
+            succesvol.setHeaderText(materiaal.getNaam());
+            succesvol.setContentText("Al uw wijzigingen zijn correct doorgevoerd!");
+
+
         } catch (NumberFormatException ex) {
             lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
         } catch (IllegalArgumentException ex) {
             lblErrorMessage.setText(ex.getMessage());
         }
 
-    }
+    }  
 
-    public void update(Materiaal materiaal) {
-        imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
+    public void update(Materiaal materiaal)
+    {
+//        imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
+
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
         txfContactPersoon.setText(materiaal.getFirma().getEmailContact());

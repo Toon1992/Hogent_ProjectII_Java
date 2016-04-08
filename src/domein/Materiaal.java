@@ -5,26 +5,16 @@
  */
 package domein;
 
-import java.util.HashSet;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Set;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.image.Image;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.imageio.ImageIO;
+import javax.persistence.*;
 
 
 /**
@@ -42,7 +32,7 @@ public class Materiaal
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int materiaalId;
-    private String naam, plaats, foto, omschrijving;
+    private String naam, plaats, omschrijving;
     private int artikelNr, aantalInCatalogus, aantalOnbeschikbaar;
     private double prijs;
     private boolean isReserveerbaar;
@@ -50,16 +40,17 @@ public class Materiaal
     private Firma firma;
 
     @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
-//    @JoinTable(name="MateriaalDoelgroep", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
-//     inverseJoinColumns=@JoinColumn(name="DoelgroepId", referencedColumnName="doelgroepId"))
-    Set<Doelgroep> doelgroepen = new HashSet<>();
+    @JoinTable(name="MateriaalDoelgroep", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
+     inverseJoinColumns=@JoinColumn(name="DoelgroepId", referencedColumnName="doelgroepId"))
+    Set<Doelgroep> doelgroepen;
     
-    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(name="MateriaalLeergebied", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
-//      inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
-    Set<Leergebied> leergebieden = new HashSet<>();
+    @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @JoinTable(name="MateriaalLeergebied", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
+      inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
+    Set<Leergebied> leergebieden;
 
-
+    @Lob
+    private byte[] foto;
 
     protected Materiaal()
     {
@@ -124,6 +115,7 @@ public class Materiaal
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
         setFoto(foto);
+        setFoto(foto);
         setOmschrijving(omschrijving);
         setArtikelNr(artikelNr);
         setAantal(aantal);
@@ -137,10 +129,6 @@ public class Materiaal
         setNaam(naam);
     }
 
-    public ObjectProperty getImage(){
-        SimpleObjectProperty obj = new SimpleObjectProperty(new Image(getFoto()));
-        return obj;
-    }
     public int getMateriaalId() {
         return materiaalId;
     }
@@ -148,16 +136,6 @@ public class Materiaal
     public void setMateriaalId(int materiaalId)
     {
         this.materiaalId = materiaalId;
-    }
-
-    public String getFoto()
-    {
-        return foto;
-    }
-
-    public void setFoto(String foto)
-    {
-        this.foto = foto;
     }
 
     public String getOmschrijving()
@@ -248,8 +226,28 @@ public class Materiaal
     {
         this.leergebieden = leergebieden;
     }
-    
-    public void setUitleenbaarheid(boolean uitleenbaar){
-        this.isReserveerbaar=uitleenbaar;
+
+    public void setFoto(String url) {
+        File fi = new File(url);
+        byte[] fileContent = null;
+        try {
+            fileContent = Files.readAllBytes(fi.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.foto = fileContent;
+    }
+    public BufferedImage getFoto(){
+        BufferedImage bufferedImage=null;
+        try {
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bufferedImage;
+    }
+    @Override
+    public String toString(){
+        return naam;
     }
 }

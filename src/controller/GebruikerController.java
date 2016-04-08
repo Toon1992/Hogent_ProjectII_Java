@@ -34,4 +34,8 @@ public class GebruikerController extends Observable{
     public void login(String email, String wachtwoord) throws Exception{
         beheerderRepository.login(email, wachtwoord);
     }
+    public SortedList<Gebruiker> getGebruikers()
+    {
+        return beheerderRepository.getGebruikers().sorted();
+    }
 }

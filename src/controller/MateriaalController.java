@@ -4,6 +4,9 @@ import domein.Doelgroep;
 import domein.Firma;
 import domein.Leergebied;
 import domein.Materiaal;
+import exceptions.AantalException;
+import exceptions.NaamException;
+import java.io.File;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import repository.MateriaalCatalogus;
@@ -33,14 +36,14 @@ public class MateriaalController extends Observable
         this.materiaalCatalogus = materiaalCatalogus;
     }
 
-    public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
+    public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException
     {
-        materiaalCatalogus.voegMateriaalToe(new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden));
+        materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats,firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
     }
 
     public SortedList<Materiaal> getMateriaalFilterList()
     {
-        return materiaalCatalogus.geefMaterialen();
+        return materiaalCatalogus.geefMaterialen().sorted();
     }
 
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list)

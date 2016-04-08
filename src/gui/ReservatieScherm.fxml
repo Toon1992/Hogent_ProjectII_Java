@@ -7,53 +7,109 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <VBox prefHeight="650.0" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" HBox.hgrow="ALWAYS">
-         <children>
-            <GridPane>
-              <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" prefWidth="1.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.0" minWidth="10.0" prefWidth="150.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="5.0" prefWidth="1.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints minHeight="40.0" prefHeight="60.0" vgrow="SOMETIMES" />
-              </rowConstraints>
-               <children>
-                  <Label alignment="CENTER" text="Zoek:" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
-                  <TextField fx:id="txfZoek" onKeyTyped="#zoeken" GridPane.columnIndex="2" />
-                  <Label alignment="CENTER" text="BeginDatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-                  <Label alignment="CENTER" text="EindDatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
-                  <DatePicker fx:id="datePickerBegin" onAction="#zoekOpBeginDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" />
-                  <DatePicker fx:id="datePickerEind" onAction="#zoekOpEindDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" />
-               </children>
-            </GridPane>
-            <TableView id="my-table" fx:id="reservatieTable" minHeight="-Infinity" prefHeight="500.0" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" VBox.vgrow="ALWAYS">
-              <columns>
-                <TableColumn fx:id="naamColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Naam" />
-                <TableColumn fx:id="materiaalColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Materiaal" />
-                  <TableColumn fx:id="aantalColumn" minWidth="110.0" prefWidth="110.0" styleClass="table-Column" text="Aantal" />
-                  <TableColumn fx:id="statusColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Status" />
-                  <TableColumn fx:id="BeginDatumColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Begin Datum" />
-                  <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Eind Datum" />
-              </columns>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </children>
-      </VBox>
-   </children>
+<fx:root maxHeight="1.7976931348623157E308" minHeight="65.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <VBox prefHeight="650.0" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" HBox.hgrow="ALWAYS">
+            <children>
+                <GridPane>
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="1.0" prefWidth="1.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="215.0" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="385.0" minWidth="10.0" prefWidth="150.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="0.0" percentWidth="5.0" prefWidth="1.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="40.0" prefHeight="60.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label alignment="CENTER" text="Zoek:" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <TextField fx:id="txfZoek" onKeyTyped="#zoeken" GridPane.columnIndex="2" />
+                        <Label alignment="CENTER" text="BeginDatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                        <Label alignment="CENTER" text="EindDatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+                        <DatePicker fx:id="datePickerBegin" onAction="#zoekOpBeginDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" />
+                        <DatePicker fx:id="datePickerEind" onAction="#zoekOpEindDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" />
+                    </children>
+                </GridPane>
+                <TableView id="my-table" fx:id="reservatieTable" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="naamColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Naam" />
+                        <TableColumn fx:id="materiaalColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Materiaal" />
+                        <TableColumn fx:id="aantalColumn" minWidth="110.0" prefWidth="110.0" styleClass="table-Column" text="Aantal" />
+                        <TableColumn fx:id="statusColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Status" />
+                        <TableColumn fx:id="BeginDatumColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Begin Datum" />
+                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Eind Datum" />
+                    </columns>
+                    <VBox.margin>
+                        <Insets />
+                    </VBox.margin>
+                    <padding>
+                        <Insets left="10.0" right="10.0" />
+                    </padding>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                    </columnResizePolicy>
+                </TableView>
+                <GridPane minHeight="281.0" prefHeight="281.0" VBox.vgrow="NEVER">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="400.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="125.0" minHeight="0.0" prefHeight="14.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="19.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+                        <RowConstraints maxHeight="50.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Gebruiker:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets left="75.0" />
+                            </GridPane.margin></Label>
+                        <Label text="Ophaal datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets right="40.0" />
+                            </GridPane.margin></Label>
+                        <Label text="Terugbreng datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <DatePicker fx:id="dtpOphaal" prefHeight="31.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <DatePicker fx:id="dtpTerugbreng" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Button maxHeight="27.0" maxWidth="150.0" mnemonicParsing="false" onAction="#verwijderReservatie" prefHeight="45.0" prefWidth="150.0" text="Verwijderen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Label text="Status:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                            <GridPane.margin>
+                                <Insets right="40.0" />
+                            </GridPane.margin></Label>
+                        <Label text="Materiaal:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                        <Button maxHeight="27.0" maxWidth="120.0" mnemonicParsing="false" onAction="#wijzigReservatie" prefHeight="27.0" prefWidth="126.0" text="Wijzigen" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <ComboBox fx:id="cmbStatus" maxWidth="-Infinity" prefWidth="160.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <ComboBox fx:id="cmbMateriaal" maxWidth="-Infinity" prefHeight="31.0" prefWidth="160.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                            <GridPane.margin>
+                                <Insets />
+                            </GridPane.margin>
+                        </ComboBox>
+                        <ComboBox fx:id="cmbNaam" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                            <GridPane.margin>
+                                <Insets right="75.0" />
+                            </GridPane.margin></ComboBox>
+                        <Label text="Aantal:" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+                        <TextField fx:id="txfAantal" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#nieuweReservatie" text="Nieuw" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                  <Label fx:id="lblMelding" styleClass="label-error" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <CheckBox fx:id="checkOverruul" mnemonicParsing="false" text="Automatisch overrulen" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                    </children>
+                    <padding>
+                        <Insets left="10.0" right="10.0" />
+                    </padding>
+                </GridPane>
+            </children>
+        </VBox>
+    </children>
 </fx:root>
