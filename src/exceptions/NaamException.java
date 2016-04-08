@@ -9,7 +9,7 @@ package exceptions;
  *
  * @author Thomas
  */
-public class NaamException extends Exception{
+public class NaamException extends IllegalArgumentException{
     public NaamException(){}
     public NaamException(String message){
         super(message);

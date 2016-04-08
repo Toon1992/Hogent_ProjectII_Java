@@ -9,7 +9,7 @@ package exceptions;
  *
  * @author Thomas
  */
-public class AantalException extends Exception{
+public class AantalException extends IllegalArgumentException{
     public AantalException(){}
     public AantalException(String message){
         super(message);

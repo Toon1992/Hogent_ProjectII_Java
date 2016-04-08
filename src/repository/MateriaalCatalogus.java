@@ -71,13 +71,31 @@ public class MateriaalCatalogus {
             throw new AantalException("Aantal mag niet leeg zijn!");
         } else {
             if (!aantalOnbeschikbaarString.isEmpty()) {
+                try{
                 aantalOnbeschikbaar = Integer.parseInt(aantalOnbeschikbaarString);
+                }
+                catch(NumberFormatException e)
+                {
+                    throw new IllegalArgumentException("Moet een getal zijn!");
+                }
             }
             if (!artikelNrString.isEmpty()) {
+                try{
                 artikelNr = Integer.parseInt(artikelNrString);
+                }
+                catch(NumberFormatException e)
+                {
+                    throw new IllegalArgumentException("Moet een getal zijn!");
+                }
             }
             if (!prijsString.isEmpty()) {
+                try{
                 prijs = Double.parseDouble(prijsString);
+                }
+                catch(NumberFormatException e)
+                {
+                    throw new IllegalArgumentException("Moet een getal zijn!");
+                }
             }
             aantal = Integer.parseInt(aantalString);
             Firma f = new Firma(firmaNaam, firmaContact);
