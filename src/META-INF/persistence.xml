@@ -4,18 +4,16 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>domein.Beheerder</class>
     <class>domein.Doelgroep</class>
+    <class>domein.Firma</class>
     <class>domein.Leergebied</class>
     <class>domein.Materiaal</class>
-    <class>domein.HoofdBeheerder</class>
     <class>domein.Gebruiker</class>
     <class>domein.Reservatie</class>
-    <class>domein.Firma</class>
+    <class>domein.Dag</class>
     <properties>
-      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DidactischeLeermiddelen"/>
-      <property name="eclipselink.ddl-generation" value="create-tables"/>
-      <property name="eclipselink.ddl-generation.output-mode" value="database"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver"/>
       <property name="javax.persistence.jdbc.password" value="toor"/>
       <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
     </properties>

@@ -69,6 +69,10 @@ public class MateriaalDetailSchermController extends VBox {
     private TextField txfNaam;
     @FXML
     private Button btnTerug;
+    @FXML
+    private TextField txfNieuwDoelgroep;
+    @FXML
+    private TextField txfNieuwLeergebied;
     private MateriaalController mc;
     private Materiaal materiaal;
     private ToggleGroup group = new ToggleGroup();
@@ -146,8 +150,7 @@ public class MateriaalDetailSchermController extends VBox {
 
     public void update(Materiaal materiaal)
     {
-//        imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
-
+        imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getFoto(), null));
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
         txfContactPersoon.setText(materiaal.getFirma().getEmailContact());
@@ -171,5 +174,20 @@ public class MateriaalDetailSchermController extends VBox {
         BorderPane bp = (BorderPane) this.getParent();
         LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, (HBox) LoaderSchermen.getInstance().getNode());
         //LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController(mc));
+    }
+    @FXML
+    private void voegLeergebiedToe(ActionEvent event){
+        String leergebied = txfNieuwLeergebied.getText();
+        if(!leergebied.isEmpty()){
+            //voeg nieuw leergebied toe.
+        }
+    }
+    @FXML
+    private void voegDoelgroepToe(ActionEvent event){
+        String doelgroep = txfNieuwDoelgroep.getText();
+        if(!doelgroep.isEmpty()){
+            //voeg nieuw leergebied toe.
+        }
+
     }
 }

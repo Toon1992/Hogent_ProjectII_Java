@@ -57,8 +57,8 @@
                     <columnConstraints>
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                         <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="300.0" />
-                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="400.0" />
-                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="300.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="350.0" />
+                        <ColumnConstraints hgrow="NEVER" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="350.0" />
                         <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                     <rowConstraints>
@@ -73,7 +73,7 @@
                     <children>
                         <Label text="Gebruiker:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                             <GridPane.margin>
-                                <Insets left="75.0" />
+                                <Insets left="40.0" />
                             </GridPane.margin></Label>
                         <Label text="Ophaal datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <GridPane.margin>
@@ -83,27 +83,41 @@
                         <DatePicker fx:id="dtpOphaal" prefHeight="31.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <DatePicker fx:id="dtpTerugbreng" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                         <Button maxHeight="27.0" maxWidth="150.0" mnemonicParsing="false" onAction="#verwijderReservatie" prefHeight="45.0" prefWidth="150.0" text="Verwijderen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-                        <Label text="Status:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                        <Label text="Status:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+                            <GridPane.margin>
+                                <Insets left="40.0" />
+                            </GridPane.margin></Label>
+                        <Label text="Materiaal:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="40.0" />
+                     </GridPane.margin></Label>
+                        <Button maxHeight="27.0" maxWidth="120.0" mnemonicParsing="false" onAction="#wijzigReservatie" prefHeight="27.0" prefWidth="126.0" text="Wijzigen" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <ComboBox fx:id="cmbStatus" maxWidth="-Infinity" prefWidth="160.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="40.0" />
+                     </GridPane.margin></ComboBox>
+                        <ComboBox fx:id="cmbMateriaal" maxWidth="-Infinity" prefHeight="31.0" prefWidth="160.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets right="40.0" />
-                            </GridPane.margin></Label>
-                        <Label text="Materiaal:" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-                        <Button maxHeight="27.0" maxWidth="120.0" mnemonicParsing="false" onAction="#wijzigReservatie" prefHeight="27.0" prefWidth="126.0" text="Wijzigen" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
-                        <ComboBox fx:id="cmbStatus" maxWidth="-Infinity" prefWidth="160.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                        <ComboBox fx:id="cmbMateriaal" maxWidth="-Infinity" prefHeight="31.0" prefWidth="160.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                            <GridPane.margin>
-                                <Insets />
                             </GridPane.margin>
                         </ComboBox>
-                        <ComboBox fx:id="cmbNaam" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+                        <ComboBox fx:id="cmbNaam" prefWidth="160.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                             <GridPane.margin>
-                                <Insets right="75.0" />
+                                <Insets right="40.0" />
                             </GridPane.margin></ComboBox>
-                        <Label text="Aantal:" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-                        <TextField fx:id="txfAantal" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                        <Label text="Aantal uitgeleend" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></Label>
+                        <TextField fx:id="txfAantalUitgeleend" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin></TextField>
                         <Button mnemonicParsing="false" onAction="#nieuweReservatie" text="Nieuw" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                   <Label fx:id="lblMelding" styleClass="label-error" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
-                  <CheckBox fx:id="checkOverruul" mnemonicParsing="false" text="Automatisch overrulen" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                  <CheckBox fx:id="checkOverruul" mnemonicParsing="false" text="Automatisch overrulen" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
+                  <Label text="Aantal teruggebracht" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+                  <TextField fx:id="txfAantalTerug" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
                     </children>
                     <padding>
                         <Insets left="10.0" right="10.0" />

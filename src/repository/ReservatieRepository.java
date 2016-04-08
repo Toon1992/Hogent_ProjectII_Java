@@ -5,6 +5,7 @@
  */
 package repository;
 
+import domein.Dag;
 import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
@@ -13,10 +14,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.TemporalField;
 import java.time.temporal.WeekFields;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
@@ -160,11 +158,11 @@ public class ReservatieRepository
         int aantalStudent = 0;
         //Indien lector enkel de reservaties van lector opvragen
         if(gebruiker.getType().equals("LE")){
-            aantalStudent = overschrijvendeReservaties.stream().filter(r -> r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd)).mapToInt(r -> r.getAantal()).sum();
+            aantalStudent = overschrijvendeReservaties.stream().filter(r -> r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd)).mapToInt(r -> r.getAantalUitgeleend()).sum();
             overschrijvendeReservaties = overschrijvendeReservaties.stream().filter(r -> r.getGebruiker().getType().equals("LE")).collect(Collectors.toList());
         }
         //Aantal stuks dat reeds onbeschikbaar zijn voor de gebruiker (lector of student)
-        int aantalGereserveerdeStuks = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantal()).sum() - origineelAantal ;
+        int aantalGereserveerdeStuks = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantalUitgeleend()).sum() - origineelAantal ;
         int aantalBeschikbaar = materiaal.getAantal() - materiaal.getAantalOnbeschikbaar() - aantalGereserveerdeStuks;
         int aantalOverruled = aantalStudent+aantalGereserveerdeStuks+ aantal - materiaal.getAantal() - materiaal.getAantalOnbeschikbaar();
         return new int[]{aantalBeschikbaar, aantalOverruled};
@@ -176,14 +174,14 @@ public class ReservatieRepository
         while (nogTeOverrulen){
             Reservatie reservatie = reservaties.get(0);
 
-            int aantal = reservatie.getAantal();
+            int aantal = reservatie.getAantalUitgeleend();
 
             reservatie.setReservatieStateEnum(ReservatieStateEnum.Overruled);
             wijzigReservatieObject(reservatie);
 
             //Indien er nog een aantal stuks overschieten na het overrulen, wordt er een nieuwe reservatie gemaakt
             if(aantal - aantalOverruled > 0)
-                voegReservatieToe(new Reservatie(aantal - aantalOverruled, reservatie.getBeginDatum(), reservatie.getEindDatum(), new Date(),ReservatieStateEnum.Gereserveerd, reservatie.getGebruiker(), reservatie.getMateriaal()));
+                voegReservatieToe(new Reservatie(aantal - aantalOverruled,0, reservatie.getBeginDatum(), reservatie.getEindDatum(), new Date(),null,ReservatieStateEnum.Gereserveerd, reservatie.getGebruiker(), reservatie.getMateriaal()));
 
             aantalOverruled -= aantal;
             reservaties.remove(reservatie);
@@ -192,6 +190,21 @@ public class ReservatieRepository
                 nogTeOverrulen = false;
             }
         }
+    }
+    public Reservatie maakReservatieObject(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal){
+        SortedSet<Dag> dagen = new TreeSet<>();
+        if(gebruiker.getType().equals("LE")){
+            Date maandag = geefEersteDagVanDeWeek(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            Date vrijdag = convertLocalDateToDate(maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
+            //alle dagen tussen begin en einddatum in de list plaatsen
+            Date beginDatum = startDate;
+            while(beginDatum.before(endDate)){
+                dagen.add(new Dag(beginDatum));
+                beginDatum = convertLocalDateToDate(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(1));
+            }
+            dagen.add(new Dag(endDate));
+        }
+        return new Reservatie(aantal, aantalTerug, startDate, endDate, new Date(), dagen, status, gebruiker, materiaal);
     }
     public void voegReservatieToe(Reservatie reservatie){
         reservatieDao.startTransaction();
@@ -204,7 +217,7 @@ public class ReservatieRepository
     public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
         Reservatie oldReservatie = reservatie;
         //De parameters setten
-        reservatie.setAantal(aantal);
+        reservatie.setAantalUitgeleend(aantal);
         reservatie.setGebruiker(gebruiker);
         reservatie.setStartDatum(startDate);
         reservatie.setEindDatum(endDate);

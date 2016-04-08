@@ -8,6 +8,9 @@ package domein;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -41,7 +44,8 @@ public class Reservatie
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int reservatieID;
 
-    private int aantal;
+    private int aantalUitgeleend;
+    private int aantalTeruggebracht;
 
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date startDatum, eindDatum, aanmaakDatum;
@@ -63,6 +67,9 @@ public class Reservatie
     @Enumerated(EnumType.STRING)
     @Column(name = "Discriminator")
     private ReservatieGebruikerEnum discriminator;
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private Set<Dag> dagen = new HashSet<>();
     
     protected Reservatie()
     {
@@ -70,9 +77,10 @@ public class Reservatie
 
     ;
    
-   public Reservatie( int aantal, Date startDatum, Date eindDatum, Date aanmaakDatum, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
+   public Reservatie( int aantalUitgeleend, int aantalTeruggebracht, Date startDatum, Date eindDatum, Date aanmaakDatum,Set<Dag> dagen, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
     {
-        setAantal(aantal);
+        setAantalUitgeleend(aantalUitgeleend);
+        setAantalTeruggebracht(aantalTeruggebracht);
         setStartDatum(startDatum);
         setEindDatum(eindDatum);
         setAanmaakDatum(aanmaakDatum);
@@ -80,6 +88,7 @@ public class Reservatie
         setGebruiker(gebruiker);
         setMateriaal(materiaal);
         setDiscriminator(gebruiker.getType());
+        setDagen(dagen);
         reservatieState = getReservatieState();
     }
 
@@ -106,7 +115,7 @@ public class Reservatie
 
     public IntegerProperty aantalProperty()
     {
-        return new SimpleIntegerProperty(getAantal());
+        return new SimpleIntegerProperty(getAantalUitgeleend());
     }
 
     public StringProperty beginDatumProperty()
@@ -169,14 +178,20 @@ public class Reservatie
         return reservatieID;
     }
 
-    public int getAantal()
+    public int getAantalUitgeleend()
     {
-        return aantal;
+        return aantalUitgeleend;
+    }
+    public int getAantalTeruggebracht(){
+        return aantalTeruggebracht;
     }
 
-    public void setAantal(int aantal)
+    public void setAantalUitgeleend(int aantalUitgeleend)
     {
-        this.aantal = aantal;
+        this.aantalUitgeleend = aantalUitgeleend;
+    }
+    public void setAantalTeruggebracht(int aantalTeruggebracht){
+        this.aantalTeruggebracht = aantalTeruggebracht;
     }
 
     public Date getBeginDatum()
@@ -207,6 +222,14 @@ public class Reservatie
     public void setReservatieStateEnum(ReservatieStateEnum reservatieStateEnum)
     {
         this.reservatieStateEnum = reservatieStateEnum;
+    }
+
+    public Set<Dag> getDagen() {
+        return dagen;
+    }
+
+    public void setDagen(Set<Dag> dagen) {
+        this.dagen = dagen;
     }
 
     public Gebruiker getGebruiker()
