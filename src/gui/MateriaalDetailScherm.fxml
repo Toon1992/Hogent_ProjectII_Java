@@ -154,7 +154,7 @@
                </padding>
             </Label>
             <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
-            <Label fx:id="lblErrorMessage" prefHeight="21.0" prefWidth="591.0" GridPane.columnIndex="2" GridPane.columnSpan="2" />
+            <Label fx:id="lblErrorMessage" prefHeight="21.0" prefWidth="591.0" styleClass="label-error" GridPane.columnIndex="2" GridPane.columnSpan="2" />
            </children>
        </GridPane>
    </children>

@@ -68,4 +68,7 @@ public class MateriaalController extends Observable
     public void verwijderMateriaal(Materiaal materiaal){
         materiaalCatalogus.verwijderMateriaal(materiaal);
     }
+    public void wijzigMateriaal(Materiaal materiaal){
+        materiaalCatalogus.wijzigMateriaal(materiaal);
+    }
 }

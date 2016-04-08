@@ -5,6 +5,9 @@
  */
 package controller;
 
+import domein.Doelgroep;
+import domein.Firma;
+import domein.Leergebied;
 import java.net.URL;
 import java.util.Observable;
 import java.util.Observer;
@@ -12,6 +15,9 @@ import java.util.ResourceBundle;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,14 +29,15 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import repository.FirmaRepository;
+import repository.GebiedenRepository;
 
 /**
  * FXML Controller class
  *
  * @author donovandesmedt
  */
-public class MateriaalDetailSchermController extends VBox
-{
+public class MateriaalDetailSchermController extends VBox {
 
     @FXML
     private ImageView imgViewMateriaal;
@@ -69,59 +76,67 @@ public class MateriaalDetailSchermController extends VBox
     private ToggleGroup group = new ToggleGroup();
     @FXML
     private Label lblErrorMessage;
+    private GebiedenRepository gebiedenRepo;
+    private FirmaRepository firmaRepo;
 
-    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal)
-    {
+    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
         this.materiaal = materiaal;
         this.mc = mc;
+        gebiedenRepo = new GebiedenRepository();
+        firmaRepo=new FirmaRepository();
         update(materiaal);
     }
 
     @FXML
-    private void wijzigFoto(MouseEvent event)
-    {
+    private void wijzigFoto(MouseEvent event) {
     }
 
     @FXML
-    private void materiaalWijzigen(ActionEvent event)
-    {
-        try
-        {
+    private void materiaalWijzigen(ActionEvent event) {
+        try {
+            Leergebied l = new Leergebied("l");
+            Doelgroep d = new Doelgroep("d");
+            //materiaal wijzigen
             materiaal.setNaam(txfNaam.getText());
             materiaal.setOmschrijving(txfOmschrijving.getText());
             materiaal.setAantal(Integer.parseInt(txfAantal.getText()));
             materiaal.setAantalOnbeschikbaar(Integer.parseInt(txfOnbeschikbaar.getText()));
             materiaal.setPlaats(txfPlaats.getText());
+            if (!listDoelgroep.getSelectionModel().getSelectedItems().isEmpty()) {
+                
+                materiaal.setDoelgroepen(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getSelectionModel().getSelectedItems(), d));
+            }
+            if(!listLeergbedied.getSelectionModel().getSelectedItems().isEmpty()){
+                materiaal.setLeergebieden(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getSelectionModel().getSelectedItems(), l));
+            }
+
             materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
             String prijs = txfPrijs.getText().replace(",", ".");
             materiaal.setPrijs(Double.valueOf(prijs));
-            materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
-
-            materiaal.setUitleenbaarheid(radioStudent.isSelected());
-            lblErrorMessage.setText("");
-
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
+            
+            //firma
+            Firma f=firmaRepo.geefFirma(materiaal.getFirma().getNaam()); // omdat als het al gewijzigd is dan kan je nooit opvragen
+            f.setNaam(txfFirma.getText());
+            f.setEmailContact(txfContactPersoon.getText());
+            
+            materiaal.setFirma(f); 
+            firmaRepo.wijzigFirma(f);
+            mc.wijzigMateriaal(materiaal);
             lblErrorMessage.setText("");
+            LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(),"Al uw wijzigingen zijn correct doorgevoerd", "Ok");
+            
 
-            Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
-            succesvol.setTitle("Materiaal gewijzigd");
-            succesvol.setHeaderText(materiaal.getNaam());
-            succesvol.setContentText("Al uw wijzigingen zijn correct doorgevoerd!");
-            succesvol.showAndWait();
-
-        } catch (NumberFormatException ex)
-        {
+        } catch (NumberFormatException ex) {
             lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
-        } catch (IllegalArgumentException ex)
-        {
+        } catch (IllegalArgumentException ex) {
             lblErrorMessage.setText(ex.getMessage());
         }
 
     }
 
-    public void update(Materiaal materiaal)
-    {
+    public void update(Materiaal materiaal) {
         imgViewMateriaal.setImage(new Image(materiaal.getFoto()));
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
@@ -142,8 +157,7 @@ public class MateriaalDetailSchermController extends VBox
     }
 
     @FXML
-    private void terugNaarOverzicht(ActionEvent event)
-    {
+    private void terugNaarOverzicht(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
         LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, (HBox) LoaderSchermen.getInstance().getNode());
         //LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController(mc));
