@@ -9,6 +9,7 @@
     <class>domein.Materiaal</class>
     <class>domein.Gebruiker</class>
     <class>domein.Reservatie</class>
+    <class>domein.Dag</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DidactischeLeermiddelen"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

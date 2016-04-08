@@ -58,7 +58,8 @@ public class ReservatieController
 //        setChanged();
 //        notifyObservers(reservatie);
     }
-    public void maakReservatie(Reservatie reservatie){
+    public void maakReservatie(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal){
+        Reservatie reservatie = repository.maakReservatieObject(aantal, aantalTerug, startDate, endDate, status, gebruiker, materiaal);
         repository.voegReservatieToe(reservatie);
     }
     public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){

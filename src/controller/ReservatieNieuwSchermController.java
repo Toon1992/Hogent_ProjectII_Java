@@ -137,7 +137,8 @@ public class ReservatieNieuwSchermController extends GridPane {
                 flag = false;
                 if (isOk)
                 {
-                    rc.maakReservatie(new Reservatie(aantal, startDate, endDate, new Date(), status, gebruiker, materiaal));
+
+                    rc.maakReservatie(aantal,0, startDate, endDate, status, gebruiker, materiaal);
                     if(automatischOverrulen){
                         rc.overruleStudent(aantalOverruled);
                     }
@@ -151,7 +152,7 @@ public class ReservatieNieuwSchermController extends GridPane {
             boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie maken", "Ben je zeker dat je de reservatie wilt opslaan", "Nee", "Ja");
             if (isOk)
             {
-                rc.maakReservatie(new Reservatie(aantal, startDate, endDate, new Date(), status, gebruiker, materiaal));
+                rc.maakReservatie(aantal,0, startDate, endDate, status, gebruiker, materiaal);
                 terug(null);
             }
 

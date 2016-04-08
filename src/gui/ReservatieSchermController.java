@@ -72,7 +72,9 @@ public class ReservatieSchermController extends HBox
     @FXML
     private ComboBox<Gebruiker> cmbNaam;
     @FXML
-    private TextField txfAantal;
+    private TextField txfAantalUitgeleend;
+    @FXML
+    private TextField txfAantalTerug;
     @FXML
     private Label lblMelding;
     @FXML
@@ -200,7 +202,7 @@ public class ReservatieSchermController extends HBox
         cmbStatus.setValue(reservatie.getReservatieStateEnum());
         cmbMateriaal.setValue(reservatie.getMateriaal());
         cmbNaam.setValue(reservatie.getGebruiker());
-        txfAantal.setText(String.format("%d", reservatie.getAantal()));
+        txfAantalUitgeleend.setText(String.format("%d", reservatie.getAantalUitgeleend()));
     }
 
     @FXML
@@ -213,7 +215,7 @@ public class ReservatieSchermController extends HBox
         Date endDate = dtpTerugbreng.getValue() == null ? null :Date.from(dtpTerugbreng.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
         int aantal;
         try{
-            aantal = Integer.parseInt(txfAantal.getText());
+            aantal = Integer.parseInt(txfAantalUitgeleend.getText());
         }
         catch (NumberFormatException e){
             aantal = 0;
@@ -226,7 +228,7 @@ public class ReservatieSchermController extends HBox
         berekenBeschikbaarheden(startDate, endDate, materiaal, gebruiker, aantal, status, flag);
     }
     private void berekenBeschikbaarheden(Date startDate, Date endDate, Materiaal materiaal, Gebruiker gebruiker, int aantal, ReservatieStateEnum status, boolean flag){
-        int[] beschikbaarheden = rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, aantal, reservatie.getAantal());
+        int[] beschikbaarheden = rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, aantal, reservatie.getAantalUitgeleend());
         int aantalBeschikbaar = beschikbaarheden[0];
         int aantalOverruled = beschikbaarheden[1];
         boolean automatischOverrulen = checkOverruul.isSelected();
