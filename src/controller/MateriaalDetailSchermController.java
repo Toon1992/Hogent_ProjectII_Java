@@ -134,11 +134,7 @@ public class MateriaalDetailSchermController extends VBox {
             materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
             lblErrorMessage.setText("");
-            Alert succesvol = new Alert(Alert.AlertType.CONFIRMATION);
-            succesvol.setTitle("Materiaal gewijzigd");
-            succesvol.setHeaderText(materiaal.getNaam());
-            succesvol.setContentText("Al uw wijzigingen zijn correct doorgevoerd!");
-
+            LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd" + materiaal.getNaam(), "Al uw wijzigingen zijn correct doorgevoerd!", "Ok");
 
         } catch (NumberFormatException ex) {
             lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
