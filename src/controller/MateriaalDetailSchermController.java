@@ -81,6 +81,8 @@ public class MateriaalDetailSchermController extends VBox {
     private FirmaRepository firmaRepo;
     private CheckComboBox<String> checkDoelgroepen;
     private CheckComboBox<String> checkLeergebieden;
+    private Leergebied l = new Leergebied("l");
+    Doelgroep d = new Doelgroep("d");
 
     public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
@@ -124,21 +126,19 @@ public class MateriaalDetailSchermController extends VBox {
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
         try {
-            Leergebied l = new Leergebied("l");
-            Doelgroep d = new Doelgroep("d");
+
             //materiaal wijzigen
             materiaal.setNaam(txfNaam.getText());
             materiaal.setOmschrijving(txfOmschrijving.getText());
             materiaal.setAantal(Integer.parseInt(txfAantal.getText()));
             materiaal.setAantalOnbeschikbaar(Integer.parseInt(txfOnbeschikbaar.getText()));
             materiaal.setPlaats(txfPlaats.getText());
-            if (!listDoelgroep.getSelectionModel().getSelectedItems().isEmpty()) {
-                
-                materiaal.setDoelgroepen(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getSelectionModel().getSelectedItems(), d));
-            }
-            if(!listLeergbedied.getSelectionModel().getSelectedItems().isEmpty()){
-                materiaal.setLeergebieden(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getSelectionModel().getSelectedItems(), l));
-            }
+
+            materiaal.setDoelgroepen(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
+
+
+            materiaal.setLeergebieden(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
+
 
             materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
             String prijs = txfPrijs.getText().replace(",", ".");
@@ -156,12 +156,6 @@ public class MateriaalDetailSchermController extends VBox {
             mc.wijzigMateriaal(materiaal);
             lblErrorMessage.setText("");
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(),"Al uw wijzigingen zijn correct doorgevoerd", "Ok");
-            
-
-            materiaal.getFirma().setEmailContact(txfContactPersoon.getText());
-            materiaal.setIsReserveerbaar(radioStudent.isSelected());
-            lblErrorMessage.setText("");
-            LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd" + materiaal.getNaam(), "Al uw wijzigingen zijn correct doorgevoerd!", "Ok");
 
         } catch (NumberFormatException ex) {
             lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
@@ -200,20 +194,22 @@ public class MateriaalDetailSchermController extends VBox {
     @FXML
     private void nieuwLeergebied(ActionEvent event){
         String leergebied = textInputDialog("Nieuwe leergebied", "Voeg een nieuw leergebied toe", "Voeg naam in:");
-        if(!leergebied.isEmpty()){
+        if(!leergebied.isEmpty()&&!checkLeergebieden.getItems().contains(leergebied)){
             checkLeergebieden = nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             linkComboboxListView();
             gp.add(checkLeergebieden,3, 4);
+            gebiedenRepo.voegNieuwGebiedToe(leergebied,l);
         }
 
     }
     @FXML
     private void nieuweDoelgroep(ActionEvent event){
         String doelgroep = textInputDialog("Nieuwe doelgroep", "Voeg een nieuwe doelgroep toe", "Voeg naam in:");
-        if(!doelgroep.isEmpty()){
+        if(!doelgroep.isEmpty()&&!checkDoelgroepen.getItems().contains(doelgroep)){
             checkDoelgroepen = nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             linkComboboxListView();
             gp.add(checkDoelgroepen,1,4);
+            gebiedenRepo.voegNieuwGebiedToe(doelgroep,d);
         }
 
     }

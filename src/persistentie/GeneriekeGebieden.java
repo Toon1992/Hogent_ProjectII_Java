@@ -16,13 +16,14 @@ import java.util.Set;
  *
  * @author manu
  * @param <T>
- * @param <Leergebied>
  */
-public class GeneriekeGebieden<T>  implements GeneriekeGebiedenInterface<T>{
+public class GeneriekeGebieden<T> implements GeneriekeGebiedenInterface<T> {
 
-    public GeneriekeGebieden(){
-        
+
+    public GeneriekeGebieden() {
+
     }
+
     @Override
     public Set<T> geefGebieden(List<String> namen, T filter) {
         Set<T> filters=new HashSet<>();
@@ -55,10 +56,28 @@ public class GeneriekeGebieden<T>  implements GeneriekeGebiedenInterface<T>{
         }
         return filters;
     }
-    
-    
-    
-    
+
+    @Override
+    public <T>void voegGebiedToe(String naam, T filter) {
+        if(filter.getClass()==Doelgroep.class){
+            Doelgroep d=new Doelgroep(naam);
+            GenericDaoJpa<Doelgroep> jpa=new GenericDaoJpa<>(Doelgroep.class);
+            jpa.startTransaction();
+            jpa.insert(d);
+            jpa.commitTransaction();
+        }
+
+        if(filter.getClass()==Leergebied.class){
+            Leergebied l=new Leergebied(naam);
+            GenericDaoJpa<Leergebied> jpa=new GenericDaoJpa<>(Leergebied.class);
+            jpa.startTransaction();
+            jpa.insert(l);
+            jpa.commitTransaction();
+
+        }
+    }
+
+
 }
 
     

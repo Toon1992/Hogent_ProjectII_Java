@@ -15,4 +15,5 @@ import java.util.Set;
  */
 public interface GeneriekeGebiedenInterface<T>{
     public Set<T> geefGebieden(List<String> namen,T filter);
+    public <T>void voegGebiedToe(String naam,T filter);
 }

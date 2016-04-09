@@ -23,4 +23,8 @@ public class GebiedenRepository<T> {
     public Set<T> geefGebiedenVoorNamen(List<String> namen,T naam){
         return filter.geefGebieden(namen, naam);
     }
+
+    public void voegNieuwGebiedToe(String naam,T gebied){
+        filter.voegGebiedToe(naam,gebied);
+    }
 }
