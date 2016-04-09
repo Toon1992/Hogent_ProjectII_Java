@@ -132,6 +132,7 @@
  * Author: Pedro Duque Vieira
  * http://pixelduke.wordpress.com/2012/10/23/jmetro-windows-8-controls-on-java/
  */
+
 .button {
     -fx-padding: 5 22 5 22;
     -fx-border-color: #009C7C;
@@ -141,6 +142,17 @@
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: white;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.button-inverse{
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #009C7C;
+    -fx-border-width: 0.5;
+    -fx-background-radius: 0;
+    -fx-background-color: white;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #009C7C;
     -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 .text-field{
@@ -153,6 +165,12 @@
     -fx-border-width: 0.5;
     -fx-background-color: white;
     -fx-text-fill: #009C7C;
+}
+.button-inverse:hover{
+    -fx-border-color: #009C7C;
+    -fx-border-width: 0.5;
+    -fx-background-color: #009C7C;
+    -fx-text-fill: white;
 }
 
 .button:pressed, .button:default:hover:pressed {
@@ -167,7 +185,13 @@
     -fx-border-radius: 0, 0;
     -fx-border-insets: 1 1 1 1, 0;
 }
-
+.button-inverse:focused{
+    -fx-border-color: #009C7C, #009C7C;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
+    -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
+}
 .button:disabled, .button:default:disabled {
     -fx-opacity: 0.4;
     -fx-background-color: rgba(0, 156, 124, 0.2);

@@ -5,10 +5,12 @@
  */
 package domein;
 
+import java.util.Set;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 /**
@@ -19,8 +21,8 @@ import javax.persistence.OneToOne;
 public class Gebruiker
 {
 
-    @OneToOne(mappedBy = "gebruiker")
-    private Reservatie reservatie;
+    @OneToMany(mappedBy = "gebruiker")
+    private Set<Reservatie> reservaties;
     @Id
     private String email;
     

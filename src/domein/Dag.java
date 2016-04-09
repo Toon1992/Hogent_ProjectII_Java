@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
+import javax.persistence.Temporal;
 
 /**
  * Created by donovandesmedt on 08/04/16.
@@ -14,6 +15,7 @@ public class Dag implements Comparable<Dag>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int dagId;
+    @Temporal(javax.persistence.TemporalType.DATE)
     public Date datum;
     protected Dag(){}
     public Dag(Date datum){

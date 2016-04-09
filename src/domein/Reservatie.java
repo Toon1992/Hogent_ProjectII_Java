@@ -53,7 +53,7 @@ public class Reservatie
     @Enumerated(EnumType.ORDINAL)
     private ReservatieStateEnum reservatieStateEnum;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "GebruikerEmail")
     private Gebruiker gebruiker;
 
