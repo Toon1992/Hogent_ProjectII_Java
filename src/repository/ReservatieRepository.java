@@ -28,7 +28,7 @@ import stateMachine.ReservatieStateEnum;
  *
  * @author ToonDT
  */
-public class ReservatieRepository
+public class ReservatieRepository implements IReservatieRepository
 {
 
     private FilteredList<Reservatie> filterReservaties;
@@ -40,6 +40,7 @@ public class ReservatieRepository
         reservatieDao = new ReservatieDaoJpa();
     }
 
+    @Override
     public SortedList<Reservatie> geefReservaties()
     {
         if (filterReservaties == null)
@@ -50,6 +51,7 @@ public class ReservatieRepository
         return new SortedList<>(filterReservaties);
     }
 
+    @Override
     public void Zoek(String zoekTerm)
     {
         filterReservaties.setPredicate(r
@@ -64,6 +66,7 @@ public class ReservatieRepository
         });
     }
 
+    @Override
     public void zoekOpBeginDatum(LocalDate zoekTerm)
     {
         Date datum = geefEersteDagVanDeWeek(zoekTerm);
@@ -79,6 +82,7 @@ public class ReservatieRepository
         });
     }
 
+    @Override
     public void zoekOpEindDatum(LocalDate zoekTerm)
     {
         Date datum = geefEersteDagVanDeWeek(zoekTerm);
@@ -150,9 +154,11 @@ public class ReservatieRepository
         return Date.from(instant);
     }
 
+    @Override
     public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
         return reservatieDao.getReservaties(startDatum, eindDatum, materiaal);
     }
+    @Override
     public int[] berekenAantalbeschikbaarMateriaal(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal, int origineelAantal){
         List<Reservatie> overschrijvendeReservaties = geefReservatiesByDatum(startDate, endDate, materiaal);
         int aantalStudent = 0;
@@ -167,6 +173,7 @@ public class ReservatieRepository
         int aantalOverruled = aantalStudent+aantalGereserveerdeStuks+ aantal - materiaal.getAantal() - materiaal.getAantalOnbeschikbaar();
         return new int[]{aantalBeschikbaar, aantalOverruled};
     }
+    @Override
     public void overruleStudent(int aantalOverruled){
         List<Reservatie> reservaties = geefReservaties();
         reservaties = reservaties.stream().filter(r -> r.getGebruiker().getType().equals("ST") && r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd)).sorted(Comparator.comparing(Reservatie::getAanmaakDatum)).collect(Collectors.toList());
@@ -191,6 +198,7 @@ public class ReservatieRepository
             }
         }
     }
+    @Override
     public Reservatie maakReservatieObject(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal){
         SortedSet<Dag> dagen = new TreeSet<>();
         if(gebruiker.getType().equals("LE")){
@@ -206,6 +214,7 @@ public class ReservatieRepository
         }
         return new Reservatie(aantal, aantalTerug, startDate, endDate, new Date(), dagen, status, gebruiker, materiaal);
     }
+    @Override
     public void voegReservatieToe(Reservatie reservatie){
         reservatieDao.startTransaction();
         reservatieDao.insert(reservatie);
@@ -214,6 +223,7 @@ public class ReservatieRepository
         filterReservatie.add(reservatie);
         filterReservaties = new FilteredList(filterReservatie, p -> true);
     }
+    @Override
     public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
         Reservatie oldReservatie = reservatie;
         //De parameters setten
@@ -235,6 +245,7 @@ public class ReservatieRepository
         reservatieDao.update(reservatie);
         reservatieDao.commitTransaction();
     }
+    @Override
     public void verwijderReservatue(Reservatie reservatie)
     {
         reservatieDao.startTransaction();

@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
+import repository.IReservatieRepository;
 import repository.ReservatieRepository;
 import stateMachine.ReservatieStateEnum;
 
@@ -27,11 +28,14 @@ import stateMachine.ReservatieStateEnum;
  */
 public class ReservatieController
 {
-    private ReservatieRepository repository;
+    private IReservatieRepository repository;
     
     public ReservatieController()
     {
-        repository = new ReservatieRepository();
+        setReservatieRepository(new ReservatieRepository());
+    }
+    public void setReservatieRepository(IReservatieRepository repository){
+        this.repository = repository;
     }
     
     public SortedList<Reservatie> getReservaties()
