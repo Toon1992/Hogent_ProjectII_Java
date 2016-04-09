@@ -146,7 +146,7 @@ public class MateriaalDetailSchermController extends VBox {
 
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
             
-            //firma
+            //firma maken
             Firma f=firmaRepo.geefFirma(materiaal.getFirma().getNaam()); // omdat als het al gewijzigd is dan kan je nooit opvragen
             f.setNaam(txfFirma.getText());
             f.setEmailContact(txfContactPersoon.getText());
