@@ -97,10 +97,10 @@ public class MateriaalDetailSchermController extends VBox {
 
         update(materiaal);
 
-        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList( "Kleuter onderwijs", "Lager onderwijs", "Secundair onderwijs"));
+        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(d)));
         checkDoelgroepen.setMaxWidth(150);
 
-        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList("Mens", "Maatschappij", "Geschiedenis", "Wetenschap", "Biologie", "Fysica", "Techniek", "Wiskunde", "Aardrijkskunde"));
+        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(150);
 
         gp = (GridPane) this.getChildren().get(0);
@@ -194,6 +194,9 @@ public class MateriaalDetailSchermController extends VBox {
     @FXML
     private void nieuwLeergebied(ActionEvent event){
         String leergebied = textInputDialog("Nieuwe leergebied", "Voeg een nieuw leergebied toe", "Voeg naam in:");
+        if(checkLeergebieden.getItems().contains(leergebied)){
+            lblErrorMessage.setText("Dit leergebied bestaat al!");
+        }
         if(!leergebied.isEmpty()&&!checkLeergebieden.getItems().contains(leergebied)){
             checkLeergebieden = nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             linkComboboxListView();
@@ -205,6 +208,9 @@ public class MateriaalDetailSchermController extends VBox {
     @FXML
     private void nieuweDoelgroep(ActionEvent event){
         String doelgroep = textInputDialog("Nieuwe doelgroep", "Voeg een nieuwe doelgroep toe", "Voeg naam in:");
+        if(checkDoelgroepen.getItems().contains(doelgroep)){
+            lblErrorMessage.setText("Deze doelgroep bestaat al!");
+        }
         if(!doelgroep.isEmpty()&&!checkDoelgroepen.getItems().contains(doelgroep)){
             checkDoelgroepen = nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             linkComboboxListView();

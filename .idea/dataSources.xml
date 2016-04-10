@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="2312898772">
+  <component name="DataSourceManagerImpl" format="xml" hash="3740591066">
     <data-source source="LOCAL" name="Derby (Remote) - DidactischeLeermiddelen@localhost" uuid="bc23b540-c32f-4008-b22a-e1a287eca163">
       <driver-ref>derby.remote</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.apache.derby.jdbc.ClientDriver</jdbc-driver>
       <jdbc-url>jdbc:derby://localhost:1527/DidactischeLeermiddelen;create=true</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="SQL Server (Microsoft) - DidactischeLeermiddelen@PCMANU" uuid="17b9a73d-89a0-4f56-8d4e-ad2136ecbb11">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://PCMANU\SQLEXPRESS:1433;databaseName=DidactischeLeermiddelen</jdbc-url>
     </data-source>
   </component>
 </project>

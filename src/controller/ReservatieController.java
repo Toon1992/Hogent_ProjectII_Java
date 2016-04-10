@@ -13,12 +13,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
-import repository.IReservatieRepository;
 import repository.ReservatieRepository;
 import stateMachine.ReservatieStateEnum;
 
@@ -28,13 +26,13 @@ import stateMachine.ReservatieStateEnum;
  */
 public class ReservatieController
 {
-    private IReservatieRepository repository;
+    private ReservatieRepository repository;
     
     public ReservatieController()
     {
         setReservatieRepository(new ReservatieRepository());
     }
-    public void setReservatieRepository(IReservatieRepository repository){
+    public void setReservatieRepository(ReservatieRepository repository){
         this.repository = repository;
     }
     

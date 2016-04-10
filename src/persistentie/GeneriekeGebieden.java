@@ -7,6 +7,9 @@ package persistentie;
 
 import domein.Doelgroep;
 import domein.Leergebied;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -25,7 +28,7 @@ public class GeneriekeGebieden<T> implements GeneriekeGebiedenInterface<T> {
     }
 
     @Override
-    public Set<T> geefGebieden(List<String> namen, T filter) {
+    public Set<T> geefGebiedenVoorNamen(List<String> namen, T filter) {
         Set<T> filters=new HashSet<>();
         List<T> lijst=new ArrayList<>();
         try{
@@ -75,6 +78,29 @@ public class GeneriekeGebieden<T> implements GeneriekeGebiedenInterface<T> {
             jpa.commitTransaction();
 
         }
+    }
+
+    @Override
+    public ObservableList<String> geefAlleGebieden(T filter) {
+        if(filter.getClass()==Doelgroep.class){
+            GenericDaoJpa<Doelgroep> jpa=new GenericDaoJpa<>(Doelgroep.class);
+            List<String> namen=new ArrayList<>();
+            for (Doelgroep d:jpa.findAll()) {
+                namen.add(d.getNaam());
+            }
+            return FXCollections.observableList(namen);
+        }
+
+        if(filter.getClass()==Leergebied.class){
+            GenericDaoJpa<Leergebied> jpa=new GenericDaoJpa<>(Leergebied.class);
+            List<String> namen=new ArrayList<>();
+            for (Leergebied d:jpa.findAll()) {
+                namen.add(d.getNaam());
+            }
+            return FXCollections.observableList(namen);
+        }
+
+        return null;
     }
 
 

@@ -7,6 +7,8 @@ package repository;
 
 import java.util.List;
 import java.util.Set;
+
+import javafx.collections.ObservableList;
 import persistentie.GeneriekeGebieden;
 
 /**
@@ -21,10 +23,13 @@ public class GebiedenRepository<T> {
         filter=new GeneriekeGebieden();
     }
     public Set<T> geefGebiedenVoorNamen(List<String> namen,T naam){
-        return filter.geefGebieden(namen, naam);
+        return filter.geefGebiedenVoorNamen(namen, naam);
     }
 
     public void voegNieuwGebiedToe(String naam,T gebied){
         filter.voegGebiedToe(naam,gebied);
+    }
+    public ObservableList<String> geefAlleGebieden(T naam){
+        return filter.geefAlleGebieden(naam);
     }
 }
