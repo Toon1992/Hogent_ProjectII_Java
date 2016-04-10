@@ -6,15 +6,22 @@
 package gui;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Optional;
 
+import controller.MateriaalOverzichtSchermController;
+import domein.Gebruiker;
+import domein.Materiaal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import stateMachine.ReservatieStateEnum;
 
 /**
  *
@@ -25,6 +32,9 @@ public class LoaderSchermen
 
     private static LoaderSchermen instance = null;
     private boolean loggedIn;
+    private double screenWidth;
+    private double screenHeight;
+    private Node node;
 
     protected LoaderSchermen()
     {
@@ -37,6 +47,22 @@ public class LoaderSchermen
             instance = new LoaderSchermen();
         }
         return instance;
+    }
+
+    public double getScreenWidth() {
+        return screenWidth;
+    }
+
+    public void setScreenWidth(double screenWidth) {
+        this.screenWidth = screenWidth;
+    }
+
+    public double getScreenHeight() {
+        return screenHeight;
+    }
+
+    public void setScreenHeigth(double screenHeight) {
+        this.screenHeight = screenHeight;
     }
 
     public void load(String titel, Parent scherm, int width, int height, Node node)
@@ -77,7 +103,7 @@ public class LoaderSchermen
 
         return result.get() == Ok;
     }
-    
+
     public boolean popupMessageOneButton(String title, String message, String button1)
     {
         Alert boodschap = new Alert(Alert.AlertType.CONFIRMATION);
@@ -85,15 +111,45 @@ public class LoaderSchermen
         boodschap.setHeaderText(message);
 
         ButtonType Ok = new ButtonType(button1);
-       
+
         boodschap.getButtonTypes().setAll(Ok);
         Optional<ButtonType> result = boodschap.showAndWait();
 
         return result.get() == Ok;
     }
+    public void setMateriaalOvezichtScherm(BorderPane bp, HBox mco){
 
-    public boolean isLoggedIn()
-    {
+        setWidthAndHeight(bp);
+        mco.setPrefWidth(getScreenWidth());
+        mco.setPrefHeight(getScreenHeight()*0.85);
+        bp.setCenter(mco);
+    }
+    public String reservatieInvoerControle(int aantal, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker){
+        if(aantal == 0){
+            return "Voer een positief aantal in groter dan 0";
+        }
+        if(eindDatum == null){
+            return "Selecteer een terugbrengdatum";
+
+        }
+        if(startDatum == null){
+            return "Selecteer een ophaaldatum";
+        }
+        if(eindDatum != null && startDatum != null && eindDatum.before(startDatum)){
+            return "Tergubrengdatum moet groter zijn dat ophaaldatum";
+        }
+        if(status == null){
+            return "Selecteer een status";
+        }
+        if(materiaal == null){
+            return "Selecteer een materiaal";
+        }
+        if(gebruiker == null){
+            return "Selecteer een gebruiker";
+        }
+        return "";
+    }
+    public boolean isLoggedIn(){
         return loggedIn;
     }
 
@@ -102,4 +158,14 @@ public class LoaderSchermen
         this.loggedIn = loggedIn;
     }
 
+    public void setWidthAndHeight(Node node){
+        setScreenHeigth(node.getScene().getHeight());
+        setScreenWidth(node.getScene().getWidth());
+    }
+    public void setNode(Node node){
+        this.node = node;
+    }
+    public Node getNode(){
+        return node;
+    }
 }

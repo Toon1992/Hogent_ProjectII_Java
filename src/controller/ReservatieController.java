@@ -5,12 +5,20 @@
  */
 package controller;
 
+import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 import javafx.collections.transformation.SortedList;
+import javafx.scene.control.DatePicker;
+import javafx.util.StringConverter;
 import repository.ReservatieRepository;
+import stateMachine.ReservatieStateEnum;
 
 /**
  *
@@ -22,12 +30,15 @@ public class ReservatieController
     
     public ReservatieController()
     {
-        repository = new ReservatieRepository();
+        setReservatieRepository(new ReservatieRepository());
+    }
+    public void setReservatieRepository(ReservatieRepository repository){
+        this.repository = repository;
     }
     
     public SortedList<Reservatie> getReservaties()
     {
-        return repository.geefMaterialen();
+        return repository.geefReservaties();
     }
     
     public void zoek(String zoekterm)
@@ -49,9 +60,50 @@ public class ReservatieController
 //        setChanged();
 //        notifyObservers(reservatie);
     }
-    
-     public void verwijderReservatie(Reservatie reservatie)
+    public void maakReservatie(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal){
+        Reservatie reservatie = repository.maakReservatieObject(aantal, aantalTerug, startDate, endDate, status, gebruiker, materiaal);
+        repository.voegReservatieToe(reservatie);
+    }
+    public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
+        repository.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
+    }
+    public void overruleStudent(int aantalOverruled){
+        repository.overruleStudent(aantalOverruled);
+    }
+    public void verwijderReservatie(Reservatie reservatie)
      {
          repository.verwijderReservatue(reservatie);
      }
+    public List<Reservatie> getReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
+        return repository.geefReservatiesByDatum(startDatum, eindDatum, materiaal);
+    }
+    public int[] berekenAantalBeschikbaar(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal, int origineelAantal){
+        return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal, origineelAantal);
+    }
+    public void setFormatDatepicker(DatePicker dp){
+        dp.setOnShowing(e-> Locale.setDefault(Locale.Category.FORMAT,Locale.FRANCE));
+        String pattern = "dd-MM-yyy";
+        dp.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+    });
+
+}
 }

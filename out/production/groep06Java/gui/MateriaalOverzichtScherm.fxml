@@ -13,7 +13,9 @@
          <children>
             <GridPane fx:id="gridFilters" styleClass="background" VBox.vgrow="ALWAYS">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="136.0" minWidth="10.0" prefWidth="136.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="94.0" minWidth="10.0" prefWidth="21.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -26,32 +28,12 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
-                  <Label styleClass="label-header-inverse" text="Filters" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Label styleClass="label-header-inverse" text="Filters" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Label styleClass="label-inverse" text="Doelgroep" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <ChoiceBox fx:id="choiceDoelgroep" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="choiceLeergebied" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="choiceUitleenbaarheid" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
-                  <ChoiceBox fx:id="choiceFirma" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
                   <Label styleClass="label-inverse" text="Leegebied" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
@@ -72,12 +54,7 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <ChoiceBox fx:id="choicePlaats" prefWidth="150.0" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
-                     <GridPane.margin>
-                        <Insets right="25.0" />
-                     </GridPane.margin>
-                  </ChoiceBox>
-                  <TextField fx:id="txfZoek" maxWidth="200.0" onKeyPressed="#zoekMateriaal" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <TextField fx:id="txfZoek" maxWidth="200.0" onKeyPressed="#zoekMateriaal" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>
@@ -108,7 +85,7 @@
                <children>
                   <Button fx:id="btnWijzig" mnemonicParsing="false" onAction="#wijzigMateriaal" text="Wijzig" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                   <Button fx:id="btnNieuw" mnemonicParsing="false" onAction="#nieuwMateriaal" text="Nieuw" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#toonDetailsMateriaal" text="Details" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                  <Button fx:id="btnVerwijder" mnemonicParsing="false" onAction="#verwijderMateriaal" text="Verwijder" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
                </children>
             </GridPane>
          </children>

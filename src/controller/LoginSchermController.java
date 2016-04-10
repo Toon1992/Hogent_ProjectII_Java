@@ -72,6 +72,7 @@ public class LoginSchermController extends GridPane
             lblUitloggen = (Label) gp.getChildren().get(gp.getChildren().size() -1 );
             lblUitloggen.setText("Uitloggen");
             LoaderSchermen.getInstance().setLoggedIn(true);
+            LoaderSchermen.getInstance().setWidthAndHeight(bp);
             bp.setCenter(new StartSchermController(gc));
             //aLoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
         } catch (EmailException e) {
@@ -81,7 +82,7 @@ public class LoginSchermController extends GridPane
             lblWachtwoord.setText(e.getLocalizedMessage());
         } catch (EntityNotFoundException e)
         {
-            lblLogin.setText("Email of wachtwoord ongelidg");
+            lblLogin.setText("Email of wachtwoord ongeldig");
         }
     }
 

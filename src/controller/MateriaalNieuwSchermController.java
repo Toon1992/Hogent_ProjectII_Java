@@ -11,7 +11,10 @@ import java.util.*;
 import domein.Doelgroep;
 import domein.Firma;
 import domein.Leergebied;
+import exceptions.AantalException;
+import exceptions.NaamException;
 import gui.LoaderSchermen;
+import java.io.File;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -66,22 +69,23 @@ public class MateriaalNieuwSchermController extends VBox {
     private Button btnAddImage;
     @FXML
     private Button btnToevoegen;
+    @FXML
+    private Label lblError;
 
     private MateriaalController mc;
     private List<Doelgroep> doelgroepen;
     private List<Leergebied> leergebieden;
     private FileChooser fileChooser;
-    private Stage stage = new Stage();
-    private String foto = "test";
     private ToggleGroup group = new ToggleGroup();
-    public MateriaalNieuwSchermController(MateriaalController mc){
+    private String foto = "/images/plus.png";
+
+    public MateriaalNieuwSchermController(MateriaalController mc) {
         LoaderSchermen.getInstance().setLocation("MateriaalNieuwScherm.fxml", this);
         this.mc = mc;
 
         //Scene scene = this.getScene();
         doelgroepen = new ArrayList<>();
-        doelgroepen.add(new Doelgroep("test"));
-        doelgroepen.add(new Doelgroep("test2"));
+        doelgroepen.addAll(Arrays.asList(new Doelgroep("Kleuter"), new Doelgroep("Lager"), new Doelgroep("Secundair")));
         ObservableList<String> doelgroepenString = FXCollections.observableArrayList();
         doelgroepen.stream().forEach((d) -> {
             doelgroepenString.add(d.getNaam());
@@ -90,8 +94,7 @@ public class MateriaalNieuwSchermController extends VBox {
         listDoelgroep.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 
         leergebieden = new ArrayList<>();
-        leergebieden.add(new Leergebied("test"));
-        leergebieden.add(new Leergebied("test2"));
+        leergebieden.addAll(Arrays.asList(new Leergebied("Mens"), new Leergebied("Maatschappij"), new Leergebied("Geschiedenis"), new Leergebied("Wetenschap"), new Leergebied("Biologie"), new Leergebied("Fysica"), new Leergebied("Techniek"), new Leergebied("Wiskunde"), new Leergebied("Aardrijkskunde")));
         ObservableList<String> leergebiedenString = FXCollections.observableArrayList();
         leergebieden.stream().forEach((d) -> {
             leergebiedenString.add(d.getNaam());
@@ -112,43 +115,11 @@ public class MateriaalNieuwSchermController extends VBox {
 
     @FXML
     private void voegToe(ActionEvent event) {
-        String naam ="", omschrijving ="", plaats ="", firmaNaam = "", firmaContact = "";
-        int artikelNr = 0, aantal = 0, aantalOnbeschikbaar = 0;
-        double prijs = 0;
+        String naam = "",  omschrijving = "", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
         boolean uitleenbaar;
-        Firma firma = null;
         Set<Doelgroep> doelgroepen = new HashSet<>();
         Set<Leergebied> leergebieden = new HashSet<>();
-        if (txfNaam.getText() != null) {
-            naam = txfNaam.getText();
-        }
-        if (txfOmschrijving.getText() != null) {
-            omschrijving = txfOmschrijving.getText();
-        }
-        if (txfPlaats.getText() != null) {
-            plaats = txfPlaats.getText();
-        }
-        if (txfArtikelNummer.getText() != null) {
-            artikelNr = Integer.parseInt(txfArtikelNummer.getText());
-        }
-        if (txfAantal.getText() != null) {
-            aantal = Integer.parseInt(txfAantal.getText());
-        }
-        if (txfOnbeschikbaar.getText() != null) {
-            aantalOnbeschikbaar = Integer.parseInt(txfOnbeschikbaar.getText());
-        }
-        if (txfPrijs.getText() != null) {
-            prijs = Double.parseDouble(txfPrijs.getText());
-        }
-        if (txfFirma.getText() != null) {
-            firmaNaam = txfFirma.getText();
-        }
-        if (txfContactPersoon.getText() != null) {
-            firmaContact = txfContactPersoon.getText();
-        }
-        if (txfFirma.getText() != null && txfContactPersoon.getText() != null) {
-            firma = new Firma(firmaNaam, firmaContact);
-        }
+
         listDoelgroep.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
             doelgroepen.add(new Doelgroep(s));
         });
@@ -156,23 +127,38 @@ public class MateriaalNieuwSchermController extends VBox {
         listLeergbedied.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
             leergebieden.add(new Leergebied(s));
         });
+        naam = txfNaam.getText();
+        omschrijving = txfOmschrijving.getText();
+        plaats = txfPlaats.getText();
+        firmaNaam = txfFirma.getText();
+        firmaContact = txfContactPersoon.getText();
+        artikelNrString = txfArtikelNummer.getText();
+        aantalString = txfAantal.getText();
+        aantalOnbeschikbaarString = txfOnbeschikbaar.getText();
+        prijsString = txfPrijs.getText();
 
         uitleenbaar = radioStudent.isSelected();
-        mc.voegMateriaalToe(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
-        terugNaarOverzicht(null);
-        System.out.println("toegevoegd");
+        try {
+            mc.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+            terugNaarOverzicht(null);
+        } catch (NaamException | AantalException e) {
+            lblError.setText(e.getLocalizedMessage());
+        }
+
     }
 
     @FXML
     private void terugNaarOverzicht(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter(new MateriaalOverzichtSchermController(mc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController(mc));
     }
 
     @FXML
     private void voegFotoToe(ActionEvent event) {
-        //        File file = fileChooser.showOpenDialog(stage);
-//        foto = file.getAbsolutePath();
+        Stage stage = (Stage) this.getScene().getWindow();
+         File file = fileChooser.showOpenDialog(stage);
+        foto = file.getAbsolutePath();
+        txfUrl.setText(file.getAbsolutePath());
     }
-    
+
 }

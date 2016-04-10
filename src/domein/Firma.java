@@ -9,19 +9,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 /**
  *
  * @author Thomas
  */
 @Entity
+@NamedQueries(
+{
+    @NamedQuery(name = "Firma.findByName", query = "Select a FROM Firma a WHERE a.naam= :Naam")
+})
 public class Firma
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int firmaId;
-    private String naam, emailContact;
+    private String naam, email, adres;
 
     protected Firma()
     {
@@ -30,7 +36,7 @@ public class Firma
     public Firma(String naam, String emailContact)
     {
         this.naam = naam;
-        this.emailContact = emailContact;
+        this.email = emailContact;
     }
 
     public String getNaam()
@@ -38,19 +44,19 @@ public class Firma
         return naam;
     }
 
-    private void setNaam(String naam)
+    public void setNaam(String naam)
     {
         this.naam = naam;
     }
 
     public String getEmailContact()
     {
-        return emailContact;
+        return email;
     }
 
     public void setEmailContact(String emailContact)
     {
-        this.emailContact = emailContact;
+        this.email = emailContact;
     }
 
 }

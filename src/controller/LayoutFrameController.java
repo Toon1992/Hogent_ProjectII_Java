@@ -6,6 +6,7 @@
 package controller;
 
 import gui.LoaderSchermen;
+import gui.ReservatieSchermController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -42,6 +43,7 @@ public class LayoutFrameController extends BorderPane {
     @FXML
     private void gaNaarStartScherm(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
+            LoaderSchermen.getInstance().setWidthAndHeight(this);
             this.setCenter(new StartSchermController(new GebruikerController()));
         }
     }
@@ -49,21 +51,23 @@ public class LayoutFrameController extends BorderPane {
     @FXML
     private void gaNaarCatalogus(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()) {
-            this.setCenter(new MateriaalOverzichtSchermController(new MateriaalController()));
+            LoaderSchermen.getInstance().setWidthAndHeight(this);
+            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(this, new MateriaalOverzichtSchermController(new MateriaalController()));
         }
     }
 
     @FXML
     private void gaNaarReservaties(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
-            this.setCenter(new ReservatieSchermController(new ReservatieController()));
+            LoaderSchermen.getInstance().setWidthAndHeight(this);
+            this.setCenter(new ReservatieSchermController(new ReservatieController(), new MateriaalController()));
         }
     }
 
     @FXML
     private void gaNaarBeheerders(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
-
+            LoaderSchermen.getInstance().setWidthAndHeight(this);
         }
     }
 
@@ -73,6 +77,7 @@ public class LayoutFrameController extends BorderPane {
         Label lblUitloggen = (Label) gp.getChildren().get(gp.getChildren().size() -1 );
         lblUitloggen.setText("");
         LoaderSchermen.getInstance().setLoggedIn(false);
+        LoaderSchermen.getInstance().setWidthAndHeight(this);
         this.setCenter(new LoginSchermController(new GebruikerController()));
     }
     

@@ -160,6 +160,11 @@
                   <Insets top="85.0" />
                </GridPane.margin>
             </Button>
+            <Label fx:id="lblError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="12">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
            </children>
        </GridPane>
    </children>

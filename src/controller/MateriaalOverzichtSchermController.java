@@ -5,13 +5,21 @@
  */
 package controller;
 
+import java.awt.image.BufferedImage;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,10 +29,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
+import org.controlsfx.control.CheckComboBox;
+import repository.MateriaalCatalogus.MateriaalFilter;
 
 /**
  * FXML Controller class
@@ -34,19 +41,9 @@ import javafx.scene.layout.VBox;
 public class MateriaalOverzichtSchermController extends HBox {
 
     @FXML
-    private ChoiceBox<String> choiceDoelgroep;
-    @FXML
-    private ChoiceBox<String> choiceLeergebied;
-    @FXML
-    private ChoiceBox<String> choiceUitleenbaarheid;
-    @FXML
-    private ChoiceBox<String> choiceFirma;
-    @FXML
-    private ChoiceBox<String> choicePlaats;
-    @FXML
     private TableView<Materiaal> materiaalTable;
     @FXML
-    private TableColumn<Materiaal,String> columnImg;
+    private TableColumn<Materiaal,BufferedImage> columnImg;
     @FXML
     private TableColumn<Materiaal, String> columnNaam;
     @FXML
@@ -58,52 +55,71 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private Button btnNieuw;
     @FXML
-    private Button btnDetails;
-    @FXML
     private TextField txfZoek;
 
     private SortedList<Materiaal> sortedMateriaal;
     private MateriaalController mc;
     private Materiaal materiaal;
-
+    private CheckComboBox<String> checkDoelgroepen;
+    private CheckComboBox<String> checkLeergebieden;
+    private CheckComboBox<String> checkPlaats;
+    private CheckComboBox<String> checkUitleenbaarheid;
+    private CheckComboBox<String> checkFirma;
+    @FXML
+    private GridPane gridFilters;
+    @FXML
+    private Button btnVerwijder;
     public MateriaalOverzichtSchermController(MateriaalController mc){
         LoaderSchermen.getInstance().setLocation("MateriaalOverzichtScherm.fxml", this);
         this.mc = mc;
-
         sortedMateriaal = mc.getMateriaalFilterList();
         materiaalTable.setItems(sortedMateriaal);
         sortedMateriaal.comparatorProperty().bind(materiaalTable.comparatorProperty());
+
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
         this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
         this.columnImg.setCellValueFactory(new PropertyValueFactory("foto"));
-        /*this.columnImg.setCellFactory(materiaal -> new TableCell<Materiaal, String>(){
+        this.columnImg.setCellFactory(materiaal -> new TableCell<Materiaal,BufferedImage>(){
             @Override
-            protected void updateItem(String item, boolean empty) {
+            protected void updateItem(BufferedImage item, boolean empty) {
                 if(item != null){
                     super.updateItem(item, empty);
                     VBox box= new VBox();
                     box.setAlignment(Pos.CENTER);
-                    ImageView imageview = new ImageView(new Image(item));
+                    ImageView imageview = new ImageView(SwingFXUtils.toFXImage(item, null));
                     imageview.setFitHeight(75);
                     imageview.setFitWidth(75);
                     box.getChildren().addAll(imageview);
                     setGraphic(box);
                 }
+                else{
+                    setGraphic(null);
+                }
             }
-        });*/
+        });
         txfZoek.setPromptText("Zoeken");
-        choiceDoelgroep.setItems(FXCollections.observableArrayList(
-                "Kleuter", "Lager", "Secundair"));
-        choiceLeergebied.setItems(FXCollections.observableArrayList(
-                "Mens", "Maatschappij", "Geschiedenis", "Wetenschap", "Biologie", "Fysica", "Techniek", "Wiskunde", "Aardrijkskunde"));
-        choiceFirma.setItems(FXCollections.observableArrayList(
-                "Globe", "Weissner", "Third"));
-        choiceUitleenbaarheid.setItems(FXCollections.observableArrayList(
-                "Student", "Lector"));
-        choicePlaats.setItems(FXCollections.observableArrayList(
-                "B2.1012", "B2.036", "B4.039"));
-        
+
+        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList( "Kleuter", "Lager", "Secundair"));
+        checkDoelgroepen.setMaxWidth(150);
+        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList("Mens", "Maatschappij", "Geschiedenis", "Wetenschap", "Biologie", "Fysica", "Techniek", "Wiskunde", "Aardrijkskunde"));
+        checkLeergebieden.setMaxWidth(150);
+        checkFirma = new CheckComboBox<>(FXCollections.observableArrayList( "Globe", "Prisma", "Texas Instruments", "kimax", "Wissner"));
+        checkFirma.setMaxWidth(150);
+        checkPlaats = new CheckComboBox<>(FXCollections.observableArrayList( "B2.13", "B3.43", "B1.00"));
+        checkPlaats.setMaxWidth(150);
+        checkUitleenbaarheid = new CheckComboBox<>(FXCollections.observableArrayList("Student", "Lector"));
+        checkUitleenbaarheid.setMaxWidth(150);
+
+
+        VBox vBox = (VBox) this.getChildren().get(0);
+        GridPane gp = (GridPane) vBox.getChildren().get(0);
+        gp.add(checkDoelgroepen,1,2);
+        gp.add(checkLeergebieden,1, 3);
+        gp.add(checkUitleenbaarheid,1, 4);
+        gp.add(checkFirma,1,5);
+        gp.add(checkPlaats,1, 6);
+
         materiaalTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 if (oldValue == null || !oldValue.equals(newValue)) {
@@ -113,46 +129,11 @@ public class MateriaalOverzichtSchermController extends HBox {
             }
 
         });
-        choiceDoelgroep.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
-            if (newValue != null) {
-                if (oldValue == null || !oldValue.equals(newValue)) {
-                    mc.zoek(newValue);
-                }
-            }
-
-        });
-        choiceLeergebied.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
-            if (newValue != null) {
-                if (oldValue == null || !oldValue.equals(newValue)) {
-                    mc.zoek(newValue);
-                }
-            }
-
-        });
-        choiceFirma.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
-            if (newValue != null) {
-                if (oldValue == null || !oldValue.equals(newValue)) {
-                    mc.zoek(newValue);
-                }
-            }
-
-        });
-        choicePlaats.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
-            if (newValue != null) {
-                if (oldValue == null || !oldValue.equals(newValue)) {
-                    mc.zoek(newValue);
-                }
-            }
-
-        });
-        choiceUitleenbaarheid.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
-            if (newValue != null) {
-                if (oldValue == null || !oldValue.equals(newValue)) {
-                    mc.zoek(newValue);
-                }
-            }
-
-        });
+        checkcomboboxListener(checkDoelgroepen, "doelgroepen");
+        checkcomboboxListener(checkLeergebieden, "leergebieden");
+        checkcomboboxListener(checkUitleenbaarheid, "uitleenbaarheid");
+        checkcomboboxListener(checkFirma, "firma");
+        checkcomboboxListener(checkPlaats, "plaats");
     }
 
     @FXML
@@ -162,6 +143,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
+            LoaderSchermen.getInstance().setNode(this);
             bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
         }
 
@@ -176,16 +158,47 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void zoekMateriaal(KeyEvent event) {
         String zoekterm = txfZoek.getText() + event.getCharacter().trim();
-        mc.zoek(zoekterm);
+        mc.zoek(Arrays.asList(zoekterm));
     }
+//    private void toonDetailsMateriaal(ActionEvent event) {
+//        if(materiaal == null){
+//            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+//        }
+//        else{
+//            BorderPane bp = (BorderPane) this.getParent();
+//            LoaderSchermen.getInstance().setNode(this);
+//            bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
+//        }
+//    }
+    private <E> void checkcomboboxListener(CheckComboBox<E> check, String name){
+
+        check.getCheckModel().getCheckedItems().addListener(new ListChangeListener<E>() {
+            public void onChanged(ListChangeListener.Change<? extends E> c) {
+                MateriaalFilter filterName = null;
+                switch (name.toLowerCase()){
+                    case "doelgroepen": filterName = MateriaalFilter.DOELGROEP; break;
+                    case "leergebieden": filterName = MateriaalFilter.LEERGEBIED; break;
+                    case "uitleenbaarheid": filterName = MateriaalFilter.UITLEENBAARHEID; break;
+                    case "firma": filterName = MateriaalFilter.FIRMA; break;
+                    case "plaats": filterName = MateriaalFilter.PLAATS; break;
+                }
+                mc.filter(filterName, check.getCheckModel().getCheckedItems().stream().map(e -> e.toString()).collect(Collectors.toList()));
+            }
+        });
+    }
+
     @FXML
-    private void toonDetailsMateriaal(ActionEvent event) {
+    private void verwijderMateriaal(ActionEvent event) {
         if(materiaal == null){
             LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
         }
-        else{
-            BorderPane bp = (BorderPane) this.getParent();
-            bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
+        else {
+            try{
+                 mc.verwijderMateriaal(materiaal);
+            }catch(Exception ex){
+                LoaderSchermen.getInstance().popupMessageOneButton("Verwijderen", String.format("Er zijn nog openstaande reservaties voor materiaal: %s",materiaal.getNaam()), "Ok");
+            }
+           
         }
     }
 

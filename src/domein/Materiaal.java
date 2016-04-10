@@ -5,22 +5,17 @@
  */
 package domein;
 
-import java.util.HashSet;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Set;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import javafx.scene.image.Image;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
+import javax.imageio.ImageIO;
+import javax.persistence.*;
+
 
 /**
  *
@@ -35,22 +30,27 @@ public class Materiaal
 {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int materiaalId;
-    private String naam, plaats, foto, omschrijving;
-    private int artikelNr, aantal, aantalOnbeschikbaar;
+    private String naam, plaats, omschrijving;
+    private int artikelNr, aantalInCatalogus, aantalOnbeschikbaar;
     private double prijs;
-    private boolean uitleenbaar;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    private boolean isReserveerbaar;
+    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Firma firma;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    Set<Doelgroep> doelgroepen = new HashSet<>();
+    @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name="MateriaalDoelgroep", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
+     inverseJoinColumns=@JoinColumn(name="DoelgroepId", referencedColumnName="doelgroepId"))
+    Set<Doelgroep> doelgroepen;
+    
+    @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
+    @JoinTable(name="MateriaalLeergebied", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
+      inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
+    Set<Leergebied> leergebieden;
 
-    @ManyToMany(cascade = CascadeType.PERSIST)
-    Set<Leergebied> leergebieden = new HashSet<>();
-
-    @OneToOne
-    private Reservatie reservatie;
+    @Lob
+    private byte[] foto;
 
     protected Materiaal()
     {
@@ -91,19 +91,19 @@ public class Materiaal
         return new SimpleStringProperty(getPlaats());
     }
 
-    public void setUitleenbaarheid(boolean uitLeenbaar)
+    public void setIsReserveerbaar(boolean isReserveerbaar)
     {
-        this.uitleenbaar = uitLeenbaar;
+        this.isReserveerbaar = isReserveerbaar;
     }
 
-    public Boolean getUitleenbaarheid()
+    public Boolean getIsReserveerbaar()
     {
-        return uitleenbaar;
+        return isReserveerbaar;
     }
 
     public StringProperty uitleenbaarProperty()
     {
-        if (uitleenbaar)
+        if (isReserveerbaar)
         {
             return new SimpleStringProperty("Student");
         } else
@@ -115,24 +115,20 @@ public class Materiaal
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
         setFoto(foto);
+        setFoto(foto);
         setOmschrijving(omschrijving);
         setArtikelNr(artikelNr);
         setAantal(aantal);
         setAantalOnbeschikbaar(aantalOnbeschikbaar);
         setPrijs(prijs);
         setPlaats(plaats);
-        setUitleenbaarheid(uitleenbaar);
+        setIsReserveerbaar(uitleenbaar);
         setFirma(firma);
         setDoelgroepen(doelgroepen);
         setLeergebieden(leergebieden);
         setNaam(naam);
-        setMateriaalId(artikelNr);
     }
 
-    public ObjectProperty getImage(){
-        SimpleObjectProperty obj = new SimpleObjectProperty(new Image(getFoto()));
-        return obj;
-    }
     public int getMateriaalId() {
         return materiaalId;
     }
@@ -140,16 +136,6 @@ public class Materiaal
     public void setMateriaalId(int materiaalId)
     {
         this.materiaalId = materiaalId;
-    }
-
-    public String getFoto()
-    {
-        return foto;
-    }
-
-    public void setFoto(String foto)
-    {
-        this.foto = foto;
     }
 
     public String getOmschrijving()
@@ -174,7 +160,7 @@ public class Materiaal
 
     public int getAantal()
     {
-        return aantal;
+        return aantalInCatalogus;
     }
 
     public void setAantal(int aantal)
@@ -183,7 +169,7 @@ public class Materiaal
         {
             throw new IllegalArgumentException("Aantal moet groter zijn dan 0");
         }
-        this.aantal = aantal;
+        this.aantalInCatalogus = aantal;
     }
 
     public int getAantalOnbeschikbaar()
@@ -208,7 +194,7 @@ public class Materiaal
 
     public boolean isUitleenbaar()
     {
-        return uitleenbaar;
+        return isReserveerbaar;
     }
 
     public Firma getFirma()
@@ -239,5 +225,29 @@ public class Materiaal
     public void setLeergebieden(Set<Leergebied> leergebieden)
     {
         this.leergebieden = leergebieden;
+    }
+
+    public void setFoto(String url) {
+        File fi = new File(url);
+        byte[] fileContent = null;
+        try {
+            fileContent = Files.readAllBytes(fi.toPath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        this.foto = fileContent;
+    }
+    public BufferedImage getFoto(){
+        BufferedImage bufferedImage=null;
+        try {
+            bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bufferedImage;
+    }
+    @Override
+    public String toString(){
+        return naam;
     }
 }
