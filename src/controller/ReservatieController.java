@@ -26,84 +26,108 @@ import stateMachine.ReservatieStateEnum;
  */
 public class ReservatieController
 {
+
     private ReservatieRepository repository;
-    
+
     public ReservatieController()
     {
         setReservatieRepository(new ReservatieRepository());
     }
-    public void setReservatieRepository(ReservatieRepository repository){
+
+    public void setReservatieRepository(ReservatieRepository repository)
+    {
         this.repository = repository;
     }
-    
+
     public SortedList<Reservatie> getReservaties()
     {
         return repository.geefReservaties();
     }
-    
+
     public void zoek(String zoekterm)
     {
         repository.Zoek(zoekterm);
     }
-    
+
     public void zoekOpBeginDatum(LocalDate datum)
     {
         repository.zoekOpBeginDatum(datum);
     }
-    
+
     public void zoekOpEindDatum(LocalDate datum)
     {
         repository.zoekOpEindDatum(datum);
     }
-    
-     public void setCurrentReservatie(Reservatie reservatie){
+
+    public void setCurrentReservatie(Reservatie reservatie)
+    {
 //        setChanged();
 //        notifyObservers(reservatie);
     }
-    public void maakReservatie(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal){
+
+    public void maakReservatie(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal)
+    {
         Reservatie reservatie = repository.maakReservatieObject(aantal, aantalTerug, startDate, endDate, status, gebruiker, materiaal);
         repository.voegReservatieToe(reservatie);
     }
-    public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
+
+    public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status)
+    {
         repository.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
     }
-    public void overruleStudent(int aantalOverruled){
+
+    public void overruleStudent(int aantalOverruled)
+    {
         repository.overruleStudent(aantalOverruled);
     }
+
     public void verwijderReservatie(Reservatie reservatie)
-     {
-         repository.verwijderReservatue(reservatie);
-     }
-    public List<Reservatie> getReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
+    {
+        repository.verwijderReservatue(reservatie);
+    }
+
+    public List<Reservatie> getReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal)
+    {
         return repository.geefReservatiesByDatum(startDatum, eindDatum, materiaal);
     }
-    public int[] berekenAantalBeschikbaar(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal, int origineelAantal){
+
+    public int[] berekenAantalBeschikbaar(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal, int origineelAantal)
+    {
         return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal, origineelAantal);
     }
-    public void setFormatDatepicker(DatePicker dp){
-        dp.setOnShowing(e-> Locale.setDefault(Locale.Category.FORMAT,Locale.FRANCE));
+
+    public void setFormatDatepicker(DatePicker dp)
+    {
+        dp.setOnShowing(e -> Locale.setDefault(Locale.Category.FORMAT, Locale.FRANCE));
         String pattern = "dd-MM-yyy";
-        dp.setConverter(new StringConverter<LocalDate>() {
+        dp.setConverter(new StringConverter<LocalDate>()
+        {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
 
             @Override
-            public String toString(LocalDate date) {
-                if (date != null) {
+            public String toString(LocalDate date)
+            {
+                if (date != null)
+                {
                     return dateFormatter.format(date);
-                } else {
+                } else
+                {
                     return "";
                 }
             }
 
             @Override
-            public LocalDate fromString(String string) {
-                if (string != null && !string.isEmpty()) {
+            public LocalDate fromString(String string)
+            {
+                if (string != null && !string.isEmpty())
+                {
                     return LocalDate.parse(string, dateFormatter);
-                } else {
+                } else
+                {
                     return null;
                 }
             }
-    });
+        });
 
-}
+    }
 }

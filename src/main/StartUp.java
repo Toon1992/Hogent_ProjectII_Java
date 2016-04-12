@@ -18,6 +18,7 @@ import javafx.stage.WindowEvent;
 import persistentie.GenericDaoJpa;
 
 import java.util.*;
+import persistentie.MateriaalDaoJpa;
 import stateMachine.ReservatieStateEnum;
 
 /**
@@ -32,7 +33,7 @@ public class StartUp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        initializeDatabase();
+       // initializeDatabase();
         Scene scene = new Scene(new LayoutFrameController());
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
@@ -51,7 +52,12 @@ public class StartUp extends Application {
         GenericDaoJpa<Object> jpa = new GenericDaoJpa<>(Object.class);
         jpa.startTransaction();
 
+        MateriaalDaoJpa mpa = new MateriaalDaoJpa();
+  
         jpa.insert(new Beheerder("admin@hogent.be", "admin", "admin"));
+//        Set<Dag> dagen = new HashSet<>();
+//        dagen.add(new Dag(new Date(116,5,12)));
+//        jpa.insert(new Reservatie(5, 0, new Date(116,5,6), new Date(116,5,13), new Date(), dagen,ReservatieStateEnum.Gereserveerd, new Gebruiker("Toon","blabl","student"), mpa.findAll().get(0)));
 
 //        Firma globe = new Firma("Globe atmosphere", "globe@atmosphere.com");
 //        Firma prisma = new Firma("Prisma", "helpdesk@prisma.com");

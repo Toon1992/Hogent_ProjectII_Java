@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -22,6 +23,7 @@ import javax.persistence.NamedQuery;
 {
     @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord")
 })
+@Table(name="Beheerder")
 public class Beheerder
 {
 

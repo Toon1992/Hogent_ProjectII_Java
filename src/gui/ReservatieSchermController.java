@@ -94,10 +94,12 @@ public class ReservatieSchermController extends HBox
         this.rc = rc;
         this.mc = mc;
         this.gc = new GebruikerController();
+        
         invullenTable();
         vulComboBoxStatus();
         vulComboBoxMateriaal();
         vulComboBoxGebruiker();
+        
         rc.setFormatDatepicker(dtpOphaal);
         rc.setFormatDatepicker(dtpTerugbreng);
         rc.setFormatDatepicker(datePickerBegin);
