@@ -1,6 +1,7 @@
 package persistentie;
 
 import domein.Beheerder;
+import java.util.List;
 import repository.BeheerderRepository;
 
 import javax.persistence.EntityNotFoundException;
@@ -24,5 +25,18 @@ public class BeheerderDaoJpa extends GenericDaoJpa<Beheerder> implements Beheerd
         } catch (NoResultException ex) {
             throw new EntityNotFoundException();
         }
+    }
+
+    @Override
+    public List<Beheerder> getAlleBeheerders() throws EntityNotFoundException
+    {
+       try
+       {
+           return em.createNamedQuery("Beheerder.FindAll",Beheerder.class).getResultList();
+       }
+       catch(NoResultException ex)
+       {
+           throw new EntityNotFoundException();
+       }
     }
 }

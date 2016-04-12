@@ -21,7 +21,8 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries(
 {
-    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord")
+    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord"),
+    @NamedQuery(name = "Beheerder.FindAll", query = "SELECT b FROM Beheerder b")
 })
 @Table(name="Beheerder")
 public class Beheerder
@@ -78,5 +79,7 @@ public class Beheerder
     {
         this.naam = naam;
     }
+    
+    
 
 }
