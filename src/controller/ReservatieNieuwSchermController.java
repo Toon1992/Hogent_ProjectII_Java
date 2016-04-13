@@ -19,7 +19,8 @@ import domein.Reservatie;
 import gui.LoaderSchermen;
 import gui.ReservatieSchermController;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
+import javafx.event.*;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -30,6 +31,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.util.StringConverter;
+import repository.HulpMethode;
 import stateMachine.ReservatieStateEnum;
 
 import javax.xml.bind.SchemaOutputResolver;
@@ -66,6 +68,7 @@ public class ReservatieNieuwSchermController extends GridPane {
     private MateriaalController mc;
     private GebruikerController gc;
     private final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+
     public ReservatieNieuwSchermController(ReservatieController rc, MateriaalController mc){
         LoaderSchermen.getInstance().setLocation("ReservatieNieuwScherm.fxml", this);
         this.rc = rc;
@@ -79,6 +82,17 @@ public class ReservatieNieuwSchermController extends GridPane {
         cmbNaam.setItems(gc.getGebruikers());
         rc.setFormatDatepicker(dtpOphaal);
         rc.setFormatDatepicker(dtpTerugbreng);
+        dtpOphaal.setOnAction(new EventHandler() {
+            @Override
+            public void handle(Event event) {
+                if(dtpTerugbreng.getValue() == null ){
+                    LocalDate date = dtpOphaal.getValue();
+                    Date maandag = HulpMethode.geefEersteDagVanDeWeek(date);
+                    LocalDate vrijdag = maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4);
+                    dtpTerugbreng.setValue(vrijdag);
+                }
+            }
+        });
     }
 
     @FXML

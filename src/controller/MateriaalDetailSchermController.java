@@ -9,6 +9,7 @@ import domein.Doelgroep;
 import domein.Firma;
 import domein.Leergebied;
 
+import java.io.File;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -27,6 +28,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.controlsfx.control.CheckComboBox;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
@@ -76,13 +79,17 @@ public class MateriaalDetailSchermController extends VBox {
     private ToggleGroup group = new ToggleGroup();
     @FXML
     private Label lblErrorMessage;
+    @FXML
+    private TextField txfUrl;
     private GridPane gp;
     private GebiedenRepository gebiedenRepo;
     private FirmaRepository firmaRepo;
     private CheckComboBox<String> checkDoelgroepen;
     private CheckComboBox<String> checkLeergebieden;
+    private FileChooser fileChooser;
     private Leergebied l = new Leergebied("l");
     Doelgroep d = new Doelgroep("d");
+    private String foto;
 
     public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
@@ -95,32 +102,34 @@ public class MateriaalDetailSchermController extends VBox {
         gebiedenRepo = new GebiedenRepository();
         firmaRepo=new FirmaRepository();
 
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Kies een foto");
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"),
+                new FileChooser.ExtensionFilter("GIF", "*.gif"),
+                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
+                new FileChooser.ExtensionFilter("PNG", "*.png"));
+
         update(materiaal);
 
         checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(d)));
-        checkDoelgroepen.setMaxWidth(150);
+        checkDoelgroepen.setMaxWidth(200);
 
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
-        checkLeergebieden.setMaxWidth(150);
+        checkLeergebieden.setMaxWidth(200);
 
         gp = (GridPane) this.getChildren().get(0);
-        gp.add(checkDoelgroepen,1,4);
-        gp.add(checkLeergebieden,3, 4);
-        linkComboboxListView();
+        gp.add(checkDoelgroepen,1,6);
+        gp.add(checkLeergebieden,3, 6);
+        MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
+        MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
+    }
 
-    }
-    private void linkComboboxListView(){
-        listLeergbedied.getItems().stream().forEach(item -> {
-            checkLeergebieden.getCheckModel().check(item);
-        });
-        listDoelgroep.getItems().stream().forEach(item -> {
-            checkDoelgroepen.getCheckModel().check(item);
-        });
-        checkcomboboxListener(checkDoelgroepen, MateriaalFilter.DOELGROEP);
-        checkcomboboxListener(checkLeergebieden, MateriaalFilter.LEERGEBIED);
-    }
     @FXML
-    private void wijzigFoto(MouseEvent event) {
+    private void wijzigFoto(ActionEvent event) {
+        Stage stage = (Stage) this.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+        foto = file.getAbsolutePath();
+        txfUrl.setText(file.getAbsolutePath());
     }
 
     @FXML
@@ -150,7 +159,10 @@ public class MateriaalDetailSchermController extends VBox {
             Firma f=firmaRepo.geefFirma(materiaal.getFirma().getNaam()); // omdat als het al gewijzigd is dan kan je nooit opvragen
             f.setNaam(txfFirma.getText());
             f.setEmailContact(txfContactPersoon.getText());
-            
+            if(foto != null){
+                materiaal.setFoto(foto);
+            }
+
             materiaal.setFirma(f); 
             firmaRepo.wijzigFirma(f);
             mc.wijzigMateriaal(materiaal);
@@ -193,13 +205,13 @@ public class MateriaalDetailSchermController extends VBox {
     }
     @FXML
     private void nieuwLeergebied(ActionEvent event){
-        String leergebied = textInputDialog("Nieuwe leergebied", "Voeg een nieuw leergebied toe", "Voeg naam in:");
+        String leergebied = MateriaalHulpController.textInputDialog("Nieuwe leergebied", "Voeg een nieuw leergebied toe", "Voeg naam in:");
         if(checkLeergebieden.getItems().contains(leergebied)){
             lblErrorMessage.setText("Dit leergebied bestaat al!");
         }
         if(!leergebied.isEmpty()&&!checkLeergebieden.getItems().contains(leergebied)){
-            checkLeergebieden = nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
-            linkComboboxListView();
+            checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
+            MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
             gp.add(checkLeergebieden,3, 4);
             gebiedenRepo.voegNieuwGebiedToe(leergebied,l);
         }
@@ -207,66 +219,17 @@ public class MateriaalDetailSchermController extends VBox {
     }
     @FXML
     private void nieuweDoelgroep(ActionEvent event){
-        String doelgroep = textInputDialog("Nieuwe doelgroep", "Voeg een nieuwe doelgroep toe", "Voeg naam in:");
+        String doelgroep = MateriaalHulpController.textInputDialog("Nieuwe doelgroep", "Voeg een nieuwe doelgroep toe", "Voeg naam in:");
         if(checkDoelgroepen.getItems().contains(doelgroep)){
             lblErrorMessage.setText("Deze doelgroep bestaat al!");
         }
         if(!doelgroep.isEmpty()&&!checkDoelgroepen.getItems().contains(doelgroep)){
-            checkDoelgroepen = nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
-            linkComboboxListView();
+            checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
+            MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
             gp.add(checkDoelgroepen,1,4);
             gebiedenRepo.voegNieuwGebiedToe(doelgroep,d);
         }
 
     }
-    private CheckComboBox<String> nieuwItemListView(CheckComboBox<String> check, ListView listView, String item){
-        List<String> items = new ArrayList<String>();
-        //De het nieuwe item + geselecteerde items van de combobox zullen in de listview worden geplaatst.
-        check.getCheckModel().getCheckedItems().stream().forEach(e -> items.add(e));
-        items.add(item);
-        itemsListViewWijzigen(items, listView);
 
-        //Het nieuwe item aan de combobox toevoegen
-        List<String> nieuweItems = new ArrayList<>();
-        //alle eerdere items van de combobox aan de lijst toevoegen
-        check.getItems().stream().forEach(e -> nieuweItems.add(e));
-        nieuweItems.add(item);
-
-        check = new CheckComboBox<String>(FXCollections.observableArrayList(nieuweItems));
-        check.setMaxWidth(150);
-        return check;
-    }
-
-    private String textInputDialog(String title, String header, String content){
-        StringBuilder uitvoer = new StringBuilder();
-        TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle(title);
-        dialog.setHeaderText(header);
-        dialog.setContentText(content);
-        dialog.showAndWait().ifPresent(response -> {
-            if (!response.isEmpty()) {
-                uitvoer.append(response);
-            }
-        });
-        return uitvoer.toString();
-    }
-    private <E> void checkcomboboxListener(CheckComboBox<E> check, MateriaalFilter filter){
-        check.getCheckModel().getCheckedItems().addListener(new ListChangeListener<E>() {
-            public void onChanged(ListChangeListener.Change<? extends E> c) {
-                switch (filter){
-                    case DOELGROEP:
-                        itemsListViewWijzigen(check.getCheckModel().getCheckedItems().stream().map(e -> e.toString()).collect(Collectors.toList()), listDoelgroep);
-                        break;
-                    case LEERGEBIED:
-                        itemsListViewWijzigen(check.getCheckModel().getCheckedItems().stream().map(e -> e.toString()).collect(Collectors.toList()), listLeergbedied);
-                        break;
-                }
-            }
-        });
-    }
-    private void itemsListViewWijzigen(List<String> items, ListView<String> listView){
-        List<String> nieuweList = new ArrayList<>();
-        items.stream().forEach(item ->nieuweList.add(item));
-        listView.setItems(new FilteredList<String>(FXCollections.observableArrayList(nieuweList), p -> true));
-    }
 }
