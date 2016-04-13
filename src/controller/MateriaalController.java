@@ -38,11 +38,14 @@ public class MateriaalController extends Observable
 
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException
     {
-        materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats,firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+        materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
     }
-    public <E> void voegObjectToe(E element){
+
+    public <E> void voegObjectToe(E element)
+    {
         materiaalCatalogus.saveObject(element);
     }
+
     public SortedList<Materiaal> getMateriaalFilterList()
     {
         return materiaalCatalogus.geefMaterialen().sorted();
@@ -52,10 +55,14 @@ public class MateriaalController extends Observable
     {
         return materiaalCatalogus.objectCollectionToObservableList(list);
     }
-    public void zoek(List<String> zoekterm){
+
+    public void zoek(List<String> zoekterm)
+    {
         materiaalCatalogus.zoek(zoekterm.stream().map(String::toLowerCase).collect(Collectors.toSet()));
     }
-    public void filter(MateriaalFilter filterNaam, List<String> filters){
+
+    public void filter(MateriaalFilter filterNaam, List<String> filters)
+    {
         materiaalCatalogus.filterMaterialen(filterNaam, filters.stream().map(String::toLowerCase).collect(Collectors.toSet()));
     }
 
@@ -69,11 +76,14 @@ public class MateriaalController extends Observable
     {
         return materiaalCatalogus;
     }
-    
-    public void verwijderMateriaal(Materiaal materiaal){
+
+    public void verwijderMateriaal(Materiaal materiaal)
+    {
         materiaalCatalogus.verwijderMateriaal(materiaal);
     }
-    public void wijzigMateriaal(Materiaal materiaal){
+
+    public void wijzigMateriaal(Materiaal materiaal)
+    {
         materiaalCatalogus.wijzigMateriaal(materiaal);
     }
 }

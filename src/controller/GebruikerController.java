@@ -29,7 +29,7 @@ public class GebruikerController extends Observable{
         this.beheerderRepository = beheerderRepository;
     }
     public void registreer(String email, String password, String naam){
-        beheerderRepository.voegGebruikerToe(new Beheerder(email, password, naam));
+        beheerderRepository.voegBeheerderToe(new Beheerder(email, password, naam));
     }
     public void login(String email, String wachtwoord) throws Exception{
         beheerderRepository.login(email, wachtwoord);
