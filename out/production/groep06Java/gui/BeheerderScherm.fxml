@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<fx:root prefHeight="800.0" prefWidth="700.0" stylesheets="@../styleSheet/style.css" type="GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints maxHeight="405.0" minHeight="10.0" prefHeight="147.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="653.0" minHeight="10.0" prefHeight="653.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <ListView fx:id="lvBeheerder" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </GridPane.margin>
+      </ListView>
+      <Label styleClass="headLabel" stylesheets="@../styleSheet/style.css" text="Beheerders" GridPane.halignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+   </children>
+</fx:root>

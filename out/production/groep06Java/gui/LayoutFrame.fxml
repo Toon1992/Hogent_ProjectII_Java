@@ -17,7 +17,7 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="700.0" minWidth="10.0" prefWidth="400.0" />
+            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="400.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
@@ -44,7 +44,7 @@
                   <Image url="@../images/NieuweGebruikers.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="lblUitLoggen" onMouseClicked="#logUit" styleClass="label-header-small-inverse" GridPane.columnIndex="5" GridPane.halignment="RIGHT">
+            <Label fx:id="lblUitLoggen" onMouseClicked="#logUit" styleClass="label-header-small-inverse" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>

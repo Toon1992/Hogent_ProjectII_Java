@@ -46,6 +46,7 @@ public class MateriaalCatalogus {
     private MateriaalDaoJpa materiaalDao;
     private GenericDaoJpa<Object> objectDao;
     private ObservableList<Materiaal> filterMateriaal;
+    private List<Firma> firmas;
 
     public MateriaalCatalogus() {
         materiaalDao = new MateriaalDaoJpa();
@@ -61,7 +62,16 @@ public class MateriaalCatalogus {
         filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
         return new SortedList<>(filteredmaterialen);
     }
-
+    public ObservableList<Firma> geefAlleFirmas(){
+        firmas = new ArrayList<>();
+        geefMaterialen().stream().forEach(materiaal -> {
+            Firma firma = materiaal.getFirma();
+            if (!firmas.contains(firma)){
+                firmas.add(firma);
+            }
+        });
+        return FXCollections.observableArrayList(firmas);
+    }
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException {
         int aantalOnbeschikbaar = 0, artikelNr = 0, aantal;
         double prijs = 0.0;
