@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
+import domein.Doelgroep;
+import domein.Leergebied;
 import domein.Materiaal;
 import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
@@ -31,6 +33,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import org.controlsfx.control.CheckComboBox;
+import repository.FirmaRepository;
+import repository.GebiedenRepository;
 import repository.MateriaalCatalogus.MateriaalFilter;
 
 /**
@@ -65,6 +69,10 @@ public class MateriaalOverzichtSchermController extends HBox {
     private CheckComboBox<String> checkPlaats;
     private CheckComboBox<String> checkUitleenbaarheid;
     private CheckComboBox<String> checkFirma;
+    private GebiedenRepository gebiedenRepo;
+    private FirmaRepository firmaRepo;
+    private Leergebied l = new Leergebied("l");
+    private Doelgroep d = new Doelgroep("d");
     @FXML
     private GridPane gridFilters;
     @FXML
@@ -72,10 +80,18 @@ public class MateriaalOverzichtSchermController extends HBox {
     public MateriaalOverzichtSchermController(MateriaalController mc){
         LoaderSchermen.getInstance().setLocation("MateriaalOverzichtScherm.fxml", this);
         this.mc = mc;
+        initializeVariables();
+        initializeTableViewMaterialen();
+        addListeners();
+    }
+    private void initializeVariables() {
         sortedMateriaal = mc.getMateriaalFilterList();
         materiaalTable.setItems(sortedMateriaal);
         sortedMateriaal.comparatorProperty().bind(materiaalTable.comparatorProperty());
-
+        gebiedenRepo = new GebiedenRepository();
+        firmaRepo = new FirmaRepository();
+    }
+    private void initializeTableViewMaterialen(){
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
         this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
@@ -99,10 +115,9 @@ public class MateriaalOverzichtSchermController extends HBox {
             }
         });
         txfZoek.setPromptText("Zoeken");
-
-        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList( "Kleuter", "Lager", "Secundair"));
+        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(d))));
         checkDoelgroepen.setMaxWidth(150);
-        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList("Mens", "Maatschappij", "Geschiedenis", "Wetenschap", "Biologie", "Fysica", "Techniek", "Wiskunde", "Aardrijkskunde"));
+        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l))));
         checkLeergebieden.setMaxWidth(150);
         checkFirma = new CheckComboBox<>(FXCollections.observableArrayList( "Globe", "Prisma", "Texas Instruments", "kimax", "Wissner"));
         checkFirma.setMaxWidth(150);
@@ -110,7 +125,6 @@ public class MateriaalOverzichtSchermController extends HBox {
         checkPlaats.setMaxWidth(150);
         checkUitleenbaarheid = new CheckComboBox<>(FXCollections.observableArrayList("Student", "Lector"));
         checkUitleenbaarheid.setMaxWidth(150);
-
 
         VBox vBox = (VBox) this.getChildren().get(0);
         GridPane gp = (GridPane) vBox.getChildren().get(0);
@@ -129,13 +143,14 @@ public class MateriaalOverzichtSchermController extends HBox {
             }
 
         });
+    }
+    private void addListeners(){
         checkcomboboxListener(checkDoelgroepen, "doelgroepen");
         checkcomboboxListener(checkLeergebieden, "leergebieden");
         checkcomboboxListener(checkUitleenbaarheid, "uitleenbaarheid");
         checkcomboboxListener(checkFirma, "firma");
         checkcomboboxListener(checkPlaats, "plaats");
     }
-
     @FXML
     private void wijzigMateriaal(ActionEvent event) {
         if(materiaal == null){
@@ -160,18 +175,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         String zoekterm = txfZoek.getText() + event.getCharacter().trim();
         mc.zoek(Arrays.asList(zoekterm));
     }
-//    private void toonDetailsMateriaal(ActionEvent event) {
-//        if(materiaal == null){
-//            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
-//        }
-//        else{
-//            BorderPane bp = (BorderPane) this.getParent();
-//            LoaderSchermen.getInstance().setNode(this);
-//            bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
-//        }
-//    }
     private <E> void checkcomboboxListener(CheckComboBox<E> check, String name){
-
         check.getCheckModel().getCheckedItems().addListener(new ListChangeListener<E>() {
             public void onChanged(ListChangeListener.Change<? extends E> c) {
                 MateriaalFilter filterName = null;
@@ -200,6 +204,16 @@ public class MateriaalOverzichtSchermController extends HBox {
             }
            
         }
+    }
+    @FXML
+    private void resetFilters(ActionEvent event){
+        txfZoek.setText("");
+        checkDoelgroepen.getCheckModel().clearChecks();
+        checkLeergebieden.getCheckModel().clearChecks();
+        checkUitleenbaarheid.getCheckModel().clearChecks();
+        checkFirma.getCheckModel().clearChecks();
+        checkPlaats.getCheckModel().clearChecks();
+        materiaalTable.setItems(mc.getMateriaalFilterList());
     }
 
 

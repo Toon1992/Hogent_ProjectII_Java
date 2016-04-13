@@ -14,17 +14,29 @@ import domein.Leergebied;
 import exceptions.AantalException;
 import exceptions.NaamException;
 import gui.LoaderSchermen;
+
 import java.io.File;
+import java.util.stream.Collectors;
+
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import org.controlsfx.control.CheckComboBox;
+import org.controlsfx.control.spreadsheet.Grid;
+import repository.FirmaRepository;
+import repository.GebiedenRepository;
+import repository.HulpMethode;
+import repository.MateriaalCatalogus.*;
 
 /**
  * FXML Controller class
@@ -78,29 +90,22 @@ public class MateriaalNieuwSchermController extends VBox {
     private FileChooser fileChooser;
     private ToggleGroup group = new ToggleGroup();
     private String foto = "/images/plus.png";
-
+    private CheckComboBox<String> checkDoelgroepen;
+    private CheckComboBox<String> checkLeergebieden;
+    private GebiedenRepository gebiedenRepo;
+    private FirmaRepository firmaRepo;
+    private GridPane gp;
+    private Leergebied l = new Leergebied("l");
+    private Doelgroep d = new Doelgroep("d");
     public MateriaalNieuwSchermController(MateriaalController mc) {
         LoaderSchermen.getInstance().setLocation("MateriaalNieuwScherm.fxml", this);
         this.mc = mc;
+        initializeItems();
+    }
 
-        //Scene scene = this.getScene();
-        doelgroepen = new ArrayList<>();
-        doelgroepen.addAll(Arrays.asList(new Doelgroep("Kleuter"), new Doelgroep("Lager"), new Doelgroep("Secundair")));
-        ObservableList<String> doelgroepenString = FXCollections.observableArrayList();
-        doelgroepen.stream().forEach((d) -> {
-            doelgroepenString.add(d.getNaam());
-        });
-        listDoelgroep.setItems(doelgroepenString);
-        listDoelgroep.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        leergebieden = new ArrayList<>();
-        leergebieden.addAll(Arrays.asList(new Leergebied("Mens"), new Leergebied("Maatschappij"), new Leergebied("Geschiedenis"), new Leergebied("Wetenschap"), new Leergebied("Biologie"), new Leergebied("Fysica"), new Leergebied("Techniek"), new Leergebied("Wiskunde"), new Leergebied("Aardrijkskunde")));
-        ObservableList<String> leergebiedenString = FXCollections.observableArrayList();
-        leergebieden.stream().forEach((d) -> {
-            leergebiedenString.add(d.getNaam());
-        });
-        listLeergbedied.setItems(leergebiedenString);
-        listLeergbedied.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+    private void initializeItems() {
+        gebiedenRepo = new GebiedenRepository();
+        firmaRepo = new FirmaRepository();
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Kies een foto");
@@ -111,22 +116,26 @@ public class MateriaalNieuwSchermController extends VBox {
         radioStudent.setToggleGroup(group);
         radioStudent.setSelected(true);
         radioLector.setToggleGroup(group);
-    }
 
+        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(d)));
+        checkDoelgroepen.setMaxWidth(200);
+
+        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
+        checkLeergebieden.setMaxWidth(200);
+
+        gp = (GridPane) this.getChildren().get(0);
+        gp.add(checkDoelgroepen, 1, 4);
+        gp.add(checkLeergebieden, 3, 4);
+        MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
+        MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
+    }
     @FXML
     private void voegToe(ActionEvent event) {
-        String naam = "",  omschrijving = "", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
+        String naam = "", omschrijving = "", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
         boolean uitleenbaar;
-        Set<Doelgroep> doelgroepen = new HashSet<>();
-        Set<Leergebied> leergebieden = new HashSet<>();
+        Set<Doelgroep> doelgroepen = new HashSet<>(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
+        Set<Leergebied> leergebieden = new HashSet<>(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
 
-        listDoelgroep.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
-            doelgroepen.add(new Doelgroep(s));
-        });
-
-        listLeergbedied.getSelectionModel().getSelectedItems().stream().forEach((s) -> {
-            leergebieden.add(new Leergebied(s));
-        });
         naam = txfNaam.getText();
         omschrijving = txfOmschrijving.getText();
         plaats = txfPlaats.getText();
@@ -140,11 +149,9 @@ public class MateriaalNieuwSchermController extends VBox {
         uitleenbaar = radioStudent.isSelected();
         try {
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
-            terugNaarOverzicht(null);
         } catch (NaamException | AantalException e) {
             lblError.setText(e.getLocalizedMessage());
         }
-
     }
 
     @FXML
@@ -156,9 +163,37 @@ public class MateriaalNieuwSchermController extends VBox {
     @FXML
     private void voegFotoToe(ActionEvent event) {
         Stage stage = (Stage) this.getScene().getWindow();
-         File file = fileChooser.showOpenDialog(stage);
+        File file = fileChooser.showOpenDialog(stage);
         foto = file.getAbsolutePath();
         txfUrl.setText(file.getAbsolutePath());
+    }
+
+    @FXML
+    void nieuweDoelgroep(ActionEvent event) {
+        String doelgroep = MateriaalHulpController.textInputDialog("Nieuwe doelgroep", "Voeg een nieuwe doelgroep toe", "Voeg naam in:");
+        if(checkDoelgroepen.getItems().contains(doelgroep)){
+            lblError.setText("Deze doelgroep bestaat al!");
+        }
+        if(!doelgroep.isEmpty()&&!checkDoelgroepen.getItems().contains(doelgroep)){
+            checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
+            MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
+            gp.add(checkDoelgroepen,1,4);
+            gebiedenRepo.voegNieuwGebiedToe(doelgroep,d);
+        }
+    }
+
+    @FXML
+    void nieuwLeergebied(ActionEvent event) {
+        String leergebied = MateriaalHulpController.textInputDialog("Nieuwe leergebied", "Voeg een nieuw leergebied toe", "Voeg naam in:");
+        if(checkLeergebieden.getItems().contains(leergebied)){
+            lblError.setText("Dit leergebied bestaat al!");
+        }
+        if(!leergebied.isEmpty()&&!checkLeergebieden.getItems().contains(leergebied)){
+            checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
+            MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
+            gp.add(checkLeergebieden,3, 4);
+            gebiedenRepo.voegNieuwGebiedToe(leergebied,l);
+        }
     }
 
 }

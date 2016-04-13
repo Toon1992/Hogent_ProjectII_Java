@@ -17,6 +17,7 @@ import java.util.Locale;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
+import persistentie.ReservatieDaoJpa;
 import repository.ReservatieRepository;
 import stateMachine.ReservatieStateEnum;
 
@@ -31,7 +32,7 @@ public class ReservatieController
 
     public ReservatieController()
     {
-        setReservatieRepository(new ReservatieRepository());
+        setReservatieRepository(new ReservatieRepository(new ReservatieDaoJpa()));
     }
 
     public void setReservatieRepository(ReservatieRepository repository)
