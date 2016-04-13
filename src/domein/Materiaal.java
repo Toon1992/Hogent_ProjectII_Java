@@ -16,16 +16,15 @@ import javafx.beans.property.StringProperty;
 import javax.imageio.ImageIO;
 import javax.persistence.*;
 
-
 /**
  *
  * @author Thomas
  */
 @Entity
 @NamedQueries(
-{
-    @NamedQuery(name = "Materiaal.findAll", query = "Select a FROM Materiaal a")
-})
+        {
+            @NamedQuery(name = "Materiaal.findAll", query = "Select a FROM Materiaal a")
+        })
 public class Materiaal
 {
 
@@ -36,17 +35,17 @@ public class Materiaal
     private int artikelNr, aantalInCatalogus, aantalOnbeschikbaar;
     private double prijs;
     private boolean isReserveerbaar;
-    @ManyToOne(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Firma firma;
 
-    @ManyToMany(fetch=FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name="MateriaalDoelgroep", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
-     inverseJoinColumns=@JoinColumn(name="DoelgroepId", referencedColumnName="doelgroepId"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "MateriaalDoelgroep", joinColumns = @JoinColumn(name = "ArtikelNr", referencedColumnName = "materiaalId"),
+            inverseJoinColumns = @JoinColumn(name = "DoelgroepId", referencedColumnName = "doelgroepId"))
     Set<Doelgroep> doelgroepen;
-    
-    @ManyToMany(fetch=FetchType.EAGER,cascade = CascadeType.PERSIST)
-    @JoinTable(name="MateriaalLeergebied", joinColumns=@JoinColumn(name="ArtikelNr", referencedColumnName="materiaalId"),
-      inverseJoinColumns=@JoinColumn(name="LeergebiedId", referencedColumnName="leergebiedId")) 
+
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "MateriaalLeergebied", joinColumns = @JoinColumn(name = "ArtikelNr", referencedColumnName = "materiaalId"),
+            inverseJoinColumns = @JoinColumn(name = "LeergebiedId", referencedColumnName = "leergebiedId"))
     Set<Leergebied> leergebieden;
 
     @Lob
@@ -129,7 +128,8 @@ public class Materiaal
         setNaam(naam);
     }
 
-    public int getMateriaalId() {
+    public int getMateriaalId()
+    {
         return materiaalId;
     }
 
@@ -227,27 +227,36 @@ public class Materiaal
         this.leergebieden = leergebieden;
     }
 
-    public void setFoto(String url) {
+    public void setFoto(String url)
+    {
         File fi = new File(url);
         byte[] fileContent = null;
-        try {
+        try
+        {
             fileContent = Files.readAllBytes(fi.toPath());
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
         this.foto = fileContent;
     }
-    public BufferedImage getFoto(){
-        BufferedImage bufferedImage=null;
-        try {
+
+    public BufferedImage getFoto()
+    {
+        BufferedImage bufferedImage = null;
+        try
+        {
             bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
-        } catch (IOException e) {
+        } catch (IOException e)
+        {
             e.printStackTrace();
         }
         return bufferedImage;
     }
+
     @Override
-    public String toString(){
+    public String toString()
+    {
         return naam;
     }
 }

@@ -38,6 +38,7 @@ public class LoaderSchermen
 
     protected LoaderSchermen()
     {
+        
     }
 
     public static LoaderSchermen getInstance()
@@ -49,19 +50,23 @@ public class LoaderSchermen
         return instance;
     }
 
-    public double getScreenWidth() {
+    public double getScreenWidth()
+    {
         return screenWidth;
     }
 
-    public void setScreenWidth(double screenWidth) {
+    public void setScreenWidth(double screenWidth)
+    {
         this.screenWidth = screenWidth;
     }
 
-    public double getScreenHeight() {
+    public double getScreenHeight()
+    {
         return screenHeight;
     }
 
-    public void setScreenHeigth(double screenHeight) {
+    public void setScreenHeigth(double screenHeight)
+    {
         this.screenHeight = screenHeight;
     }
 
@@ -69,7 +74,7 @@ public class LoaderSchermen
     {
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setTitle(titel);
-        
+
         Scene scene = new Scene(scherm, width, height);
         stage.setScene(scene);
     }
@@ -117,39 +122,52 @@ public class LoaderSchermen
 
         return result.get() == Ok;
     }
-    public void setMateriaalOvezichtScherm(BorderPane bp, HBox mco){
+
+    public void setMateriaalOvezichtScherm(BorderPane bp, HBox mco)
+    {
 
         setWidthAndHeight(bp);
         mco.setPrefWidth(getScreenWidth());
-        mco.setPrefHeight(getScreenHeight()*0.85);
+        mco.setPrefHeight(getScreenHeight() * 0.85);
         bp.setCenter(mco);
     }
-    public String reservatieInvoerControle(int aantal, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker){
-        if(aantal == 0){
+
+    public String reservatieInvoerControle(int aantal, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker)
+    {
+        if (aantal == 0)
+        {
             return "Voer een positief aantal in groter dan 0";
         }
-        if(eindDatum == null){
+        if (eindDatum == null)
+        {
             return "Selecteer een terugbrengdatum";
 
         }
-        if(startDatum == null){
+        if (startDatum == null)
+        {
             return "Selecteer een ophaaldatum";
         }
-        if(eindDatum != null && startDatum != null && eindDatum.before(startDatum)){
+        if (eindDatum != null && startDatum != null && eindDatum.before(startDatum))
+        {
             return "Tergubrengdatum moet groter zijn dat ophaaldatum";
         }
-        if(status == null){
+        if (status == null)
+        {
             return "Selecteer een status";
         }
-        if(materiaal == null){
+        if (materiaal == null)
+        {
             return "Selecteer een materiaal";
         }
-        if(gebruiker == null){
+        if (gebruiker == null)
+        {
             return "Selecteer een gebruiker";
         }
         return "";
     }
-    public boolean isLoggedIn(){
+
+    public boolean isLoggedIn()
+    {
         return loggedIn;
     }
 
@@ -158,14 +176,19 @@ public class LoaderSchermen
         this.loggedIn = loggedIn;
     }
 
-    public void setWidthAndHeight(Node node){
+    public void setWidthAndHeight(Node node)
+    {
         setScreenHeigth(node.getScene().getHeight());
         setScreenWidth(node.getScene().getWidth());
     }
-    public void setNode(Node node){
+
+    public void setNode(Node node)
+    {
         this.node = node;
     }
-    public Node getNode(){
+
+    public Node getNode()
+    {
         return node;
     }
 }

@@ -119,7 +119,9 @@ public class MateriaalCatalogus {
         objectDao.insert(element);
         objectDao.commitTransaction();
     }
-    public void wijzigMateriaal(Materiaal materiaal) {
+    
+    public void wijzigMateriaal(Materiaal materiaal)
+    {
         materiaalDao.startTransaction();
         materiaalDao.update(materiaal);
         materiaalDao.commitTransaction();

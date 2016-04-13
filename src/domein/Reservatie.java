@@ -120,13 +120,13 @@ public class Reservatie
 
     public StringProperty beginDatumProperty()
     {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return new SimpleStringProperty(dateFormat.format(startDatum));
     }
 
     public StringProperty eindDatumProperty()
     {
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
         return new SimpleStringProperty(dateFormat.format(eindDatum));
     }
 

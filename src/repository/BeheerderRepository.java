@@ -7,6 +7,7 @@ package repository;
 
 import domein.Beheerder;
 import domein.Gebruiker;
+import domein.Materiaal;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
 import java.util.regex.Pattern;
@@ -56,13 +57,27 @@ public class BeheerderRepository
         beheerder = beheerderDao.getBeheerderByEmail(email, wachtwoord);//Mapping.loginQuery(email, wachtwoord);
     }
 
-    public void voegGebruikerToe(Beheerder beheerder)
+    public void voegBeheerderToe(Beheerder beheerder)
     {
         setBeheerder(beheerder);
         beheerderDao.startTransaction();
         beheerderDao.insert(beheerder);
         beheerderDao.commitTransaction();
     }
+    
+    public void verwijderMateriaal(Beheerder beheerder) {
+        beheerderDao.startTransaction();
+        beheerderDao.delete(beheerder);
+        beheerderDao.commitTransaction();
+    }
+    
+    public void wijzigMateriaal(Beheerder beheerder)
+    {
+        beheerderDao.startTransaction();
+        beheerderDao.update(beheerder);
+        beheerderDao.commitTransaction();
+    }
+    
     public SortedList<Gebruiker> getGebruikers(){
         return new SortedList<Gebruiker>(new FilteredList<Gebruiker>(FXCollections.observableArrayList(gebruikerDoa.findAll())));
     }
