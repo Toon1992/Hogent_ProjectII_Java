@@ -58,7 +58,9 @@ public class MateriaalController extends Observable
     public void filter(MateriaalFilter filterNaam, List<String> filters){
         materiaalCatalogus.filterMaterialen(filterNaam, filters.stream().map(String::toLowerCase).collect(Collectors.toSet()));
     }
-
+    public List<String> getLokalen(){
+        return materiaalCatalogus.geefLokalen();
+    }
     public void setCurrentMateriaal(Materiaal materiaal)
     {
         setChanged();

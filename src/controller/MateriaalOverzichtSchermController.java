@@ -121,7 +121,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         checkLeergebieden.setMaxWidth(150);
         checkFirma = new CheckComboBox<>(FXCollections.observableArrayList( "Globe", "Prisma", "Texas Instruments", "kimax", "Wissner"));
         checkFirma.setMaxWidth(150);
-        checkPlaats = new CheckComboBox<>(FXCollections.observableArrayList( "B2.13", "B3.43", "B1.00"));
+        checkPlaats = new CheckComboBox<>(FXCollections.observableArrayList(mc.getLokalen()));
         checkPlaats.setMaxWidth(150);
         checkUitleenbaarheid = new CheckComboBox<>(FXCollections.observableArrayList("Student", "Lector"));
         checkUitleenbaarheid.setMaxWidth(150);
