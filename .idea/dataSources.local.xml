@@ -5,5 +5,11 @@
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
     </data-source>
+    <data-source name="SQL Server (Microsoft) - DidactischeLeermiddelen@PCMANU" uuid="17b9a73d-89a0-4f56-8d4e-ad2136ecbb11">
+      <secret-storage>master_key</secret-storage>
+      <user-name>sa</user-name>
+      <schema-pattern>DidactischeLeermiddelen.*</schema-pattern>
+      <default-schemas>DidactischeLeermiddelen.*</default-schemas>
+    </data-source>
   </component>
 </project>

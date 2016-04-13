@@ -5,6 +5,7 @@
  */
 package controller;
 
+import gui.BeheerderSchermController;
 import gui.LoaderSchermen;
 import gui.ReservatieSchermController;
 import javafx.fxml.FXML;
@@ -68,6 +69,7 @@ public class LayoutFrameController extends BorderPane {
     private void gaNaarBeheerders(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
             LoaderSchermen.getInstance().setWidthAndHeight(this);
+            this.setCenter(new BeheerderSchermController());
         }
     }
 

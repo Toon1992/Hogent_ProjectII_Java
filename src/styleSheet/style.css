@@ -2,6 +2,13 @@
     -fx-background-color:  #009C7C;
 }
 
+.headLabel
+{
+    -fx-font-size:42pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill:#009C7C;
+    
+}
 .label {
      -fx-font-size: 11pt;
      -fx-font-family: "Segoe UI Semibold";

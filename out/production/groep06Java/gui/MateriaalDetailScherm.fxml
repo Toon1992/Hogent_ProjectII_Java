@@ -155,8 +155,8 @@
             </Label>
             <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
             <Label fx:id="lblErrorMessage" prefHeight="21.0" prefWidth="591.0" styleClass="label-error" GridPane.columnIndex="2" GridPane.columnSpan="2" />
-            <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="Nieuw" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="Nieuw" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="+" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
            </children>
        </GridPane>
    </children>

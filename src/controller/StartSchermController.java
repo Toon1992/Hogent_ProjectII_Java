@@ -5,6 +5,7 @@
  */
 package controller;
 
+import gui.BeheerderSchermController;
 import gui.LoaderSchermen;
 import gui.ReservatieSchermController;
 import javafx.fxml.FXML;
@@ -52,6 +53,8 @@ public class StartSchermController extends GridPane
     @FXML
     private void clickedBeheerder(MouseEvent event)
     {
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new BeheerderSchermController());
     }
 
     @FXML

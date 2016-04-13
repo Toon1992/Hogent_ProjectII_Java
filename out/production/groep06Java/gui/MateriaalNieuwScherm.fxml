@@ -123,7 +123,7 @@
                </Label>
                <Button fx:id="btnToevoegen" mnemonicParsing="false" onAction="#voegToe" text="Voeg toe" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
                <ListView fx:id="listDoelgroep" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-               <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="3" />
+               <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="2" />
             <TextField fx:id="txfNaam" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="15.0" />
@@ -165,6 +165,8 @@
                   <Font size="24.0" />
                </font>
             </Label>
+            <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="+" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
            </children>
        </GridPane>
    </children>

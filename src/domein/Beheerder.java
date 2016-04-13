@@ -5,18 +5,14 @@
  */
 package domein;
 
-import java.io.File;
-import java.util.List;
-import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -25,8 +21,10 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries(
 {
-    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord")
+    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord"),
+    @NamedQuery(name = "Beheerder.FindAll", query = "SELECT b FROM Beheerder b")
 })
+@Table(name="Beheerder")
 public class Beheerder
 {
 
@@ -81,5 +79,7 @@ public class Beheerder
     {
         this.naam = naam;
     }
+    
+    
 
 }

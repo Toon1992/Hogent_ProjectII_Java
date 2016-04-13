@@ -163,8 +163,8 @@ public class ReservatieNieuwSchermController extends GridPane {
         if(flag){
             lblOnvolledigheid.setText("");
             lblOnbeschikbaarheid.setText("");
-            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie maken", "Ben je zeker dat je de reservatie wilt opslaan", "Nee", "Ja");
-            if (isOk)
+            boolean isNotOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie maken", "Ben je zeker dat je de reservatie wilt opslaan", "Ja", "Nee");
+            if (!isNotOk)
             {
                 rc.maakReservatie(aantal,0, startDate, endDate, status, gebruiker, materiaal);
                 terug(null);
