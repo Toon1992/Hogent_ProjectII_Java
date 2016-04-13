@@ -13,12 +13,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
-import repository.IReservatieRepository;
+import persistentie.ReservatieDaoJpa;
 import repository.ReservatieRepository;
 import stateMachine.ReservatieStateEnum;
 
@@ -28,13 +27,13 @@ import stateMachine.ReservatieStateEnum;
  */
 public class ReservatieController
 {
-    private IReservatieRepository repository;
+    private ReservatieRepository repository;
     
     public ReservatieController()
     {
-        setReservatieRepository(new ReservatieRepository());
+        setReservatieRepository(new ReservatieRepository(new ReservatieDaoJpa()));
     }
-    public void setReservatieRepository(IReservatieRepository repository){
+    public void setReservatieRepository(ReservatieRepository repository){
         this.repository = repository;
     }
     
@@ -83,7 +82,7 @@ public class ReservatieController
         return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal, origineelAantal);
     }
     public void setFormatDatepicker(DatePicker dp){
-        dp.setOnShowing(e-> Locale.setDefault(Locale.Category.FORMAT,Locale.FRANCE));
+        dp.setOnShowing(e-> Locale.setDefault(Locale.Category.FORMAT,Locale.UK));
         String pattern = "dd-MM-yyy";
         dp.setConverter(new StringConverter<LocalDate>() {
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);

@@ -21,6 +21,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import persistentie.ReservatieDao;
 import persistentie.ReservatieDaoJpa;
 import stateMachine.ReservatieStateEnum;
 
@@ -28,19 +29,20 @@ import stateMachine.ReservatieStateEnum;
  *
  * @author ToonDT
  */
-public class ReservatieRepository implements IReservatieRepository
+public class ReservatieRepository
 {
 
     private FilteredList<Reservatie> filterReservaties;
-    private ReservatieDaoJpa reservatieDao;
+    private ReservatieDao reservatieDao;
     private ObservableList<Reservatie> filterReservatie;
 
-    public ReservatieRepository()
+    public ReservatieRepository(ReservatieDao reservatieDao)
     {
-        reservatieDao = new ReservatieDaoJpa();
+        setReservatieDao(reservatieDao);
     }
-
-    @Override
+    public void setReservatieDao(ReservatieDao reservatieDao){
+        this.reservatieDao = reservatieDao;
+    }
     public SortedList<Reservatie> geefReservaties()
     {
         if (filterReservaties == null)
@@ -51,7 +53,7 @@ public class ReservatieRepository implements IReservatieRepository
         return new SortedList<>(filterReservaties);
     }
 
-    @Override
+
     public void Zoek(String zoekTerm)
     {
         filterReservaties.setPredicate(r
@@ -66,10 +68,10 @@ public class ReservatieRepository implements IReservatieRepository
         });
     }
 
-    @Override
+
     public void zoekOpBeginDatum(LocalDate zoekTerm)
     {
-        Date datum = geefEersteDagVanDeWeek(zoekTerm);
+        Date datum = HulpMethode.geefEersteDagVanDeWeek(zoekTerm);
 
         filterReservaties.setPredicate(r -> 
                 {
@@ -82,10 +84,10 @@ public class ReservatieRepository implements IReservatieRepository
         });
     }
 
-    @Override
+
     public void zoekOpEindDatum(LocalDate zoekTerm)
     {
-        Date datum = geefEersteDagVanDeWeek(zoekTerm);
+        Date datum = HulpMethode.geefEersteDagVanDeWeek(zoekTerm);
 
         filterReservaties.setPredicate(r -> 
                 {
@@ -120,7 +122,7 @@ public class ReservatieRepository implements IReservatieRepository
         return false;
     }
 
-    private Date geefEersteDagVanDeWeek(LocalDate datum)
+    /*private Date geefEersteDagVanDeWeek(LocalDate datum)
     {
         switch (datum.getDayOfWeek())
         {
@@ -152,13 +154,12 @@ public class ReservatieRepository implements IReservatieRepository
     {
         Instant instant = Instant.from(datum.atStartOfDay(ZoneId.of("GMT")));
         return Date.from(instant);
-    }
+    }*/
 
-    @Override
     public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
         return reservatieDao.getReservaties(startDatum, eindDatum, materiaal);
     }
-    @Override
+
     public int[] berekenAantalbeschikbaarMateriaal(Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, int aantal, int origineelAantal){
         List<Reservatie> overschrijvendeReservaties = geefReservatiesByDatum(startDate, endDate, materiaal);
         int aantalStudent = 0;
@@ -169,11 +170,13 @@ public class ReservatieRepository implements IReservatieRepository
         }
         //Aantal stuks dat reeds onbeschikbaar zijn voor de gebruiker (lector of student)
         int aantalGereserveerdeStuks = overschrijvendeReservaties.stream().mapToInt(r -> r.getAantalUitgeleend()).sum() - origineelAantal ;
+        aantalGereserveerdeStuks = aantalGereserveerdeStuks < 0 ? 0: aantalGereserveerdeStuks;
         int aantalBeschikbaar = materiaal.getAantal() - materiaal.getAantalOnbeschikbaar() - aantalGereserveerdeStuks;
         int aantalOverruled = aantalStudent+aantalGereserveerdeStuks+ aantal - materiaal.getAantal() - materiaal.getAantalOnbeschikbaar();
+        aantalOverruled = aantalOverruled < 0? 0: aantalOverruled;
         return new int[]{aantalBeschikbaar, aantalOverruled};
     }
-    @Override
+
     public void overruleStudent(int aantalOverruled){
         List<Reservatie> reservaties = geefReservaties();
         reservaties = reservaties.stream().filter(r -> r.getGebruiker().getType().equals("ST") && r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd)).sorted(Comparator.comparing(Reservatie::getAanmaakDatum)).collect(Collectors.toList());
@@ -198,32 +201,33 @@ public class ReservatieRepository implements IReservatieRepository
             }
         }
     }
-    @Override
+
     public Reservatie maakReservatieObject(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal){
         SortedSet<Dag> dagen = new TreeSet<>();
         if(gebruiker.getType().equals("LE")){
-            Date maandag = geefEersteDagVanDeWeek(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-            Date vrijdag = convertLocalDateToDate(maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
+            Date maandag = HulpMethode.geefEersteDagVanDeWeek(startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+            Date vrijdag = HulpMethode.convertLocalDateToDate(maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
             //alle dagen tussen begin en einddatum in de list plaatsen
             Date beginDatum = startDate;
             while(beginDatum.before(endDate)){
                 dagen.add(new Dag(beginDatum));
-                beginDatum = convertLocalDateToDate(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(1));
+                beginDatum = HulpMethode.convertLocalDateToDate(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(1));
             }
             dagen.add(new Dag(endDate));
         }
         return new Reservatie(aantal, aantalTerug, startDate, endDate, new Date(), dagen, status, gebruiker, materiaal);
     }
-    @Override
+
     public void voegReservatieToe(Reservatie reservatie){
-        reservatieDao.startTransaction();
-        reservatieDao.insert(reservatie);
-        reservatieDao.commitTransaction();
+        ReservatieDaoJpa jpa = (ReservatieDaoJpa) reservatieDao;
+        jpa.startTransaction();
+        jpa.insert(reservatie);
+        jpa.commitTransaction();
         filterReservatie.remove(reservatie);
         filterReservatie.add(reservatie);
         filterReservaties = new FilteredList(filterReservatie, p -> true);
     }
-    @Override
+
     public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status){
         Reservatie oldReservatie = reservatie;
         //De parameters setten
@@ -241,16 +245,18 @@ public class ReservatieRepository implements IReservatieRepository
         filterReservaties = new FilteredList(filterReservatie, p -> true);
     }
     private void wijzigReservatieObject(Reservatie reservatie){
-        reservatieDao.startTransaction();
-        reservatieDao.update(reservatie);
-        reservatieDao.commitTransaction();
+        ReservatieDaoJpa jpa = (ReservatieDaoJpa) reservatieDao;
+        jpa.startTransaction();
+        jpa.update(reservatie);
+        jpa.commitTransaction();
     }
-    @Override
+
     public void verwijderReservatue(Reservatie reservatie)
     {
-        reservatieDao.startTransaction();
-        reservatieDao.delete(reservatie);
-        reservatieDao.commitTransaction();
+        ReservatieDaoJpa jpa = (ReservatieDaoJpa) reservatieDao;
+        jpa.startTransaction();
+        jpa.delete(reservatie);
+        jpa.commitTransaction();
         filterReservatie.remove(reservatie);
         filterReservaties = new FilteredList(filterReservatie, p -> true);
     }

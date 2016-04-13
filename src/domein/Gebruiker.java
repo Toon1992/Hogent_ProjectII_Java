@@ -66,13 +66,19 @@ public class Gebruiker
     public String getType() {
         return type;
     }
-
+    private String getTypeGebruiker(){
+        switch (getType().toLowerCase()){
+            case "st": return "Student";
+            case "le": return "Lector";
+        }
+        return "";
+    }
     public void setType(String type) {
         this.type = type;
     }
     @Override
     public String toString(){
-        return naam;
+        return String.format("%s - %s", naam, getTypeGebruiker());
     }
     
     
