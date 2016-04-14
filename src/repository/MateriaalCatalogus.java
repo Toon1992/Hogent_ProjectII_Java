@@ -27,10 +27,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
+import persistentie.FirmaDaoJpa;
 import persistentie.GenericDaoJpa;
 import persistentie.MateriaalDaoJpa;
 
 import javax.imageio.ImageIO;
+import javax.persistence.NoResultException;
 
 /**
  *
@@ -45,11 +47,13 @@ public class MateriaalCatalogus {
     private Map<String, Set<Materiaal>> filterMap = new HashMap<>();
     private MateriaalDaoJpa materiaalDao;
     private GenericDaoJpa<Object> objectDao;
+    private FirmaDaoJpa firmaDao;
     private ObservableList<Materiaal> filterMateriaal;
     private List<String> lokalen;
 
     public MateriaalCatalogus() {
         materiaalDao = new MateriaalDaoJpa();
+        firmaDao = new FirmaDaoJpa();
         objectDao = new GenericDaoJpa<>(Object.class);
     }
 
@@ -108,7 +112,12 @@ public class MateriaalCatalogus {
                 }
             }
             aantal = Integer.parseInt(aantalString);
-            Firma f = new Firma(firmaNaam, firmaContact);
+            Firma f = firmaDao.geefFirma(firmaNaam);
+                if(!f.getEmailContact().equals(firmaContact)) {
+                    f.setEmailContact(firmaContact);
+                    firmaDao.update(f);
+                }
+            //Firma f = new Firma(firmaNaam, firmaContact);
             Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, f, doelgroepen, leergebieden);
             opgehaaldeMaterialen.add(materiaal);
             saveObject(materiaal);

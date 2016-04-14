@@ -7,14 +7,14 @@
     -fx-font-size:42pt;
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill:#009C7C;
-    
+
 }
 .label {
-     -fx-font-size: 11pt;
-     -fx-font-family: "Segoe UI Semibold";
-     -fx-text-fill: black;
-     -fx-opacity: 0.6;
- }
+    -fx-font-size: 11pt;
+    -fx-font-family: "Segoe UI Semibold";
+    -fx-text-fill: black;
+    -fx-opacity: 0.6;
+}
 .label-error {
     -fx-font-size: 11pt;
     -fx-font-family: "Segoe UI Semibold";
@@ -181,8 +181,8 @@
 }
 
 .button:pressed, .button:default:hover:pressed {
-  -fx-background-color: white;
-  -fx-text-fill: #009C7C;
+    -fx-background-color: white;
+    -fx-text-fill: #009C7C;
 }
 
 .button:focused {
@@ -233,3 +233,8 @@
     -fx-opacity:0.5;
     -fx-cursor: hand;
 }
+
+/*.list-cell
+{
+    -fx-alignment: center ;
+}*/

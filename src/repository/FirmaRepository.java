@@ -8,6 +8,9 @@ package repository;
 import domein.Firma;
 import persistentie.FirmaDaoJpa;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 /**
  *
  * @author manu
@@ -21,6 +24,15 @@ public class FirmaRepository {
     
     public Firma geefFirma(String naam){
         return firmaDao.geefFirma(naam);
+    }
+    public void voegFirmaToe(String firma, String email){
+        firmaDao.startTransaction();
+        firmaDao.insert(new Firma(firma, email));
+        firmaDao.commitTransaction();
+
+    }
+    public List<String> geefAlleFirmas(){
+        return firmaDao.findAll().stream().map(firma -> firma.getNaam()).collect(Collectors.toList());
     }
     
     public void wijzigFirma(Firma f){

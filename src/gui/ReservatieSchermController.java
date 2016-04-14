@@ -156,10 +156,8 @@ public class ReservatieSchermController extends HBox
         LocalDate dateEind = datePickerEind.getValue();
         rc.zoekOpBeginDatum(dateBegin);
         if(dateEind != null){
-            rc.zoekOpEindDatum(dateEind);
+            rc.zoekOpBeginDatum(dateEind);
         }
-
-
     }
 
     @FXML

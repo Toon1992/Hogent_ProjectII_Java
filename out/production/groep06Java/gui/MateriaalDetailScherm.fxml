@@ -68,14 +68,13 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfFirma" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="11" />
                <Label text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="ArtikelNummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+               <Label text="ArtikelNummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
@@ -95,12 +94,12 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Email contactpersoon" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
+               <Label text="Email contactpersoon" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="3" GridPane.rowIndex="10" />
                <Label text="Plaats" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
                    <padding>
                        <Insets right="10.0" />
@@ -161,6 +160,8 @@
             <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
             <TextField fx:id="txfUrl" maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#wijzigFoto" text="Wijzig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+            <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
            </children>
        </GridPane>
    </children>

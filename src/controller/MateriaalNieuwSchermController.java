@@ -83,6 +83,8 @@ public class MateriaalNieuwSchermController extends VBox {
     private Button btnToevoegen;
     @FXML
     private Label lblError;
+    @FXML
+    private ComboBox<String> comboFirma;
 
     private MateriaalController mc;
     private List<Doelgroep> doelgroepen;
@@ -97,6 +99,7 @@ public class MateriaalNieuwSchermController extends VBox {
     private GridPane gp;
     private Leergebied l = new Leergebied("l");
     private Doelgroep d = new Doelgroep("d");
+
     public MateriaalNieuwSchermController(MateriaalController mc) {
         LoaderSchermen.getInstance().setLocation("MateriaalNieuwScherm.fxml", this);
         this.mc = mc;
@@ -123,12 +126,15 @@ public class MateriaalNieuwSchermController extends VBox {
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(200);
 
+        comboFirma.setItems(FXCollections.observableArrayList(firmaRepo.geefAlleFirmas()));
+
         gp = (GridPane) this.getChildren().get(0);
         gp.add(checkDoelgroepen, 1, 4);
         gp.add(checkLeergebieden, 3, 4);
         MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
         MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
     }
+
     @FXML
     private void voegToe(ActionEvent event) {
         String naam = "", omschrijving = "", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
@@ -139,7 +145,7 @@ public class MateriaalNieuwSchermController extends VBox {
         naam = txfNaam.getText();
         omschrijving = txfOmschrijving.getText();
         plaats = txfPlaats.getText();
-        firmaNaam = txfFirma.getText();
+        firmaNaam = comboFirma.getValue();
         firmaContact = txfContactPersoon.getText();
         artikelNrString = txfArtikelNummer.getText();
         aantalString = txfAantal.getText();
@@ -149,6 +155,7 @@ public class MateriaalNieuwSchermController extends VBox {
         uitleenbaar = radioStudent.isSelected();
         try {
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+            LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
         } catch (NaamException | AantalException e) {
             lblError.setText(e.getLocalizedMessage());
         }
@@ -169,31 +176,57 @@ public class MateriaalNieuwSchermController extends VBox {
     }
 
     @FXML
-    void nieuweDoelgroep(ActionEvent event) {
+    private void nieuweDoelgroep(ActionEvent event) {
         String doelgroep = MateriaalHulpController.textInputDialog("Nieuwe doelgroep", "Voeg een nieuwe doelgroep toe", "Voeg naam in:");
-        if(checkDoelgroepen.getItems().contains(doelgroep)){
+        if (checkDoelgroepen.getItems().contains(doelgroep)) {
             lblError.setText("Deze doelgroep bestaat al!");
         }
-        if(!doelgroep.isEmpty()&&!checkDoelgroepen.getItems().contains(doelgroep)){
+        if (!doelgroep.isEmpty() && !checkDoelgroepen.getItems().contains(doelgroep)) {
             checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
-            gp.add(checkDoelgroepen,1,4);
-            gebiedenRepo.voegNieuwGebiedToe(doelgroep,d);
+            gp.add(checkDoelgroepen, 1, 4);
+            gebiedenRepo.voegNieuwGebiedToe(doelgroep, d);
         }
     }
 
     @FXML
-    void nieuwLeergebied(ActionEvent event) {
+    private void nieuwLeergebied(ActionEvent event) {
         String leergebied = MateriaalHulpController.textInputDialog("Nieuwe leergebied", "Voeg een nieuw leergebied toe", "Voeg naam in:");
-        if(checkLeergebieden.getItems().contains(leergebied)){
+        if (checkLeergebieden.getItems().contains(leergebied)) {
             lblError.setText("Dit leergebied bestaat al!");
         }
-        if(!leergebied.isEmpty()&&!checkLeergebieden.getItems().contains(leergebied)){
+        if (!leergebied.isEmpty() && !checkLeergebieden.getItems().contains(leergebied)) {
             checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
-            gp.add(checkLeergebieden,3, 4);
-            gebiedenRepo.voegNieuwGebiedToe(leergebied,l);
+            gp.add(checkLeergebieden, 3, 4);
+            gebiedenRepo.voegNieuwGebiedToe(leergebied, l);
         }
     }
+    @FXML
+    private void comboFirmaOnClick(ActionEvent event) {
+        if(comboFirma.getSelectionModel().getSelectedItem()!=null){
+            String naam=comboFirma.getSelectionModel().getSelectedItem();
+            Firma f=firmaRepo.geefFirma(naam);
+            comboFirma.setPromptText(comboFirma.getSelectionModel().getSelectedItem());
+            comboFirma.setValue(comboFirma.getSelectionModel().getSelectedItem());
+            txfContactPersoon.setText(f.getEmailContact());
+        }
+    }
+    @FXML
+    private void btnNieuweFirma(ActionEvent event) {
+        String firma = MateriaalHulpController.textInputDialog("Nieuwe firma", "Voeg een nieuwe firma toe", "Voer naam in:");
+        if (comboFirma.getItems().contains(firma)) {
+            lblError.setText("Deze firma bestaat al!");
+        } else {
+            firmaRepo.voegFirmaToe(firma, txfContactPersoon.getText());
+            List<String> firmas = new ArrayList<>();
+            firmas.addAll(comboFirma.getItems());
+            firmas.add(firma);
+            comboFirma.setItems(FXCollections.observableArrayList(firmas));
+            comboFirma.setPromptText(firma);
+            txfContactPersoon.setText("");
+            comboFirma.setValue(firma);
 
+        }
+    }
 }

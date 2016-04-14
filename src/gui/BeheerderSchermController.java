@@ -52,10 +52,9 @@ public class BeheerderSchermController extends GridPane
 
     public BeheerderSchermController()
     {
+        LoaderSchermen.getInstance().setLocation("BeheerderScherm.fxml", this);
         controller = new BeheerderController();
         beheerderNamenList = controller.getBeheerders();
-
-        LoaderSchermen.getInstance().setLocation("BeheerderScherm.fxml", this);
 
         vulListViewIn();
         selectListViewListener();

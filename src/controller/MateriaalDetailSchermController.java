@@ -15,8 +15,11 @@ import java.util.stream.Collectors;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -81,6 +84,8 @@ public class MateriaalDetailSchermController extends VBox {
     private Label lblErrorMessage;
     @FXML
     private TextField txfUrl;
+    @FXML
+    private ComboBox<String> comboFirma;
     private GridPane gp;
     private GebiedenRepository gebiedenRepo;
     private FirmaRepository firmaRepo;
@@ -117,11 +122,15 @@ public class MateriaalDetailSchermController extends VBox {
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(200);
 
+        comboFirma.setItems(FXCollections.observableArrayList(firmaRepo.geefAlleFirmas()));
+
         gp = (GridPane) this.getChildren().get(0);
         gp.add(checkDoelgroepen,1,6);
         gp.add(checkLeergebieden,3, 6);
         MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
         MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
+
+
     }
 
     @FXML
@@ -154,16 +163,15 @@ public class MateriaalDetailSchermController extends VBox {
             materiaal.setPrijs(Double.valueOf(prijs));
 
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
-            
+
             //firma maken
-            Firma f=firmaRepo.geefFirma(materiaal.getFirma().getNaam()); // omdat als het al gewijzigd is dan kan je nooit opvragen
-            f.setNaam(txfFirma.getText());
+            Firma f=firmaRepo.geefFirma(comboFirma.getValue()); // omdat als het al gewijzigd is dan kan je nooit opvragen
             f.setEmailContact(txfContactPersoon.getText());
             if(foto != null){
                 materiaal.setFoto(foto);
             }
 
-            materiaal.setFirma(f); 
+            materiaal.setFirma(f);
             firmaRepo.wijzigFirma(f);
             mc.wijzigMateriaal(materiaal);
             lblErrorMessage.setText("");
@@ -175,7 +183,7 @@ public class MateriaalDetailSchermController extends VBox {
             lblErrorMessage.setText(ex.getMessage());
         }
 
-    }  
+    }
 
     public void update(Materiaal materiaal)
     {
@@ -185,7 +193,8 @@ public class MateriaalDetailSchermController extends VBox {
         txfContactPersoon.setText(materiaal.getFirma().getEmailContact());
         listDoelgroep.setItems(mc.objectCollectionToObservableList(materiaal.getDoelgroepen()).sorted());
         listLeergbedied.setItems(mc.objectCollectionToObservableList(materiaal.getLeergebieden()).sorted());
-        txfFirma.setText(materiaal.getFirma().getNaam());
+        comboFirma.setPromptText(materiaal.getFirma().getNaam());
+        comboFirma.setValue(materiaal.getFirma().getNaam());
         txfNaam.setText(materiaal.getNaam());
         txfOmschrijving.setText(materiaal.getOmschrijving());
         txfOnbeschikbaar.setText(String.format("%d", materiaal.getAantalOnbeschikbaar()));
@@ -231,5 +240,40 @@ public class MateriaalDetailSchermController extends VBox {
         }
 
     }
+    @FXML
+    private void comboFirmaOnClick(ActionEvent event) {
+        if(comboFirma.getSelectionModel().getSelectedItem()!=null){
+            List<String> firmas = comboFirma.getItems();
+            System.out.println(comboFirma.getSelectionModel().getSelectedItem());
+            if(firmas.contains(comboFirma.getSelectionModel().getSelectedItem())){
+                String naam=comboFirma.getSelectionModel().getSelectedItem();
+                Firma f=firmaRepo.geefFirma(naam);
+                comboFirma.setPromptText(comboFirma.getSelectionModel().getSelectedItem());
+                txfContactPersoon.setText(f.getEmailContact());
+            }
+        }
+    }
+
+
+    @FXML
+    private void btnNieuweFirma(ActionEvent event) {
+        String firma = MateriaalHulpController.textInputDialog("Nieuwe firma", "Voeg een nieuwe firma toe", "Voer naam in:");
+        if(comboFirma.getItems().contains(firma)){
+            lblErrorMessage.setText("Deze firma bestaat al!");
+        }
+        else{
+            firmaRepo.voegFirmaToe(firma, txfContactPersoon.getText());
+            List<String> firmas=new ArrayList<>();
+            firmas.addAll(comboFirma.getItems());
+            firmas.add(firma);
+            comboFirma.setItems(FXCollections.observableArrayList(firmas));
+            comboFirma.setPromptText(firma);
+            comboFirma.setValue(firma);
+            txfContactPersoon.setText("");
+
+        }
+
+    }
+
 
 }

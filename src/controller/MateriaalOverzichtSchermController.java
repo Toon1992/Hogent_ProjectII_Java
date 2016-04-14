@@ -19,7 +19,6 @@ import domein.Materiaal;
 import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -83,6 +82,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         initializeVariables();
         initializeTableViewMaterialen();
         addListeners();
+        resetFilters(null);
     }
     private void initializeVariables() {
         sortedMateriaal = mc.getMateriaalFilterList();
@@ -119,7 +119,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         checkDoelgroepen.setMaxWidth(150);
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l))));
         checkLeergebieden.setMaxWidth(150);
-        checkFirma = new CheckComboBox<>(FXCollections.observableArrayList( "Globe", "Prisma", "Texas Instruments", "kimax", "Wissner"));
+        checkFirma = new CheckComboBox<>(FXCollections.observableArrayList(firmaRepo.geefAlleFirmas()));
         checkFirma.setMaxWidth(150);
         checkPlaats = new CheckComboBox<>(FXCollections.observableArrayList(mc.getLokalen()));
         checkPlaats.setMaxWidth(150);

@@ -61,7 +61,6 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfFirma" GridPane.columnIndex="3" GridPane.rowIndex="7" />
                <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="8" />
                <Label text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                    <padding>
@@ -167,6 +166,8 @@
             </Label>
             <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="+" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
             <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
+            <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
            </children>
        </GridPane>
    </children>
