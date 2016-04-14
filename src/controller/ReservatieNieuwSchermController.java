@@ -154,7 +154,7 @@ public class ReservatieNieuwSchermController extends GridPane {
 
                     rc.maakReservatie(aantal,0, startDate, endDate, status, gebruiker, materiaal);
                     if(automatischOverrulen){
-                        rc.overruleStudent(aantalOverruled);
+                        rc.overruleStudent(aantalOverruled, materiaal);
                     }
                     terug(null);
                 }

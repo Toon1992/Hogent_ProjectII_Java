@@ -177,8 +177,8 @@ public class ReservatieRepository
         return new int[]{aantalBeschikbaar, aantalOverruled};
     }
 
-    public void overruleStudent(int aantalOverruled){
-        List<Reservatie> reservaties = geefReservaties();
+    public void overruleStudent(int aantalOverruled, Materiaal materiaal){
+        List<Reservatie> reservaties = geefReservaties().stream().filter(r -> r.getMateriaal().equals(materiaal)).collect(Collectors.toList());
         reservaties = reservaties.stream().filter(r -> r.getGebruiker().getType().equals("ST") && r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd)).sorted(Comparator.comparing(Reservatie::getAanmaakDatum)).collect(Collectors.toList());
         boolean nogTeOverrulen = true;
         while (nogTeOverrulen){

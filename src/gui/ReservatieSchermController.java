@@ -62,6 +62,8 @@ public class ReservatieSchermController extends HBox
     @FXML
     private TableColumn<Reservatie, String> statusColumn;
     @FXML
+    private TableColumn<Reservatie, String> typeColumn;
+    @FXML
     private DatePicker dtpOphaal;
     @FXML
     private DatePicker dtpTerugbreng;
@@ -118,6 +120,7 @@ public class ReservatieSchermController extends HBox
         this.EindDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().eindDatumProperty());
         this.naamColumn.setCellValueFactory(reservatie->reservatie.getValue().naamGebruikerProperty());
         this.statusColumn.setCellValueFactory(reservatie->reservatie.getValue().statusProperty());
+        this.typeColumn.setCellValueFactory(reservatie -> reservatie.getValue().getGebruiker().typeProperty());
         
         reservatieTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
@@ -251,7 +254,7 @@ public class ReservatieSchermController extends HBox
                 {
                     rc.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
                     if(checkOverruul.isSelected()){
-                        rc.overruleStudent(aantalOverruled);
+                        rc.overruleStudent(aantalOverruled, materiaal);
                     }
                 }
             }

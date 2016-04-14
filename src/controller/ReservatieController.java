@@ -77,9 +77,9 @@ public class ReservatieController
         repository.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
     }
 
-    public void overruleStudent(int aantalOverruled)
+    public void overruleStudent(int aantalOverruled, Materiaal materiaal)
     {
-        repository.overruleStudent(aantalOverruled);
+        repository.overruleStudent(aantalOverruled, materiaal);
     }
 
     public void verwijderReservatie(Reservatie reservatie)
