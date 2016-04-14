@@ -198,7 +198,11 @@ public class MateriaalOverzichtSchermController extends HBox {
         }
         else {
             try{
-                 mc.verwijderMateriaal(materiaal);
+                boolean result=LoaderSchermen.getInstance().popupMessageTwoButtons("Verwijder :" + materiaal.getNaam(), "Bent u zeker dat u dit materiaal wilt verwijderen?", "Annuleer", "Ja");
+                if(result){
+                    mc.verwijderMateriaal(materiaal);
+                } 
+                
             }catch(Exception ex){
                 LoaderSchermen.getInstance().popupMessageOneButton("Verwijderen", String.format("Er zijn nog openstaande reservaties voor materiaal: %s",materiaal.getNaam()), "Ok");
             }
