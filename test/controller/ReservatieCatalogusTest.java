@@ -14,10 +14,9 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import persistentie.ReservatieDao;
-import repository.ReservatieRepository;
+import domein.ReservatieCatalogus;
 
 import java.time.ZoneId;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
@@ -26,9 +25,9 @@ import java.util.List;
  *
  * @author donovandesmedt
  */
-public class ReservatieRepositoryTest {
+public class ReservatieCatalogusTest {
     private ReservatieData data;
-    private ReservatieRepository repository;
+    private ReservatieCatalogus repository;
     private List<Reservatie> reservaties;
     @Mock
     private ReservatieDao reservatieDao;
@@ -38,7 +37,7 @@ public class ReservatieRepositoryTest {
         MockitoAnnotations.initMocks(this);
         data = new ReservatieData();
         trainDummy();
-        repository = new ReservatieRepository(reservatieDao);
+        repository = new ReservatieCatalogus(reservatieDao);
         reservaties = repository.geefReservaties();
     }
 
@@ -131,7 +130,7 @@ public class ReservatieRepositoryTest {
         Reservatie reservatieLector1 = data.getReservatieLector1();
         Reservatie reservatieStudent1 = data.getReservatieStudent1();
         Reservatie reservatieStudent2 = data.getReservatieStudent2();
-        reservatieStudent2.setAantalUitgeleend(2);
+        reservatieStudent2.setAantalGereserveerd(2);
 
         int[] data = berekenAantalBeschikbaar(Arrays.asList(reservatieStudent1, reservatieStudent2), reservatieLector1);
         int aantalBeschikbaar = data[0];

@@ -1,13 +1,12 @@
 package controller;
 
-import domein.Doelgroep;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextInputDialog;
 import org.controlsfx.control.CheckComboBox;
-import repository.MateriaalCatalogus.*;
+import domein.MateriaalCatalogus.*;
 
 import java.util.ArrayList;
 import java.util.List;

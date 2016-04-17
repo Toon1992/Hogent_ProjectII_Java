@@ -132,16 +132,27 @@ public class LoaderSchermen
         bp.setCenter(mco);
     }
 
-    public String reservatieInvoerControle(int aantal, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker)
+    public String reservatieInvoerControle(int aantal,int aantalUit, int aantalTerug, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker)
     {
         if (aantal == 0)
         {
-            return "Voer een positief aantal in groter dan 0";
+            return "Het aantal gereserveerde stuks moet groter dan 0 zijn";
+        }
+        if(aantalUit < 0){
+            return "Het aantal uitgeleende stuks kan niet negatief zijn";
+        }
+        if(aantalTerug < 0){
+            return "Het aantal teruggebrachte stuks kan niet negatief zijn";
+        }
+        if(aantalUit > aantal){
+            return "Het aantal uitgeleende stuks kan niet groter dan het aantal gereserveerde stuks zijn";
+        }
+        if(aantalTerug > aantalUit){
+            return "Het aantal teruggebrachte stuks kan niet groter zijn dan het aantal uitgeleende stuks";
         }
         if (eindDatum == null)
         {
             return "Selecteer een terugbrengdatum";
-
         }
         if (startDatum == null)
         {

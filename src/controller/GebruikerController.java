@@ -5,15 +5,11 @@
  */
 package controller;
 
-import java.util.Collection;
 import java.util.Observable;
-import java.util.Set;
 
 import domein.*;
-import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import repository.BeheerderRepository;
-import repository.MateriaalCatalogus;
 
 /**
  *

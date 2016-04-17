@@ -1,22 +1,21 @@
 package controller;
 
 import domein.Doelgroep;
-import domein.Firma;
 import domein.Leergebied;
 import domein.Materiaal;
 import exceptions.AantalException;
 import exceptions.NaamException;
-import java.io.File;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
-import repository.MateriaalCatalogus;
+import domein.MateriaalCatalogus;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.Observable;
 import java.util.Set;
 import java.util.stream.Collectors;
-import repository.MateriaalCatalogus.MateriaalFilter;
+import domein.MateriaalCatalogus.MateriaalFilter;
+import repository.GeneriekeRepository;
 
 /**
  * Created by donovandesmedt on 25/03/16.
@@ -25,10 +24,15 @@ public class MateriaalController extends Observable
 {
 
     private MateriaalCatalogus materiaalCatalogus;
+    private GeneriekeRepository genRepo;
 
     public MateriaalController()
     {
         setMateriaalCatalogus(new MateriaalCatalogus());
+        setGeneriekeRepository(new GeneriekeRepository());
+    }
+    private void setGeneriekeRepository(GeneriekeRepository repository){
+        this.genRepo = repository;
     }
 
     private void setMateriaalCatalogus(MateriaalCatalogus materiaalCatalogus)
@@ -38,14 +42,9 @@ public class MateriaalController extends Observable
 
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException
     {
-        materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+        Materiaal materiaal = materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+        genRepo.saveObject(materiaal);
     }
-
-    public <E> void voegObjectToe(E element)
-    {
-        materiaalCatalogus.saveObject(element);
-    }
-
     public SortedList<Materiaal> getMateriaalFilterList()
     {
         return materiaalCatalogus.geefMaterialen().sorted();
@@ -81,11 +80,12 @@ public class MateriaalController extends Observable
 
     public void verwijderMateriaal(Materiaal materiaal)
     {
+        genRepo.verwijderObject(materiaal);
         materiaalCatalogus.verwijderMateriaal(materiaal);
     }
 
     public void wijzigMateriaal(Materiaal materiaal)
     {
-        materiaalCatalogus.wijzigMateriaal(materiaal);
+        genRepo.wijzigObject(materiaal);
     }
 }

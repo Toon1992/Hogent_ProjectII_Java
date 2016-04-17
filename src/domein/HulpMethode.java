@@ -1,8 +1,9 @@
-package repository;
+package domein;
 
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -39,5 +40,16 @@ public class HulpMethode {
     {
         Instant instant = Instant.from(datum.atStartOfDay(ZoneId.of("GMT")));
         return Date.from(instant);
+    }
+    public static int getWeekOfDate(Date date){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.WEEK_OF_YEAR);
+    }
+    public static Date getFirstDayOfWeek(int week){
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.WEEK_OF_YEAR, 17);
+        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
+        return cal.getTime();
     }
 }

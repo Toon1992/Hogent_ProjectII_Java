@@ -13,12 +13,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
 import persistentie.ReservatieDaoJpa;
-import repository.ReservatieRepository;
+import domein.ReservatieCatalogus;
+import repository.GeneriekeRepository;
 import stateMachine.ReservatieStateEnum;
 
 /**
@@ -28,14 +30,21 @@ import stateMachine.ReservatieStateEnum;
 public class ReservatieController
 {
 
-    private ReservatieRepository repository;
+    private ReservatieCatalogus repository;
+    private GeneriekeRepository genRepo;
 
     public ReservatieController()
     {
-        setReservatieRepository(new ReservatieRepository(new ReservatieDaoJpa()));
+        setReservatieRepository(new ReservatieCatalogus(new ReservatieDaoJpa()));
+        setGeneriekeRepository(new GeneriekeRepository());
+        verwijderVervallenReservaties();
+        aanpassenTeLaatTerugGebrachteReservaties();
+        checkBeschikbaarheidKomendeReservaties();
     }
-
-    public void setReservatieRepository(ReservatieRepository repository)
+    private void setGeneriekeRepository(GeneriekeRepository repository){
+        this.genRepo = repository;
+    }
+    private void setReservatieRepository(ReservatieCatalogus repository)
     {
         this.repository = repository;
     }
@@ -66,24 +75,30 @@ public class ReservatieController
 //        notifyObservers(reservatie);
     }
 
-    public void maakReservatie(int aantal, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal)
+    public void maakReservatie(int aantal, int aantalUit, int aantalTerug, Date startDate, Date endDate, ReservatieStateEnum status, Gebruiker gebruiker, Materiaal materiaal)
     {
-        Reservatie reservatie = repository.maakReservatieObject(aantal, aantalTerug, startDate, endDate, status, gebruiker, materiaal);
+        Reservatie reservatie = repository.maakReservatieObject(aantal, aantalUit, aantalTerug, startDate, endDate, status, gebruiker, materiaal);
+        genRepo.saveObject(reservatie);
         repository.voegReservatieToe(reservatie);
     }
 
-    public void wijzigReservatie(Reservatie reservatie, int aantal, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status)
+    public void wijzigReservatie(Reservatie reservatie, int aantal, int aantalUit, int aantalTerug, Gebruiker gebruiker, Date startDate, Date endDate, Materiaal materiaal, ReservatieStateEnum status)
     {
-        repository.wijzigReservatie(reservatie, aantal, gebruiker, startDate, endDate, materiaal, status);
+        repository.wijzigReservatie(reservatie, aantal,aantalUit, aantalTerug, gebruiker, startDate, endDate, materiaal, status);
     }
 
     public void overruleStudent(int aantalOverruled, Materiaal materiaal)
     {
-        repository.overruleStudent(aantalOverruled, materiaal);
+        Set<Reservatie> teOverrulenReservaties = repository.overruleStudent(aantalOverruled, materiaal);
+        teOverrulenReservaties.forEach(reservatie -> {
+            genRepo.saveObject(reservatie);
+            repository.voegReservatieToe(reservatie);
+        });
     }
 
     public void verwijderReservatie(Reservatie reservatie)
     {
+        genRepo.verwijderObject(reservatie);
         repository.verwijderReservatue(reservatie);
     }
 
@@ -96,7 +111,21 @@ public class ReservatieController
     {
         return repository.berekenAantalbeschikbaarMateriaal(gebruiker, startDate, endDate, materiaal, aantal, origineelAantal);
     }
-
+    public void verwijderVervallenReservaties(){
+        Set<Reservatie> teVerwijderenReservaties = repository.verwijderVervallenReservaties();
+        teVerwijderenReservaties.forEach(reservatie -> {
+            genRepo.verwijderObject(reservatie);
+            repository.verwijderReservatue(reservatie);
+        });
+    }
+    public void aanpassenTeLaatTerugGebrachteReservaties(){
+        Set<Reservatie> reservatiesTeLaat = repository.aanpassenTeLaatTerugGebrachteReservaties();
+        reservatiesTeLaat.forEach(reservatie -> genRepo.wijzigObject(reservatie));
+    }
+    public void checkBeschikbaarheidKomendeReservaties(){
+        Set<Reservatie> reservatiesTeLaat = repository.checkAlleReservatiesBeschikbaar();
+        reservatiesTeLaat.forEach(reservatie -> genRepo.wijzigObject(reservatie));
+    }
     public void setFormatDatepicker(DatePicker dp)
     {
         dp.setOnShowing(e -> Locale.setDefault(Locale.Category.FORMAT, Locale.FRANCE));

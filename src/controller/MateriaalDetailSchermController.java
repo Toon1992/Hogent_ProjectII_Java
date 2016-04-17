@@ -11,22 +11,15 @@ import domein.Leergebied;
 
 import java.io.File;
 import java.util.*;
-import java.util.stream.Collectors;
 
 import domein.Materiaal;
 import gui.LoaderSchermen;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -36,7 +29,7 @@ import javafx.stage.Stage;
 import org.controlsfx.control.CheckComboBox;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
-import repository.MateriaalCatalogus.*;
+import domein.MateriaalCatalogus.*;
 
 /**
  * FXML Controller class
