@@ -25,7 +25,6 @@ import stateMachine.Overruled;
 import stateMachine.ReservatieGebruikerEnum;
 import stateMachine.ReservatieState;
 import stateMachine.ReservatieStateEnum;
-import static stateMachine.ReservatieStateEnum.Overruled;
 import stateMachine.TeLaat;
 
 /**
@@ -45,6 +44,7 @@ public class Reservatie
     private int reservatieID;
 
     private int aantalUitgeleend;
+    private int aantalGereserveerd;
     private int aantalTeruggebracht;
 
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -77,10 +77,11 @@ public class Reservatie
 
     ;
    
-   public Reservatie( int aantalUitgeleend, int aantalTeruggebracht, Date startDatum, Date eindDatum, Date aanmaakDatum,Set<Dag> dagen, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
+   public Reservatie(int aantalGereserveerd, int aantalUitgeleend, int aantalTeruggebracht, Date startDatum, Date eindDatum, Date aanmaakDatum, Set<Dag> dagen, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
     {
-        setAantalUitgeleend(aantalUitgeleend);
+        setAantalGereserveerd(aantalGereserveerd);
         setAantalTeruggebracht(aantalTeruggebracht);
+        setAantalUitgeleend(aantalUitgeleend);
         setStartDatum(startDatum);
         setEindDatum(eindDatum);
         setAanmaakDatum(aanmaakDatum);
@@ -115,7 +116,7 @@ public class Reservatie
 
     public IntegerProperty aantalProperty()
     {
-        return new SimpleIntegerProperty(getAantalUitgeleend());
+        return new SimpleIntegerProperty(getAantalGereserveerd());
     }
 
     public StringProperty beginDatumProperty()
@@ -178,20 +179,28 @@ public class Reservatie
         return reservatieID;
     }
 
-    public int getAantalUitgeleend()
+    public int getAantalGereserveerd()
     {
-        return aantalUitgeleend;
+        return aantalGereserveerd;
     }
     public int getAantalTeruggebracht(){
         return aantalTeruggebracht;
     }
 
-    public void setAantalUitgeleend(int aantalUitgeleend)
+    public void setAantalGereserveerd(int aantalUitgeleend)
     {
-        this.aantalUitgeleend = aantalUitgeleend;
+        this.aantalGereserveerd = aantalUitgeleend;
     }
     public void setAantalTeruggebracht(int aantalTeruggebracht){
         this.aantalTeruggebracht = aantalTeruggebracht;
+    }
+
+    public int getAantalUitgeleend() {
+        return aantalUitgeleend;
+    }
+
+    public void setAantalUitgeleend(int aantalUitgeleend) {
+        this.aantalUitgeleend = aantalUitgeleend;
     }
 
     public Date getBeginDatum()

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package repository;
+package domein;
 
 import domein.Doelgroep;
 import domein.Firma;
@@ -30,6 +30,7 @@ import javafx.collections.transformation.SortedList;
 import persistentie.FirmaDaoJpa;
 import persistentie.GenericDaoJpa;
 import persistentie.MateriaalDaoJpa;
+import repository.GeneriekeRepository;
 
 import javax.imageio.ImageIO;
 import javax.persistence.NoResultException;
@@ -46,7 +47,6 @@ public class MateriaalCatalogus {
     private Set<Materiaal> nonFilteredSet;
     private Map<String, Set<Materiaal>> filterMap = new HashMap<>();
     private MateriaalDaoJpa materiaalDao;
-    private GenericDaoJpa<Object> objectDao;
     private FirmaDaoJpa firmaDao;
     private ObservableList<Materiaal> filterMateriaal;
     private List<String> lokalen;
@@ -54,7 +54,6 @@ public class MateriaalCatalogus {
     public MateriaalCatalogus() {
         materiaalDao = new MateriaalDaoJpa();
         firmaDao = new FirmaDaoJpa();
-        objectDao = new GenericDaoJpa<>(Object.class);
     }
 
     public SortedList<Materiaal> geefMaterialen() {
@@ -76,7 +75,7 @@ public class MateriaalCatalogus {
         });
         return lokalen;
     }
-    public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException {
+    public Materiaal voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException {
         int aantalOnbeschikbaar = 0, artikelNr = 0, aantal;
         double prijs = 0.0;
         if (naam.equals("")) {
@@ -120,29 +119,12 @@ public class MateriaalCatalogus {
             //Firma f = new Firma(firmaNaam, firmaContact);
             Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, f, doelgroepen, leergebieden);
             opgehaaldeMaterialen.add(materiaal);
-            saveObject(materiaal);
+            return materiaal;
         }
     }
-    public <E> void saveObject(E element){
-        objectDao.startTransaction();
-        objectDao.insert(element);
-        objectDao.commitTransaction();
-    }
-    
-    public void wijzigMateriaal(Materiaal materiaal)
-    {
-        materiaalDao.startTransaction();
-        materiaalDao.update(materiaal);
-        materiaalDao.commitTransaction();
-    }
-
     public void verwijderMateriaal(Materiaal materiaal) {
-        materiaalDao.startTransaction();
-        materiaalDao.delete(materiaal);
-        materiaalDao.commitTransaction();
         filterMateriaal.remove(materiaal);
         filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
-
     }
 
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list) {

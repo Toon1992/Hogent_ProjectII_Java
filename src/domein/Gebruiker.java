@@ -42,6 +42,9 @@ public class Gebruiker
     {
         return new SimpleStringProperty(getNaam());
     }
+    public StringProperty typeProperty(){
+        return new SimpleStringProperty(getType().toLowerCase().equals("st") ? "Student":"Lector");
+    }
     
     public String getEmail()
     {
@@ -62,6 +65,7 @@ public class Gebruiker
     {
         this.naam = naam;
     }
+
 
     public String getType() {
         return type;

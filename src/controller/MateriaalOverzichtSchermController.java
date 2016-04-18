@@ -6,11 +6,7 @@
 package controller;
 
 import java.awt.image.BufferedImage;
-import java.net.URL;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
 import domein.Doelgroep;
@@ -23,18 +19,16 @@ import javafx.collections.transformation.SortedList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.*;
 import org.controlsfx.control.CheckComboBox;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
-import repository.MateriaalCatalogus.MateriaalFilter;
+import domein.MateriaalCatalogus.MateriaalFilter;
 
 /**
  * FXML Controller class
@@ -198,7 +192,11 @@ public class MateriaalOverzichtSchermController extends HBox {
         }
         else {
             try{
-                 mc.verwijderMateriaal(materiaal);
+                boolean result=LoaderSchermen.getInstance().popupMessageTwoButtons("Verwijder :" + materiaal.getNaam(), "Bent u zeker dat u dit materiaal wilt verwijderen?", "Annuleer", "Ja");
+                if(result){
+                    mc.verwijderMateriaal(materiaal);
+                } 
+                
             }catch(Exception ex){
                 LoaderSchermen.getInstance().popupMessageOneButton("Verwijderen", String.format("Er zijn nog openstaande reservaties voor materiaal: %s",materiaal.getNaam()), "Ok");
             }

@@ -5,7 +5,6 @@
  */
 package controller;
 
-import java.net.URL;
 import java.util.*;
 
 import domein.Doelgroep;
@@ -16,15 +15,10 @@ import exceptions.NaamException;
 import gui.LoaderSchermen;
 
 import java.io.File;
-import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -32,11 +26,9 @@ import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.controlsfx.control.CheckComboBox;
-import org.controlsfx.control.spreadsheet.Grid;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
-import repository.HulpMethode;
-import repository.MateriaalCatalogus.*;
+import domein.MateriaalCatalogus.*;
 
 /**
  * FXML Controller class

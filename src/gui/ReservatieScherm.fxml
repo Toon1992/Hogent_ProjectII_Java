@@ -36,12 +36,13 @@
                 </GridPane>
                 <TableView id="my-table" fx:id="reservatieTable" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="naamColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Naam" />
+                        <TableColumn fx:id="naamColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Naam" />
+                  <TableColumn fx:id="typeColumn" minWidth="100.0" prefWidth="100.0" text="Type" />
                         <TableColumn fx:id="materiaalColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Materiaal" />
                         <TableColumn fx:id="aantalColumn" minWidth="110.0" prefWidth="110.0" styleClass="table-Column" text="Aantal" />
-                        <TableColumn fx:id="statusColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Status" />
-                        <TableColumn fx:id="BeginDatumColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Begin Datum" />
-                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Eind Datum" />
+                        <TableColumn fx:id="statusColumn" minWidth="150.0" prefWidth="150.0" styleClass="table-Column" text="Status" />
+                        <TableColumn fx:id="BeginDatumColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Begin Datum" />
+                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Eind Datum" />
                     </columns>
                     <VBox.margin>
                         <Insets />
@@ -118,6 +119,8 @@
                   <CheckBox fx:id="checkOverruul" mnemonicParsing="false" text="Automatisch overrulen" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                   <Label text="Aantal teruggebracht" GridPane.columnIndex="3" GridPane.rowIndex="3" />
                   <TextField fx:id="txfAantalTerug" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="3" />
+                  <Label text="Aantal gereserveerd" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                  <TextField fx:id="txfAantalGereserveerd" maxWidth="150.0" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                     </children>
                     <padding>
                         <Insets left="10.0" right="10.0" />
