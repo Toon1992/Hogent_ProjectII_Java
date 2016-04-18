@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -52,19 +53,26 @@ public class NieuwBeheerderSchermController extends GridPane
     {
         if (txfNaam.getText() != null || txfEmail.getText() != null || txfPaswoord.getText() != null)
         {
-            if (!schermController.validateEmail(txfEmail.getText()))
+            String email = txfEmail.getText();
+            if (!schermController.validateEmail(email))
             {
                 LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Email adres is incorrect", "OK");
                 return;
             }
+            
+            if(schermController.komtEmailVoor(email))
+            {
+                  LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Email adres bestaat al", "OK");
+                    return;
+            }
 
-            Beheerder beheerder = new Beheerder(txfEmail.getText(), txfNaam.getText(), txfPaswoord.getText());
+            Beheerder beheerder = new Beheerder(email, txfNaam.getText(), txfPaswoord.getText());
             controller.voegBeheerderToe(beheerder);
 
             schermController.voegNieuweBeheerderToe(beheerder);
             schermController.vulListViewIn();
 
-            terugNaarVorigScherm();
+            terugNaarVorigScherm(btnNieuw);
         } else
         {
             LoaderSchermen.getInstance().popupMessageOneButton("warning", "Alle textvelden moeten ingevuld zijn!", "OK");
@@ -74,13 +82,13 @@ public class NieuwBeheerderSchermController extends GridPane
     @FXML
     private void terug(ActionEvent event)
     {
-        terugNaarVorigScherm();
+        terugNaarVorigScherm(btnTerug);
     }
 
-    private void terugNaarVorigScherm()
+    private void terugNaarVorigScherm(Button button)
     {
-        BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter(schermController);
+      Stage stage = (Stage) button.getScene().getWindow();
+      stage.close();
     }
 
 }
