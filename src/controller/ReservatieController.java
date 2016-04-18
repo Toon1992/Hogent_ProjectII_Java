@@ -126,6 +126,10 @@ public class ReservatieController
         Set<Reservatie> reservatiesTeLaat = repository.checkAlleReservatiesBeschikbaar();
         reservatiesTeLaat.forEach(reservatie -> genRepo.wijzigObject(reservatie));
     }
+    public void wijzigLaatbinnenGebrachteReservatie(Reservatie reservatie){
+        Set<Reservatie> aangepasteReservaties = repository.wijzigLaatbinnenGebrachteReservatie(reservatie);
+        aangepasteReservaties.forEach(r -> genRepo.wijzigObject(r));
+    }
     public void setFormatDatepicker(DatePicker dp)
     {
         dp.setOnShowing(e -> Locale.setDefault(Locale.Category.FORMAT, Locale.FRANCE));
