@@ -233,6 +233,7 @@ public class ReservatieCatalogus
                 reser.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
                 aantal -= reser.getAantalGereserveerd();
                 aangepasteReservaties.add(reser);
+                reservatiePool.remove(reser);
             }
         }
         return aangepasteReservaties;
