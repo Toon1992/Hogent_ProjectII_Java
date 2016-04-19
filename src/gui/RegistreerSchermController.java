@@ -84,7 +84,7 @@ public class RegistreerSchermController extends GridPane
         }
         if (geldig)
         {
-            gc.registreer(email, wachtwoord, naam);
+            gc.registreer(email, wachtwoord, naam,false);
         }
     }
 

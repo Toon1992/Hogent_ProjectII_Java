@@ -66,7 +66,7 @@ public class NieuwBeheerderSchermController extends GridPane
                     return;
             }
 
-            Beheerder beheerder = new Beheerder(email, txfNaam.getText(), txfPaswoord.getText());
+            Beheerder beheerder = new Beheerder(email, txfNaam.getText(), txfPaswoord.getText(),false);
             controller.voegBeheerderToe(beheerder);
 
             schermController.voegNieuweBeheerderToe(beheerder);

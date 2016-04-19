@@ -38,16 +38,28 @@ public class Beheerder
     @Column(name = "Wachtwoord")
     private String wachtwoord;
     private String naam;
+    private boolean isHoofd;
+
+    public boolean isHoofd()
+    {
+        return isHoofd;
+    }
+
+    public void setIsHoofd(boolean isHoofd)
+    {
+        this.isHoofd = isHoofd;
+    }
 
     protected Beheerder()
     {
     }
 
-    public Beheerder(String email, String naam, String wachtwoord)
+    public Beheerder(String email, String naam, String wachtwoord, boolean isHoofd)
     {
         this.email = email;
         this.naam = naam;
         this.wachtwoord = wachtwoord;
+        this.isHoofd = isHoofd;
     }
 
     public String getEmail()

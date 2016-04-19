@@ -28,7 +28,7 @@ public class StartUp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //initializeDatabase();
+        initializeDatabase();
         Scene scene = new Scene(new LayoutFrameController());
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
@@ -47,7 +47,7 @@ public class StartUp extends Application {
         GenericDaoJpa<Object> jpa = new GenericDaoJpa<>(Object.class);
         jpa.startTransaction();
 
-        jpa.insert(new Beheerder("admin@hogent.be", "admin", "admin"));
+        jpa.insert(new Beheerder("admin@hogent.be", "admin", "admin",true));
 
         Firma globe = new Firma("Globe atmosphere", "globe@atmosphere.com");
         Firma prisma = new Firma("Prisma", "helpdesk@prisma.com");
