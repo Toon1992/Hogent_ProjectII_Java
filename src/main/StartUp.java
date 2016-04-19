@@ -28,7 +28,7 @@ public class StartUp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        initializeDatabase();
+       // initializeDatabase();
         Scene scene = new Scene(new LayoutFrameController());
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
