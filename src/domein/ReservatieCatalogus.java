@@ -101,20 +101,12 @@ public class ReservatieCatalogus
         if (opBeginDatum)
         {
             reservatieDatum = reservatie.getBeginDatum();
+            return reservatieDatum.after(datum);
         } else
         {
             reservatieDatum = reservatie.getEindDatum();
+            return reservatieDatum.before(datum);
         }
-
-        if (reservatieDatum.getYear() >= datum.getYear())
-        {
-            if (reservatieDatum.getMonth() >= datum.getMonth())
-            {
-                return reservatieDatum.getDay() >= datum.getDay();
-            }
-        }
-
-        return false;
     }
 
     public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){

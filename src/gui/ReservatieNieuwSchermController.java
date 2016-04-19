@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package gui;
 
+import controller.GebruikerController;
+import controller.MateriaalController;
+import controller.ReservatieController;
+import controller.ReservatieHulpController;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;

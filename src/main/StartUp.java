@@ -5,7 +5,7 @@
  */
 package main;
 
-import controller.LayoutFrameController;
+import gui.LayoutFrameController;
 import domein.*;
 import javafx.application.Application;
 import javafx.scene.Scene;

@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Optional;
 
-import controller.MateriaalOverzichtSchermController;
 import domein.Gebruiker;
 import domein.Materiaal;
 import javafx.fxml.FXMLLoader;

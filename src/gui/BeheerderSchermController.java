@@ -6,7 +6,6 @@
 package gui;
 
 import controller.BeheerderController;
-import controller.LayoutFrameController;
 import domein.Beheerder;
 import java.util.List;
 import java.util.stream.Collectors;

@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package gui;
 
+import controller.MateriaalController;
+import controller.MateriaalHulpController;
 import java.util.*;
 
 import domein.Doelgroep;
