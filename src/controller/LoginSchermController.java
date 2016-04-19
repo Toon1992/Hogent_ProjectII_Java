@@ -70,7 +70,7 @@ public class LoginSchermController extends GridPane
             BorderPane bp = (BorderPane) this.getParent();
             GridPane gp = (GridPane) bp.getTop();
             lblUitloggen = (Label) gp.getChildren().get(gp.getChildren().size() -1 );
-            lblUitloggen.setText("Uitloggen");
+            lblUitloggen.setText("Afmelden");
             LoaderSchermen.getInstance().setLoggedIn(true);
             LoaderSchermen.getInstance().setWidthAndHeight(bp);
             bp.setCenter(new StartSchermController(gc));
@@ -89,7 +89,7 @@ public class LoginSchermController extends GridPane
     @FXML
     private void annuleer(ActionEvent event)
     {
-        boolean ok = LoaderSchermen.getInstance().popupMessageTwoButtons("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Annuleer", "Ok");
+        boolean ok = LoaderSchermen.getInstance().popupMessageTwoButtons("Afsluiten", "Weet u zeker dat het programma mag afgesloten worden?", "Ok","Annuleer");
         if(ok){
             System.exit(0);
         }

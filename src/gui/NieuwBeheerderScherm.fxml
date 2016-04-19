@@ -25,8 +25,8 @@
   </rowConstraints>
    <children>
       <Label text="Naam:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" />
-      <Label text="Email:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
-      <Label text="Paswoord:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+      <Label text="E-mailadres:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
+      <Label text="Wachtwoord:" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
       <Button fx:id="btnNieuw" mnemonicParsing="false" onAction="#nieuwBeheerder" text="Nieuw" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terug" text="Terug" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="5" />
       <TextField fx:id="txfNaam" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1">

@@ -246,6 +246,10 @@ public class Materiaal
         BufferedImage bufferedImage = null;
         try
         {
+            if(foto==null){
+                bufferedImage=null;
+            }
+            else
             bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
         } catch (IOException e)
         {

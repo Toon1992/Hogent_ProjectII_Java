@@ -103,7 +103,7 @@ public class ReservatieHulpController {
                 lblMelding.setText("");
                 String nietAutomatisch = String.format("OPGELET: Blokkering mogelijk maar er zullen %d stuk(s) van student(en) manueel moeten overruled worden, wilt u doorgaan?", aantalOverruled);
                 String automatisch = String.format("OPGELET: Blokkering mogelijk maar er zullen automatisch %d stuk(s) van student(en) overruled worden, wilt u doorgaan?", aantalOverruled);
-                boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Blokkering maken",automatischOverrulen? automatisch : nietAutomatisch , "Nee", "Ja");
+                boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Blokkering maken",automatischOverrulen? automatisch : nietAutomatisch, "Ja", "Nee");
                 flag = false;
                 if (isOk)
                 {
@@ -125,7 +125,7 @@ public class ReservatieHulpController {
         if(flag){
             lblMelding.setText("");
             lblMelding.setText("");
-            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie maken", "Ben je zeker dat je de reservatie wilt opslaan", "Nee", "Ja");
+            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie maken", "Ben je zeker dat je de reservatie wilt opslaan", "Ja", "Nee");
             if (isOk)
             {
                 switch (type){

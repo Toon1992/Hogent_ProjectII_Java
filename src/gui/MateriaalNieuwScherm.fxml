@@ -67,7 +67,7 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="ArtikelNummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <Label text="Artikelnummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
