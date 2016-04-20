@@ -150,9 +150,9 @@ public class MateriaalNieuwSchermController extends VBox {
         try {
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
-        } catch (NaamException | AantalException e) {
+        } catch (IllegalArgumentException e) {
             lblError.setText(e.getLocalizedMessage());
-        }
+        }        
     }
 
     @FXML
