@@ -39,4 +39,5 @@ public class BeheerderDaoJpa extends GenericDaoJpa<Beheerder> implements Beheerd
            throw new EntityNotFoundException();
        }
     }
+
 }

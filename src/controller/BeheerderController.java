@@ -37,12 +37,12 @@ public class BeheerderController
     
     public void verwijderBeheerder(Beheerder beheerder)
     {
-        repo.verwijderMateriaal(beheerder);
+        repo.verwijderBeheerder(beheerder);
     }
     
     public void wijzigBeheerder(Beheerder beheerder)
     {
-        repo.wijzigMateriaal(beheerder);
+        repo.wijzigBeheerder(beheerder);
     }
     
     public void voegBeheerderToe(Beheerder beheerder)
