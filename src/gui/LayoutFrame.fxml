@@ -44,10 +44,14 @@
                   <Image url="@../images/NieuweGebruikers.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="lblUitLoggen" onMouseClicked="#logUit" styleClass="label-header-small-inverse" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+            <Label fx:id="lblUitLoggen" onMouseClicked="#logUit" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
+               <styleClass>
+                  <String fx:value="label-header-small-inverse" />
+                  <String fx:value="StartButton" />
+               </styleClass>
             </Label>
          </children>
       </GridPane>
