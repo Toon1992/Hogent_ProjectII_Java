@@ -110,6 +110,14 @@ public class MateriaalCatalogus {
                     throw new IllegalArgumentException("Moet een getal zijn!");
                 }
             }
+           
+            for (Materiaal m : materiaalDao.getMaterialen()) {
+                if(m.getNaam().equals(naam))
+                {
+                    throw new IllegalArgumentException("Er bestaat al een materiaal met deze naam!");
+                }
+            }
+            
             aantal = Integer.parseInt(aantalString);
             Firma f = firmaDao.geefFirma(firmaNaam);
                 if(!f.getEmailContact().equals(firmaContact)) {

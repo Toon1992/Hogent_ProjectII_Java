@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.MateriaalController;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
@@ -71,9 +72,9 @@ public class MateriaalOverzichtSchermController extends HBox {
     private GridPane gridFilters;
     @FXML
     private Button btnVerwijder;
-    public MateriaalOverzichtSchermController(MateriaalController mc){
+    public MateriaalOverzichtSchermController(){
         LoaderSchermen.getInstance().setLocation("MateriaalOverzichtScherm.fxml", this);
-        this.mc = mc;
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
         initializeVariables();
         initializeTableViewMaterialen();
         addListeners();
@@ -154,7 +155,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         else{
             BorderPane bp = (BorderPane) this.getParent();
             LoaderSchermen.getInstance().setNode(this);
-            bp.setCenter(new MateriaalDetailSchermController(mc, materiaal));
+            bp.setCenter(new MateriaalDetailSchermController(materiaal));
         }
 
     }
@@ -162,7 +163,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void nieuwMateriaal(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter(new MateriaalNieuwSchermController(mc));
+        bp.setCenter(new MateriaalNieuwSchermController());
     }
 
     @FXML

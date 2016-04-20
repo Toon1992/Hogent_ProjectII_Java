@@ -87,12 +87,12 @@ public class ReservatieSchermController extends HBox
     private Reservatie currentReservatie;
     private Reservatie reservatie;
 
-    public ReservatieSchermController(ReservatieController rc, MateriaalController mc)
+    public ReservatieSchermController()
     {
         LoaderSchermen.getInstance().setLocation("ReservatieScherm.fxml",this);
-        this.rc = rc;
-        this.mc = mc;
-        this.gc = new GebruikerController();
+        this.rc = ControllerSingelton.getReservatieControllerInstance();
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
+        this.gc = ControllerSingelton.getGebruikerControllerInstance();
         
         invullenTable();
         vulComboBoxStatus();
@@ -233,6 +233,6 @@ public class ReservatieSchermController extends HBox
     @FXML
     private void nieuweReservatie(ActionEvent event) {
         BorderPane bp = (BorderPane)this.getParent();
-        bp.setCenter(new ReservatieNieuwSchermController(rc, mc));
+        bp.setCenter(new ReservatieNieuwSchermController());
     }
 }

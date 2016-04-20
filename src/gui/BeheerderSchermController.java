@@ -6,6 +6,7 @@
 package gui;
 
 import controller.BeheerderController;
+import controller.ControllerSingelton;
 import domein.Beheerder;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -57,10 +58,10 @@ public class BeheerderSchermController extends GridPane
     public BeheerderSchermController()
     {
         LoaderSchermen.getInstance().setLocation("BeheerderScherm.fxml", this);
-        controller = new BeheerderController();
+        
+        controller = ControllerSingelton.getBeheerderControllerInstance();
         beheerderNamenList = controller.getBeheerders();
-
-        loginBeheerder = BeheerderRepository.getLoggedInBeheerder();
+        loginBeheerder = controller.GetLoggedInBeheerder();
 
         vulListViewIn();
 
@@ -119,7 +120,7 @@ public class BeheerderSchermController extends GridPane
 //        bp.setCenter(new NieuwBeheerderSchermController(this, controller));
 
         Stage stage = new Stage();
-        Scene scene = new Scene(new NieuwBeheerderSchermController(this, controller));
+        Scene scene = new Scene(new NieuwBeheerderSchermController(this));
         stage.setScene(scene);
         stage.show();
     }
@@ -202,7 +203,7 @@ public class BeheerderSchermController extends GridPane
     
     private boolean isHoofdBeheerder()
     {
-        return BeheerderRepository.getLoggedInBeheerder().isHoofd();
+        return loginBeheerder.isHoofd();
     }
 
 }

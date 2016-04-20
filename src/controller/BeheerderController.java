@@ -49,4 +49,9 @@ public class BeheerderController
     {
         repo.voegBeheerderToe(beheerder);
     }
+    
+    public Beheerder GetLoggedInBeheerder()
+    {
+        return repo.getLoggedInBeheerder();
+    }
 }
