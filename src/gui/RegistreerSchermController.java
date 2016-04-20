@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package gui;
 
+import controller.GebruikerController;
 import controller.GebruikerController;
 import gui.LoaderSchermen;
 import javafx.event.ActionEvent;
@@ -83,7 +84,7 @@ public class RegistreerSchermController extends GridPane
         }
         if (geldig)
         {
-            gc.registreer(email, wachtwoord, naam);
+            gc.registreer(email, wachtwoord, naam,false);
         }
     }
 

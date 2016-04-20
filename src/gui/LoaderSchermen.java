@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Optional;
 
-import controller.MateriaalOverzichtSchermController;
 import domein.Gebruiker;
 import domein.Materiaal;
 import javafx.fxml.FXMLLoader;
@@ -101,9 +100,9 @@ public class LoaderSchermen
         boodschap.setTitle(title);
         boodschap.setHeaderText(message);
 
-        ButtonType Annuleer = new ButtonType(button1);
-        ButtonType Ok = new ButtonType(button2);
-        boodschap.getButtonTypes().setAll(Annuleer, Ok);
+        ButtonType Annuleer = new ButtonType(button2);
+        ButtonType Ok = new ButtonType(button1);
+        boodschap.getButtonTypes().setAll(Ok,Annuleer);
         Optional<ButtonType> result = boodschap.showAndWait();
 
         return result.get() == Ok;

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package gui;
 
+import controller.MateriaalController;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -148,7 +149,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void wijzigMateriaal(ActionEvent event) {
         if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+            LoaderSchermen.getInstance().popupMessageOneButton("Selecteer een materiaal", "Gelieve een materiaal te selecteren", "Ok");
         }
         else{
             BorderPane bp = (BorderPane) this.getParent();
@@ -188,11 +189,11 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void verwijderMateriaal(ActionEvent event) {
         if(materiaal == null){
-            LoaderSchermen.getInstance().popupMessageTwoButtons("Selecteer materiaal","Selecteer een materiaal", "Annuleer", "Ok");
+            LoaderSchermen.getInstance().popupMessageOneButton("Verwijder materiaal", "Gelieve een materiaal te selecteren", "Ok");
         }
         else {
             try{
-                boolean result=LoaderSchermen.getInstance().popupMessageTwoButtons("Verwijder :" + materiaal.getNaam(), "Bent u zeker dat u dit materiaal wilt verwijderen?", "Annuleer", "Ja");
+                boolean result=LoaderSchermen.getInstance().popupMessageTwoButtons("Verwijder :" + materiaal.getNaam(), "Bent u zeker dat u dit materiaal wilt verwijderen?", "Ja", "Annuleer");
                 if(result){
                     mc.verwijderMateriaal(materiaal);
                 } 

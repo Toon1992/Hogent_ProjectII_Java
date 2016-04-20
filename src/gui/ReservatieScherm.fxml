@@ -28,8 +28,8 @@
                     <children>
                         <Label alignment="CENTER" text="Zoek:" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                         <TextField fx:id="txfZoek" onKeyTyped="#zoeken" GridPane.columnIndex="2" />
-                        <Label alignment="CENTER" text="BeginDatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
-                        <Label alignment="CENTER" text="EindDatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
+                        <Label alignment="CENTER" text="Begindatum:" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
+                        <Label alignment="CENTER" text="Einddatum" GridPane.columnIndex="5" GridPane.halignment="CENTER" />
                         <DatePicker fx:id="datePickerBegin" onAction="#zoekOpBeginDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="4" />
                         <DatePicker fx:id="datePickerEind" onAction="#zoekOpEindDatum" prefHeight="31.0" prefWidth="257.0" GridPane.columnIndex="6" />
                     </children>
@@ -41,8 +41,8 @@
                         <TableColumn fx:id="materiaalColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Materiaal" />
                         <TableColumn fx:id="aantalColumn" minWidth="110.0" prefWidth="110.0" styleClass="table-Column" text="Aantal" />
                         <TableColumn fx:id="statusColumn" minWidth="150.0" prefWidth="150.0" styleClass="table-Column" text="Status" />
-                        <TableColumn fx:id="BeginDatumColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Begin Datum" />
-                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Eind Datum" />
+                        <TableColumn fx:id="BeginDatumColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Begindatum" />
+                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Einddatum" />
                     </columns>
                     <VBox.margin>
                         <Insets />
@@ -76,11 +76,11 @@
                             <GridPane.margin>
                                 <Insets left="40.0" />
                             </GridPane.margin></Label>
-                        <Label text="Ophaal datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                        <Label text="Ophaaldatum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                             <GridPane.margin>
                                 <Insets right="40.0" />
                             </GridPane.margin></Label>
-                        <Label text="Terugbreng datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                        <Label text="Terugbrengdatum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                         <DatePicker fx:id="dtpOphaal" prefHeight="31.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <DatePicker fx:id="dtpTerugbreng" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                         <Button maxHeight="27.0" maxWidth="150.0" mnemonicParsing="false" onAction="#verwijderReservatie" prefHeight="45.0" prefWidth="150.0" text="Verwijderen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
