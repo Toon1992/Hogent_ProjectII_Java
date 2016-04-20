@@ -34,7 +34,7 @@ public class BeheerderRepository
         gebruikerDoa = new GenericDaoJpa<>(Gebruiker.class);
     }
 
-    public static Beheerder getLoggedInBeheerder()
+    public Beheerder getLoggedInBeheerder()
     {
         return beheerder;
     }

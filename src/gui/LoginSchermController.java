@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.GebruikerController;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
@@ -50,10 +51,10 @@ public class LoginSchermController extends GridPane
     private Label lblLogin;
     private Label lblUitloggen;
 
-    public LoginSchermController(GebruikerController gc)
+    public LoginSchermController()
     {
         LoaderSchermen.getInstance().setLocation("LoginScherm.fxml", this);
-        this.gc = gc;
+        this.gc = ControllerSingelton.getGebruikerControllerInstance();
     }
 
     @FXML
@@ -74,7 +75,7 @@ public class LoginSchermController extends GridPane
             lblUitloggen.setText("Afmelden");
             LoaderSchermen.getInstance().setLoggedIn(true);
             LoaderSchermen.getInstance().setWidthAndHeight(bp);
-            bp.setCenter(new StartSchermController(gc));
+            bp.setCenter(new StartSchermController());
             //aLoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
         } catch (EmailException e) {
             lblEmail.setText(e.getLocalizedMessage());

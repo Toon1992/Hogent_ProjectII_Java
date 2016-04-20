@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.GebruikerController;
 import controller.MateriaalController;
 import controller.ReservatieController;
@@ -71,11 +72,11 @@ public class ReservatieNieuwSchermController extends GridPane {
     private GebruikerController gc;
     private final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-    public ReservatieNieuwSchermController(ReservatieController rc, MateriaalController mc){
+    public ReservatieNieuwSchermController(){
         LoaderSchermen.getInstance().setLocation("ReservatieNieuwScherm.fxml", this);
-        this.rc = rc;
-        this.mc = mc;
-        this.gc = new GebruikerController();
+        this.rc = ControllerSingelton.getReservatieControllerInstance();
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
+        this.gc = ControllerSingelton.getGebruikerControllerInstance();
         initializeData();
     }
     private void initializeData(){
@@ -100,7 +101,7 @@ public class ReservatieNieuwSchermController extends GridPane {
     @FXML
     private void terug(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController(rc, mc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController());
     }
 
     @FXML

@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.MateriaalController;
 import controller.MateriaalHulpController;
 import domein.*;
@@ -86,10 +87,10 @@ public class MateriaalDetailSchermController extends VBox {
     Doelgroep d = new Doelgroep("d");
     private String foto = "";
 
-    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal) {
+    public MateriaalDetailSchermController(Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
         this.materiaal = materiaal;
-        this.mc = mc;
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
         initializeItems();
     }
 
@@ -166,6 +167,7 @@ public class MateriaalDetailSchermController extends VBox {
             mc.wijzigMateriaal(materiaal);
             lblErrorMessage.setText("");
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(),"Al uw wijzigingen zijn correct doorgevoerd", "Ok");
+            terugNaarOverzicht(null);
 
         } catch (NumberFormatException ex) {
             lblErrorMessage.setText("Er werd een foute waarde ingegeven.");

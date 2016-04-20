@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.MateriaalController;
 import controller.MateriaalHulpController;
 import java.util.*;
@@ -98,9 +99,9 @@ public class MateriaalNieuwSchermController extends VBox {
     private Leergebied l = new Leergebied("l");
     private Doelgroep d = new Doelgroep("d");
 
-    public MateriaalNieuwSchermController(MateriaalController mc) {
+    public MateriaalNieuwSchermController() {
         LoaderSchermen.getInstance().setLocation("MateriaalNieuwScherm.fxml", this);
-        this.mc = mc;
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
         initializeItems();
     }
 
@@ -184,7 +185,7 @@ public class MateriaalNieuwSchermController extends VBox {
     @FXML
     private void terugNaarOverzicht(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController(mc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController());
     }
 
     @FXML

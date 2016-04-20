@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.GebruikerController;
 import controller.GebruikerController;
 import gui.LoaderSchermen;
@@ -47,10 +48,10 @@ public class RegistreerSchermController extends GridPane
     @FXML
     private Label lblWachtwoord1;
 
-    public RegistreerSchermController(GebruikerController gc)
+    public RegistreerSchermController()
     {
         LoaderSchermen.getInstance().setLocation("RegistreerScherm.fxml", this);
-        this.gc = gc;
+        this.gc = ControllerSingelton.getGebruikerControllerInstance();
 
     }
 

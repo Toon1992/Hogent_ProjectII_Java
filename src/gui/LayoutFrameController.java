@@ -42,13 +42,13 @@ public class LayoutFrameController extends BorderPane {
 
     public LayoutFrameController(){
         LoaderSchermen.getInstance().setLocation("LayoutFrame.fxml", this);
-        this.setCenter(new LoginSchermController(new GebruikerController()));
+        this.setCenter(new LoginSchermController());
     }
     @FXML
     private void gaNaarStartScherm(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
             LoaderSchermen.getInstance().setWidthAndHeight(this);
-            this.setCenter(new StartSchermController(new GebruikerController()));
+            this.setCenter(new StartSchermController());
         }
     }
 
@@ -56,7 +56,7 @@ public class LayoutFrameController extends BorderPane {
     private void gaNaarCatalogus(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()) {
             LoaderSchermen.getInstance().setWidthAndHeight(this);
-            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(this, new MateriaalOverzichtSchermController(new MateriaalController()));
+            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(this, new MateriaalOverzichtSchermController());
         }
     }
 
@@ -64,7 +64,7 @@ public class LayoutFrameController extends BorderPane {
     private void gaNaarReservaties(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
             LoaderSchermen.getInstance().setWidthAndHeight(this);
-            this.setCenter(new ReservatieSchermController(new ReservatieController(), new MateriaalController()));
+            this.setCenter(new ReservatieSchermController());
         }
     }
 
@@ -83,7 +83,7 @@ public class LayoutFrameController extends BorderPane {
         lblUitloggen.setText("");
         LoaderSchermen.getInstance().setLoggedIn(false);
         LoaderSchermen.getInstance().setWidthAndHeight(this);
-        this.setCenter(new LoginSchermController(new GebruikerController()));
+        this.setCenter(new LoginSchermController());
     }
     
 }
