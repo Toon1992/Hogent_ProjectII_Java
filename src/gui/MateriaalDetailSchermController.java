@@ -113,6 +113,7 @@ public class MateriaalDetailSchermController extends VBox {
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(200);
 
+
         comboFirma.setItems(FXCollections.observableArrayList(firmaRepo.geefAlleFirmas()));
 
         gp = (GridPane) this.getChildren().get(0);
@@ -158,7 +159,7 @@ public class MateriaalDetailSchermController extends VBox {
             //firma maken
             Firma f=firmaRepo.geefFirma(comboFirma.getValue()); // omdat als het al gewijzigd is dan kan je nooit opvragen
             f.setEmailContact(txfContactPersoon.getText());
-            if(foto != null){
+            if(!foto.isEmpty()){
                 materiaal.setFoto(foto);
             }
 
@@ -179,7 +180,9 @@ public class MateriaalDetailSchermController extends VBox {
 
     public void update(Materiaal materiaal)
     {
-        imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getFoto(), null));
+        if(materiaal.getFoto() != null){
+            imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getFoto(), null));
+        }
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
         txfContactPersoon.setText(materiaal.getFirma().getEmailContact());
@@ -213,7 +216,7 @@ public class MateriaalDetailSchermController extends VBox {
         if(!leergebied.isEmpty()&&!checkLeergebieden.getItems().contains(leergebied)){
             checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
-            gp.add(checkLeergebieden,3, 4);
+            gp.add(checkLeergebieden,3, 6);
             gebiedenRepo.voegNieuwGebiedToe(leergebied,l);
         }
 
@@ -227,7 +230,7 @@ public class MateriaalDetailSchermController extends VBox {
         if(!doelgroep.isEmpty()&&!checkDoelgroepen.getItems().contains(doelgroep)){
             checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
-            gp.add(checkDoelgroepen,1,4);
+            gp.add(checkDoelgroepen,1,6);
             gebiedenRepo.voegNieuwGebiedToe(doelgroep,d);
         }
 

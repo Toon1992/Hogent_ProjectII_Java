@@ -1,13 +1,10 @@
 package controller;
 
-import domein.Doelgroep;
-import domein.Leergebied;
-import domein.Materiaal;
+import domein.*;
 import exceptions.AantalException;
 import exceptions.NaamException;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
-import domein.MateriaalCatalogus;
 
 import java.util.Collection;
 import java.util.List;
@@ -39,17 +36,21 @@ public class MateriaalController extends Observable
     {
         this.materiaalCatalogus = materiaalCatalogus;
     }
-
-    public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException
+    public void controleerUniekheidMateriaalnaam(String naam){
+        materiaalCatalogus.controleerUniekheidMateriaalnaam(naam);
+    }
+    public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, Firma firma, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException
     {
-        Materiaal materiaal = materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+        Materiaal materiaal = materiaalCatalogus.voegMateriaalToe(foto, naam, omschrijving, plaats, firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
         genRepo.saveObject(materiaal);
     }
     public SortedList<Materiaal> getMateriaalFilterList()
     {
         return materiaalCatalogus.geefMaterialen().sorted();
     }
-
+    public Firma geefFirma(String naam, String email){
+        return materiaalCatalogus.geefFirma(naam, email);
+    }
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list)
     {
         return materiaalCatalogus.objectCollectionToObservableList(list);

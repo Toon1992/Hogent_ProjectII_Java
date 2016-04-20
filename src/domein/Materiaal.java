@@ -10,6 +10,9 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;
 import java.util.Set;
+
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -114,7 +117,6 @@ public class Materiaal
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
     {
         setFoto(foto);
-        setFoto(foto);
         setOmschrijving(omschrijving);
         setArtikelNr(artikelNr);
         setAantal(aantal);
@@ -161,6 +163,11 @@ public class Materiaal
     public int getAantal()
     {
         return aantalInCatalogus;
+    }
+
+    public IntegerProperty aantalProperty()
+    {
+        return new SimpleIntegerProperty(getAantal());
     }
 
     public void setAantal(int aantal)
@@ -229,16 +236,21 @@ public class Materiaal
 
     public void setFoto(String url)
     {
-        File fi = new File(url);
-        byte[] fileContent = null;
-        try
-        {
-            fileContent = Files.readAllBytes(fi.toPath());
-        } catch (IOException e)
-        {
-            e.printStackTrace();
+        if(url.isEmpty()){
+            this.foto = null;
         }
-        this.foto = fileContent;
+        else{
+            File fi = new File(url);
+            byte[] fileContent = null;
+            try
+            {
+                fileContent = Files.readAllBytes(fi.toPath());
+            } catch (IOException e)
+            {
+                e.printStackTrace();
+            }
+            this.foto = fileContent;
+        }
     }
 
     public BufferedImage getFoto()

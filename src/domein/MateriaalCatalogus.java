@@ -5,6 +5,7 @@
  */
 package domein;
 
+import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
 import domein.Doelgroep;
 import domein.Firma;
 import domein.Leergebied;
@@ -18,10 +19,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import domein.Materiaal;
 import exceptions.AantalException;
+import exceptions.EmailException;
+import exceptions.MultiException;
 import exceptions.NaamException;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -75,12 +79,15 @@ public class MateriaalCatalogus {
         });
         return lokalen;
     }
-    public Materiaal voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, String firmaNaam, String firmaContact, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException {
+    public Materiaal voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, Firma firma, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException {
         int aantalOnbeschikbaar = 0, artikelNr = 0, aantal;
         double prijs = 0.0;
         if (naam.equals("")) {
-            throw new NaamException("Naam mag niet leeg zijn!");
-        } else if (aantalString.equals("")) {
+            if (aantalString.equals("")) {
+                throw new MultiException("Naam en aantal mogen niet leeg zijn!");
+            }
+            throw new NaamException("Naam mag niet leeg zijn.");
+        } if (aantalString.equals("")) {
             throw new AantalException("Aantal mag niet leeg zijn!");
         } else {
             if (!aantalOnbeschikbaarString.isEmpty()) {
@@ -89,7 +96,7 @@ public class MateriaalCatalogus {
                 }
                 catch(NumberFormatException e)
                 {
-                    throw new IllegalArgumentException("Moet een getal zijn!");
+                    throw new IllegalArgumentException("Aantalonbeschikbaar moet een getal zijn!");
                 }
             }
             if (!artikelNrString.isEmpty()) {
@@ -98,7 +105,7 @@ public class MateriaalCatalogus {
                 }
                 catch(NumberFormatException e)
                 {
-                    throw new IllegalArgumentException("Moet een getal zijn!");
+                    throw new IllegalArgumentException("Artikelnummer moet een getal zijn!");
                 }
             }
             if (!prijsString.isEmpty()) {
@@ -107,27 +114,40 @@ public class MateriaalCatalogus {
                 }
                 catch(NumberFormatException e)
                 {
-                    throw new IllegalArgumentException("Moet een getal zijn!");
+                    throw new IllegalArgumentException("Prijs moet een getal zijn!");
                 }
             }
            
-            for (Materiaal m : materiaalDao.getMaterialen()) {
-                if(m.getNaam().equals(naam))
-                {
-                    throw new IllegalArgumentException("Er bestaat al een materiaal met deze naam!");
-                }
+
+            try{
+                aantal = Integer.parseInt(aantalString);
             }
-            
-            aantal = Integer.parseInt(aantalString);
-            Firma f = firmaDao.geefFirma(firmaNaam);
-                if(!f.getEmailContact().equals(firmaContact)) {
-                    f.setEmailContact(firmaContact);
-                    firmaDao.update(f);
-                }
-            //Firma f = new Firma(firmaNaam, firmaContact);
-            Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, f, doelgroepen, leergebieden);
+            catch (Exception e){
+                throw new AantalException("Invoerveld aantal moet een positief getal bevattten");
+            }
+
+            Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
             opgehaaldeMaterialen.add(materiaal);
             return materiaal;
+        }
+    }
+    public Firma geefFirma(String firmaNaam, String firmaContact){
+        Firma f = firmaDao.geefFirma(firmaNaam);
+        if(!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", firmaContact)){
+            throw new EmailException("Email firma ongeldig");
+        }
+        if(!f.getEmailContact().equals(firmaContact)) {
+            f.setEmailContact(firmaContact);
+            firmaDao.update(f);
+        }
+        return f;
+    }
+    public void controleerUniekheidMateriaalnaam(String naam){
+        for (Materiaal m : materiaalDao.getMaterialen()) {
+            if(m.getNaam().toLowerCase().equals(naam.toLowerCase()))
+            {
+                throw new IllegalArgumentException("Er bestaat al een materiaal met deze naam!");
+            }
         }
     }
     public void verwijderMateriaal(Materiaal materiaal) {

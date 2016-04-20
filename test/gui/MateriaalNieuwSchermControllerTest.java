@@ -9,6 +9,8 @@ import controller.MateriaalController;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+
+import domein.Firma;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -53,7 +55,7 @@ public class MateriaalNieuwSchermControllerTest {
     
     @Test(expected = IllegalArgumentException.class)
     public void testSlechteBeheerders() throws Exception {
-        materiaalController.voegMateriaalToe("", naam, "", "", "", "", artikelNr, aantal, aantalOnbeschikbaar, prijs, true, null, null);
+        materiaalController.voegMateriaalToe("", naam, "", "", new Firma("",""), artikelNr, aantal, aantalOnbeschikbaar, prijs, true, null, null);
     }
     
 }

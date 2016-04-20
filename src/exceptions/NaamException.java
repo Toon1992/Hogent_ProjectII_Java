@@ -14,4 +14,5 @@ public class NaamException extends IllegalArgumentException{
     public NaamException(String message){
         super(message);
     }
+
 }

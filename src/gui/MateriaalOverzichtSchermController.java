@@ -168,7 +168,12 @@ public class MateriaalOverzichtSchermController extends HBox {
 
     @FXML
     private void zoekMateriaal(KeyEvent event) {
-        String zoekterm = txfZoek.getText() + event.getCharacter().trim();
+        //String zoekterm = txfZoek.getText() + event.getCharacter().trim();
+        //mc.zoek(Arrays.asList(zoekterm));
+    }
+    @FXML
+    private void zoeken(ActionEvent event) {
+        String zoekterm = txfZoek.getText();
         mc.zoek(Arrays.asList(zoekterm));
     }
     private <E> void checkcomboboxListener(CheckComboBox<E> check, String name){
