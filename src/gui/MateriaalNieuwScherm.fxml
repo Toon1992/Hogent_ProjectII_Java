@@ -169,7 +169,7 @@
             <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
-            <Label prefHeight="21.0" prefWidth="289.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.rowIndex="13" />
+            <Label prefHeight="21.0" prefWidth="289.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
            </children>
        </GridPane>
    </children>
