@@ -6,6 +6,7 @@
 package gui;
 
 import controller.BeheerderController;
+import controller.ControllerSingelton;
 import domein.Beheerder;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -40,12 +41,12 @@ public class NieuwBeheerderSchermController extends GridPane
     private BeheerderSchermController schermController;
     private BeheerderController controller;
 
-    public NieuwBeheerderSchermController(BeheerderSchermController schermController, BeheerderController controller)
+    public NieuwBeheerderSchermController(BeheerderSchermController schermController)
     {
         LoaderSchermen.getInstance().setLocation("NieuwBeheerderScherm.fxml", this);
 
         this.schermController = schermController;
-        this.controller = controller;
+        this.controller = ControllerSingelton.getBeheerderControllerInstance();
     }
 
     @FXML

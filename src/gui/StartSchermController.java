@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.GebruikerController;
 import controller.MateriaalController;
 import controller.ReservatieController;
@@ -31,26 +32,26 @@ public class StartSchermController extends GridPane
     @FXML
     private ImageView imgViewMateriaal;
     
-    public StartSchermController(GebruikerController gc)
+    public StartSchermController()
     {
         LoaderSchermen.getInstance().setLocation("StartScherm.fxml", this);
-        this.gc = gc;
-        this.mc = new MateriaalController();
-        this.rc = new ReservatieController();
+        this.gc = ControllerSingelton.getGebruikerControllerInstance();
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
+        this.rc = ControllerSingelton.getReservatieControllerInstance();
     }
 
     @FXML
     private void clickedMateriaal(MouseEvent event)
     {
         BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp,  new MateriaalOverzichtSchermController(mc));
+        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp,  new MateriaalOverzichtSchermController());
     }
 
     @FXML
     private void clickedReservaties(MouseEvent event)
     {
         BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter( new ReservatieSchermController(rc, mc));
+        bp.setCenter( new ReservatieSchermController());
     }
 
     @FXML

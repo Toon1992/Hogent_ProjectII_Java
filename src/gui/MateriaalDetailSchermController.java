@@ -5,6 +5,7 @@
  */
 package gui;
 
+import controller.ControllerSingelton;
 import controller.MateriaalController;
 import controller.MateriaalHulpController;
 import domein.Doelgroep;
@@ -91,10 +92,10 @@ public class MateriaalDetailSchermController extends VBox {
     Doelgroep d = new Doelgroep("d");
     private String foto;
 
-    public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal) {
+    public MateriaalDetailSchermController(Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
         this.materiaal = materiaal;
-        this.mc = mc;
+        this.mc = ControllerSingelton.getMateriaalControllerInstance();
         initializeItems();
     }
 
