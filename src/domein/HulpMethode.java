@@ -48,7 +48,7 @@ public class HulpMethode {
     }
     public static Date getFirstDayOfWeek(int week){
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.WEEK_OF_YEAR, 17);
+        cal.set(Calendar.WEEK_OF_YEAR, week);
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         return cal.getTime();
     }

@@ -15,11 +15,11 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import persistentie.ReservatieDao;
 import domein.ReservatieCatalogus;
+import stateMachine.ReservatieStateEnum;
 
+import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  *
@@ -38,7 +38,6 @@ public class ReservatieCatalogusTest {
         data = new ReservatieData();
         trainDummy();
         repository = new ReservatieCatalogus(reservatieDao);
-        reservaties = repository.geefReservaties();
     }
 
     public void trainDummy() {
@@ -47,30 +46,35 @@ public class ReservatieCatalogusTest {
 
     @Test
     public void testZoekReservatieCorrecteZoektermGeeftReservatieTerug(){
+        reservaties = repository.geefReservaties();
         String zoekterm = "wereldbol";
         repository.Zoek(zoekterm);
         Assert.assertEquals(2, reservaties.size());
     }
     @Test
     public void testZoekReservatieLegeStringGeeftAlleReservatiesTerug(){
+        reservaties = repository.geefReservaties();
         String zoekterm = "";
         repository.Zoek(zoekterm);
         Assert.assertEquals(data.getSortedReservaties().size(), reservaties.size());
     }
     @Test
     public void testZoekReservatieSlechteZoektermGeeftGeenReservatieTerug(){
+        reservaties = repository.geefReservaties();
         String zoekterm = "blablabla";
         repository.Zoek(zoekterm);
         Assert.assertEquals(0, reservaties.size());
     }
     @Test
     public void testZoekReservatieOpCorrecteBeginDatumGeeftReservatieTerug(){
+        reservaties = repository.geefReservaties();
         Date beginDatum = data.getReservatieStudent1().getBeginDatum();
         repository.zoekOpBeginDatum(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         Assert.assertEquals(1, reservaties.size());
     }
     @Test
     public void testZoekReservatieOpSlechteBeginDatumGeeftGeenReservatieTerug(){
+        reservaties = repository.geefReservaties();
         Date beginDatum = new Date(111, 3, 11);
         repository.zoekOpBeginDatum(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         Assert.assertEquals(0, reservaties.size());
@@ -162,6 +166,145 @@ public class ReservatieCatalogusTest {
 
         Assert.assertEquals(4, aantalBeschikbaar);
         Assert.assertEquals(0, aantalOverruled);
+    }
+    @Test
+    public void verwijder2BinnengebrachteReservatiesReturns2(){
+        Reservatie r1 = data.getReservatieStudent1();
+        Reservatie r2 = data.getReservatieStudent2();
+
+        Date gisteren = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(1));
+        Date eergisteren = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(2));
+
+        r1.setEindDatum(gisteren);
+        r2.setEindDatum(eergisteren);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1,r2));
+        Set<Reservatie> teVerwijderenReservaties = repository.verwijderVervallenReservaties();
+        Assert.assertEquals(2, teVerwijderenReservaties.size() );
+        Assert.assertEquals(r1, teVerwijderenReservaties.iterator().next());
+    }
+    @Test
+    public void verwijderReservatieMetOnvoldoendeBinnengebrachteStuksNa1Week(){
+        Reservatie r1 = data.getReservatieStudent1();
+        Reservatie r2 = data.getReservatieStudent2();
+        Reservatie r3 = data.getReservatieStudent3();
+
+        Date vorigeWeek = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(7));
+        Date gisteren = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(1));
+
+        r1.setEindDatum(vorigeWeek);
+        r1.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+        r3.setEindDatum(vorigeWeek);
+        r2.setEindDatum(gisteren);
+        r2.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1,r2,r3));
+        Set<Reservatie> teVerwijderenReservaties = repository.verwijderVervallenReservaties();
+        Assert.assertEquals(3, teVerwijderenReservaties.size() );
+    }
+    @Test
+    public void verwijderNooitUitgeleendeReservatie(){
+        Reservatie r1 = data.getReservatieStudent1();
+
+        Date vorigeWeek = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(7));
+
+        r1.setEindDatum(vorigeWeek);
+        r1.setAantalUitgeleend(0);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1));
+        Set<Reservatie> teVerwijderenReservaties = repository.verwijderVervallenReservaties();
+        Assert.assertEquals(1, teVerwijderenReservaties.size() );
+        Assert.assertEquals(r1, teVerwijderenReservaties.iterator().next());
+    }
+    @Test
+    public void aanpassen1TelaatBinnenGebrachteReservatiesReturns1(){
+        Reservatie r1 = data.getReservatieStudent1();
+        Reservatie r2 = data.getReservatieStudent2();
+
+        Date morgen = convertLocalDateToDate(convertDateToLocalDate(new Date()).plusDays(1));
+        Date gisteren = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(1));
+
+        r1.setEindDatum(gisteren);
+        r1.setAantalUitgeleend(2);
+        r2.setEindDatum(morgen);
+        r2.setAantalUitgeleend(2);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1,r2));
+        Set<Reservatie> teVerwijderenReservaties = repository.aanpassenTeLaatTerugGebrachteReservaties();
+        Assert.assertEquals(1, teVerwijderenReservaties.size());
+        Assert.assertEquals(r1, teVerwijderenReservaties.iterator().next());
+    }
+    @Test
+    public void aanpassen1NooitUitgeleendeReservatie0(){
+        Reservatie r1 = data.getReservatieStudent1();
+
+        Date gisteren = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(1));
+
+        r1.setEindDatum(gisteren);
+        r1.setAantalUitgeleend(0);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1));
+        Set<Reservatie> teVerwijderenReservaties = repository.aanpassenTeLaatTerugGebrachteReservaties();
+        Assert.assertEquals(0, teVerwijderenReservaties.size());
+    }
+    @Test
+    public void aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties2BeschikbaarReturns0(){
+        Reservatie r1 = data.getReservatieStudent1();
+        Reservatie opV1 = data.getReservatieStudent2();
+
+        Date vorigeWeekStart = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(13));
+        Date vorigeWeekEind = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(8));
+
+        Date gisterenStart = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(6));
+        Date gisterenEind = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(1));
+
+        r1.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+        r1.setStartDatum(vorigeWeekStart);
+        r1.setEindDatum(vorigeWeekEind);
+        r1.setAantalGereserveerd(3);
+        r1.setAantalUitgeleend(3);
+
+        opV1.setStartDatum(gisterenStart);
+        opV1.setEindDatum(gisterenEind);
+        opV1.setAantalGereserveerd(2);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1, opV1));
+        Set<Reservatie> teVerwijderenReservaties = repository.aanpassenOpeenvolgendeReservaties(new HashSet<Reservatie>(Arrays.asList(r1)));
+        Assert.assertEquals(0, teVerwijderenReservaties.size());
+    }
+    @Test
+    public void aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1(){
+        Reservatie r1 = data.getReservatieStudent1();
+        Reservatie opV1 = data.getReservatieStudent2();
+
+        Date vorigeWeekStart = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(13));
+        Date vorigeWeekEind = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(8));
+
+        Date gisterenStart = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(6));
+        Date gisterenEind = convertLocalDateToDate(convertDateToLocalDate(new Date()).minusDays(1));
+
+        r1.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+        r1.setStartDatum(vorigeWeekStart);
+        r1.setEindDatum(vorigeWeekEind);
+        r1.setAantalGereserveerd(3);
+        r1.setAantalUitgeleend(3);
+
+        opV1.setStartDatum(gisterenStart);
+        opV1.setEindDatum(gisterenEind);
+        opV1.setAantalGereserveerd(4);
+
+        Mockito.when(reservatieDao.findAll()).thenReturn(Arrays.asList(r1, opV1));
+        Set<Reservatie> teVerwijderenReservaties = repository.aanpassenOpeenvolgendeReservaties(new HashSet<Reservatie>(Arrays.asList(r1)));
+        Reservatie result = teVerwijderenReservaties.iterator().next();
+        Assert.assertEquals(1, teVerwijderenReservaties.size());
+        Assert.assertEquals(opV1, result);
+        Assert.assertEquals(ReservatieStateEnum.TeLaat, result.getReservatieStateEnum());
+    }
+    private Date convertLocalDateToDate(LocalDate date){
+        return Date.from(date.atStartOfDay(ZoneId.systemDefault()).toInstant());
+    }
+    private LocalDate convertDateToLocalDate(Date date){
+        return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
     }
     private int[] berekenAantalBeschikbaar(List<Reservatie> reservaties, Reservatie data){
         Date beginDatum = data.getBeginDatum();

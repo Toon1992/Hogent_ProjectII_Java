@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/ReservatieController$1.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/ReservatieController$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/groep06Java/ReservatieData.class" afterPath="$PROJECT_DIR$/out/test/groep06Java/ReservatieData.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ReservatieController.java" afterPath="$PROJECT_DIR$/src/controller/ReservatieController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" afterPath="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/HulpMethode.java" afterPath="$PROJECT_DIR$/src/domein/HulpMethode.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" afterPath="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controller/ReservatieCatalogusTest.java" afterPath="$PROJECT_DIR$/test/controller/ReservatieCatalogusTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/controller/ReservatieData.java" afterPath="$PROJECT_DIR$/test/controller/ReservatieData.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -85,7 +89,7 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -95,37 +99,74 @@
         <entry file="file://$PROJECT_DIR$/src/controller/ReservatieController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
-              <folding />
+              <caret line="114" column="70" selection-start-line="114" selection-start-column="70" selection-end-line="114" selection-end-column="70" />
+              <folding>
+                <element signature="e#0#5837#0" expanded="false" />
+                <element signature="imports" expanded="false" />
+                <element signature="e#1283#1284#0" expanded="false" />
+                <element signature="e#1324#1325#0" expanded="false" />
+                <element signature="e#1403#1404#0" expanded="false" />
+                <element signature="e#1447#1448#0" expanded="false" />
+                <element signature="e#1505#1506#0" expanded="false" />
+                <element signature="e#1556#1557#0" expanded="false" />
+                <element signature="e#1601#1602#0" expanded="false" />
+                <element signature="e#1642#1643#0" expanded="false" />
+                <element signature="e#1699#1700#0" expanded="false" />
+                <element signature="e#1749#1750#0" expanded="false" />
+                <element signature="e#1805#1806#0" expanded="false" />
+                <element signature="e#1854#1855#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservatieCatalogus.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ReservatieCatalogus.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8876405">
-              <caret line="285" column="25" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="25" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservatieNieuwSchermController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ReservatieNieuwSchermController.java">
+      <file leaf-file-name="Reservatie.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/domein/Reservatie.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="117" column="57" selection-start-line="117" selection-start-column="57" selection-end-line="117" selection-end-column="57" />
+              <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+              <folding>
+                <element signature="e#6113#6114#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReservatieCatalogusTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/controller/ReservatieCatalogusTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="275" column="35" selection-start-line="275" selection-start-column="35" selection-end-line="275" selection-end-column="35" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StartUp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
+      <file leaf-file-name="MateriaalNieuwSchermController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controller/MateriaalNieuwSchermController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.7285714">
+              <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ReservatieData.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/controller/ReservatieData.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="132" />
+              <caret line="58" column="198" selection-start-line="58" selection-start-column="198" selection-end-line="58" selection-end-column="198" />
               <folding />
             </state>
           </provider>
@@ -157,7 +198,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/DomeinController.java" />
         <option value="$PROJECT_DIR$/test/gui/LoginSchermControllerTest.java" />
         <option value="$PROJECT_DIR$/src/gui/test.fxml" />
         <option value="$PROJECT_DIR$/src/gui/MateriaalScherm1.fxml" />
@@ -193,9 +233,7 @@
         <option value="$PROJECT_DIR$/src/controller/MateriaalNieuwSchermController.java" />
         <option value="$PROJECT_DIR$/src/controller/MateriaalOverzichtSchermController.java" />
         <option value="$PROJECT_DIR$/src/domein/Gebruiker.java" />
-        <option value="$PROJECT_DIR$/src/domein/Reservatie.java" />
         <option value="$PROJECT_DIR$/src/gui/LoaderSchermen.java" />
-        <option value="$PROJECT_DIR$/test/controller/ReservatieData.java" />
         <option value="$PROJECT_DIR$/src/controller/ReservatieNieuwSchermController.java" />
         <option value="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" />
         <option value="$PROJECT_DIR$/src/repository/MateriaalCatalogus.java" />
@@ -203,11 +241,14 @@
         <option value="$PROJECT_DIR$/src/controller/MateriaalController.java" />
         <option value="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" />
         <option value="$PROJECT_DIR$/src/repository/GeneriekeRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/StartUp.java" />
-        <option value="$PROJECT_DIR$/src/domein/HulpMethode.java" />
         <option value="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" />
-        <option value="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" />
         <option value="$PROJECT_DIR$/src/controller/ReservatieController.java" />
+        <option value="$PROJECT_DIR$/src/domein/Reservatie.java" />
+        <option value="$PROJECT_DIR$/src/main/StartUp.java" />
+        <option value="$PROJECT_DIR$/test/controller/ReservatieData.java" />
+        <option value="$PROJECT_DIR$/src/domein/HulpMethode.java" />
+        <option value="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" />
+        <option value="$PROJECT_DIR$/test/controller/ReservatieCatalogusTest.java" />
       </list>
     </option>
   </component>
@@ -230,7 +271,7 @@
   <component name="ProjectFrameBounds">
     <option name="y" value="23" />
     <option name="width" value="1440" />
-    <option name="height" value="800" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -262,10 +303,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -476,7 +514,10 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Problems" />
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -508,66 +549,15 @@
       <recent name="$PROJECT_DIR$/src/gui" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.StartUp">
-    <configuration default="false" name="StartUp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="main.StartUp" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="groep06Java" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="LoginSchermControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager" selected="JUnit.ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1">
+    <configuration default="false" name="ReservatieCatalogusTest.aanpassen1TelaatBinnenGebrachteReservatiesReturns1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="groep06Java" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="gui.LoginSchermControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="LoginSchermControllerTest.getTestParameters" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="groep06Java" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="gui.LoginSchermControllerTest" />
-      <option name="METHOD_NAME" value="getTestParameters" />
+      <option name="MAIN_CLASS_NAME" value="ReservatieCatalogusTest" />
+      <option name="METHOD_NAME" value="aanpassen1TelaatBinnenGebrachteReservatiesReturns1" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -581,15 +571,15 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="ReservatieCatalogusTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="ReservatieCatalogusTest.aanpassen1NooitUitgeleendeReservatie0" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="groep06Java" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="ReservatieCatalogusTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="METHOD_NAME" value="aanpassen1NooitUitgeleendeReservatie0" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -602,20 +592,57 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="MateriaalNieuwSchermControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+    <configuration default="false" name="ReservatieCatalogusTest.verwijderNooitUitgeleendeReservatie" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="groep06Java" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="gui.MateriaalNieuwSchermControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="ReservatieCatalogusTest" />
+      <option name="METHOD_NAME" value="verwijderNooitUitgeleendeReservatie" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="groep06Java" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ReservatieCatalogusTest" />
+      <option name="METHOD_NAME" value="aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="groep06Java" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ReservatieCatalogusTest" />
+      <option name="METHOD_NAME" value="aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -1063,19 +1090,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Application.Main" />
-      <item index="1" class="java.lang.String" itemvalue="Application.StartUp" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.LoginSchermControllerTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.LoginSchermControllerTest.getTestParameters" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.MateriaalNieuwSchermControllerTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassen1TelaatBinnenGebrachteReservatiesReturns1" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassen1NooitUitgeleendeReservatie0" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.verwijderNooitUitgeleendeReservatie" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.StartUp" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.MateriaalNieuwSchermControllerTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.LoginSchermControllerTest" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.LoginSchermControllerTest.getTestParameters" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.verwijderNooitUitgeleendeReservatie" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassen1NooitUitgeleendeReservatie0" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ReservatieCatalogusTest.aanpassen1TelaatBinnenGebrachteReservatiesReturns1" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -1138,7 +1165,13 @@
       <workItem from="1460891396058" duration="10776000" />
       <workItem from="1460906688451" duration="8192000" />
       <workItem from="1460918724983" duration="46000" />
-      <workItem from="1460972451504" duration="13301000" />
+      <workItem from="1460972451504" duration="13622000" />
+      <workItem from="1461051594299" duration="147000" />
+      <workItem from="1461055405656" duration="360000" />
+      <workItem from="1461084090381" duration="6623000" />
+      <workItem from="1461098927969" duration="42000" />
+      <workItem from="1461128173989" duration="59000" />
+      <workItem from="1461166072376" duration="965000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1460114868716</created>
@@ -1206,37 +1239,49 @@
       <option name="project" value="LOCAL" />
       <updated>1460973437945</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Berekenen van de status van de reservaties die volgen op te laat binnengebrachte reservaties">
+      <created>1461007461344</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1461007461344</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="LoginSchermControllerTest - 2016.03.25 at 17h 44m 28s.xml">
-      <configuration name="LoginSchermControllerTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.19 at 21h 23m 04s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginSchermControllerTest - 2016.03.25 at 17h 46m 04s.xml">
-      <configuration name="LoginSchermControllerTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.19 at 21h 23m 54s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginSchermControllerTest - 2016.03.25 at 17h 46m 46s.xml">
-      <configuration name="LoginSchermControllerTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 30m 46s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginSchermControllerTest - 2016.03.25 at 17h 50m 06s.xml">
-      <configuration name="LoginSchermControllerTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 31m 55s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="LoginSchermControllerTest_getTestParameters - 2016.03.25 at 17h 45m 47s.xml">
-      <configuration name="LoginSchermControllerTest.getTestParameters" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 33m 18s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MateriaalNieuwSchermControllerTest - 2016.04.13 at 16h 51m 01s.xml">
-      <configuration name="MateriaalNieuwSchermControllerTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 36m 06s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="MateriaalNieuwSchermControllerTest - 2016.04.13 at 17h 20m 23s.xml">
-      <configuration name="MateriaalNieuwSchermControllerTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 36m 59s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="ReservatieRepositoryTest - 2016.04.13 at 16h 50m 49s.xml">
-      <configuration name="ReservatieRepositoryTest" configurationId="JUnit" />
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 37m 55s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties - 2016.04.20 at 17h 39m 10s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ReservatieCatalogusTest_aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1 - 2016.04.20 at 17h 42m 20s.xml">
+      <configuration name="ReservatieCatalogusTest.aanpassenOpeenVolgendeReservatiesTeLaatTeruggebrachteReservaties0BeschikbaarReturns1" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183593000" />
+    <option name="totallyTimeSpent" value="192110000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1248,18 +1293,18 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="800" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="797" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.038293216" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25581396" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2541209" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32968536" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3282967" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4377565" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43681318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1269,7 +1314,7 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39261284" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39148352" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1306,11 +1351,20 @@
     <MESSAGE value="aanvullen feedback" />
     <MESSAGE value="[Sprint2 #15] Vervallen reservaties verwijderen&#10;[Sprint2 #7] Statussen berekenen niet binnengebrachte materialen&#10;[Sprint2 #12] Uittrekken repositories" />
     <MESSAGE value="update" />
-    <option name="LAST_COMMIT_MESSAGE" value="update" />
+    <MESSAGE value="Berekenen van de status van de reservaties die volgen op te laat binnengebrachte reservaties" />
+    <option name="LAST_COMMIT_MESSAGE" value="Berekenen van de status van de reservaties die volgen op te laat binnengebrachte reservaties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="174" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java</url>
+          <line>218</line>
+          <properties />
+          <option name="timeStamp" value="182" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="186" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1319,37 +1373,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gui/BeheerderScherm.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.207547">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/LayoutFrame.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/GebiedenRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32142857">
-          <caret line="25" column="31" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
-          <folding>
-            <element signature="e#600#601#0" expanded="false" />
-            <element signature="e#664#665#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TextField.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1368,7 +1391,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1390,10 +1412,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="29" selection-start-line="25" selection-start-column="29" selection-end-line="25" selection-end-column="29" />
-          <folding>
-            <element signature="e#534#535#0" expanded="false" />
-            <element signature="e#581#582#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1460,7 +1478,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="97" column="0" selection-start-line="97" selection-start-column="0" selection-end-line="97" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1468,7 +1485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="99" selection-start-line="45" selection-start-column="99" selection-end-line="45" selection-end-column="99" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1476,7 +1492,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="30" column="11" selection-start-line="30" selection-start-column="11" selection-end-line="30" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1508,7 +1523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38122332">
           <caret line="75" column="40" selection-start-line="75" selection-start-column="40" selection-end-line="75" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1516,10 +1530,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
-          <folding>
-            <element signature="e#677#678#0" expanded="false" />
-            <element signature="e#711#712#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1527,7 +1537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1535,15 +1544,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2347084">
           <caret line="22" column="11" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/controller/ReservatieData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="63" column="49" selection-start-line="63" selection-start-column="49" selection-end-line="63" selection-end-column="49" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1586,15 +1586,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="121" column="0" selection-start-line="121" selection-start-column="0" selection-end-line="121" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalNieuwSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="148" column="22" selection-start-line="148" selection-start-column="22" selection-end-line="148" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1602,7 +1593,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.2642858">
           <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1611,17 +1601,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="86" column="16" selection-start-line="86" selection-start-column="16" selection-end-line="86" selection-end-column="16" />
           <folding>
-            <element signature="e#3017#3018#0" expanded="true" />
-            <element signature="e#3064#3065#0" expanded="true" />
+            <element signature="e#3017#3018#0" expanded="false" />
+            <element signature="e#3064#3065#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domein/HulpMethode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8815789">
-          <caret line="52" column="29" selection-start-line="52" selection-start-column="29" selection-end-line="52" selection-end-column="29" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1645,7 +1627,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17142858">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1667,16 +1648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domein/Reservatie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.057142857">
-          <caret line="217" column="0" selection-start-line="217" selection-start-column="0" selection-end-line="217" selection-end-column="0" />
-          <folding>
-            <element signature="e#6227#6228#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/repository/GeneriekeRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3857143">
@@ -1691,23 +1662,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-8.296296">
           <caret line="54" column="8" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="96" column="45" selection-start-line="96" selection-start-column="45" selection-end-line="96" selection-end-column="132" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ReservatieNieuwSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="117" column="57" selection-start-line="117" selection-start-column="57" selection-end-line="117" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1716,23 +1670,111 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="24" selection-start-line="71" selection-start-column="24" selection-end-line="71" selection-end-column="24" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ReservatieNieuwSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74285716">
+          <caret line="117" column="57" selection-start-line="117" selection-start-column="57" selection-end-line="117" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/ReservatieController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="19" selection-start-line="130" selection-start-column="19" selection-end-line="130" selection-end-column="19" />
+          <caret line="114" column="70" selection-start-line="114" selection-start-column="70" selection-end-line="114" selection-end-column="70" />
+          <folding>
+            <element signature="e#0#5837#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#1283#1284#0" expanded="false" />
+            <element signature="e#1324#1325#0" expanded="false" />
+            <element signature="e#1403#1404#0" expanded="false" />
+            <element signature="e#1447#1448#0" expanded="false" />
+            <element signature="e#1505#1506#0" expanded="false" />
+            <element signature="e#1556#1557#0" expanded="false" />
+            <element signature="e#1601#1602#0" expanded="false" />
+            <element signature="e#1642#1643#0" expanded="false" />
+            <element signature="e#1699#1700#0" expanded="false" />
+            <element signature="e#1749#1750#0" expanded="false" />
+            <element signature="e#1805#1806#0" expanded="false" />
+            <element signature="e#1854#1855#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controller/ReservatieDaoJpaDummy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19633508">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/runners/model/FrameworkMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.666667">
+          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domein/HulpMethode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2168674">
+          <caret line="48" column="51" selection-start-line="48" selection-start-column="51" selection-end-line="48" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domein/Reservatie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="213" column="0" selection-start-line="213" selection-start-column="0" selection-end-line="213" selection-end-column="0" />
+          <folding>
+            <element signature="e#6113#6114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controller/ReservatieData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="198" selection-start-line="58" selection-start-column="198" selection-end-line="58" selection-end-column="198" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8876405">
-          <caret line="285" column="25" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="222" column="0" selection-start-line="222" selection-start-column="0" selection-end-line="222" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/controller/ReservatieCatalogusTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="275" column="35" selection-start-line="275" selection-start-column="35" selection-end-line="275" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalNieuwSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7285714">
+          <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
           <folding />
         </state>
       </provider>
