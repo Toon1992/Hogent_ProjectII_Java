@@ -5,9 +5,11 @@
  */
 package domein;
 
+import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
@@ -99,20 +101,12 @@ public class ReservatieCatalogus
         if (opBeginDatum)
         {
             reservatieDatum = reservatie.getBeginDatum();
+            return reservatieDatum.after(datum);
         } else
         {
             reservatieDatum = reservatie.getEindDatum();
+            return reservatieDatum.before(datum);
         }
-
-        if (reservatieDatum.getYear() >= datum.getYear())
-        {
-            if (reservatieDatum.getMonth() >= datum.getMonth())
-            {
-                return reservatieDatum.getDay() >= datum.getDay();
-            }
-        }
-
-        return false;
     }
 
     public List<Reservatie> geefReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal){
@@ -211,11 +205,13 @@ public class ReservatieCatalogus
         return reservatiesTeLaat;
     }
     private Set<Reservatie> aanpassenOpeenvolgendeReservaties(Set<Reservatie> reservaties){
-        int week, aantal;
+        int week, aantal, aantalBenodigdeStuks, huidigBeschikbaar;
         Reservatie reser;
         //Materiaal materiaal;
-        List<Reservatie> reservatiePool;
+        List<Reservatie> reservatiePool = geefReservaties();
         Set<Reservatie> aangepasteReservaties = new HashSet<>();
+        Map<Materiaal, Map<Integer, Integer>> aantalBeschikbaar = berekenAantalBeschikbaarPerMateriaalPerWeek(reservaties);
+        Map<Integer, Integer> aantallenPerWeek;
         for (Reservatie reservatie :reservaties) {
 
             //Variabelen
@@ -226,15 +222,27 @@ public class ReservatieCatalogus
             Date vrijdag = HulpMethode.convertLocalDateToDate(maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
 
             //Alle reservaties van hetzelfde materiaal die gepland staan voor de opeenvolgende week
-            reservatiePool = geefReservaties().stream().filter(r -> r.getMateriaal().equals(materiaal) && r.getBeginDatum().before(vrijdag) && r.getEindDatum().after(maandag)).sorted(Comparator.comparing(Reservatie::getAanmaakDatum)).collect(Collectors.toList());
+            reservatiePool = reservatiePool.stream().filter(r -> r.getMateriaal().equals(materiaal) && r.getBeginDatum().before(vrijdag) && r.getEindDatum().after(maandag) && (r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd)||r.getReservatieStateEnum().equals(ReservatieStateEnum.Geblokkeerd))).sorted(Comparator.comparing(Reservatie::getAanmaakDatum)).collect(Collectors.toList());
+            //De reservaties worden slechts op te laat geplaatst indien er niet meer voldoende stuks beschikbaar zijn om te reserveren.
+            huidigBeschikbaar = aantalBeschikbaar.get(materiaal).get(week);
 
             while(aantal > 0 && reservatiePool.size() > 0){
                 reser = reservatiePool.get(0);
-                reser.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+                if(reser.getAantalGereserveerd() <= huidigBeschikbaar){
+                    huidigBeschikbaar -= reser.getAantalGereserveerd();
+                }
+                else{
+                    reser.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+                    aangepasteReservaties.add(reser);
+                }
                 aantal -= reser.getAantalGereserveerd();
-                aangepasteReservaties.add(reser);
                 reservatiePool.remove(reser);
             }
+            //De gewijzigde aantallen updaten in de betreffende week in de map met aantallen per week
+            //Deze map wordt geupdate in de map aantalBeschikbaar
+            aantallenPerWeek = aantalBeschikbaar.get(materiaal);
+            aantallenPerWeek.put(week, huidigBeschikbaar);
+            aantalBeschikbaar.put(materiaal, aantallenPerWeek);
         }
         return aangepasteReservaties;
     }
@@ -245,6 +253,33 @@ public class ReservatieCatalogus
         vrijdag = HulpMethode.convertLocalDateToDate(maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
         Set<Reservatie> reservaties = geefReservaties().stream().filter(reservatie -> reservatie.getReservatieStateEnum().equals(ReservatieStateEnum.TeLaat) && reservatie.getBeginDatum().before(vrijdag) && reservatie.getEindDatum().after(maandag)).collect(Collectors.toSet());
         Set<Reservatie> aangepasteReservaties = aanpassenOpeenvolgendeReservaties(reservaties);
+        return aangepasteReservaties;
+    }
+    public Set<Reservatie> wijzigLaatbinnenGebrachteReservatie(Reservatie reservatie){
+        Set<Reservatie> aangepasteReservaties = new HashSet<>();
+
+        int aantal = reservatie.getAantalTeruggebracht() == 0 ? reservatie.getAantalUitgeleend() : reservatie.getAantalTeruggebracht();
+        Materiaal materiaal = reservatie.getMateriaal();
+        //De week na de week van de binnengebrachte reservatie
+        int orgWeek = HulpMethode.getWeekOfDate(reservatie.getEindDatum()) + 1;
+        //Een week na de huidige datum
+        int volgendeWeek = HulpMethode.getWeekOfDate(new Date()) + 1;
+
+        //Als een reservatie te laat binnen wordt gebracht, moeten alle reservaties die door deze reservatie de status te laat kregen terug op gereserveerd komen
+        //dit betreft alle reservaties tot 1 week na de huidige datum
+        while(orgWeek != (volgendeWeek + 1)){
+            Date beginDatum = HulpMethode.getFirstDayOfWeek(orgWeek);
+            Date eindDatum = HulpMethode.convertLocalDateToDate(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
+            List<Reservatie> reservatiePool = geefReservaties().stream().filter(r->r.getReservatieStateEnum().equals(ReservatieStateEnum.TeLaat) && r.getMateriaal().equals(materiaal) && r.getBeginDatum().before(eindDatum) && r.getEindDatum().after(beginDatum)).collect(Collectors.toList());;
+            while(aantal > 0 || reservatiePool.isEmpty()){
+                Reservatie changeRes = reservatiePool.get(0);
+                changeRes.setReservatieStateEnum(ReservatieStateEnum.Gereserveerd);
+                reservatiePool.remove(changeRes);
+                aangepasteReservaties.add(changeRes);
+                aantal -= changeRes.getAantalGereserveerd();
+            }
+            orgWeek++;
+        }
         return aangepasteReservaties;
     }
     public void voegReservatieToe(Reservatie reservatie){
@@ -282,5 +317,73 @@ public class ReservatieCatalogus
     {
         filterReservatie.remove(reservatie);
         filterReservaties = new FilteredList(filterReservatie, p -> true);
+    }
+    /**
+     *##################################################################################################################
+     * Methoden om de reservaties om te vormen tot een map
+     * key: materiaal
+     * value: per week het aantal gereserveerde stuks
+     * ##################################################################################################################
+     */
+    private Map<Materiaal, Map<Integer, Integer>> berekenAantalBeschikbaarPerMateriaalPerWeek(Set<Reservatie> reservaties){
+        Map<Materiaal, Map<Integer, Integer>> beschikbaarheden = new HashMap<>();
+        // Op basis van de reservaties een map maken met per materiaal en set van reservaties.
+        Map<Materiaal, Set<Reservatie>> reservatiesMateriaal = convertSetReservatiesToMap(reservaties);
+
+        // Deze map overlopen en een map maken met key: het materiaal en value: een map die per week het aantal gereserveerde stuks bevat
+        reservatiesMateriaal.entrySet().stream().forEach(e -> {
+            beschikbaarheden.put(e.getKey(), berekenAantalBeschikbaarMateriaalPerWeek(e.getValue()));
+        });
+
+        return beschikbaarheden;
+    }
+    private Map<Materiaal, Set<Reservatie>> convertSetReservatiesToMap(Set<Reservatie> reservaties){
+        Map<Materiaal, Set<Reservatie>> reservatiesMateriaal = new HashMap<>();
+        reservaties.forEach(reservatie -> {
+            if(reservatiesMateriaal.containsKey(reservatie.getMateriaal())){
+                Set<Reservatie> prevReservateies = reservatiesMateriaal.get(reservatie.getMateriaal());
+                prevReservateies.add(reservatie);
+                reservatiesMateriaal.put(reservatie.getMateriaal(), prevReservateies);
+            }
+            else{
+                reservatiesMateriaal.put(reservatie.getMateriaal(), new HashSet<Reservatie>(Arrays.asList(reservatie)));
+            }
+        });
+        return reservatiesMateriaal;
+    }
+    private Map<Integer,Integer> berekenAantalBeschikbaarMateriaalPerWeek(Set<Reservatie> reservaties){
+        Map<Integer, Integer> aantalBeschikbaar = new HashMap<>();
+        int huidigBeschikbaar, week;
+
+        // De beschikbaarheden berekenen voor de week die volgt op de week van de reservatie
+        for(Reservatie reservatie: reservaties){
+            //Indien er reeds voor een week reeds stuks gereserveerd staan, wordt het nieuwe aantal van het huidige beschikbaar afgetrokken.
+            week = HulpMethode.getWeekOfDate(reservatie.getEindDatum()) + 1;
+            Date maandag = HulpMethode.getFirstDayOfWeek(week);
+            Date vrijdag = HulpMethode.convertLocalDateToDate(maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
+            Materiaal materiaal = reservatie.getMateriaal();
+
+            if(aantalBeschikbaar.containsKey(week)){
+                huidigBeschikbaar = aantalBeschikbaar.get(week);
+                huidigBeschikbaar -= getAantalGereserveerdVoorMateriaalInRange(maandag, vrijdag, materiaal);
+            }
+            else{
+                huidigBeschikbaar = materiaal.getAantal() - materiaal.getAantalOnbeschikbaar() - getAantalGereserveerdVoorMateriaalInRange(maandag, vrijdag, materiaal);
+            }
+
+            aantalBeschikbaar.put(week, huidigBeschikbaar);
+
+        }
+        return aantalBeschikbaar;
+    }
+    private int getAantalGereserveerdVoorMateriaalInRange(Date startDate, Date endDate, Materiaal materiaal){
+        return geefReservaties()
+                .stream()
+                .filter(r ->
+                    r.getEindDatum().after(startDate)
+                            && r.getBeginDatum().before(endDate)
+                            && r.getMateriaal().equals(materiaal)
+                            &&(r.getReservatieStateEnum().equals(ReservatieStateEnum.Gereserveerd) ||r.getReservatieStateEnum().equals(ReservatieStateEnum.Geblokkeerd)))
+                .mapToInt(res -> res.getAantalGereserveerd()).sum();
     }
 }

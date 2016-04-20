@@ -58,14 +58,19 @@ public class ReservatieHulpController {
             flag = false;
         }
         try{
-            aantalUit = Integer.parseInt(txfAantalUit.getText());
+            if(!txfAantalUit.getText().isEmpty()){
+                aantalUit = Integer.parseInt(txfAantalUit.getText());
+            }
+
         }
         catch (NumberFormatException e){
             lblMelding.setText("Het aantal uitgeleende stuks moet een nummer zijn groter dan 0");
             flag = false;
         }
         try{
-            aantalTerug = Integer.parseInt(txfAantalTerug.getText());
+            if(!txfAantalTerug.getText().isEmpty()){
+                aantalTerug = Integer.parseInt(txfAantalTerug.getText());
+            }
         }
         catch (NumberFormatException e){
             lblMelding.setText("Het aantal teruggebrachte stuks moet een nummer zijn groter dan 0");

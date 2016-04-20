@@ -24,8 +24,8 @@ public class GebruikerController extends Observable{
     public void setBeheerderRepository(BeheerderRepository beheerderRepository){
         this.beheerderRepository = beheerderRepository;
     }
-    public void registreer(String email, String password, String naam){
-        beheerderRepository.voegBeheerderToe(new Beheerder(email, password, naam));
+    public void registreer(String email, String password, String naam, boolean isHoofd){
+        beheerderRepository.voegBeheerderToe(new Beheerder(email, password, naam, isHoofd));
     }
     public void login(String email, String wachtwoord) throws Exception{
         beheerderRepository.login(email, wachtwoord);

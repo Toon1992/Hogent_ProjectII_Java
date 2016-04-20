@@ -34,7 +34,7 @@ import stateMachine.TeLaat;
 @Entity
 @NamedQueries(
         {
-                @NamedQuery(name = "Reservatie.findBydatum", query = "Select r FROM Reservatie r WHERE r.materiaal = :Materiaal  AND (:EindDatum >= r.startDatum AND :StartDatum <= r.eindDatum)")
+            @NamedQuery(name = "Reservatie.findBydatum", query = "Select r FROM Reservatie r WHERE r.materiaal = :Materiaal  AND (:EindDatum >= r.startDatum AND :StartDatum <= r.eindDatum)")
         })
 public class Reservatie
 {
@@ -63,14 +63,14 @@ public class Reservatie
 
     @Transient
     private ReservatieState reservatieState;
-    
+
     @Enumerated(EnumType.STRING)
     @Column(name = "Discriminator")
     private ReservatieGebruikerEnum discriminator;
 
     @OneToMany(cascade = CascadeType.PERSIST)
     private Set<Dag> dagen = new HashSet<>();
-    
+
     protected Reservatie()
     {
     }
@@ -104,6 +104,7 @@ public class Reservatie
         System.out.println(getReservatieState().getClass().getSimpleName());
         return new SimpleStringProperty(getReservatieState().getClass().getSimpleName());
     }
+
     public StringProperty naamGebruikerProperty()
     {
         return gebruiker.naamProperty();
@@ -183,7 +184,9 @@ public class Reservatie
     {
         return aantalGereserveerd;
     }
-    public int getAantalTeruggebracht(){
+
+    public int getAantalTeruggebracht()
+    {
         return aantalTeruggebracht;
     }
 
@@ -191,15 +194,19 @@ public class Reservatie
     {
         this.aantalGereserveerd = aantalUitgeleend;
     }
-    public void setAantalTeruggebracht(int aantalTeruggebracht){
+
+    public void setAantalTeruggebracht(int aantalTeruggebracht)
+    {
         this.aantalTeruggebracht = aantalTeruggebracht;
     }
 
-    public int getAantalUitgeleend() {
+    public int getAantalUitgeleend()
+    {
         return aantalUitgeleend;
     }
 
-    public void setAantalUitgeleend(int aantalUitgeleend) {
+    public void setAantalUitgeleend(int aantalUitgeleend)
+    {
         this.aantalUitgeleend = aantalUitgeleend;
     }
 
@@ -233,11 +240,13 @@ public class Reservatie
         this.reservatieStateEnum = reservatieStateEnum;
     }
 
-    public Set<Dag> getDagen() {
+    public Set<Dag> getDagen()
+    {
         return dagen;
     }
 
-    public void setDagen(Set<Dag> dagen) {
+    public void setDagen(Set<Dag> dagen)
+    {
         this.dagen = dagen;
     }
 
@@ -261,22 +270,31 @@ public class Reservatie
         this.materiaal = materiaal;
     }
 
-    public Date getAanmaakDatum() {
+    public Date getAanmaakDatum()
+    {
         return aanmaakDatum;
     }
 
-    public void setAanmaakDatum(Date aanmaakDatum) {
+    public void setAanmaakDatum(Date aanmaakDatum)
+    {
         this.aanmaakDatum = aanmaakDatum;
     }
 
-    public ReservatieGebruikerEnum getDiscriminator() {
+    public ReservatieGebruikerEnum getDiscriminator()
+    {
         return discriminator;
     }
 
-    public void setDiscriminator(String type) {
-        switch(type.toLowerCase()){
-            case "st": this.discriminator = discriminator.ReservatieStudent;break;
-            case "le": this.discriminator = discriminator.BlokkeringLector; break;
+    public void setDiscriminator(String type)
+    {
+        switch (type.toLowerCase())
+        {
+            case "st":
+                this.discriminator = discriminator.ReservatieStudent;
+                break;
+            case "le":
+                this.discriminator = discriminator.BlokkeringLector;
+                break;
         }
     }
 

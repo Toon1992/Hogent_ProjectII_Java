@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package gui;
 
+import controller.MateriaalController;
 import java.awt.image.BufferedImage;
 import java.util.Arrays;
 import java.util.stream.Collectors;

@@ -11,6 +11,10 @@ import java.util.Date;
  */
 public class HulpMethode {
     public static Date geefEersteDagVanDeWeek(LocalDate datum){
+        
+        if(datum == null)
+            return null;
+        
         switch (datum.getDayOfWeek())
         {
             case TUESDAY:

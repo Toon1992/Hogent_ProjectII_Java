@@ -25,7 +25,7 @@ import persistentie.GenericDaoJpa;
 public class BeheerderRepository
 {
 
-    private Beheerder beheerder;
+    private static Beheerder beheerder;
     private BeheerderDaoJpa beheerderDao;
     private GenericDaoJpa<Gebruiker> gebruikerDoa;
     public BeheerderRepository()
@@ -34,7 +34,7 @@ public class BeheerderRepository
         gebruikerDoa = new GenericDaoJpa<>(Gebruiker.class);
     }
 
-    public Beheerder getBeheerder()
+    public static Beheerder getLoggedInBeheerder()
     {
         return beheerder;
     }
