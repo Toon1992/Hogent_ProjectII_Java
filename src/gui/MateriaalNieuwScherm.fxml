@@ -143,7 +143,7 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label-header-small" text="Algemeen" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label styleClass="label-header-small" text="Algemeen nieuw materiaal" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets right="15.0" />
                </padding>
@@ -170,7 +170,6 @@
             <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
             <Label prefHeight="21.0" prefWidth="289.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Label text="Nieuw materiaal toevoegen" GridPane.columnIndex="1" />
            </children>
        </GridPane>
    </children>
