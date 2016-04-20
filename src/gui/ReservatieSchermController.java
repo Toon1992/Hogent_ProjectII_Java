@@ -50,6 +50,8 @@ public class ReservatieSchermController extends HBox
     @FXML
     private TableColumn<Reservatie, Number> aantalColumn;
     @FXML
+    private TableColumn<Reservatie, Number> aantalBeschikbaarColumn;
+    @FXML
     private TableColumn<Reservatie, String> BeginDatumColumn;
     @FXML
     private TableColumn<Reservatie, String> EindDatumColumn;
@@ -113,6 +115,7 @@ public class ReservatieSchermController extends HBox
         
         this.materiaalColumn.setCellValueFactory(reservatie->reservatie.getValue().naamMateriaalProperty());    
         this.aantalColumn.setCellValueFactory(reservatie->reservatie.getValue().aantalProperty());
+        this.aantalBeschikbaarColumn.setCellValueFactory(reservatie -> reservatie.getValue().getMateriaal().aantalProperty());
         this.BeginDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().beginDatumProperty());
         this.EindDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().eindDatumProperty());
         this.naamColumn.setCellValueFactory(reservatie->reservatie.getValue().naamGebruikerProperty());
