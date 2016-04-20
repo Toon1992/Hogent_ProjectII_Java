@@ -55,6 +55,7 @@ public class BeheerderRepository
             throw new WachtwoordException("Wachtwoord verplicht");
         }
         beheerder = beheerderDao.getBeheerderByEmail(email, wachtwoord);//Mapping.loginQuery(email, wachtwoord);
+
     }
 
     public void voegBeheerderToe(Beheerder beheerder)
@@ -65,13 +66,13 @@ public class BeheerderRepository
         beheerderDao.commitTransaction();
     }
     
-    public void verwijderMateriaal(Beheerder beheerder) {
+    public void verwijderBeheerder(Beheerder beheerder) {
         beheerderDao.startTransaction();
         beheerderDao.delete(beheerder);
         beheerderDao.commitTransaction();
     }
     
-    public void wijzigMateriaal(Beheerder beheerder)
+    public void wijzigBeheerder(Beheerder beheerder)
     {
         beheerderDao.startTransaction();
         beheerderDao.update(beheerder);

@@ -37,6 +37,7 @@ public class Beheerder
     
     @Column(name = "Wachtwoord")
     private String wachtwoord;
+    
     private String naam;
     private boolean isHoofd;
 

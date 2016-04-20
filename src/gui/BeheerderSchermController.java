@@ -58,10 +58,14 @@ public class BeheerderSchermController extends GridPane
     public BeheerderSchermController()
     {
         LoaderSchermen.getInstance().setLocation("BeheerderScherm.fxml", this);
-        
+
         controller = ControllerSingelton.getBeheerderControllerInstance();
         beheerderNamenList = controller.getBeheerders();
         loginBeheerder = controller.GetLoggedInBeheerder();
+
+        txfEmail.setDisable(true);
+        txfNaam.setDisable(true);
+        txfPaswoord.setDisable(true);
 
         vulListViewIn();
 
@@ -73,9 +77,7 @@ public class BeheerderSchermController extends GridPane
             btnNieuw.setDisable(true);
             btnWijzig.setDisable(true);
             btnVerwijderen.setDisable(true);
-            txfEmail.setDisable(true);
-            txfNaam.setDisable(true);
-            txfPaswoord.setDisable(true);
+
         }
     }
 
@@ -97,10 +99,13 @@ public class BeheerderSchermController extends GridPane
                     if (oldValue == null || !oldValue.equals(newValue))
                     {
                         currentBeheerder = beheerderNamenList.stream().filter(beheerder -> beheerder.getNaam().equals(filterNaam(newValue))).findFirst().get();
+                        txfEmail.setDisable(false);
+                        txfNaam.setDisable(false);
+                        txfPaswoord.setDisable(false);
                         txfNaam.setText(currentBeheerder.getNaam());
                         txfEmail.setText(currentBeheerder.getEmail());
                         txfPaswoord.setText(currentBeheerder.getWachtwoord());
-                        
+
                     }
                 }
             }
@@ -200,7 +205,7 @@ public class BeheerderSchermController extends GridPane
     {
         return !beheerderNamenList.stream().noneMatch(beheerder -> beheerder.getEmail().equals(email));
     }
-    
+
     private boolean isHoofdBeheerder()
     {
         return loginBeheerder.isHoofd();

@@ -160,7 +160,7 @@
                   <Insets top="85.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblError" prefHeight="21.0" prefWidth="346.0" styleClass="label-error" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="lblError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="13">
                <font>
                   <Font size="24.0" />
                </font>
@@ -169,10 +169,7 @@
             <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
-            <Label prefHeight="21.0" prefWidth="289.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.rowIndex="13">
-               <GridPane.margin>
-                  <Insets left="10.0" />
-               </GridPane.margin></Label>
+            <Label prefHeight="21.0" prefWidth="289.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.rowIndex="13" />
             <Label text="Nieuw materiaal toevoegen" GridPane.columnIndex="1" />
            </children>
        </GridPane>
