@@ -14,10 +14,10 @@
    <children>
        <GridPane maxHeight="650.0" prefHeight="700.0" prefWidth="1197.0" VBox.vgrow="ALWAYS">
            <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="292.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="242.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="242.0" prefWidth="242.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="40.0" />
            </columnConstraints>
            <rowConstraints>
@@ -26,7 +26,7 @@
                <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -149,18 +149,17 @@
                </padding>
             </Label>
             <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
-            <TextField fx:id="txfUrl" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <Label text="Foto" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" text="Open" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" text="Foto toevoegen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets top="85.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="13">
+            <Label fx:id="lblError" styleClass="label-error" textFill="RED" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13">
                <font>
                   <Font size="24.0" />
                </font>
@@ -169,8 +168,13 @@
             <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
             <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
             <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
-            <Label prefHeight="21.0" prefWidth="289.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <Label text="Nieuw materiaal toevoegen" GridPane.columnIndex="1" />
+            <Label prefHeight="21.0" prefWidth="299.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+            <Label styleClass="label-header-small" text="Nieuw materiaal toevoegen" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" />
+            <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../images/add.png" />
+               </image>
+            </ImageView>
            </children>
        </GridPane>
    </children>

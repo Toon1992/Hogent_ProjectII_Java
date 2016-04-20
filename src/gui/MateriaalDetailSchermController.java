@@ -7,14 +7,11 @@ package gui;
 
 import controller.MateriaalController;
 import controller.MateriaalHulpController;
-import domein.Doelgroep;
-import domein.Firma;
-import domein.Leergebied;
+import domein.*;
 
 import java.io.File;
 import java.util.*;
 
-import domein.Materiaal;
 import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.embed.swing.SwingFXUtils;
@@ -78,8 +75,6 @@ public class MateriaalDetailSchermController extends VBox {
     @FXML
     private Label lblErrorMessage;
     @FXML
-    private TextField txfUrl;
-    @FXML
     private ComboBox<String> comboFirma;
     private GridPane gp;
     private GebiedenRepository gebiedenRepo;
@@ -89,7 +84,7 @@ public class MateriaalDetailSchermController extends VBox {
     private FileChooser fileChooser;
     private Leergebied l = new Leergebied("l");
     Doelgroep d = new Doelgroep("d");
-    private String foto;
+    private String foto = "";
 
     public MateriaalDetailSchermController(MateriaalController mc, Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
@@ -133,7 +128,7 @@ public class MateriaalDetailSchermController extends VBox {
         Stage stage = (Stage) this.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
         foto = file.getAbsolutePath();
-        txfUrl.setText(file.getAbsolutePath());
+        imgViewMateriaal.setImage(SwingFXUtils.toFXImage(HulpMethode.convertUrlToImage(foto), null));
     }
 
     @FXML

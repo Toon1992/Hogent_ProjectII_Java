@@ -11,17 +11,21 @@ import java.util.*;
 
 import domein.Doelgroep;
 import domein.Firma;
+import domein.HulpMethode;
 import domein.Leergebied;
 import exceptions.AantalException;
+import exceptions.MultiException;
 import exceptions.NaamException;
 import gui.LoaderSchermen;
 
 import java.io.File;
 
 import javafx.collections.FXCollections;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
@@ -70,7 +74,7 @@ public class MateriaalNieuwSchermController extends VBox {
     @FXML
     private Button btnTerug;
     @FXML
-    private TextField txfUrl;
+    private ImageView imgView;
     @FXML
     private Button btnAddImage;
     @FXML
@@ -85,7 +89,7 @@ public class MateriaalNieuwSchermController extends VBox {
     private List<Leergebied> leergebieden;
     private FileChooser fileChooser;
     private ToggleGroup group = new ToggleGroup();
-    private String foto = "/images/plus.png";
+    private String foto = "";
     private CheckComboBox<String> checkDoelgroepen;
     private CheckComboBox<String> checkLeergebieden;
     private GebiedenRepository gebiedenRepo;
@@ -123,8 +127,8 @@ public class MateriaalNieuwSchermController extends VBox {
         comboFirma.setItems(FXCollections.observableArrayList(firmaRepo.geefAlleFirmas()));
 
         gp = (GridPane) this.getChildren().get(0);
-        gp.add(checkDoelgroepen, 1, 4);
-        gp.add(checkLeergebieden, 3, 4);
+        gp.add(checkDoelgroepen, 1, 5);
+        gp.add(checkLeergebieden, 3, 5);
         MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
         MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
     }
@@ -148,9 +152,31 @@ public class MateriaalNieuwSchermController extends VBox {
 
         uitleenbaar = radioStudent.isSelected();
         try {
-            mc.voegMateriaalToe(foto, naam, omschrijving, plaats, firmaNaam, firmaContact, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+            Firma firma = mc.geefFirma(firmaNaam, firmaContact);
+            mc.controleerUniekheidMateriaalnaam(naam);
+            mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+            txfNaam.getStyleClass().remove("errorField");
+            txfAantal.getStyleClass().remove("errorField");
+            lblError.setText("");
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
-        } catch (IllegalArgumentException e) {
+        }
+        catch (MultiException e){
+            txfNaam.getStyleClass().add("errorField");
+            txfAantal.getStyleClass().add("errorField");
+            lblError.setText(e.getLocalizedMessage());
+        }
+        catch (NaamException e){
+            txfNaam.getStyleClass().add("errorField");
+            txfAantal.getStyleClass().remove("errorField");
+        }
+        catch(AantalException e){
+            txfAantal.getStyleClass().add("errorField");
+            lblError.setText(e.getLocalizedMessage());
+            txfNaam.getStyleClass().remove("errorField");
+        }
+        catch (Exception e) {
+            txfNaam.getStyleClass().remove("errorField");
+            txfAantal.getStyleClass().remove("errorField");
             lblError.setText(e.getLocalizedMessage());
         }        
     }
@@ -166,7 +192,7 @@ public class MateriaalNieuwSchermController extends VBox {
         Stage stage = (Stage) this.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
         foto = file.getAbsolutePath();
-        txfUrl.setText(file.getAbsolutePath());
+        imgView.setImage(SwingFXUtils.toFXImage(HulpMethode.convertUrlToImage(foto), null));
     }
 
     @FXML
@@ -178,7 +204,7 @@ public class MateriaalNieuwSchermController extends VBox {
         if (!doelgroep.isEmpty() && !checkDoelgroepen.getItems().contains(doelgroep)) {
             checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
-            gp.add(checkDoelgroepen, 1, 4);
+            gp.add(checkDoelgroepen, 1, 5);
             gebiedenRepo.voegNieuwGebiedToe(doelgroep, d);
         }
     }
@@ -192,7 +218,7 @@ public class MateriaalNieuwSchermController extends VBox {
         if (!leergebied.isEmpty() && !checkLeergebieden.getItems().contains(leergebied)) {
             checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
-            gp.add(checkLeergebieden, 3, 4);
+            gp.add(checkLeergebieden, 3, 5);
             gebiedenRepo.voegNieuwGebiedToe(leergebied, l);
         }
     }
