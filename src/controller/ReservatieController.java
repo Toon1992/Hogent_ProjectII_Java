@@ -100,6 +100,9 @@ public class ReservatieController
     {
         genRepo.verwijderObject(reservatie);
         repository.verwijderReservatue(reservatie);
+        if(reservatie.getReservatieStateEnum().equals(ReservatieStateEnum.TeLaat)){
+            wijzigLaatbinnenGebrachteReservatie(reservatie);
+        }
     }
 
     public List<Reservatie> getReservatiesByDatum(Date startDatum, Date eindDatum, Materiaal materiaal)

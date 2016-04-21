@@ -299,9 +299,20 @@ public class ReservatieCatalogus
         reservatie.setStartDatum(startDate);
         reservatie.setEindDatum(endDate);
         reservatie.setMateriaal(materiaal);
-        reservatie.setReservatieStateEnum(status);
+        if(status.equals(ReservatieStateEnum.TeLaat) && aantalTerug > 0){
+            reservatie.setReservatieStateEnum(gebruiker.getType().equals("ST")? ReservatieStateEnum.Gereserveerd: ReservatieStateEnum.Geblokkeerd);
+            wijzigLaatbinnenGebrachteReservatie(reservatie);
+        }
+        else{
+            reservatie.setReservatieStateEnum(status);
+        }
+        if(aantalUit> aantalTerug && aantalTerug == 0){
+            reservatie.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+            aanpassenTeLaatTerugGebrachteReservaties();
+        }
 
         wijzigReservatieObject(reservatie);
+
 
         filterReservatie.remove(oldReservatie);
         filterReservatie.add(reservatie);

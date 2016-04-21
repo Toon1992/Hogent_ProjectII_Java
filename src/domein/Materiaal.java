@@ -167,7 +167,7 @@ public class Materiaal
 
     public IntegerProperty aantalProperty()
     {
-        return new SimpleIntegerProperty(getAantal());
+        return new SimpleIntegerProperty(getAantal() - getAantalOnbeschikbaar());
     }
 
     public void setAantal(int aantal)
