@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -110,7 +111,7 @@ public class ReservatieSchermController extends HBox
     private void invullenTable()
     {
         sortedReservatie = rc.getReservaties();
-        reservatieTable.setItems(sortedReservatie);
+        reservatieTable.setItems(sortedReservatie.sorted(Comparator.comparing(Reservatie::getBeginDatum)));
         sortedReservatie.comparatorProperty().bind(reservatieTable.comparatorProperty());
         
         this.materiaalColumn.setCellValueFactory(reservatie->reservatie.getValue().naamMateriaalProperty());    
@@ -182,7 +183,7 @@ public class ReservatieSchermController extends HBox
         } else
         {
             boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie Verwijderen", "Ben je zeker dat je de reservatie wilt verwijderen", "Ja", "Nee");
-            if (!isOk)
+            if (isOk)
             {
                 rc.verwijderReservatie(reservatie);
             }

@@ -54,11 +54,15 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <TextField fx:id="txfZoek" maxWidth="200.0" onKeyPressed="#zoekMateriaal" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <TextField fx:id="txfZoek" maxWidth="150.0" onKeyPressed="#zoekMateriaal" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin></TextField>
                   <Button mnemonicParsing="false" onAction="#resetFilters" styleClass="button-inverse" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets bottom="40.0" />
                      </GridPane.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#zoeken" styleClass="button-inverse" text="zoeken" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
