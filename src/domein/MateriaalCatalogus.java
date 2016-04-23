@@ -169,7 +169,7 @@ public class MateriaalCatalogus {
                     || zoektermen.stream().anyMatch(zoekterm -> m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm)))
                     || zoektermen.stream().anyMatch(zoekterm -> m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm)))
                     || zoektermen.contains(m.getPlaats().toLowerCase())
-                    || zoektermen.contains(m.uitleenbaarProperty().get().toLowerCase())
+                    || zoektermen.contains(m.artikelNummerProperty().get())
                     || zoektermen.contains(m.getFirma().getNaam().toLowerCase())) {
                 return true;
             }
@@ -233,15 +233,6 @@ public class MateriaalCatalogus {
                     return false;
                 });
                 break;
-
-            case UITLEENBAARHEID:
-                filteredmaterialen.setPredicate(m -> {
-                    if (zoektermen.contains(m.uitleenbaarProperty().get().toLowerCase()) || zoektermen.isEmpty()) {
-                        return true;
-                    }
-                    return false;
-                });
-                break;
             case FIRMA:
                 filteredmaterialen.setPredicate(m -> {
                     if (zoektermen.contains(m.getFirma().getNaam().toLowerCase()) || zoektermen.isEmpty()) {
@@ -262,7 +253,7 @@ public class MateriaalCatalogus {
     }
 
     public enum MateriaalFilter {
-        DOELGROEP, LEERGEBIED, UITLEENBAARHEID, FIRMA, PLAATS
+        DOELGROEP, LEERGEBIED, FIRMA, PLAATS
     }
 
 }

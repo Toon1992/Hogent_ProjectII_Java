@@ -153,7 +153,10 @@ public class MateriaalNieuwSchermController extends VBox {
 
         uitleenbaar = radioStudent.isSelected();
         try {
-            Firma firma = mc.geefFirma(firmaNaam, firmaContact);
+            Firma firma = null;
+            if(firmaNaam != null){
+                firma = mc.geefFirma(firmaNaam, firmaContact);
+            }
             mc.controleerUniekheidMateriaalnaam(naam);
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
             txfNaam.getStyleClass().remove("errorField");
@@ -235,18 +238,20 @@ public class MateriaalNieuwSchermController extends VBox {
     }
     @FXML
     private void btnNieuweFirma(ActionEvent event) {
-        String firma = MateriaalHulpController.textInputDialog("Nieuwe firma", "Voeg een nieuwe firma toe", "Voer naam in:");
-        if (comboFirma.getItems().contains(firma)) {
+        String[] firma = MateriaalHulpController.inputDialogFirma();
+        String firmaNaam = firma[0];
+        String contactFirma = firma[1];
+        if (comboFirma.getItems().contains(firmaNaam)) {
             lblError.setText("Deze firma bestaat al!");
         } else {
-            firmaRepo.voegFirmaToe(firma, txfContactPersoon.getText());
+            firmaRepo.voegFirmaToe(firmaNaam,contactFirma);
             List<String> firmas = new ArrayList<>();
             firmas.addAll(comboFirma.getItems());
-            firmas.add(firma);
+            firmas.add(firmaNaam);
             comboFirma.setItems(FXCollections.observableArrayList(firmas));
-            comboFirma.setPromptText(firma);
-            txfContactPersoon.setText("");
-            comboFirma.setValue(firma);
+            comboFirma.setPromptText(firmaNaam);
+            txfContactPersoon.setText(contactFirma);
+            comboFirma.setValue(firmaNaam);
 
         }
     }

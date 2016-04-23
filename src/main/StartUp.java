@@ -47,7 +47,7 @@ public class StartUp extends Application {
         GenericDaoJpa<Object> jpa = new GenericDaoJpa<>(Object.class);
         jpa.startTransaction();
 
-        jpa.insert(new Beheerder("admin@hogent.be", "admin", "admin", true));
+        jpa.insert(new Beheerder("donovan.desmedt.v3759@student.hogent.be", "donovan", true));
 
         Firma globe = new Firma("Globe atmosphere", "globe@atmosphere.com");
         Firma prisma = new Firma("Prisma", "helpdesk@prisma.com");

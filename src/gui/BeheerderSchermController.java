@@ -104,8 +104,7 @@ public class BeheerderSchermController extends GridPane
                         txfPaswoord.setDisable(false);
                         txfNaam.setText(currentBeheerder.getNaam());
                         txfEmail.setText(currentBeheerder.getEmail());
-                        txfPaswoord.setText(currentBeheerder.getWachtwoord());
-
+                        //txfPaswoord.setText(currentBeheerder.getWachtwoord());
                     }
                 }
             }
@@ -160,7 +159,7 @@ public class BeheerderSchermController extends GridPane
 
             currentBeheerder.setEmail(email);
             currentBeheerder.setNaam(txfNaam.getText());
-            currentBeheerder.setWachtwoord(txfPaswoord.getText());
+            //currentBeheerder.setWachtwoord(txfPaswoord.getText());
             controller.wijzigBeheerder(currentBeheerder);
             vulListViewIn();
         } else

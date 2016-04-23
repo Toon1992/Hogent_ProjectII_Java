@@ -15,5 +15,16 @@ public enum ReservatieStateEnum
     Geblokkeerd,
     TeLaat,
     Opgehaald,
-    Overruled
+    Overruled;
+    @Override
+    public String toString() {
+        switch(this) {
+            case Gereserveerd: return "Gereserveerd";
+            case Geblokkeerd: return "Geblokkeerd";
+            case TeLaat: return "Te laat";
+            case Opgehaald: return "Opgehaald";
+            case Overruled: return "Overruled";
+            default: throw new IllegalArgumentException();
+        }
+    }
 }

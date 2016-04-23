@@ -103,7 +103,16 @@ public class ReservatieNieuwSchermController extends GridPane {
         BorderPane bp = (BorderPane) this.getParent();
         LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController());
     }
-
+    @FXML
+    private void wijzigGebruiker(ActionEvent event){
+        Gebruiker gebruiker = cmbNaam.getSelectionModel().getSelectedItem();
+        if(gebruiker.getType().equals("LE")){
+            cmbStatus.getSelectionModel().select(ReservatieStateEnum.Geblokkeerd);
+        }
+        else{
+            cmbStatus.getSelectionModel().select(ReservatieStateEnum.Gereserveerd);
+        }
+    }
     @FXML
     private <E> void saveReservatie(ActionEvent event) {
         boolean flag = true;
