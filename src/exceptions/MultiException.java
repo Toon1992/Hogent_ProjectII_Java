@@ -1,14 +1,24 @@
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package exceptions;
 
 /**
- * Created by donovandesmedt on 20/04/16.
+ *
+ * @author ToonDT
  */
-public class MultiException extends IllegalArgumentException{
-    public MultiException() {
+public class MultiException extends IllegalArgumentException
+{
 
+    public MultiException()
+    {
     }
 
-    public MultiException(String s) {
-        super(s);
+    public MultiException(String message)
+    {
+        super(message);
     }
 }
