@@ -1,47 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="[Sprint2 #17] Json request voor beheerders&#10;[Sprint2 #18] firma aanmaken in tweede scherm">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/gui/FirmaDialog.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/GebruikerController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/GebruikerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$1.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$2.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Beheerder.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Beheerder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Materiaal.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Materiaal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderSchermController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderSchermController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/persistentie/BeheerderDao.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/persistentie/BeheerderDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/persistentie/BeheerderDaoJpa.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/persistentie/BeheerderDaoJpa.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/persistentie/GeneriekeGebieden.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/persistentie/GeneriekeGebieden.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/repository/BeheerderRepository.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/repository/BeheerderRepository.class" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/groep06Java.iml" afterPath="$PROJECT_DIR$/groep06Java.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/MateriaalDetailScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/MateriaalDetailScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/MateriaalOverzichtScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/MateriaalOverzichtScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieNieuwScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieNieuwScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/GebruikerController.java" afterPath="$PROJECT_DIR$/src/controller/GebruikerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" afterPath="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/Beheerder.java" afterPath="$PROJECT_DIR$/src/domein/Beheerder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/Materiaal.java" afterPath="$PROJECT_DIR$/src/domein/Materiaal.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" afterPath="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/Reservatie.java" afterPath="$PROJECT_DIR$/src/domein/Reservatie.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/BeheerderSchermController.java" afterPath="$PROJECT_DIR$/src/gui/BeheerderSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/LoginSchermController.java" afterPath="$PROJECT_DIR$/src/gui/LoginSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/src/META-INF/persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/FirmaDialog.java" afterPath="$PROJECT_DIR$/src/gui/FirmaDialog.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" afterPath="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" afterPath="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalOverzichtScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/MateriaalOverzichtScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalOverzichtSchermController.java" afterPath="$PROJECT_DIR$/src/gui/MateriaalOverzichtSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/NieuwBeheerderSchermController.java" afterPath="$PROJECT_DIR$/src/gui/NieuwBeheerderSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieNieuwScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/ReservatieNieuwScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java" afterPath="$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/StartUp.java" afterPath="$PROJECT_DIR$/src/main/StartUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/persistentie/BeheerderDao.java" afterPath="$PROJECT_DIR$/src/persistentie/BeheerderDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/persistentie/BeheerderDaoJpa.java" afterPath="$PROJECT_DIR$/src/persistentie/BeheerderDaoJpa.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/repository/BeheerderRepository.java" afterPath="$PROJECT_DIR$/src/repository/BeheerderRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/stateMachine/ReservatieStateEnum.java" afterPath="$PROJECT_DIR$/src/stateMachine/ReservatieStateEnum.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -115,16 +81,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginSchermController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GebruikerController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/controller/GebruikerController.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -135,21 +91,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MateriaalNieuwSchermController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MateriaalNieuwSchermController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="240" column="8" selection-start-line="240" selection-start-column="8" selection-end-line="242" selection-end-column="39" />
+            <state vertical-scroll-proportion="1.2759434">
+              <caret line="256" column="13" selection-start-line="256" selection-start-column="13" selection-end-line="256" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MateriaalDetailSchermController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="BeheerderRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/repository/BeheerderRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="77" column="79" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="79" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaalDetailSchermController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.240566">
-              <caret line="272" column="50" selection-start-line="272" selection-start-column="50" selection-end-line="272" selection-end-column="50" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="275" column="13" selection-start-line="275" selection-start-column="13" selection-end-line="275" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -159,7 +125,7 @@
         <entry file="file://$PROJECT_DIR$/src/controller/MateriaalHulpController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
+              <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
               <folding>
                 <element signature="e#3409#3410#0" expanded="true" />
                 <element signature="e#3460#3461#0" expanded="true" />
@@ -172,7 +138,7 @@
         <entry file="file://$PROJECT_DIR$/src/gui/FirmaDialog.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="81" column="50" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
+              <caret line="81" column="75" selection-start-line="81" selection-start-column="75" selection-end-line="81" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -258,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/controller/MateriaalController.java" />
         <option value="$PROJECT_DIR$/src/gui/MateriaalNieuwScherm.fxml" />
         <option value="$PROJECT_DIR$/src/controller/ReservatieController.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" />
         <option value="$PROJECT_DIR$/src/stateMachine/ReservatieStateEnum.java" />
         <option value="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" />
@@ -272,15 +237,16 @@
         <option value="$PROJECT_DIR$/src/persistentie/BeheerderDaoJpa.java" />
         <option value="$PROJECT_DIR$/src/persistentie/BeheerderDao.java" />
         <option value="$PROJECT_DIR$/src/domein/Beheerder.java" />
-        <option value="$PROJECT_DIR$/src/main/StartUp.java" />
         <option value="$PROJECT_DIR$/src/controller/GebruikerController.java" />
         <option value="$PROJECT_DIR$/src/gui/BeheerderSchermController.java" />
         <option value="$PROJECT_DIR$/src/gui/NieuwBeheerderSchermController.java" />
         <option value="$PROJECT_DIR$/src/repository/BeheerderRepository.java" />
-        <option value="$PROJECT_DIR$/src/gui/FirmaDialog.java" />
         <option value="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" />
-        <option value="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/main/StartUp.java" />
+        <option value="$PROJECT_DIR$/src/gui/FirmaDialog.java" />
         <option value="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" />
+        <option value="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" />
       </list>
     </option>
   </component>
@@ -438,6 +404,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="META-INF" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groep06Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="groep06Java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1231,7 +1215,7 @@
       <workItem from="1461265826463" duration="1000" />
       <workItem from="1461335650300" duration="246000" />
       <workItem from="1461343189065" duration="2985000" />
-      <workItem from="1461417480833" duration="4814000" />
+      <workItem from="1461417480833" duration="6005000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1460114868716</created>
@@ -1359,7 +1343,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461227796470</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="[Sprint2 #17] Json request voor beheerders&#10;[Sprint2 #18] firma aanmaken in tweede scherm">
+      <created>1461422513718</created>
+      <option name="number" value="00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1461422513718</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1395,7 +1385,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="218049000" />
+    <option name="totallyTimeSpent" value="219240000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1408,7 +1398,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="803" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.038293216" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1417,18 +1407,18 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32590857" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32561308" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3841962" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22152779" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22152779" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17291667" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298611" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32970026" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1471,7 +1461,8 @@
     <MESSAGE value="update" />
     <MESSAGE value="minor changes" />
     <MESSAGE value="Update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <MESSAGE value="[Sprint2 #17] Json request voor beheerders&#10;[Sprint2 #18] firma aanmaken in tweede scherm" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Sprint2 #17] Json request voor beheerders&#10;[Sprint2 #18] firma aanmaken in tweede scherm" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1583,14 +1574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3785558">
           <caret line="1768" column="0" selection-start-line="1768" selection-start-column="0" selection-end-line="1768" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.625">
-          <caret line="17" column="100" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="100" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1784,14 +1767,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="85" selection-start-line="49" selection-start-column="85" selection-end-line="49" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/NieuwBeheerderSchermController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3838527">
@@ -1808,30 +1783,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/BeheerderRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19103773">
-          <caret line="64" column="19" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/GebruikerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TextInputControl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1844,10 +1795,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.5">
+          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.035377357">
+          <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/GebruikerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="30" selection-start-line="30" selection-start-column="30" selection-end-line="30" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/repository/BeheerderRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="77" column="79" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/FirmaDialog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="81" column="50" selection-start-line="81" selection-start-column="50" selection-end-line="81" selection-end-column="50" />
+          <caret line="81" column="75" selection-start-line="81" selection-start-column="75" selection-end-line="81" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1857,7 +1848,7 @@
     <entry file="file://$PROJECT_DIR$/src/controller/MateriaalHulpController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="43" selection-start-line="77" selection-start-column="43" selection-end-line="77" selection-end-column="43" />
+          <caret line="78" column="37" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
           <folding>
             <element signature="e#3409#3410#0" expanded="true" />
             <element signature="e#3460#3461#0" expanded="true" />
@@ -1865,18 +1856,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="240" column="8" selection-start-line="240" selection-start-column="8" selection-end-line="242" selection-end-column="39" />
+          <caret line="275" column="13" selection-start-line="275" selection-start-column="13" selection-end-line="275" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.240566">
-          <caret line="272" column="50" selection-start-line="272" selection-start-column="50" selection-end-line="272" selection-end-column="50" />
+        <state vertical-scroll-proportion="1.2759434">
+          <caret line="256" column="13" selection-start-line="256" selection-start-column="13" selection-end-line="256" selection-end-column="13" />
           <folding />
         </state>
       </provider>

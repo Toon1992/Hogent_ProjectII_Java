@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
 import java.util.Optional;
+import java.util.regex.Pattern;
 
 /**
  * Created by donovandesmedt on 23/04/16.
@@ -17,6 +18,7 @@ import java.util.Optional;
 public class FirmaDialog {
     private String textName = "";
     private String textContact = "";
+    private String[] uitvoer;
     private boolean flag;
     public String[] getFirma(){
         Dialog<Pair<String, String>> dialog = new Dialog<>();
@@ -53,12 +55,12 @@ public class FirmaDialog {
 // Do some validation (using the Java 8 lambda syntax).
         name.textProperty().addListener((observable, oldValue, newValue) -> {
             textName = newValue.trim();
-            flag = textContact.isEmpty() || textName.isEmpty();
+            flag = !Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact) || textName.isEmpty();
             nieuwButton.setDisable(flag);
         });
         contact.textProperty().addListener((observable, oldValue, newValue) -> {
             textContact = newValue.trim();
-            flag = textContact.isEmpty() || textName.isEmpty();
+            flag = !Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact) || textName.isEmpty();
             nieuwButton.setDisable(flag);
         });
         dialog.getDialogPane().setContent(grid);
@@ -77,8 +79,8 @@ public class FirmaDialog {
         Optional<Pair<String, String>> result = dialog.showAndWait();
 
         result.ifPresent(gegevens -> {
-            System.out.println("Username=" + gegevens.getKey() + ", Password=" + gegevens.getValue());
+            uitvoer =  new String[]{gegevens.getKey(),gegevens.getValue()};
         });
-        return new String[]{textName,textContact};
+        return null;
     }
 }
