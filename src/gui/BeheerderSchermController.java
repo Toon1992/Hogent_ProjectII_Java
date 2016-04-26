@@ -40,20 +40,16 @@ public class BeheerderSchermController extends GridPane
     @FXML
     private Button btnNieuw;
     @FXML
-    private Button btnWijzig;
-    @FXML
     private Button btnVerwijderen;
-    @FXML
-    private TextField txfNaam;
+
     @FXML
     private TextField txfEmail;
-    @FXML
-    private TextField txfPaswoord;
+
 
     private ObservableList<String> beheerdernamen;
     private List<Beheerder> beheerderNamenList;
-    private Beheerder currentBeheerder;
     private Beheerder loginBeheerder;
+    private Beheerder currentBeheerder;
 
     public BeheerderSchermController()
     {
@@ -63,10 +59,6 @@ public class BeheerderSchermController extends GridPane
         beheerderNamenList = controller.getBeheerders();
         loginBeheerder = controller.GetLoggedInBeheerder();
 
-        txfEmail.setDisable(true);
-        txfNaam.setDisable(true);
-        txfPaswoord.setDisable(true);
-
         vulListViewIn();
 
         if (isHoofdBeheerder())
@@ -75,14 +67,13 @@ public class BeheerderSchermController extends GridPane
         } else
         {
             btnNieuw.setVisible(false);
-            btnWijzig.setVisible(false);
             btnVerwijderen.setVisible(false);
         }
     }
 
     protected void vulListViewIn()
     {
-        beheerdernamen = FXCollections.observableArrayList(beheerderNamenList.stream().filter(beheerder -> !(beheerder.getNaam().equals("admin"))).map(b -> b.getNaam() + " (" + b.getEmail() + ")").collect(Collectors.toList()));
+        beheerdernamen = FXCollections.observableArrayList(beheerderNamenList.stream().map(Beheerder::getEmail).collect(Collectors.toList()));
         lvBeheerder.setItems(beheerdernamen);
     }
 
@@ -97,13 +88,7 @@ public class BeheerderSchermController extends GridPane
                 {
                     if (oldValue == null || !oldValue.equals(newValue))
                     {
-                        currentBeheerder = beheerderNamenList.stream().filter(beheerder -> beheerder.getNaam().equals(filterNaam(newValue))).findFirst().get();
-                        txfEmail.setDisable(false);
-                        txfNaam.setDisable(false);
-                        txfPaswoord.setDisable(false);
-                        txfNaam.setText(currentBeheerder.getNaam());
-                        txfEmail.setText(currentBeheerder.getEmail());
-                        //txfPaswoord.setText(currentBeheerder.getWachtwoord());
+                        currentBeheerder = beheerderNamenList.stream().filter(beheerder -> beheerder.getEmail().equals(newValue)).findFirst().get();
                     }
                 }
             }
@@ -121,51 +106,29 @@ public class BeheerderSchermController extends GridPane
     {
 //        BorderPane bp = (BorderPane) this.getParent();
 //        bp.setCenter(new NieuwBeheerderSchermController(this, controller));
-
-        Stage stage = new Stage();
-        Scene scene = new Scene(new NieuwBeheerderSchermController(this));
-        stage.setScene(scene);
-        stage.show();
-    }
-
-    @FXML
-    private void WijzigBeheerder(ActionEvent event)
-    {
-        if (currentBeheerder == null)
+//
+//        Stage stage = new Stage();
+//        Scene scene = new Scene(new NieuwBeheerderSchermController(this));
+//        stage.setScene(scene);
+//        stage.show();
+        String tekst = txfEmail.getText();
+        
+        if(tekst == null || tekst.isEmpty())
         {
-            LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Er is geen beheerder geselecteerd", "OK");
-            return;
+            LoaderSchermen.getInstance().popupMessageOneButton("Waarschuwing", "Email moet ingevuld zijn", "OK");
         }
-
-        if (txfNaam.getText() != null && txfEmail.getText() != null && txfPaswoord != null)
+        else if(komtEmailVoor(tekst))
         {
-            String email = txfEmail.getText();
-
-            if (!validateEmail(email))
-            {
-                LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Email adres is incorrect", "OK");
-                return;
-            }
-
-            if (!(email.equals(currentBeheerder.getEmail())))
-            {
-                if (komtEmailVoor(email))
-                {
-                    LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Email adres bestaat al", "OK");
-                    return;
-                }
-            }
-
-            currentBeheerder.setEmail(email);
-            currentBeheerder.setNaam(txfNaam.getText());
-            //currentBeheerder.setWachtwoord(txfPaswoord.getText());
-            controller.wijzigBeheerder(currentBeheerder);
+            LoaderSchermen.getInstance().popupMessageOneButton("Waarschuwing", "Email staat al bij de beheerders", "OK");
+        }
+        else if(validateEmail(tekst))
+        {
+            voegNieuweBeheerderToe(new Beheerder(tekst, false));
             vulListViewIn();
-        } else
-        {
-            LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Text velden moeten ingevuld zijn", "OK");
         }
-
+        
+        txfEmail.clear();
+               
     }
 
     @FXML
@@ -173,11 +136,8 @@ public class BeheerderSchermController extends GridPane
     {
         if (currentBeheerder != null)
         {
-            controller.verwijderBeheerder(currentBeheerder);
-
-            txfNaam.clear();
-            txfEmail.clear();
-            txfPaswoord.clear();
+            controller.verwijderBeheerder(currentBeheerder);          
+            txfEmail.clear();         
 
             beheerderNamenList.remove(currentBeheerder);
             vulListViewIn();
@@ -191,6 +151,8 @@ public class BeheerderSchermController extends GridPane
     protected void voegNieuweBeheerderToe(Beheerder beheerder)
     {
         beheerderNamenList.add(beheerder);
+        controller.voegBeheerderToe(beheerder);
+        beheerdernamen.add(beheerder.getEmail());
     }
 
     protected boolean validateEmail(String email)

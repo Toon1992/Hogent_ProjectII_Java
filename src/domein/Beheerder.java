@@ -35,7 +35,6 @@ public class Beheerder
     @Column(name = "Email")
     private String email;
     
-    private String naam;
     private boolean isHoofd;
 
     public boolean isHoofd()
@@ -52,10 +51,9 @@ public class Beheerder
     {
     }
 
-    public Beheerder(String email, String naam, boolean isHoofd)
+    public Beheerder(String email, boolean isHoofd)
     {
         this.email = email;
-        this.naam = naam;
         this.isHoofd = isHoofd;
     }
 
@@ -68,17 +66,6 @@ public class Beheerder
     {
         this.email = email;
     }
-
-    public String getNaam()
-    {
-        return naam;
-    }
-
-    public void setNaam(String naam)
-    {
-        this.naam = naam;
-    }
-    
     
 
 }
