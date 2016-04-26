@@ -15,11 +15,13 @@ public class ReservatieData {
     private Doelgroep kleuter, lager, secundair;
     private Leergebied aardrijkskunde, techniek, wiskunde, fysica, biologie, wetenschap, geschiedenis, maatschappij, mens;
     private Materiaal wereldbol, rekenMachine;
-    private Reservatie reservatieStudent1, reservatieStudent2, reservatieStudent3,  reservatieLector1;
+    private Reservatie reservatieStudent1, reservatieStudent2, reservatieStudent3,reservatieStudent4,  reservatieLector1;
     public ReservatieData() {
         initializeData();
         reservaties.add(reservatieStudent1);
         reservaties.add(reservatieStudent2);
+        reservaties.add(reservatieStudent3);
+        reservaties.add(reservatieLector1);
         sortedReservaties = new SortedList<Reservatie>(FXCollections.observableArrayList(reservaties));
     }
     public SortedList<Reservatie> getSortedReservaties(){
@@ -33,6 +35,9 @@ public class ReservatieData {
     }
     public Reservatie getReservatieStudent3(){
         return reservatieStudent3;
+    }
+    public Reservatie getReservatieStudent4(){
+        return reservatieStudent4;
     }
     public Reservatie getReservatieLector1(){return reservatieLector1;}
     private void initializeData() {
@@ -62,7 +67,7 @@ public class ReservatieData {
         reservatieStudent1 = new Reservatie(2, 0, 0, new Date(116, 3, 11), new Date(116, 3, 15), new Date(), new HashSet<Dag>(), ReservatieStateEnum.Gereserveerd, new Gebruiker("Toon", "toondetrue@gmail.com", "ST"), wereldbol);
         reservatieStudent2 = new Reservatie(1,0,  0, new Date(116, 4, 11), new Date(116, 4, 15), new Date(), new HashSet<Dag>(), ReservatieStateEnum.Gereserveerd, new Gebruiker("Donovan", "donovandesmedt@gmail.com", "ST"), wereldbol);
         reservatieStudent3 = new Reservatie(1, 0, 0, new Date(116, 4, 11), new Date(116, 4, 15), new Date(), new HashSet<Dag>(), ReservatieStateEnum.Gereserveerd, new Gebruiker("Donovan", "donovandesmedt@gmail.com", "ST"), rekenMachine);
-
+        reservatieStudent4 = new Reservatie(2,0,  0, new Date(116, 4, 11), new Date(116, 4, 15), new Date(), new HashSet<Dag>(), ReservatieStateEnum.Gereserveerd, new Gebruiker("Manu", "manuschoenmakers@gmail.com", "ST"), wereldbol);
         reservatieLector1 = new Reservatie(3, 0, 0, new Date(116, 3, 11), new Date(116, 3, 15), new Date(), new HashSet<Dag>(), ReservatieStateEnum.Gereserveerd, new Gebruiker("Lector", "lector@hogent.be", "LE"), wereldbol);
     }
 }
