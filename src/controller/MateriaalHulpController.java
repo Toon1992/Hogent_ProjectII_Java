@@ -1,5 +1,6 @@
 package controller;
 
+import gui.FirmaDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
@@ -73,5 +74,8 @@ public class MateriaalHulpController {
             }
         });
         return uitvoer.toString();
+    }
+    public static String[] inputDialogFirma(){
+        return new FirmaDialog().getFirma();
     }
 }

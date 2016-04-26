@@ -48,7 +48,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private TableColumn<Materiaal, String> columnPlaats;
     @FXML
-    private TableColumn<Materiaal, String> columnUitleenbaarheid;
+    private TableColumn<Materiaal, Number> columnArtikelnummer;
     @FXML
     private Button btnWijzig;
     @FXML
@@ -62,7 +62,6 @@ public class MateriaalOverzichtSchermController extends HBox {
     private CheckComboBox<String> checkDoelgroepen;
     private CheckComboBox<String> checkLeergebieden;
     private CheckComboBox<String> checkPlaats;
-    private CheckComboBox<String> checkUitleenbaarheid;
     private CheckComboBox<String> checkFirma;
     private GebiedenRepository gebiedenRepo;
     private FirmaRepository firmaRepo;
@@ -90,7 +89,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     private void initializeTableViewMaterialen(){
         this.columnNaam.setCellValueFactory(materiaal -> materiaal.getValue().naamProperty());
         this.columnPlaats.setCellValueFactory(materiaal -> materiaal.getValue().plaatsProperty());
-        this.columnUitleenbaarheid.setCellValueFactory(materiaal -> materiaal.getValue().uitleenbaarProperty());
+        this.columnArtikelnummer.setCellValueFactory(materiaal -> materiaal.getValue().artikelNummerProperty());
         this.columnImg.setCellValueFactory(new PropertyValueFactory("foto"));
         this.columnImg.setCellFactory(materiaal -> new TableCell<Materiaal,BufferedImage>(){
             @Override
@@ -119,16 +118,13 @@ public class MateriaalOverzichtSchermController extends HBox {
         checkFirma.setMaxWidth(150);
         checkPlaats = new CheckComboBox<>(FXCollections.observableArrayList(mc.getLokalen()));
         checkPlaats.setMaxWidth(150);
-        checkUitleenbaarheid = new CheckComboBox<>(FXCollections.observableArrayList("Student", "Lector"));
-        checkUitleenbaarheid.setMaxWidth(150);
 
         VBox vBox = (VBox) this.getChildren().get(0);
         GridPane gp = (GridPane) vBox.getChildren().get(0);
         gp.add(checkDoelgroepen,1,2);
         gp.add(checkLeergebieden,1, 3);
-        gp.add(checkUitleenbaarheid,1, 4);
-        gp.add(checkFirma,1,5);
-        gp.add(checkPlaats,1, 6);
+        gp.add(checkFirma,1,4);
+        gp.add(checkPlaats,1, 5);
 
         materiaalTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
@@ -143,7 +139,6 @@ public class MateriaalOverzichtSchermController extends HBox {
     private void addListeners(){
         checkcomboboxListener(checkDoelgroepen, "doelgroepen");
         checkcomboboxListener(checkLeergebieden, "leergebieden");
-        checkcomboboxListener(checkUitleenbaarheid, "uitleenbaarheid");
         checkcomboboxListener(checkFirma, "firma");
         checkcomboboxListener(checkPlaats, "plaats");
     }
@@ -183,7 +178,6 @@ public class MateriaalOverzichtSchermController extends HBox {
                 switch (name.toLowerCase()){
                     case "doelgroepen": filterName = MateriaalFilter.DOELGROEP; break;
                     case "leergebieden": filterName = MateriaalFilter.LEERGEBIED; break;
-                    case "uitleenbaarheid": filterName = MateriaalFilter.UITLEENBAARHEID; break;
                     case "firma": filterName = MateriaalFilter.FIRMA; break;
                     case "plaats": filterName = MateriaalFilter.PLAATS; break;
                 }
@@ -215,7 +209,6 @@ public class MateriaalOverzichtSchermController extends HBox {
         txfZoek.setText("");
         checkDoelgroepen.getCheckModel().clearChecks();
         checkLeergebieden.getCheckModel().clearChecks();
-        checkUitleenbaarheid.getCheckModel().clearChecks();
         checkFirma.getCheckModel().clearChecks();
         checkPlaats.getCheckModel().clearChecks();
         materiaalTable.setItems(mc.getMateriaalFilterList());

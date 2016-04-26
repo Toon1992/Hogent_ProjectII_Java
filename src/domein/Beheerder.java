@@ -21,7 +21,7 @@ import javax.persistence.Table;
 @Entity
 @NamedQueries(
 {
-    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email and b.wachtwoord = :Wachtwoord"),
+    @NamedQuery(name = "Beheerder.findByEmail", query = "Select b FROM Beheerder b WHERE b.email = :Email"),
     @NamedQuery(name = "Beheerder.FindAll", query = "SELECT b FROM Beheerder b")
 })
 @Table(name="Beheerder")
@@ -34,9 +34,6 @@ public class Beheerder
     
     @Column(name = "Email")
     private String email;
-    
-    @Column(name = "Wachtwoord")
-    private String wachtwoord;
     
     private String naam;
     private boolean isHoofd;
@@ -55,11 +52,10 @@ public class Beheerder
     {
     }
 
-    public Beheerder(String email, String naam, String wachtwoord, boolean isHoofd)
+    public Beheerder(String email, String naam, boolean isHoofd)
     {
         this.email = email;
         this.naam = naam;
-        this.wachtwoord = wachtwoord;
         this.isHoofd = isHoofd;
     }
 
@@ -71,16 +67,6 @@ public class Beheerder
     public void setEmail(String email)
     {
         this.email = email;
-    }
-
-    public String getWachtwoord()
-    {
-        return wachtwoord;
-    }
-
-    public void setWachtwoord(String wachtwoord)
-    {
-        this.wachtwoord = wachtwoord;
     }
 
     public String getNaam()

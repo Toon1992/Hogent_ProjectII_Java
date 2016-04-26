@@ -185,11 +185,15 @@ public class MateriaalDetailSchermController extends VBox {
         }
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
-        txfContactPersoon.setText(materiaal.getFirma().getEmailContact());
+        if(materiaal.getFirma() != null){
+            txfContactPersoon.setText(materiaal.getFirma().getEmailContact());
+            comboFirma.setPromptText(materiaal.getFirma().getNaam());
+            comboFirma.setValue(materiaal.getFirma().getNaam());
+        }
+
         listDoelgroep.setItems(mc.objectCollectionToObservableList(materiaal.getDoelgroepen()).sorted());
         listLeergbedied.setItems(mc.objectCollectionToObservableList(materiaal.getLeergebieden()).sorted());
-        comboFirma.setPromptText(materiaal.getFirma().getNaam());
-        comboFirma.setValue(materiaal.getFirma().getNaam());
+
         txfNaam.setText(materiaal.getNaam());
         txfOmschrijving.setText(materiaal.getOmschrijving());
         txfOnbeschikbaar.setText(String.format("%d", materiaal.getAantalOnbeschikbaar()));
@@ -252,21 +256,26 @@ public class MateriaalDetailSchermController extends VBox {
 
     @FXML
     private void btnNieuweFirma(ActionEvent event) {
-        String firma = MateriaalHulpController.textInputDialog("Nieuwe firma", "Voeg een nieuwe firma toe", "Voer naam in:");
-        if(comboFirma.getItems().contains(firma)){
-            lblErrorMessage.setText("Deze firma bestaat al!");
-        }
-        else{
-            firmaRepo.voegFirmaToe(firma, txfContactPersoon.getText());
-            List<String> firmas=new ArrayList<>();
-            firmas.addAll(comboFirma.getItems());
-            firmas.add(firma);
-            comboFirma.setItems(FXCollections.observableArrayList(firmas));
-            comboFirma.setPromptText(firma);
-            comboFirma.setValue(firma);
-            txfContactPersoon.setText("");
+        String[] firma = MateriaalHulpController.inputDialogFirma();
+        if(firma != null){
+            String firmaNaam = firma[0];
+            String contactFirma = firma[1];
+            if(comboFirma.getItems().contains(firmaNaam)){
+                lblErrorMessage.setText("Deze firma bestaat al!");
+            }
+            else{
+                firmaRepo.voegFirmaToe(firmaNaam, contactFirma);
+                List<String> firmas=new ArrayList<>();
+                firmas.addAll(comboFirma.getItems());
+                firmas.add(firmaNaam);
+                comboFirma.setItems(FXCollections.observableArrayList(firmas));
+                comboFirma.setPromptText(firmaNaam);
+                comboFirma.setValue(firmaNaam);
+                txfContactPersoon.setText(contactFirma);
 
+            }
         }
+
 
     }
 

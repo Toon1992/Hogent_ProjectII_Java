@@ -103,15 +103,9 @@ public class Materiaal
         return isReserveerbaar;
     }
 
-    public StringProperty uitleenbaarProperty()
+    public IntegerProperty artikelNummerProperty()
     {
-        if (isReserveerbaar)
-        {
-            return new SimpleStringProperty("Student");
-        } else
-        {
-            return new SimpleStringProperty("Lector");
-        }
+        return new SimpleIntegerProperty(getArtikelNr());
     }
 
     public Materiaal(String foto, String naam, String omschrijving, String plaats, int artikelNr, int aantal, int aantalOnbeschikbaar, double prijs, boolean uitleenbaar, Firma firma, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden)
