@@ -12,6 +12,8 @@ import java.util.Observable;
 import java.util.Set;
 import java.util.stream.Collectors;
 import domein.MateriaalCatalogus.MateriaalFilter;
+import persistentie.FirmaDaoJpa;
+import persistentie.MateriaalDaoJpa;
 import repository.GeneriekeRepository;
 
 /**
@@ -25,7 +27,7 @@ public class MateriaalController extends Observable
 
     public MateriaalController()
     {
-        setMateriaalCatalogus(new MateriaalCatalogus());
+        setMateriaalCatalogus(new MateriaalCatalogus(new MateriaalDaoJpa(), new FirmaDaoJpa()));
         setGeneriekeRepository(new GeneriekeRepository());
     }
     private void setGeneriekeRepository(GeneriekeRepository repository){
