@@ -74,10 +74,9 @@ public class BeheerderSchermController extends GridPane
             selectListViewListener();
         } else
         {
-            btnNieuw.setDisable(true);
-            btnWijzig.setDisable(true);
-            btnVerwijderen.setDisable(true);
-
+            btnNieuw.setVisible(false);
+            btnWijzig.setVisible(false);
+            btnVerwijderen.setVisible(false);
         }
     }
 
