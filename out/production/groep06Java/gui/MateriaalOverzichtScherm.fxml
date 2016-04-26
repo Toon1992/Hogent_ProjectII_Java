@@ -24,7 +24,6 @@
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                   <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="ALWAYS" />
               </rowConstraints>
                <children>
@@ -34,31 +33,30 @@
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="label-inverse" text="Leegebied" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                  <Label styleClass="label-inverse" text="Leergebied" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="label-inverse" text="Uitleenbaarheid" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
+                  <Label styleClass="label-inverse" text="Firma" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="label-inverse" text="Firma" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+                  <Label styleClass="label-inverse" text="Plaats" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets left="10.0" />
                      </GridPane.margin>
                   </Label>
-                  <Label styleClass="label-inverse" text="Plaats" GridPane.rowIndex="6">
+                  <TextField fx:id="txfZoek" maxWidth="150.0" onKeyPressed="#zoekMateriaal" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <GridPane.margin>
-                        <Insets left="10.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <TextField fx:id="txfZoek" maxWidth="200.0" onKeyPressed="#zoekMateriaal" prefWidth="200.0" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-                  <Button mnemonicParsing="false" onAction="#resetFilters" styleClass="button-inverse" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7" GridPane.valignment="BOTTOM">
+                        <Insets left="20.0" />
+                     </GridPane.margin></TextField>
+                  <Button mnemonicParsing="false" onAction="#resetFilters" styleClass="button-inverse" text="Reset" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" GridPane.valignment="BOTTOM">
                      <GridPane.margin>
                         <Insets bottom="40.0" />
                      </GridPane.margin></Button>
+                  <Button mnemonicParsing="false" onAction="#zoeken" styleClass="button-inverse" text="zoeken" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" />
                </children>
             </GridPane>
          </children>
@@ -69,8 +67,8 @@
                  <columns>
                      <TableColumn fx:id="columnImg" prefWidth="75.0" />
                      <TableColumn fx:id="columnNaam" minWidth="80.0" prefWidth="150.0" text="Naam" />
+                  <TableColumn fx:id="columnArtikelnummer" minWidth="70.0" prefWidth="70.0" text="Artikelnummer" />
                      <TableColumn fx:id="columnPlaats" minWidth="30.0" prefWidth="152.11032104492188" text="Plaats" />
-                     <TableColumn fx:id="columnUitleenbaarheid" minWidth="75.0" prefWidth="75.0" text="Uitleenbaarheid" />
                  </columns>
                  <columnResizePolicy>
                      <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />

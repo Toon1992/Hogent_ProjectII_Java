@@ -31,11 +31,11 @@
          <GridPane.margin>
             <Insets left="75.0" />
          </GridPane.margin></Label>
-        <Label text="Ophaal datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+        <Label text="Ophaaldatum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
             <GridPane.margin>
                 <Insets right="40.0" />
             </GridPane.margin></Label>
-        <Label text="Terugbreng datum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+        <Label text="Terugbrengdatum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
         <DatePicker fx:id="dtpOphaal" prefHeight="31.0" prefWidth="150.0" showWeekNumbers="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
         <DatePicker fx:id="dtpTerugbreng" prefWidth="150.0" showWeekNumbers="true" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
         <Button fx:id="btnTerug" maxHeight="27.0" maxWidth="120.0" mnemonicParsing="false" onAction="#terug" text="Terug" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8" />
@@ -51,7 +51,7 @@
                 <Insets />
             </GridPane.margin>
         </ComboBox>
-        <ComboBox fx:id="cmbNaam" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+        <ComboBox fx:id="cmbNaam" onAction="#wijzigGebruiker" prefWidth="150.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets right="75.0" />
          </GridPane.margin></ComboBox>

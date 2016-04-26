@@ -31,6 +31,9 @@ public class ReservatieData {
     public Reservatie getReservatieStudent2(){
         return reservatieStudent2;
     }
+    public Reservatie getReservatieStudent3(){
+        return reservatieStudent3;
+    }
     public Reservatie getReservatieLector1(){return reservatieLector1;}
     private void initializeData() {
         globe = new Firma("Globe atmosphere", "globe@atmosphere.com");

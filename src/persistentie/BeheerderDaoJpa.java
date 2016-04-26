@@ -16,11 +16,10 @@ public class BeheerderDaoJpa extends GenericDaoJpa<Beheerder> implements Beheerd
     }
 
     @Override
-    public Beheerder getBeheerderByEmail(String email, String wachtwoord) throws EntityNotFoundException {
+    public Beheerder getBeheerderByEmail(String email) throws EntityNotFoundException {
         try {
             return em.createNamedQuery("Beheerder.findByEmail", Beheerder.class)
                     .setParameter("Email", email)
-                    .setParameter("Wachtwoord", wachtwoord)
                     .getSingleResult();
         } catch (NoResultException ex) {
             throw new EntityNotFoundException();

@@ -14,18 +14,19 @@
    <children>
        <GridPane maxHeight="650.0" prefHeight="700.0" prefWidth="1197.0" VBox.vgrow="ALWAYS">
            <columnConstraints>
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="175.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="292.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="242.0" />
+               <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="242.0" prefWidth="242.0" />
                <ColumnConstraints hgrow="SOMETIMES" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="40.0" />
            </columnConstraints>
            <rowConstraints>
+            <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="1.0" prefHeight="40.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="175.0" minHeight="10.0" prefHeight="175.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
-               <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+               <RowConstraints maxHeight="40.0" minHeight="40.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints maxHeight="10.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
@@ -36,11 +37,11 @@
                <RowConstraints maxHeight="40.0" minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
            </rowConstraints>
            <children>
-               <TextArea fx:id="txfOmschrijving" maxHeight="100.0" prefHeight="100.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <TextArea fx:id="txfOmschrijving" maxHeight="100.0" prefHeight="100.0" prefWidth="200.0" wrapText="true" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="15.0" />
                </GridPane.margin></TextArea>
-               <Label text="Omschrijving" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <Label text="Omschrijving" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
@@ -48,7 +49,7 @@
                   <Insets bottom="15.0" />
                </GridPane.margin>
                </Label>
-               <Label text="Doelgroep" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <Label text="Doelgroep" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                    <GridPane.margin>
                        <Insets />
                    </GridPane.margin>
@@ -56,30 +57,30 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Leergebied" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+               <Label text="Leergebied" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="8" />
-               <Label text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
+               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+               <Label text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="ArtikelNummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <Label text="Artikelnummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfAantal" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
-               <TextField fx:id="txfOnbeschikbaar" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER" />
-               <Label text="Aantal" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+               <TextField fx:id="txfAantal" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+               <TextField fx:id="txfOnbeschikbaar" maxWidth="1.7976931348623157E308" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER" />
+               <Label text="Aantal*" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Aantal onbeschikbaar" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+               <Label text="Aantal onbeschikbaar" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                    <GridPane.margin>
                        <Insets left="10.0" />
                    </GridPane.margin>
@@ -87,87 +88,92 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Email contactpersoon" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <Label text="Email contactpersoon" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="3" GridPane.rowIndex="9" />
-               <Label text="Plaats" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+               <Label text="Plaats" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Uitleenbaarheid:" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+               <Label text="Uitleenbaarheid:" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <RadioButton fx:id="radioStudent" mnemonicParsing="false" text="Student" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.valignment="TOP">
+               <RadioButton fx:id="radioStudent" mnemonicParsing="false" text="Student" GridPane.columnIndex="1" GridPane.rowIndex="11" GridPane.valignment="TOP">
                    <GridPane.margin>
                        <Insets top="10.0" />
                    </GridPane.margin>
                </RadioButton>
-               <RadioButton fx:id="radioLector" mnemonicParsing="false" text="Lector" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.rowSpan="2" GridPane.valignment="BOTTOM">
+               <RadioButton fx:id="radioLector" mnemonicParsing="false" text="Lector" GridPane.columnIndex="1" GridPane.rowIndex="11" GridPane.rowSpan="2" GridPane.valignment="BOTTOM">
                    <GridPane.margin>
                        <Insets bottom="20.0" />
                    </GridPane.margin>
                </RadioButton>
-               <TextField fx:id="txfPlaats" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-               <TextField fx:id="txfPrijs" GridPane.columnIndex="3" GridPane.rowIndex="10" />
-               <Label text="Prijs" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+               <TextField fx:id="txfPlaats" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+               <TextField fx:id="txfPrijs" GridPane.columnIndex="3" GridPane.rowIndex="11" />
+               <Label text="Prijs" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="11">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Button fx:id="btnToevoegen" mnemonicParsing="false" onAction="#voegToe" text="Voeg toe" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
-               <ListView fx:id="listDoelgroep" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-               <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.rowSpan="2" />
-            <TextField fx:id="txfNaam" GridPane.columnIndex="3" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <Button fx:id="btnToevoegen" mnemonicParsing="false" onAction="#voegToe" text="Voeg toe" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+               <ListView fx:id="listDoelgroep" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+               <ListView fx:id="listLeergbedied" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3" GridPane.rowSpan="2" />
+            <TextField fx:id="txfNaam" GridPane.columnIndex="3" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="15.0" />
                </GridPane.margin></TextField>
-            <Label text="Naam" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <Label text="Naam*" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets right="10.0" top="15.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label-header-small" text="Beschikbaarheid" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+            <Label styleClass="label-header-small" text="Beschikbaarheid" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label-header-small" text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+            <Label styleClass="label-header-small" text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="7" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label-header-small" text="Algemeen" GridPane.halignment="RIGHT" GridPane.valignment="CENTER">
+            <Label styleClass="label-header-small" text="Algemeen nieuw materiaal" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets right="15.0" />
                </padding>
             </Label>
-            <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="12" GridPane.valignment="CENTER" />
-            <TextField fx:id="txfUrl" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Label text="Foto" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="13" GridPane.valignment="CENTER" />
+            <Label text="Foto" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" text="Open" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" text="Foto toevoegen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets top="85.0" />
                </GridPane.margin>
             </Button>
-            <Label fx:id="lblError" textFill="RED" GridPane.columnIndex="2" GridPane.rowIndex="12">
+            <Label fx:id="lblError" styleClass="label-error" textFill="RED" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="+" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-            <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="4" />
-            <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="+" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="5" />
+            <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="8" />
+            <Label prefHeight="21.0" prefWidth="299.0" text="Velden met een * zijn verplicht in te vullen." GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="13" />
+            <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@../images/add.png" />
+               </image>
+            </ImageView>
            </children>
        </GridPane>
    </children>

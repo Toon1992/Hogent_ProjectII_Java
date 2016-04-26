@@ -36,13 +36,14 @@
                 </GridPane>
                 <TableView id="my-table" fx:id="reservatieTable" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" VBox.vgrow="ALWAYS">
                     <columns>
-                        <TableColumn fx:id="naamColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Naam" />
-                  <TableColumn fx:id="typeColumn" minWidth="100.0" prefWidth="100.0" text="Type" />
+                        <TableColumn fx:id="naamColumn" minWidth="150.0" prefWidth="150.0" styleClass="table-Column" text="Naam" />
+                  <TableColumn fx:id="typeColumn" minWidth="85.0" prefWidth="85.0" text="Type" />
                         <TableColumn fx:id="materiaalColumn" minWidth="250.0" prefWidth="250.0" styleClass="table-Column" text="Materiaal" />
-                        <TableColumn fx:id="aantalColumn" minWidth="110.0" prefWidth="110.0" styleClass="table-Column" text="Aantal" />
-                        <TableColumn fx:id="statusColumn" minWidth="150.0" prefWidth="150.0" styleClass="table-Column" text="Status" />
-                        <TableColumn fx:id="BeginDatumColumn" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Begindatum" />
-                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="200.0" styleClass="table-Column" text="Einddatum" />
+                        <TableColumn fx:id="aantalColumn" minWidth="105.0" prefWidth="105.0" styleClass="table-Column" text="Aantal" />
+                  <TableColumn fx:id="aantalBeschikbaarColumn" minWidth="185.0" prefWidth="185.0" text="Beschikbaar" />
+                        <TableColumn fx:id="statusColumn" minWidth="125.0" prefWidth="125.0" styleClass="table-Column" text="Status" />
+                        <TableColumn fx:id="BeginDatumColumn" minWidth="220.0" prefWidth="200.0" styleClass="table-Column" text="Begindatum" />
+                        <TableColumn fx:id="EindDatumColumn" maxWidth="1.7976931348623157E308" minWidth="220.0" prefWidth="200.0" styleClass="table-Column" text="Einddatum" />
                     </columns>
                     <VBox.margin>
                         <Insets />
@@ -83,7 +84,7 @@
                         <Label text="Terugbrengdatum:" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
                         <DatePicker fx:id="dtpOphaal" prefHeight="31.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
                         <DatePicker fx:id="dtpTerugbreng" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
-                        <Button maxHeight="27.0" maxWidth="150.0" mnemonicParsing="false" onAction="#verwijderReservatie" prefHeight="45.0" prefWidth="150.0" text="Verwijderen" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Button maxHeight="27.0" maxWidth="150.0" mnemonicParsing="false" onAction="#verwijderReservatie" prefHeight="45.0" prefWidth="150.0" text="Verwijderen" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                         <Label text="Status:" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                             <GridPane.margin>
                                 <Insets left="40.0" />
@@ -114,7 +115,7 @@
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin></TextField>
-                        <Button mnemonicParsing="false" onAction="#nieuweReservatie" text="Nieuw" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
+                        <Button mnemonicParsing="false" onAction="#nieuweReservatie" text="Nieuw" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6" />
                   <Label fx:id="lblMelding" styleClass="label-error" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
                   <CheckBox fx:id="checkOverruul" mnemonicParsing="false" text="Automatisch overrulen" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="4" />
                   <Label text="Aantal teruggebracht" GridPane.columnIndex="3" GridPane.rowIndex="3" />

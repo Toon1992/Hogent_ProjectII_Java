@@ -1,3 +1,4 @@
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -7,12 +8,17 @@ package exceptions;
 
 /**
  *
- * @author Thomas
+ * @author ToonDT
  */
-public class NaamException extends IllegalArgumentException{
-    public NaamException(){}
-    public NaamException(String message){
-        super(message);
+public class MultiException extends IllegalArgumentException
+{
+
+    public MultiException()
+    {
     }
 
+    public MultiException(String message)
+    {
+        super(message);
+    }
 }

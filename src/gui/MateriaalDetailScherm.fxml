@@ -149,17 +149,16 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label-header-small" text="Algemeen - Detail materiaal" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+            <Label prefHeight="39.0" prefWidth="445.0" styleClass="label-header-small" text="Algemeen - Wijzig materiaal" GridPane.columnSpan="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets left="15.0" />
                </GridPane.margin>
             </Label>
             <Button fx:id="btnTerug" mnemonicParsing="false" onAction="#terugNaarOverzicht" text="Terug" GridPane.halignment="RIGHT" GridPane.rowIndex="14" GridPane.valignment="CENTER" />
-            <Label fx:id="lblErrorMessage" prefHeight="21.0" prefWidth="591.0" styleClass="label-error" GridPane.columnIndex="2" GridPane.columnSpan="2" />
+            <Label fx:id="lblErrorMessage" prefHeight="21.0" prefWidth="591.0" styleClass="label-error" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="13" />
             <Button mnemonicParsing="false" onAction="#nieuweDoelgroep" styleClass="button-inverse" text="+" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
             <Button mnemonicParsing="false" onAction="#nieuwLeergebied" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" />
-            <TextField fx:id="txfUrl" maxWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#wijzigFoto" text="Wijzig" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#wijzigFoto" text="Wijzig foto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
             <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
            </children>

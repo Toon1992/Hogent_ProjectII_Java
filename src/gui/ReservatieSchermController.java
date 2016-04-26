@@ -13,6 +13,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,6 +50,8 @@ public class ReservatieSchermController extends HBox
     private TableColumn<Reservatie, String> materiaalColumn;
     @FXML
     private TableColumn<Reservatie, Number> aantalColumn;
+    @FXML
+    private TableColumn<Reservatie, Number> aantalBeschikbaarColumn;
     @FXML
     private TableColumn<Reservatie, String> BeginDatumColumn;
     @FXML
@@ -108,11 +111,12 @@ public class ReservatieSchermController extends HBox
     private void invullenTable()
     {
         sortedReservatie = rc.getReservaties();
-        reservatieTable.setItems(sortedReservatie);
+        reservatieTable.setItems(sortedReservatie.sorted(Comparator.comparing(Reservatie::getBeginDatum)));
         sortedReservatie.comparatorProperty().bind(reservatieTable.comparatorProperty());
         
         this.materiaalColumn.setCellValueFactory(reservatie->reservatie.getValue().naamMateriaalProperty());    
         this.aantalColumn.setCellValueFactory(reservatie->reservatie.getValue().aantalProperty());
+        this.aantalBeschikbaarColumn.setCellValueFactory(reservatie -> reservatie.getValue().getMateriaal().aantalProperty());
         this.BeginDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().beginDatumProperty());
         this.EindDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().eindDatumProperty());
         this.naamColumn.setCellValueFactory(reservatie->reservatie.getValue().naamGebruikerProperty());
@@ -179,7 +183,7 @@ public class ReservatieSchermController extends HBox
         } else
         {
             boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie Verwijderen", "Ben je zeker dat je de reservatie wilt verwijderen", "Ja", "Nee");
-            if (!isOk)
+            if (isOk)
             {
                 rc.verwijderReservatie(reservatie);
             }

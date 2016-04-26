@@ -9,7 +9,7 @@ import javax.persistence.EntityNotFoundException;
  * Created by donovandesmedt on 25/03/16.
  */
 public interface BeheerderDao extends GenericDao<Beheerder> {
-     Beheerder getBeheerderByEmail(String email, String wachtwoord) throws EntityNotFoundException;
+     Beheerder getBeheerderByEmail(String email) throws EntityNotFoundException;
      List<Beheerder> getAlleBeheerders() throws EntityNotFoundException;
      
 }

@@ -1,5 +1,11 @@
 package domein;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -40,6 +46,30 @@ public class HulpMethode {
 
         return convertLocalDateToDate(datum);
     }
+    public static BufferedImage convertUrlToImage(String url){
+        File fi = new File(url);
+        byte[] fileContent = null;
+        try
+        {
+            fileContent = Files.readAllBytes(fi.toPath());
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        BufferedImage bufferedImage = null;
+        try
+        {
+            if(fileContent==null){
+                bufferedImage=null;
+            }
+            else
+                bufferedImage = ImageIO.read(new ByteArrayInputStream(fileContent));
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return bufferedImage;
+    }
     public static Date convertLocalDateToDate(LocalDate datum)
     {
         Instant instant = Instant.from(datum.atStartOfDay(ZoneId.of("GMT")));
@@ -52,7 +82,7 @@ public class HulpMethode {
     }
     public static Date getFirstDayOfWeek(int week){
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.WEEK_OF_YEAR, 17);
+        cal.set(Calendar.WEEK_OF_YEAR, week);
         cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
         return cal.getTime();
     }

@@ -204,7 +204,7 @@ public class ReservatieCatalogus
 
         return reservatiesTeLaat;
     }
-    private Set<Reservatie> aanpassenOpeenvolgendeReservaties(Set<Reservatie> reservaties){
+    public Set<Reservatie> aanpassenOpeenvolgendeReservaties(Set<Reservatie> reservaties){
         int week, aantal, aantalBenodigdeStuks, huidigBeschikbaar;
         Reservatie reser;
         //Materiaal materiaal;
@@ -257,8 +257,8 @@ public class ReservatieCatalogus
     }
     public Set<Reservatie> wijzigLaatbinnenGebrachteReservatie(Reservatie reservatie){
         Set<Reservatie> aangepasteReservaties = new HashSet<>();
+        int orgAantal = reservatie.getAantalTeruggebracht() == 0 ? reservatie.getAantalUitgeleend() : reservatie.getAantalTeruggebracht();
 
-        int aantal = reservatie.getAantalTeruggebracht() == 0 ? reservatie.getAantalUitgeleend() : reservatie.getAantalTeruggebracht();
         Materiaal materiaal = reservatie.getMateriaal();
         //De week na de week van de binnengebrachte reservatie
         int orgWeek = HulpMethode.getWeekOfDate(reservatie.getEindDatum()) + 1;
@@ -268,6 +268,7 @@ public class ReservatieCatalogus
         //Als een reservatie te laat binnen wordt gebracht, moeten alle reservaties die door deze reservatie de status te laat kregen terug op gereserveerd komen
         //dit betreft alle reservaties tot 1 week na de huidige datum
         while(orgWeek != (volgendeWeek + 1)){
+            int aantal = orgAantal;
             Date beginDatum = HulpMethode.getFirstDayOfWeek(orgWeek);
             Date eindDatum = HulpMethode.convertLocalDateToDate(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
             List<Reservatie> reservatiePool = geefReservaties().stream().filter(r->r.getReservatieStateEnum().equals(ReservatieStateEnum.TeLaat) && r.getMateriaal().equals(materiaal) && r.getBeginDatum().before(eindDatum) && r.getEindDatum().after(beginDatum)).collect(Collectors.toList());;
@@ -298,9 +299,20 @@ public class ReservatieCatalogus
         reservatie.setStartDatum(startDate);
         reservatie.setEindDatum(endDate);
         reservatie.setMateriaal(materiaal);
-        reservatie.setReservatieStateEnum(status);
+        if(status.equals(ReservatieStateEnum.TeLaat) && aantalTerug > 0){
+            reservatie.setReservatieStateEnum(gebruiker.getType().equals("ST")? ReservatieStateEnum.Gereserveerd: ReservatieStateEnum.Geblokkeerd);
+            wijzigLaatbinnenGebrachteReservatie(reservatie);
+        }
+        else{
+            reservatie.setReservatieStateEnum(status);
+        }
+        if(aantalUit> aantalTerug && aantalTerug == 0){
+            reservatie.setReservatieStateEnum(ReservatieStateEnum.TeLaat);
+            aanpassenTeLaatTerugGebrachteReservaties();
+        }
 
         wijzigReservatieObject(reservatie);
+
 
         filterReservatie.remove(oldReservatie);
         filterReservatie.add(reservatie);
