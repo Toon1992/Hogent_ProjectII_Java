@@ -157,14 +157,18 @@ public class MateriaalDetailSchermController extends VBox {
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
 
             //firma maken
-            Firma f=firmaRepo.geefFirma(comboFirma.getValue()); // omdat als het al gewijzigd is dan kan je nooit opvragen
-            f.setEmailContact(txfContactPersoon.getText());
+            if(comboFirma.getValue() != null){
+                Firma f=firmaRepo.geefFirma(comboFirma.getValue()); // omdat als het al gewijzigd is dan kan je nooit opvragen
+                f.setEmailContact(txfContactPersoon.getText());
+                materiaal.setFirma(f);
+                firmaRepo.wijzigFirma(f);
+            }
+
             if(!foto.isEmpty()){
                 materiaal.setFoto(foto);
             }
 
-            materiaal.setFirma(f);
-            firmaRepo.wijzigFirma(f);
+
             mc.wijzigMateriaal(materiaal);
             lblErrorMessage.setText("");
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(),"Al uw wijzigingen zijn correct doorgevoerd", "Ok");

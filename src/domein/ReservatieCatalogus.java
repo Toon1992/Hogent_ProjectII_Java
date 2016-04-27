@@ -272,7 +272,11 @@ public class ReservatieCatalogus
             Date beginDatum = HulpMethode.getFirstDayOfWeek(orgWeek);
             Date eindDatum = HulpMethode.convertLocalDateToDate(beginDatum.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4));
             List<Reservatie> reservatiePool = geefReservaties().stream().filter(r->r.getReservatieStateEnum().equals(ReservatieStateEnum.TeLaat) && r.getMateriaal().equals(materiaal) && r.getBeginDatum().before(eindDatum) && r.getEindDatum().after(beginDatum)).collect(Collectors.toList());;
-            while(aantal > 0 || reservatiePool.isEmpty()){
+            //Indien aantal niet op 0 wordt gezet wanneer de reservatiepool leeg is, ontstaat er een oneindige lus in de while loop.
+            if(reservatiePool.isEmpty()){
+                aantal = 0;
+            }
+            while(aantal > 0 && !reservatiePool.isEmpty()){
                 Reservatie changeRes = reservatiePool.get(0);
                 changeRes.setReservatieStateEnum(ReservatieStateEnum.Gereserveerd);
                 reservatiePool.remove(changeRes);
