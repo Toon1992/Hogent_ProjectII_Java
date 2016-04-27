@@ -18,10 +18,10 @@
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
-            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="150.0" minWidth="10.0" prefWidth="150.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
             <Label styleClass="label-header-inverse" text="HoGent" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
@@ -50,7 +50,7 @@
                   <Image url="@../images/email.png" />
                </image>
             </ImageView>
-            <Label fx:id="lblUitloggen" onMouseClicked="#logUit" GridPane.columnIndex="6">
+            <Label fx:id="lblUitloggen" alignment="CENTER_RIGHT" onMouseClicked="#logUit" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
