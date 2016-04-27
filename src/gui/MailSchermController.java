@@ -10,6 +10,7 @@ import controller.MailController;
 import domein.MailTemplate;
 import domein.Materiaal;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -46,16 +47,22 @@ public class MailSchermController extends HBox {
     private MailTemplate currentMail;
     @FXML
     private Button btnWijzig;
+    private List<String> namen;
 
     public MailSchermController() {
         LoaderSchermen.getInstance().setLocation("MailScherm.fxml", this);
         this.mailController = ControllerSingelton.getMailControllerInstance();
         mails = mailController.geefAlleMails();
 
+        
+        if (mails == null) {
+            namen = new ArrayList<>();
+        } else {
+            namen = mails.stream().map(b -> b.getOnderwerp()).collect(Collectors.toList());
+        }
         editor.setDisable(true);
         btnWijzig.setDisable(true);
         selectListViewListener();
-        List<String> namen = mails.stream().map(b -> b.getOnderwerp()).collect(Collectors.toList());
         listViewMail.setItems(FXCollections.observableArrayList(namen));
 
     }
@@ -86,9 +93,9 @@ public class MailSchermController extends HBox {
             mail.setBody(editor.getHtmlText());
 
             mailController.wijzigMail(mail);
-        }
-        else
+        } else {
             editor.setHtmlText(currentMail.getBody());
+        }
 
     }
 
