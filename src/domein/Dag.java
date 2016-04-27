@@ -19,9 +19,11 @@ public class Dag implements Comparable<Dag>
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(name = "DagId")
     public int dagId;
     
     @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name = "Datum")
     public Date datum;
 
     protected Dag()

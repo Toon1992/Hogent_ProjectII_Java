@@ -8,6 +8,7 @@ package domein;
 import java.util.Set;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -26,9 +27,13 @@ public class Gebruiker
     @OneToMany(mappedBy = "gebruiker")
     private Set<Reservatie> reservaties;
     @Id
+     @Column(name = "Email")
     private String email;
     
+     @Column(name = "Naam")
     private String naam;
+     
+      @Column(name = "Type")
     private String type;
     
     protected Gebruiker(){}
