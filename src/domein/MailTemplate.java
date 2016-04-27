@@ -6,6 +6,7 @@
 package domein;
 
 import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,11 +27,17 @@ import javax.persistence.Table;
 {
     @NamedQuery(name = "MailTemplate.findbyOnderwerp", query = "Select a FROM MailTemplate a WHERE a.subject= :onderwerp")
 })
+@Table(name="MailTemplate")
 public abstract class MailTemplate {
    
+    @Column(name="Subject")
     @Id
     private String subject;
+    
+    @Column(name="Body")
     private String body;
+    
+     @Column(name="Onderwerp")
     private String onderwerp;
     
     protected MailTemplate(){

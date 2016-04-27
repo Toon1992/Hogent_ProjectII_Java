@@ -30,6 +30,7 @@ import org.controlsfx.control.CheckComboBox;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
 import domein.MateriaalCatalogus.*;
+import exceptions.MultiException;
 
 /**
  * FXML Controller class
@@ -136,7 +137,27 @@ public class MateriaalDetailSchermController extends VBox {
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
         try {
-
+            
+            if(listDoelgroep.getItems().isEmpty())
+            {
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            }
+            
+            if(listLeergbedied.getItems().isEmpty())
+            {
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            }
+            
+            if(txfAantal.getText() == null || txfAantal.getText().isEmpty())
+            {
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            }
+            
+             if(txfNaam.getText() == null || txfNaam.getText().isEmpty())
+            {
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            }
+            
             //materiaal wijzigen
             materiaal.setNaam(txfNaam.getText());
             materiaal.setOmschrijving(txfOmschrijving.getText());
@@ -173,7 +194,14 @@ public class MateriaalDetailSchermController extends VBox {
             lblErrorMessage.setText("");
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(),"Al uw wijzigingen zijn correct doorgevoerd", "Ok");
             terugNaarOverzicht(null);
-
+        }catch(MultiException ex)
+        {
+            txfNaam.getStyleClass().add("errorField");
+            txfAantal.getStyleClass().add("errorField");
+            listDoelgroep.getStyleClass().add("errorField");
+            listLeergbedied.getStyleClass().add("errorField");
+            lblErrorMessage.setText(ex.getLocalizedMessage());
+  
         } catch (NumberFormatException ex) {
             lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
         } catch (IllegalArgumentException ex) {

@@ -49,7 +49,7 @@
                   <Insets bottom="15.0" />
                </GridPane.margin>
                </Label>
-               <Label text="Doelgroep" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <Label text="Doelgroep*" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                    <GridPane.margin>
                        <Insets />
                    </GridPane.margin>
@@ -57,7 +57,7 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Leergebied" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <Label text="Leergebied*" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
