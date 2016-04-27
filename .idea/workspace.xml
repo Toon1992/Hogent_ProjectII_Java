@@ -1,31 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="fix">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Beheerder.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Beheerder.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Dag.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Dag.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Doelgroep.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Doelgroep.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Firma.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Firma.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Leergebied.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Leergebied.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/domein/Materiaal.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/domein/Materiaal.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/LoaderSchermen.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/LoaderSchermen.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/LayoutFrame.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/LayoutFrame.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieNieuwScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieNieuwScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/StartScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/StartScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" afterPath="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/LayoutFrame.fxml" afterPath="$PROJECT_DIR$/src/gui/LayoutFrame.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/LayoutFrameController.java" afterPath="$PROJECT_DIR$/src/gui/LayoutFrameController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/LoaderSchermen.java" afterPath="$PROJECT_DIR$/src/gui/LoaderSchermen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/LoginSchermController.java" afterPath="$PROJECT_DIR$/src/gui/LoginSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieNieuwScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/ReservatieNieuwScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java" afterPath="$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" afterPath="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/StartScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/StartScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/StartUp.java" afterPath="$PROJECT_DIR$/src/main/StartUp.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -132,8 +110,8 @@
       <file leaf-file-name="LoginSchermController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.70866144">
-              <caret line="77" column="63" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.511811">
+              <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -173,7 +151,7 @@
         <entry file="file://$PROJECT_DIR$/src/gui/StartScherm.fxml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -1249,7 +1227,7 @@
       <workItem from="1461674984650" duration="604000" />
       <workItem from="1461699980856" duration="633000" />
       <workItem from="1461762756156" duration="590000" />
-      <workItem from="1461774204517" duration="2993000" />
+      <workItem from="1461774204517" duration="3290000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1460114868716</created>
@@ -1329,7 +1307,13 @@
       <option name="project" value="LOCAL" />
       <updated>1461763069172</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="[Sprint 2] feedback reservaties">
+      <created>1461778105357</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1461778105358</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1359,7 +1343,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181855000" />
+    <option name="totallyTimeSpent" value="182152000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1429,7 +1413,8 @@
     <MESSAGE value="aanvullen feedback" />
     <MESSAGE value="[Sprint2 #15] Vervallen reservaties verwijderen&#10;[Sprint2 #7] Statussen berekenen niet binnengebrachte materialen&#10;[Sprint2 #12] Uittrekken repositories" />
     <MESSAGE value="fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix" />
+    <MESSAGE value="[Sprint 2] feedback reservaties" />
+    <option name="LAST_COMMIT_MESSAGE" value="[Sprint 2] feedback reservaties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1745,8 +1730,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/StartScherm.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1809,8 +1794,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.70866144">
-          <caret line="77" column="63" selection-start-line="77" selection-start-column="63" selection-end-line="77" selection-end-column="63" />
+        <state vertical-scroll-proportion="0.511811">
+          <caret line="72" column="51" selection-start-line="72" selection-start-column="51" selection-end-line="72" selection-end-column="51" />
           <folding />
         </state>
       </provider>
