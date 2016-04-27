@@ -15,6 +15,7 @@ public class ControllerSingelton
     private static GebruikerController gbc;
     private static MateriaalController mtc;
     private static ReservatieController rsc;
+    private static MailController mlc;
     
     private ControllerSingelton()
     {}
@@ -49,6 +50,13 @@ public class ControllerSingelton
             rsc = new ReservatieController();
         
         return rsc;
+    }
+    
+    public static MailController getMailControllerInstance(){
+        if(mlc==null){
+            mlc=new MailController();
+        }
+        return mlc;
     }
     
 }

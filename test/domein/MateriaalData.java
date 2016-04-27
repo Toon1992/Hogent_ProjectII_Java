@@ -56,6 +56,10 @@ public class MateriaalData {
         return firmas;
     }
     
+    public Firma geefGlobe()
+    {
+        return globe;
+    }
     
     
     public void initializeData()

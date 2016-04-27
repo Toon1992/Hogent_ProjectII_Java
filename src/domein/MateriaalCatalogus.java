@@ -5,24 +5,11 @@
  */
 package domein;
 
-import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
-import domein.Doelgroep;
-import domein.Firma;
-import domein.Leergebied;
-
-
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
 import java.util.*;
 import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-import domein.Materiaal;
 import exceptions.AantalException;
 import exceptions.EmailException;
 import exceptions.MultiException;
@@ -32,12 +19,9 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import persistentie.FirmaDaoJpa;
-import persistentie.GenericDaoJpa;
 import persistentie.MateriaalDaoJpa;
-import repository.GeneriekeRepository;
-
-import javax.imageio.ImageIO;
-import javax.persistence.NoResultException;
+import persistentie.FirmaDao;
+import persistentie.MateriaalDao;
 
 /**
  *
@@ -50,16 +34,26 @@ public class MateriaalCatalogus {
     private List<Materiaal> opgehaaldeMaterialen;
     private Set<Materiaal> nonFilteredSet;
     private Map<String, Set<Materiaal>> filterMap = new HashMap<>();
-    private MateriaalDaoJpa materiaalDao;
-    private FirmaDaoJpa firmaDao;
+    private MateriaalDao materiaalDao;
+    private FirmaDao firmaDao;
     private ObservableList<Materiaal> filterMateriaal;
     private List<String> lokalen;
 
-    public MateriaalCatalogus() {
-        materiaalDao = new MateriaalDaoJpa();
-        firmaDao = new FirmaDaoJpa();
+    public MateriaalCatalogus(MateriaalDao materiaalDao, FirmaDao firmaDao) {
+        setMateriaalDao(materiaalDao);
+        setFirmaDao(firmaDao);
     }
 
+    public void setMateriaalDao(MateriaalDao materiaalDao)
+    {
+        this.materiaalDao = materiaalDao;
+    }
+    
+    public void setFirmaDao(FirmaDao firmaDao)
+    {
+        this.firmaDao = firmaDao;
+    }
+    
     public SortedList<Materiaal> geefMaterialen() {
         if (opgehaaldeMaterialen == null) {
             newMaterialList = materiaalDao.findAll().stream().collect(Collectors.toSet());
@@ -69,6 +63,8 @@ public class MateriaalCatalogus {
         filteredmaterialen = new FilteredList(filterMateriaal, p -> true);
         return new SortedList<>(filteredmaterialen);
     }
+    
+    
     public List<String> geefLokalen(){
         lokalen = new ArrayList<>();
         geefMaterialen().stream().forEach(materiaal -> {
