@@ -56,9 +56,9 @@ public class MateriaalData {
         return firmas;
     }
     
-    public Firma geefGlobe()
+    public Firma geefPrisma()
     {
-        return globe;
+        return prisma;
     }
     
     
