@@ -11,13 +11,13 @@
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@../styleSheet/style.css" type="GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
   <columnConstraints>
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
       <ColumnConstraints hgrow="ALWAYS" maxWidth="141.0" minWidth="10.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
       <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
     <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="200.0" minWidth="10.0" prefWidth="200.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="220.0" minWidth="10.0" prefWidth="220.0" />
       <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" minWidth="10.0" />
   </columnConstraints>
   <rowConstraints>
@@ -26,17 +26,17 @@
       <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ImageView fx:id="imgViewMateriaal" fitHeight="242.0" fitWidth="200.0" onMouseClicked="#clickedMateriaal" onMouseEntered="#hoverMateriaal" onMouseExited="#hoverMateriaal" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <ImageView fx:id="imgViewMateriaal" fitHeight="242.0" fitWidth="220.0" onMouseClicked="#clickedMateriaal" onMouseEntered="#hoverMateriaal" onMouseExited="#hoverMateriaal" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <image>
             <Image url="@../images/catalogus.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="244.0" fitWidth="200.0" onMouseClicked="#clickedReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <ImageView fitHeight="244.0" fitWidth="220.0" onMouseClicked="#clickedReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <image>
             <Image url="@../images/reservaties.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="229.0" fitWidth="200.0" onMouseClicked="#clickedBeheerder" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <ImageView fitHeight="229.0" fitWidth="220.0" onMouseClicked="#clickedBeheerder" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <image>
             <Image url="@../images/NieuweGebruikers.jpg" />
          </image>
@@ -56,7 +56,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <ImageView fx:id="btnMails" fitHeight="233.0" fitWidth="200.0" onMouseClicked="#btnMailsOnClicked" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <ImageView fx:id="btnMails" fitHeight="233.0" fitWidth="220.0" onMouseClicked="#btnMailsOnClicked" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <image>
             <Image url="@../images/email.png" />
          </image>
