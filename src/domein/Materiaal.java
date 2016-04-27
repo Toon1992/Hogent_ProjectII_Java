@@ -72,6 +72,9 @@ public class Materiaal
     @Lob
     @Column(name = "Foto")
     private byte[] foto;
+    
+    @ManyToOne
+    private Verlanglijst verlanglijst;
 
     protected Materiaal()
     {
