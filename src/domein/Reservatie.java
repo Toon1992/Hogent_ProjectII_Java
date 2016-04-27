@@ -36,21 +36,34 @@ import stateMachine.TeLaat;
         {
             @NamedQuery(name = "Reservatie.findBydatum", query = "Select r FROM Reservatie r WHERE r.materiaal = :Materiaal  AND (:EindDatum >= r.startDatum AND :StartDatum <= r.eindDatum)")
         })
+@Table(name = "Reservatie")
 public class Reservatie
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ReservatieId")
     private int reservatieID;
 
+    @Column(name = "AantalUitgeleend")
     private int aantalUitgeleend;
+    @Column(name = "AantalGereserveerd")
     private int aantalGereserveerd;
+    @Column(name = "AantalTeruggebracht")
     private int aantalTeruggebracht;
 
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date startDatum, eindDatum, aanmaakDatum;
+    @Column(name = "StartDatum")
+    private Date startDatum;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name = "EindDatum")
+    private Date eindDatum;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(name = "AanmaakDatum")
+    private Date aanmaakDatum;
 
     @Enumerated(EnumType.ORDINAL)
+    @Column(name = "ReservatieStateEnum")
     private ReservatieStateEnum reservatieStateEnum;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

@@ -5,12 +5,14 @@
  */
 package domein;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 /**
  *
@@ -18,16 +20,26 @@ import javax.persistence.NamedQuery;
  */
 @Entity
 @NamedQueries(
-{
-    @NamedQuery(name = "Firma.findByName", query = "Select a FROM Firma a WHERE a.naam= :Naam")
-})
+        {
+            @NamedQuery(name = "Firma.findByName", query = "Select a FROM Firma a WHERE a.naam= :Naam")
+        })
+@Table(name = "Firma")
 public class Firma
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "FirmaId")
     private int firmaId;
-    private String naam, email, adres;
+
+    @Column(name = "Naam")
+    private String naam;
+
+    @Column(name = "Email")
+    private String email;
+
+    @Column(name = "Adres")
+    private String adres;
 
     protected Firma()
     {

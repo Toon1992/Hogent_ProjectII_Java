@@ -30,11 +30,13 @@ public class Beheerder
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     @Column(name = "GebruikersId")
     private int gebruikersId;
     
     @Column(name = "Email")
     private String email;
     
+     @Column(name = "IsHoofd")
     private boolean isHoofd;
 
     public boolean isHoofd()
