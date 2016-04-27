@@ -76,7 +76,10 @@ public class LoginSchermController extends GridPane
             lblUitloggen.setText("Afmelden");
             LoaderSchermen.getInstance().setLoggedIn(true);
             LoaderSchermen.getInstance().setWidthAndHeight(bp);
-            bp.setCenter(new StartSchermController());
+            LoaderSchermen.getInstance().setOverzichtScherm(bp,  new StartSchermController());
+
+
+
             //aLoaderSchermen.getInstance().load("start", new StartSchermController(gc), 1300, 600, this);
         } catch (EmailException e) {
             lblEmail.setText(e.getLocalizedMessage());
