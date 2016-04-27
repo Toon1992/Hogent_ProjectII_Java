@@ -28,15 +28,33 @@ import javax.persistence.*;
         {
             @NamedQuery(name = "Materiaal.findAll", query = "Select a FROM Materiaal a")
         })
+@Table(name = "Materiaal")
 public class Materiaal
 {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "MateriaalId")
     private int materiaalId;
-    private String naam, plaats, omschrijving;
-    private int artikelNr, aantalInCatalogus, aantalOnbeschikbaar;
+
+    @Column(name = "Naam")
+    private String naam;
+    @Column(name = "Plaats")
+    private String plaats;
+    @Column(name = "Omschrijving")
+    private String omschrijving;
+
+    @Column(name = "ArtikelNr")
+    private int artikelNr;
+    @Column(name = "AantalOnbeschikbaar")
+    private int aantalOnbeschikbaar;
+    @Column(name = "AantalInCatalogus")
+    private int aantalInCatalogus;
+
+    @Column(name = "Prijs")
     private double prijs;
+
+    @Column(name = "IsReserveerbaar")
     private boolean isReserveerbaar;
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Firma firma;
@@ -52,7 +70,11 @@ public class Materiaal
     Set<Leergebied> leergebieden;
 
     @Lob
+    @Column(name = "Foto")
     private byte[] foto;
+    
+    @ManyToOne
+    private Verlanglijst verlanglijst;
 
     protected Materiaal()
     {
@@ -230,10 +252,11 @@ public class Materiaal
 
     public void setFoto(String url)
     {
-        if(url.isEmpty()){
+        if (url.isEmpty())
+        {
             this.foto = null;
-        }
-        else{
+        } else
+        {
             File fi = new File(url);
             byte[] fileContent = null;
             try
@@ -252,11 +275,13 @@ public class Materiaal
         BufferedImage bufferedImage = null;
         try
         {
-            if(foto==null){
-                bufferedImage=null;
+            if (foto == null)
+            {
+                bufferedImage = null;
+            } else
+            {
+                bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
             }
-            else
-            bufferedImage = ImageIO.read(new ByteArrayInputStream(foto));
         } catch (IOException e)
         {
             e.printStackTrace();

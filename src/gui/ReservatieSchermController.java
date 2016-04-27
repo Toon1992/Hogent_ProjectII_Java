@@ -231,6 +231,7 @@ public class ReservatieSchermController extends HBox
         boolean succes = ReservatieHulpController.wijzigReservatie(parameters);
         if(succes){
             lblMelding.setText("");
+            invullenTable();
         }
     }
 

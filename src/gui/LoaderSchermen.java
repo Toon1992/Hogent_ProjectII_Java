@@ -18,6 +18,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import stateMachine.ReservatieStateEnum;
@@ -124,11 +125,16 @@ public class LoaderSchermen
 
     public void setMateriaalOvezichtScherm(BorderPane bp, HBox mco)
     {
-
         setWidthAndHeight(bp);
         mco.setPrefWidth(getScreenWidth());
         mco.setPrefHeight(getScreenHeight() * 0.85);
         bp.setCenter(mco);
+    }
+    public void setOverzichtScherm(BorderPane bp, GridPane gp){
+        setWidthAndHeight(bp);
+        gp.setPrefWidth(getScreenWidth());
+        gp.setPrefHeight(getScreenHeight() * 0.85);
+        bp.setCenter(gp);
     }
 
     public String reservatieInvoerControle(int aantal,int aantalUit, int aantalTerug, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker)

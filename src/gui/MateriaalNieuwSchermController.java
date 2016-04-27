@@ -161,12 +161,16 @@ public class MateriaalNieuwSchermController extends VBox {
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
             txfNaam.getStyleClass().remove("errorField");
             txfAantal.getStyleClass().remove("errorField");
+            listDoelgroep.getStyleClass().remove("errorField");
+            listLeergbedied.getStyleClass().remove("errorField");
             lblError.setText("");
             LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
         }
         catch (MultiException e){
             txfNaam.getStyleClass().add("errorField");
             txfAantal.getStyleClass().add("errorField");
+            listDoelgroep.getStyleClass().add("errorField");
+            listLeergbedied.getStyleClass().add("errorField");
             lblError.setText(e.getLocalizedMessage());
         }
         catch (NaamException e){

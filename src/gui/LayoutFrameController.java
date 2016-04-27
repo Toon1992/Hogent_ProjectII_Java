@@ -28,8 +28,6 @@ public class LayoutFrameController extends BorderPane {
     @FXML
     private GridPane layoutTop;
     @FXML
-    private Label lblUitLoggen;
-    @FXML
     private GridPane layoutBottom;
     @FXML
     private ImageView btnHome;
@@ -39,6 +37,10 @@ public class LayoutFrameController extends BorderPane {
     private ImageView btnReserveren;
     @FXML
     private ImageView btnBeheerder;
+    @FXML
+    private ImageView btnMails;
+    @FXML
+    private Label lblUitloggen;
 
     public LayoutFrameController(){
         LoaderSchermen.getInstance().setLocation("LayoutFrame.fxml", this);
@@ -48,7 +50,7 @@ public class LayoutFrameController extends BorderPane {
     private void gaNaarStartScherm(MouseEvent event) {
         if(LoaderSchermen.getInstance().isLoggedIn()){
             LoaderSchermen.getInstance().setWidthAndHeight(this);
-            this.setCenter(new StartSchermController());
+            LoaderSchermen.getInstance().setOverzichtScherm(this,  new StartSchermController());
         }
     }
 
@@ -84,6 +86,14 @@ public class LayoutFrameController extends BorderPane {
         LoaderSchermen.getInstance().setLoggedIn(false);
         LoaderSchermen.getInstance().setWidthAndHeight(this);
         this.setCenter(new LoginSchermController());
+    }
+
+    @FXML
+    private void gaNaarMails(MouseEvent event) {
+        if(LoaderSchermen.getInstance().isLoggedIn()){
+            LoaderSchermen.getInstance().setWidthAndHeight(this);
+            this.setCenter(new MailSchermController());
+        }
     }
     
 }

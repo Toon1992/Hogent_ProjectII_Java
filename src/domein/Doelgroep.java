@@ -9,6 +9,7 @@ import static java.lang.reflect.Array.set;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,55 +25,71 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries(
-{
-    @NamedQuery(name = "Doelgroep.findAll", query = "Select a FROM Doelgroep a")
-})
+        {
+            @NamedQuery(name = "Doelgroep.findAll", query = "Select a FROM Doelgroep a")
+        })
 @Table(name = "Doelgroep")
-public class Doelgroep {
+public class Doelgroep
+{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "DoelgroepId")
     private int doelgroepId;
+    
+     @Column(name = "Naam")
     private String naam;
+
     protected Doelgroep()
-    {}
+    {
+    }
     @ManyToMany(mappedBy = "doelgroepen")
     Set<Materiaal> materialen;
+
     public Doelgroep(String naam)
     {
         this.naam = naam;
     }
 
-    public String getNaam() {
+    public String getNaam()
+    {
         return naam;
     }
 
-    private void setNaam(String naam) {
+    private void setNaam(String naam)
+    {
         this.naam = naam;
     }
+
     @Override
-    public String toString(){
+    public String toString()
+    {
         return naam;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object obj)
+    {
+        if (obj == null)
+        {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
+        {
             return false;
         }
         final Doelgroep other = (Doelgroep) obj;
-        if (!Objects.equals(this.naam, other.naam)) {
+        if (!Objects.equals(this.naam, other.naam))
+        {
             return false;
         }
         return true;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
         return this.naam.hashCode();
     }
-    
-    
+
 }

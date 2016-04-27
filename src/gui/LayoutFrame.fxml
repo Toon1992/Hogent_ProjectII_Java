@@ -17,13 +17,14 @@
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
-            <ColumnConstraints hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" prefWidth="400.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="75.0" minWidth="10.0" prefWidth="75.0" />
+            <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
         </columnConstraints>
         <rowConstraints>
-          <RowConstraints minHeight="50.0" prefHeight="50.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="50.0" prefHeight="50.0" valignment="CENTER" vgrow="ALWAYS" />
         </rowConstraints>
          <children>
-            <Label styleClass="label-header-inverse" text="HoGent" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
+            <Label styleClass="label-header-inverse" text="HoGent" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" />
             <ImageView fx:id="btnHome" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarStartScherm" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/home.png" />
@@ -34,25 +35,29 @@
                   <Image url="@../images/catalogus.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnReserveren" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnReserveren" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/reservaties.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/NieuweGebruikers.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="lblUitLoggen" onMouseClicked="#logUit" GridPane.columnIndex="5" GridPane.halignment="RIGHT" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
+            <ImageView fx:id="btnMails" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarMails" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="5" GridPane.halignment="CENTER">
+               <image>
+                  <Image url="@../images/email.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="lblUitloggen" alignment="CENTER_RIGHT" onMouseClicked="#logUit" textAlignment="CENTER" GridPane.columnIndex="6" GridPane.hgrow="ALWAYS">
                <GridPane.margin>
                   <Insets right="20.0" />
                </GridPane.margin>
                <styleClass>
                   <String fx:value="label-header-small-inverse" />
                   <String fx:value="StartButton" />
-               </styleClass>
-            </Label>
+               </styleClass></Label>
          </children>
       </GridPane>
    </top>

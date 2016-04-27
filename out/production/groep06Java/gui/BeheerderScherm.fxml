@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root prefHeight="700.0" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" type="GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="700.0" prefWidth="1200.0" stylesheets="@../styleSheet/style.css" type="GridPane" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" >
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="690.0" minWidth="10.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="690.0" minWidth="10.0" prefWidth="500.0" />
@@ -43,28 +43,13 @@
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </Button>
-      <Button fx:id="btnWijzig" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#WijzigBeheerder" prefWidth="120.0" text="Wijzigen" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="6">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </Button>
       <Button fx:id="btnVerwijderen" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#VerwijderBeheerder" prefWidth="120.0" text="Verwijderen" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets left="20.0" right="20.0" />
          </GridPane.margin>
       </Button>
-      <Label text="Naam:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" />
       <Label text="E-mailadres:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
-      <Label text="Wachtwoord:" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
-      <TextField fx:id="txfNaam" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets right="20.0" />
-         </GridPane.margin></TextField>
       <TextField fx:id="txfEmail" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="3">
-         <GridPane.margin>
-            <Insets right="20.0" />
-         </GridPane.margin></TextField>
-      <TextField fx:id="txfPaswoord" GridPane.columnIndex="3" GridPane.columnSpan="2" GridPane.rowIndex="4">
          <GridPane.margin>
             <Insets right="20.0" />
          </GridPane.margin></TextField>

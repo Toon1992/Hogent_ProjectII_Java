@@ -4,10 +4,6 @@
     <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
   <data-source name="SQL Server (Microsoft) - DidactischeLeermiddelen@PCMANU" uuid="17b9a73d-89a0-4f56-8d4e-ad2136ecbb11">
-    <database-info product="Microsoft SQL Server" version="12.00.2269" jdbc-version="4.0" driver-name="Microsoft SQL Server JDBC Driver 2.0" driver-version="2.0.1803.100">
-      <extra-name-characters>$#@</extra-name-characters>
-      <identifier-quote-string>&quot;</identifier-quote-string>
-    </database-info>
-    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
 </component>
