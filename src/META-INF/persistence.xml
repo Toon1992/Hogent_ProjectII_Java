@@ -12,6 +12,7 @@
     <class>domein.Dag</class>
     <class>domein.MailTemplate</class>
     <class>domein.MailNaReservatie</class>
+    <class>domein.MailNaBlokkeringLector</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://PCMANU\SQLEXPRESS:1433;databaseName=DidactischeLeermiddelen"/>
       <property name="javax.persistence.jdbc.user" value="sa"/>

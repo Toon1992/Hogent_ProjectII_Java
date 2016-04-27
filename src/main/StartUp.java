@@ -56,6 +56,18 @@ public class StartUp extends Application {
         Firma wissner = new Firma("Wissner", "contactpersoon@wissner.com");
 //
 //
+
+//        MailTemplate mail=new MailNaReservatie("testen", "testen van mail");
+//        jpa.insert(mail);
+        MailTemplate mail1=new MailNaReservatie("Bevestiging reservatie", "<p>Dag _NAAM</p>" +
+                                         "Je reservatie loopt van _STARTDATUM tot _EINDDATUM" +
+                                         "<p> Hieronder vind je terug wat je zonet reserveerde: </p>" +
+                                         "<ul>" +
+                                         "_ITEMS" +
+                                         "</ul> ");
+        MailTemplate mail=new MailNaBlokkeringLector("Test ", "Test blokkering");
+        jpa.insert(mail1);
+        jpa.insert(mail);
         Doelgroep kleuter = new Doelgroep("Kleuter onderwijs");
         Doelgroep lager = new Doelgroep("Lager onderwijs");
         Doelgroep secundair = new Doelgroep("Secundair onderwijs");
