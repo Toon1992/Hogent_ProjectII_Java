@@ -7,6 +7,7 @@ package domein;
 
 import java.util.Objects;
 import java.util.Set;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,53 +23,72 @@ import javax.persistence.Table;
  */
 @Entity
 @NamedQueries(
-{
-    @NamedQuery(name = "Leergebied.findAll", query = "Select a FROM Leergebied a")
-})
+        {
+            @NamedQuery(name = "Leergebied.findAll", query = "Select a FROM Leergebied a")
+        })
 @Table(name = "Leergebied")
-public class Leergebied {
+public class Leergebied
+{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @Column(name = "LeergebiedId")
     private int leergebiedId;
+    
+    @Column(name = "Naam")
     private String naam;
+    
     @ManyToMany(mappedBy = "leergebieden")
     Set<Materiaal> materialen;
-    protected Leergebied(){}
-    
+
+    protected Leergebied()
+    {
+    }
+
     public Leergebied(String naam)
     {
         this.naam = naam;
     }
 
-    public String getNaam() {
+    public String getNaam()
+    {
         return naam;
     }
 
-    public void setNaam(String naam) {
+    public void setNaam(String naam)
+    {
         this.naam = naam;
     }
+
     @Override
-    public String toString(){
+    public String toString()
+    {
         return naam;
     }
 
     @Override
-    public int hashCode() {
+    public int hashCode()
+    {
 //        int hash = 7;
 //        hash = 71 * hash + Objects.hashCode(this.naam);
 //        return hash;
         return this.naam.hashCode();
     }
+
     @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
+    public boolean equals(Object obj)
+    {
+        if (obj == null)
+        {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != obj.getClass())
+        {
             return false;
         }
         final Leergebied other = (Leergebied) obj;
-        if (!Objects.equals(this.naam, other.naam)) {
+        if (!Objects.equals(this.naam, other.naam))
+        {
             return false;
         }
         return true;

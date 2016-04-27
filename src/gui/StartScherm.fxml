@@ -17,6 +17,8 @@
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="240.0" />
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="240.0" minWidth="10.0" prefWidth="240.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="129.0" minHeight="10.0" prefHeight="25.0" vgrow="SOMETIMES" />
@@ -50,6 +52,16 @@
          </font>
       </Label>
       <Label alignment="CENTER" contentDisplay="CENTER" text="Nieuwe beheerder" GridPane.columnIndex="5" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="btnMails" fitHeight="233.0" fitWidth="228.0" onMouseClicked="#btnMailsOnClicked" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <image>
+            <Image url="@../images/email.png" />
+         </image>
+      </ImageView>
+      <Label alignment="CENTER" contentDisplay="CENTER" text="Mails wijzigen" GridPane.columnIndex="7" GridPane.rowIndex="2">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

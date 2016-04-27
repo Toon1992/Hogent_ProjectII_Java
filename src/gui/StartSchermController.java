@@ -31,6 +31,8 @@ public class StartSchermController extends GridPane
     
     @FXML
     private ImageView imgViewMateriaal;
+    @FXML
+    private ImageView btnMails;
     
     public StartSchermController()
     {
@@ -65,6 +67,12 @@ public class StartSchermController extends GridPane
     private void hoverMateriaal(MouseEvent event)
     {
         imgViewMateriaal.setOpacity(50.0);
+    }
+
+    @FXML
+    private void btnMailsOnClicked(MouseEvent event) {
+        BorderPane bp = (BorderPane) this.getParent();
+        bp.setCenter(new MailSchermController());
     }
     
 }
