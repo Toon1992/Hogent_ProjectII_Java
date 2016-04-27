@@ -80,7 +80,7 @@ public class MateriaalCatalogus {
         double prijs = 0.0;
         if (naam.equals("")) {
             if (aantalString.equals("")) {
-                throw new MultiException("Naam en aantal mogen niet leeg zijn!");
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
             }
             throw new NaamException("Naam mag niet leeg zijn.");
         } if (aantalString.equals("")) {
@@ -114,6 +114,16 @@ public class MateriaalCatalogus {
                 }
             }
            
+            if(doelgroepen.isEmpty())
+            {
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            }
+            
+            if(leergebieden.isEmpty())
+            {
+                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            }
+            
 
             try{
                 aantal = Integer.parseInt(aantalString);
