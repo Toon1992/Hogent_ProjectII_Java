@@ -28,6 +28,7 @@ import javax.persistence.*;
         {
             @NamedQuery(name = "Materiaal.findAll", query = "Select a FROM Materiaal a")
         })
+@Table(name = "Materiaal")
 public class Materiaal
 {
 

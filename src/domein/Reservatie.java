@@ -36,6 +36,7 @@ import stateMachine.TeLaat;
         {
             @NamedQuery(name = "Reservatie.findBydatum", query = "Select r FROM Reservatie r WHERE r.materiaal = :Materiaal  AND (:EindDatum >= r.startDatum AND :StartDatum <= r.eindDatum)")
         })
+@Table(name = "Reservatie")
 public class Reservatie
 {
 
