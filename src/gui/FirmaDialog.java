@@ -32,6 +32,9 @@ public class FirmaDialog {
         ButtonType nieuwButtonType = new ButtonType("Nieuw", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(nieuwButtonType, ButtonType.CANCEL);
 
+        String css = this.getClass().getResource("/styleSheet/style.css").toExternalForm();
+        dialog.getDialogPane().getStylesheets().add(css);
+
 // Create the username and password labels and fields.
         GridPane grid = new GridPane();
         grid.setHgap(10);
@@ -48,9 +51,14 @@ public class FirmaDialog {
         grid.add(new Label("E-mailadres:"), 0, 1);
         grid.add(contact, 1, 1);
 
-        Label lblError = new Label();
-        lblError.getStyleClass().add(".label-error");
-        grid.add(lblError, 1, 2);
+        Label lblErrorNaam = new Label("Voer een firmanaam in");
+        Label lblErrorContact = new Label("Voer een geldig emailadres in");
+        lblErrorNaam.getStyleClass().add("label-error");
+        lblErrorNaam.setVisible(false);
+        lblErrorContact.getStyleClass().add("label-error");
+        lblErrorContact.setVisible(false);
+        grid.add(lblErrorNaam, 1, 2);
+        grid.add(lblErrorContact, 1, 3);
 
 // Enable/Disable login button depending on whether a username was entered.
         Node nieuwButton = dialog.getDialogPane().lookupButton(nieuwButtonType);
@@ -59,25 +67,32 @@ public class FirmaDialog {
 // Do some validation (using the Java 8 lambda syntax).
         name.textProperty().addListener((observable, oldValue, newValue) -> {
             textName = newValue.trim();
-            flag = textName.isEmpty();
-            if(flag){
-                lblError.setText("Voer een firmanaam in");
-                contact.getStyleClass().add("errorField");
+            flag = textName.isEmpty() || textContact.isEmpty();
+            if(textName.isEmpty()){
+                lblErrorNaam.setVisible(true);
+                name.getStyleClass().add("errorField");
+            }
+            else{
+                lblErrorNaam.setVisible(false);
+                name.getStyleClass().remove("errorField");
             }
             nieuwButton.setDisable(flag);
         });
         contact.textProperty().addListener((observable, oldValue, newValue) -> {
             textContact = newValue.trim();
-            flag = textName.isEmpty() ? false: !Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact);
-            if(flag) {
-                lblError.setText("Voer een geldig emailadres in");
+            flag = textContact.isEmpty() || !Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact);
+            if(!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact)) {
+                lblErrorContact.setVisible(true);
                 contact.getStyleClass().add("errorField");
+            }
+            else{
+                lblErrorContact.setVisible(false);
+                contact.getStyleClass().remove("errorField");
             }
             nieuwButton.setDisable(flag);
         });
         dialog.getDialogPane().setContent(grid);
 
-        dialog.getGraphic().getStyleClass().add("styleSheet/style.css");
 
 // Request focus on the username field by default.
         Platform.runLater(() -> name.requestFocus());
@@ -95,6 +110,6 @@ public class FirmaDialog {
         result.ifPresent(gegevens -> {
             uitvoer =  new String[]{gegevens.getKey(),gegevens.getValue()};
         });
-        return null;
+        return uitvoer;
     }
 }
