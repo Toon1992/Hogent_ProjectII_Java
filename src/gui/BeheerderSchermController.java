@@ -45,7 +45,6 @@ public class BeheerderSchermController extends GridPane
     @FXML
     private TextField txfEmail;
 
-
     private ObservableList<String> beheerdernamen;
     private List<Beheerder> beheerderNamenList;
     private Beheerder loginBeheerder;
@@ -112,23 +111,27 @@ public class BeheerderSchermController extends GridPane
 //        stage.setScene(scene);
 //        stage.show();
         String tekst = txfEmail.getText();
-        
-        if(tekst == null || tekst.isEmpty())
+
+        if (tekst == null || tekst.isEmpty())
         {
             LoaderSchermen.getInstance().popupMessageOneButton("Waarschuwing", "Email moet ingevuld zijn", "OK");
-        }
-        else if(komtEmailVoor(tekst))
+        } else if (komtEmailVoor(tekst))
         {
             LoaderSchermen.getInstance().popupMessageOneButton("Waarschuwing", "Email staat al bij de beheerders", "OK");
-        }
-        else if(validateEmail(tekst))
+        } else if (validateEmail(tekst))
         {
-            voegNieuweBeheerderToe(new Beheerder(tekst, false));
-            vulListViewIn();
+
+            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Confirm", "Bent u zeker dat je de gebruiker wilt toevoegen?", "ja", "nee");
+
+            if (isOk)
+            {
+                voegNieuweBeheerderToe(new Beheerder(tekst, false));
+                vulListViewIn();
+            }
         }
-        
+
         txfEmail.clear();
-               
+
     }
 
     @FXML
@@ -136,12 +139,17 @@ public class BeheerderSchermController extends GridPane
     {
         if (currentBeheerder != null)
         {
-            controller.verwijderBeheerder(currentBeheerder);          
-            txfEmail.clear();         
+            boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Confirm", "Bent u zeker dat je de beheerder wilt verwijderen?", "ja", "nee");
 
-            beheerderNamenList.remove(currentBeheerder);
-            vulListViewIn();
-            currentBeheerder = null;
+            if (isOk)
+            {
+                controller.verwijderBeheerder(currentBeheerder);
+                txfEmail.clear();
+
+                beheerderNamenList.remove(currentBeheerder);
+                vulListViewIn();
+                currentBeheerder = null;
+            }
         } else
         {
             LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Er is geen beheerder geselecteerd", "OK");

@@ -61,11 +61,14 @@ public class ReservatieNieuwSchermController extends GridPane {
     @FXML
     private TextField txfAantalTeruggebracht;
     @FXML
+    private TextField txfMaxAantal;
+    @FXML
     private Label lblOnvolledigheid;
     @FXML
     private Label lblOnbeschikbaarheid;
     @FXML
     private CheckBox checkOverruul;
+    private Tooltip tooltip;
 
     private ReservatieController rc;
     private MateriaalController mc;
@@ -85,6 +88,10 @@ public class ReservatieNieuwSchermController extends GridPane {
         cmbNaam.setItems(gc.getGebruikers());
         rc.setFormatDatepicker(dtpOphaal);
         rc.setFormatDatepicker(dtpTerugbreng);
+        txfMaxAantal.setText(String.format("%d", 0));
+        txfAantalGereserveerd.setText(String.format("%d", 0));
+        txfAantalTeruggebracht.setText(String.format("%d", 0));
+        txfAantalUitgeleend.setText(String.format("%d", 0));
         dtpOphaal.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
@@ -96,12 +103,20 @@ public class ReservatieNieuwSchermController extends GridPane {
                 }
             }
         });
+        tooltip = new Tooltip();
+        tooltip.setText("Wanneer u deze optie aanvinkt, zal automatisch de laatst toegevoegde reservatie voor dit materiaal overschreven worden.");
+        Tooltip.install(checkOverruul, tooltip);
     }
 
     @FXML
     private void terug(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
         LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController());
+    }
+    @FXML
+    private void changeMateriaal(ActionEvent event){
+        Materiaal materiaal = cmbMateriaal.getSelectionModel().getSelectedItem();
+        txfMaxAantal.setText(String.format("%d", materiaal.getAantal()-materiaal.getAantalOnbeschikbaar()));
     }
     @FXML
     private void wijzigGebruiker(ActionEvent event){
