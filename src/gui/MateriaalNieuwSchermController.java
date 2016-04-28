@@ -215,7 +215,7 @@ public class MateriaalNieuwSchermController extends VBox {
         if (checkDoelgroepen.getItems().contains(doelgroep)) {
             lblError.setText("Deze doelgroep bestaat al!");
         }
-        if (!doelgroep.isEmpty() && !checkDoelgroepen.getItems().contains(doelgroep)) {
+        if (!doelgroep.isEmpty() && !doelgroep.trim().isEmpty() && !checkDoelgroepen.getItems().contains(doelgroep)) {
             checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
             gp.add(checkDoelgroepen, 1, 5);
@@ -229,7 +229,7 @@ public class MateriaalNieuwSchermController extends VBox {
         if (checkLeergebieden.getItems().contains(leergebied)) {
             lblError.setText("Dit leergebied bestaat al!");
         }
-        if (!leergebied.isEmpty() && !checkLeergebieden.getItems().contains(leergebied)) {
+        if (!leergebied.isEmpty() && !leergebied.trim().isEmpty() && !checkLeergebieden.getItems().contains(leergebied)) {
             checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
             gp.add(checkLeergebieden, 3, 5);
