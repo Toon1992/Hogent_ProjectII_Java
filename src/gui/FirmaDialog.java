@@ -67,7 +67,7 @@ public class FirmaDialog {
 // Do some validation (using the Java 8 lambda syntax).
         name.textProperty().addListener((observable, oldValue, newValue) -> {
             textName = newValue.trim();
-            flag = textName.isEmpty() || textContact.isEmpty();
+            flag = !textName.isEmpty() && !textContact.isEmpty();
             if(textName.isEmpty()){
                 lblErrorNaam.setVisible(true);
                 name.getStyleClass().add("errorField");
@@ -76,20 +76,21 @@ public class FirmaDialog {
                 lblErrorNaam.setVisible(false);
                 name.getStyleClass().remove("errorField");
             }
-            nieuwButton.setDisable(flag);
+            nieuwButton.setDisable(!flag);
         });
         contact.textProperty().addListener((observable, oldValue, newValue) -> {
             textContact = newValue.trim();
-            flag = textContact.isEmpty() || !Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact);
+            flag = !textName.isEmpty() && Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact);
             if(!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact)) {
                 lblErrorContact.setVisible(true);
                 contact.getStyleClass().add("errorField");
             }
             else{
-                lblErrorContact.setVisible(false);
                 contact.getStyleClass().remove("errorField");
+                lblErrorContact.setVisible(false);
+
             }
-            nieuwButton.setDisable(flag);
+            nieuwButton.setDisable(!flag);
         });
         dialog.getDialogPane().setContent(grid);
 

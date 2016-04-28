@@ -106,6 +106,19 @@ public class ReservatieSchermController extends HBox
         rc.setFormatDatepicker(dtpTerugbreng);
         rc.setFormatDatepicker(datePickerBegin);
         rc.setFormatDatepicker(datePickerEind);
+        
+        if(reservatie==null)
+        {
+            dtpOphaal.setDisable(true);
+            dtpTerugbreng.setDisable(true);
+            cmbNaam.setDisable(true);
+            cmbMateriaal.setDisable(true);
+            cmbStatus.setDisable(true);
+            txfAantalGereserveerd.setDisable(true);
+            txfAantalUitgeleend.setDisable(true);
+            txfAantalTerug.setDisable(true);
+            checkOverruul.setDisable(true);
+        }
     }
     
     private void invullenTable()
@@ -192,6 +205,15 @@ public class ReservatieSchermController extends HBox
     public void setCurrenReservatie(Reservatie reservatie)
     {
         this.reservatie = reservatie;
+        dtpOphaal.setDisable(false);
+            dtpTerugbreng.setDisable(false);
+            cmbNaam.setDisable(false);
+            cmbMateriaal.setDisable(false);
+            cmbStatus.setDisable(false);
+            txfAantalGereserveerd.setDisable(false);
+            txfAantalUitgeleend.setDisable(false);
+            txfAantalTerug.setDisable(false);
+            checkOverruul.setDisable(false);
         update();
     }
     public void update()

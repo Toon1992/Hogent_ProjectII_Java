@@ -161,6 +161,7 @@
             <Button mnemonicParsing="false" onAction="#wijzigFoto" text="Wijzig foto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
             <ComboBox fx:id="comboFirma" onAction="#comboFirmaOnClick" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="9" />
             <Button mnemonicParsing="false" onAction="#btnNieuweFirma" styleClass="button-inverse" text="+" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="9" />
+            <Button layoutX="305.0" layoutY="229.0" mnemonicParsing="false" onAction="#verwijderFoto" text="Verwijder foto" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
            </children>
        </GridPane>
    </children>

@@ -63,7 +63,7 @@ public class MateriaalCatalogusTest {
     @Test(expected = IllegalArgumentException.class)
     public void geefFoutAlsMateriaalBestaatMetNaam() {
         materialen = catalogus.geefMaterialen();
-        catalogus.controleerUniekheidMateriaalnaam("Wereldbol");
+        catalogus.controleerUniekheidMateriaalnaam(null,"Wereldbol");
     }
 
 //    @Test
