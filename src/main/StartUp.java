@@ -106,7 +106,7 @@ public class StartUp extends Application {
         jpa.insert(new Reservatie(1,0,0,new Date(116, 4, 11), new Date(116,4,15),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Donovan","donovandesmedt@gmail.com","ST"),wereldbol));
         jpa.insert(new Reservatie(2,0,0,new Date(116, 4, 23), new Date(116,4,6),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Manu","manuschoenmakers@gmail.com","ST"),rekenMachine));
         jpa.insert(new Reservatie(3,0,0,new Date(116, 4, 23), new Date(116,4,6),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Thomas","thomasledoux@gmail.com","ST"),rekenMachine));
-
+        jpa.insert(new MailNaReservatie("Reservatie","Rersrv"));
         jpa.commitTransaction();
 
     }
