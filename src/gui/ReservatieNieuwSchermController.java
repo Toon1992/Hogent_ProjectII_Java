@@ -68,6 +68,7 @@ public class ReservatieNieuwSchermController extends GridPane {
     private Label lblOnbeschikbaarheid;
     @FXML
     private CheckBox checkOverruul;
+    private Tooltip tooltip;
 
     private ReservatieController rc;
     private MateriaalController mc;
@@ -102,6 +103,9 @@ public class ReservatieNieuwSchermController extends GridPane {
                 }
             }
         });
+        tooltip = new Tooltip();
+        tooltip.setText("Wanneer u deze optie aanvinkt, zal automatisch de laatst toegevoegde reservatie voor dit materiaal overschreven worden.");
+        Tooltip.install(checkOverruul, tooltip);
     }
 
     @FXML

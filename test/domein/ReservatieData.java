@@ -1,3 +1,5 @@
+package domein;
+
 import domein.*;
 import javafx.collections.FXCollections;
 import javafx.collections.transformation.SortedList;
