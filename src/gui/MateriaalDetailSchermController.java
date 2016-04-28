@@ -31,6 +31,7 @@ import repository.FirmaRepository;
 import repository.GebiedenRepository;
 import domein.MateriaalCatalogus.*;
 import exceptions.MultiException;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -43,8 +44,6 @@ public class MateriaalDetailSchermController extends VBox {
     private ImageView imgViewMateriaal;
     @FXML
     private TextArea txfOmschrijving;
-    @FXML
-    private TextField txfFirma;
     @FXML
     private TextField txfArtikelNummer;
     @FXML
@@ -133,6 +132,13 @@ public class MateriaalDetailSchermController extends VBox {
         foto = file.getAbsolutePath();
         imgViewMateriaal.setImage(SwingFXUtils.toFXImage(HulpMethode.convertUrlToImage(foto), null));
     }
+    
+    @FXML
+    private void verwijderFoto(ActionEvent event) {
+        materiaal.setFoto("");
+        imgViewMateriaal.setImage(null);
+    }
+
 
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
@@ -310,6 +316,6 @@ public class MateriaalDetailSchermController extends VBox {
 
 
     }
-
+    
 
 }

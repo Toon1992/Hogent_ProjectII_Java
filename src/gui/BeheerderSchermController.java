@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
@@ -49,6 +50,8 @@ public class BeheerderSchermController extends GridPane
     private List<Beheerder> beheerderNamenList;
     private Beheerder loginBeheerder;
     private Beheerder currentBeheerder;
+    @FXML
+    private Label lblEmail;
 
     public BeheerderSchermController()
     {
@@ -67,6 +70,8 @@ public class BeheerderSchermController extends GridPane
         {
             btnNieuw.setVisible(false);
             btnVerwijderen.setVisible(false);
+            txfEmail.setVisible(false);
+            lblEmail.setVisible(false);
         }
     }
 
