@@ -6,6 +6,7 @@
 package domein;
 
 import javax.annotation.Generated;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,6 +22,7 @@ import javax.persistence.Table;
  * @author manu
  */
 @Entity
+@Table(name = "MailTemplate")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NamedQueries(
 {
@@ -29,9 +31,14 @@ import javax.persistence.Table;
 public abstract class MailTemplate {
    
     @Id
+    @Column(name = "Subject")
     private String subject;
+    @Column(name = "Body")
     private String body;
-    private String onderwerp;
+//    @Column(name = "DTYPE")
+//    private String dtype;
+//    @Column(name = "onderwerp")
+//    private String onderwerp;
     
     protected MailTemplate(){
         
