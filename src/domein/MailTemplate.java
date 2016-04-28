@@ -22,23 +22,23 @@ import javax.persistence.Table;
  * @author manu
  */
 @Entity
+@Table(name = "MailTemplate")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NamedQueries(
 {
     @NamedQuery(name = "MailTemplate.findbyOnderwerp", query = "Select a FROM MailTemplate a WHERE a.subject= :onderwerp")
 })
-@Table(name="MailTemplate")
 public abstract class MailTemplate {
    
-    @Column(name="Subject")
     @Id
+    @Column(name = "Subject")
     private String subject;
-    
-    @Column(name="Body")
+    @Column(name = "Body")
     private String body;
-    
-     @Column(name="Onderwerp")
-    private String onderwerp;
+//    @Column(name = "DTYPE")
+//    private String dtype;
+//    @Column(name = "onderwerp")
+//    private String onderwerp;
     
     protected MailTemplate(){
         
