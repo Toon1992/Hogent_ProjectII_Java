@@ -49,7 +49,7 @@
                   <Insets bottom="15.0" />
                </GridPane.margin>
                </Label>
-               <Label text="Doelgroep" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <Label text="Doelgroep*" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                    <GridPane.margin>
                        <Insets />
                    </GridPane.margin>
@@ -57,18 +57,18 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Leergebied" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+               <Label text="Leergebied*" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="3" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="9" />
+               <TextField fx:id="txfArtikelNummer" GridPane.columnIndex="3" GridPane.rowIndex="10" />
                <Label text="Firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Artikelnummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9" GridPane.valignment="CENTER">
+               <Label text="Artikelnummer firma" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
@@ -88,12 +88,12 @@
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <Label text="Email contactpersoon" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
+               <Label text="Email contactpersoon" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
                    <padding>
                        <Insets right="10.0" />
                    </padding>
                </Label>
-               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="3" GridPane.rowIndex="10" />
+               <TextField fx:id="txfContactPersoon" GridPane.columnIndex="3" GridPane.rowIndex="9" />
                <Label text="Plaats" GridPane.halignment="RIGHT" GridPane.rowIndex="10">
                    <padding>
                        <Insets right="10.0" />

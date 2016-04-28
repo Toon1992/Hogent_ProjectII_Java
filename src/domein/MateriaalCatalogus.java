@@ -86,9 +86,22 @@ public class MateriaalCatalogus {
         } if (aantalString.equals("")) {
             throw new AantalException("Aantal mag niet leeg zijn!");
         } else {
+
+            try{
+                aantal = Integer.parseInt(aantalString);
+            }
+            catch (Exception e){
+                throw new AantalException("Invoerveld aantal moet een positief getal bevattten");
+            }
             if (!aantalOnbeschikbaarString.isEmpty()) {
                 try{
                 aantalOnbeschikbaar = Integer.parseInt(aantalOnbeschikbaarString);
+                    if(aantalOnbeschikbaar < 0){
+                        throw new IllegalArgumentException("Aantalonbeschikbaar moet groter zijn dan 0");
+                    }
+                    if(aantalOnbeschikbaar > aantal){
+                        throw new IllegalArgumentException("Aantalonbeschikbaar kan niet groter zijn dan aantal in catalogus");
+                    }
                 }
                 catch(NumberFormatException e)
                 {
@@ -125,12 +138,6 @@ public class MateriaalCatalogus {
             }
             
 
-            try{
-                aantal = Integer.parseInt(aantalString);
-            }
-            catch (Exception e){
-                throw new AantalException("Invoerveld aantal moet een positief getal bevattten");
-            }
 
             Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
             opgehaaldeMaterialen.add(materiaal);
@@ -148,8 +155,8 @@ public class MateriaalCatalogus {
         }
         return f;
     }
-    public void controleerUniekheidMateriaalnaam(String naam){
-        for (Materiaal m : materiaalDao.getMaterialen()) {
+    public void controleerUniekheidMateriaalnaam(Materiaal materiaal, String naam){
+        for (Materiaal m : materiaalDao.getMaterialen().stream().filter(mat -> !mat.equals(materiaal)).collect(Collectors.toList())) {
             if(m.getNaam().toLowerCase().equals(naam.toLowerCase()))
             {
                 throw new IllegalArgumentException("Er bestaat al een materiaal met deze naam!");

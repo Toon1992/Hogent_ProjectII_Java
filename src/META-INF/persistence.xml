@@ -10,8 +10,8 @@
     <class>domein.Gebruiker</class>
     <class>domein.Reservatie</class>
     <class>domein.Dag</class>
-    <class>domein.MailNaReservatie</class>
     <class>domein.MailTemplate</class>
+    <class>domein.MailNaReservatie</class>
     <class>domein.Verlanglijst</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/DidactischeLeermiddelen"/>
