@@ -38,8 +38,8 @@ public class MateriaalController extends Observable
     {
         this.materiaalCatalogus = materiaalCatalogus;
     }
-    public void controleerUniekheidMateriaalnaam(String naam){
-        materiaalCatalogus.controleerUniekheidMateriaalnaam(naam);
+    public void controleerUniekheidMateriaalnaam(Materiaal materiaal, String naam){
+        materiaalCatalogus.controleerUniekheidMateriaalnaam(materiaal, naam);
     }
     public void voegMateriaalToe(String foto, String naam, String omschrijving, String plaats, Firma firma, String artikelNrString, String aantalString, String aantalOnbeschikbaarString, String prijsString, boolean uitleenbaar, Set<Doelgroep> doelgroepen, Set<Leergebied> leergebieden) throws NaamException, AantalException
     {

@@ -316,10 +316,6 @@ public class ReservatieCatalogus
         }
 
         wijzigReservatieObject(reservatie);
-
-
-        filterReservatie.remove(oldReservatie);
-        filterReservatie.add(reservatie);
         filterReservaties = new FilteredList(filterReservatie, p -> true);
     }
     private void wijzigReservatieObject(Reservatie reservatie){

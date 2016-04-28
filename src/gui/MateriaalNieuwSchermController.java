@@ -22,6 +22,7 @@ import gui.LoaderSchermen;
 import java.io.File;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -125,7 +126,12 @@ public class MateriaalNieuwSchermController extends VBox {
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(200);
 
-        comboFirma.setItems(FXCollections.observableArrayList(firmaRepo.geefAlleFirmas()));
+        List<String> firmas = firmaRepo.geefAlleFirmas();
+        firmas.add("-- geen firma --");
+        comboFirma.setItems(FXCollections.observableArrayList(firmas));
+        comboFirma.setValue("-- geen firma --");
+
+        txfContactPersoon.setDisable(true);
 
         gp = (GridPane) this.getChildren().get(0);
         gp.add(checkDoelgroepen, 1, 5);
@@ -154,10 +160,10 @@ public class MateriaalNieuwSchermController extends VBox {
         uitleenbaar = radioStudent.isSelected();
         try {
             Firma firma = null;
-            if(firmaNaam != null){
+            if(firmaNaam != null && !firmaNaam.equals("-- geen firma --")){
                 firma = mc.geefFirma(firmaNaam, firmaContact);
             }
-            mc.controleerUniekheidMateriaalnaam(naam);
+            mc.controleerUniekheidMateriaalnaam(null, naam);
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
             txfNaam.getStyleClass().remove("errorField");
             txfAantal.getStyleClass().remove("errorField");
@@ -233,11 +239,20 @@ public class MateriaalNieuwSchermController extends VBox {
     @FXML
     private void comboFirmaOnClick(ActionEvent event) {
         if(comboFirma.getSelectionModel().getSelectedItem()!=null){
+
             String naam=comboFirma.getSelectionModel().getSelectedItem();
-            Firma f=firmaRepo.geefFirma(naam);
-            comboFirma.setPromptText(comboFirma.getSelectionModel().getSelectedItem());
-            comboFirma.setValue(comboFirma.getSelectionModel().getSelectedItem());
-            txfContactPersoon.setText(f.getEmailContact());
+            if(naam.equals("-- geen firma --")){
+                txfContactPersoon.setDisable(true);
+                txfContactPersoon.setText("");
+            }
+            else{
+                txfContactPersoon.setDisable(false);
+                Firma f=firmaRepo.geefFirma(naam);
+                comboFirma.setPromptText(comboFirma.getSelectionModel().getSelectedItem());
+                comboFirma.setValue(comboFirma.getSelectionModel().getSelectedItem());
+                txfContactPersoon.setText(f.getEmailContact());
+            }
+
         }
     }
     @FXML
