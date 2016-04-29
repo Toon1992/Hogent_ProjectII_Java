@@ -155,13 +155,16 @@ public class MateriaalNieuwSchermController extends VBox {
         artikelNrString = txfArtikelNummer.getText();
         aantalString = txfAantal.getText();
         aantalOnbeschikbaarString = txfOnbeschikbaar.getText();
-        prijsString = txfPrijs.getText();
-
+        prijsString = txfPrijs.getText().replace(",", ".");
+        
         uitleenbaar = radioStudent.isSelected();
         try {
             Firma firma = null;
             if(firmaNaam != null && !firmaNaam.equals("-- geen firma --")){
                 firma = mc.geefFirma(firmaNaam, firmaContact);
+            }
+            if(Double.valueOf(prijsString)<0){
+                throw new IllegalArgumentException("Prijs mag niet negatief zijn!");
             }
             mc.controleerUniekheidMateriaalnaam(null, naam);
             mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);

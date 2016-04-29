@@ -85,7 +85,7 @@ public class MateriaalDetailSchermController extends VBox {
     private FileChooser fileChooser;
     private Leergebied l = new Leergebied("l");
     Doelgroep d = new Doelgroep("d");
-    private String foto = "";
+    private String foto = null;
 
     public MateriaalDetailSchermController(Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
@@ -124,7 +124,7 @@ public class MateriaalDetailSchermController extends VBox {
         MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
         MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
 
-
+        
     }
 
     @FXML
@@ -181,7 +181,16 @@ public class MateriaalDetailSchermController extends VBox {
 
             materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
             String prijs = txfPrijs.getText().replace(",", ".");
-            materiaal.setPrijs(Double.valueOf(prijs));
+            
+            if(Double.valueOf(prijs)<0){
+                throw new IllegalArgumentException("Prijs mag niet negatief zijn!");
+            }
+            else
+            {
+                materiaal.setPrijs(Double.valueOf(prijs));
+            }
+            
+            
 
             materiaal.setIsReserveerbaar(radioStudent.isSelected());
 
@@ -196,6 +205,7 @@ public class MateriaalDetailSchermController extends VBox {
                 materiaal.setFirma(null);
             }
             
+            if(foto!=null)
                 materiaal.setFoto(foto);
             
 
