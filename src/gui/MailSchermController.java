@@ -23,6 +23,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.web.HTMLEditor;
@@ -48,22 +51,30 @@ public class MailSchermController extends HBox {
     @FXML
     private Button btnWijzig;
     private List<String> namen;
+    private String woordVerplicht;
+    @FXML
+    private ListView<String> listviewVerplichteItems;
+    @FXML
+    private ImageView btnTooltip;
 
     public MailSchermController() {
         LoaderSchermen.getInstance().setLocation("MailScherm.fxml", this);
         this.mailController = ControllerSingelton.getMailControllerInstance();
         mails = mailController.geefAlleMails();
-
-        
+       
         if (mails == null) {
             namen = new ArrayList<>();
         } else {
             namen = mails.stream().map(b -> b.getOnderwerp()).collect(Collectors.toList());
         }
+        
+        Tooltip t=new Tooltip("Deze items moeten verplicht aanwezig zijn in de mail. De naam duidt op waarmee het wordt ingevuld. Deze moeten ook in het vet geschreven worden!");
+        listviewVerplichteItems.setTooltip(t);
         editor.setDisable(true);
         btnWijzig.setDisable(true);
         selectListViewListener();
         listViewMail.setItems(FXCollections.observableArrayList(namen));
+        listviewVerplichteItems.setEditable(false);
 
     }
 
@@ -78,6 +89,7 @@ public class MailSchermController extends HBox {
 
                         currentMail = mails.stream().filter(m -> m.getOnderwerp().equals(newValue)).findFirst().get();
                         editor.setHtmlText(currentMail.getBody());
+                        setVerplichteItems();
 
                     }
                 }
@@ -87,16 +99,52 @@ public class MailSchermController extends HBox {
 
     @FXML
     private void btnWijzigOnAction(ActionEvent event) {
-        boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Wijzig mail", "Bent u zeker dat u de wijzigingen wilt doorvoeren voor volgende mail:" + currentMail.getOnderwerp(), "Ja", "Nee");
-        if (result) {
-            MailTemplate mail = mails.stream().filter(m -> m.getOnderwerp().equals(currentMail.getOnderwerp())).findFirst().get();
-            mail.setBody(editor.getHtmlText());
 
-            mailController.wijzigMail(mail);
-        } else {
-            editor.setHtmlText(currentMail.getBody());
+        if (mailVoldoetAanVerplichteItems()) {
+            boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Wijzig mail", "Bent u zeker dat u de wijzigingen wilt doorvoeren voor volgende mail:" + currentMail.getOnderwerp(), "Ja", "Nee");
+            if (result) {
+                MailTemplate mail = mails.stream().filter(m -> m.getOnderwerp().equals(currentMail.getOnderwerp())).findFirst().get();
+                mail.setBody(editor.getHtmlText());
+                mailController.wijzigMail(mail);
+            } else {
+                editor.setHtmlText(currentMail.getBody());
+            }
+
+        }
+        else{
+            LoaderSchermen.getInstance().popupMessageOneButton("Fout in mail", "Er ontbreekt een verplicht item in de gewijzigde mail: " + woordVerplicht +"!" +" Let op: maak dat alles in het vet staat!", "Ok");
         }
 
     }
+
+    private void setVerplichteItems() {
+        switch (currentMail.getOnderwerp()) {
+            case "Bevestiging reservatie":
+                listviewVerplichteItems.setItems(FXCollections.observableArrayList("_NAAM", "_STARTDATUM", "_EINDDATUM", "_ITEMS"));
+                break;
+            case "Blokkering":
+                listviewVerplichteItems.setItems(FXCollections.observableArrayList("_NAAM", "_DATUMS", "_ITEMS"));
+                break;
+            case "Reservatie gewijzigd":
+                listviewVerplichteItems.setItems(FXCollections.observableArrayList("_NAAM", "_STARTDATUM", "_ITEMS"));
+                break;
+        }
+
+    }
+
+    private boolean mailVoldoetAanVerplichteItems() {
+        String tekst = editor.getHtmlText();
+        for (String woord : listviewVerplichteItems.getItems()) {
+            if (!tekst.contains(woord)) {
+                woordVerplicht=woord;
+                return false;
+                
+            }
+        }
+        return true;
+    }
+
+
+    
 
 }
