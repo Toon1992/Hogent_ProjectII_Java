@@ -135,7 +135,8 @@ public class MateriaalHulpController {
         }
         if(!((TextField)data.get("prijs")).getText().trim().isEmpty()){
             try{
-                double prijs = Double.parseDouble(((TextField)data.get("prijs")).getText());
+                String prijsString = ((TextField)data.get("prijs")).getText().replace(",", ".");
+                double prijs = Double.valueOf(prijsString);
                 if(prijs < 0){
                     fouteWaarden.put("prijs", data.get("prijs"));
                 }

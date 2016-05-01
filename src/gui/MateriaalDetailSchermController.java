@@ -214,6 +214,9 @@ public class MateriaalDetailSchermController extends VBox {
         if (materiaal.getFoto() != null) {
             imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getFoto(), null));
         }
+        else{
+            imgViewMateriaal.setImage(new Image("images/add.png"));
+        }
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", materiaal.getArtikelNr()));
         if (materiaal.getFirma() != null) {

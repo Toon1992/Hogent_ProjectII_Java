@@ -255,12 +255,12 @@ public class ReservatieSchermController extends HBox {
     @FXML
     private <E> void wijzigReservatie(ActionEvent event) {
         Map<String, E> parameters = new HashMap<>();
-        parameters.put("gebruiker", (E) cmbNaam.getSelectionModel().getSelectedItem());
-        parameters.put("materiaal", (E) cmbMateriaal.getSelectionModel().getSelectedItem());
-        parameters.put("status", (E) cmbStatus.getSelectionModel().getSelectedItem());
+        //parameters.put("gebruiker", (E) cmbNaam.getSelectionModel().getSelectedItem());
+        //parameters.put("materiaal", (E) cmbMateriaal.getSelectionModel().getSelectedItem());
+        //parameters.put("status", (E) cmbStatus.getSelectionModel().getSelectedItem());
         parameters.put("reservatie", (E) reservatie);
-        parameters.put("startDate", (E) dtpOphaal.getValue() == null ? null : (E) Date.from(dtpOphaal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
-        parameters.put("endDate", (E) dtpTerugbreng.getValue() == null ? null : (E) Date.from(dtpTerugbreng.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        //parameters.put("startDate", (E) dtpOphaal.getValue() == null ? null : (E) Date.from(dtpOphaal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        //parameters.put("endDate", (E) dtpTerugbreng.getValue() == null ? null : (E) Date.from(dtpTerugbreng.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parameters.put("txfAantalGereserveerd", (E) txfAantalGereserveerd);
         parameters.put("txfAantalUit", (E) txfAantalUitgeleend);
         parameters.put("txfAantalTerug", (E) txfAantalTerug);
@@ -269,6 +269,11 @@ public class ReservatieSchermController extends HBox {
         parameters.put("checkOverruul", (E) checkOverruul);
         parameters.put("reservatieController", (E) rc);
         parameters.put("operatieType", (E) ReservatieHulpController.OperatieType.WIJZIG);
+        parameters.put("datePickerBegin", (E) dtpOphaal);
+        parameters.put("datePickerEind", (E) dtpTerugbreng);
+        parameters.put("comboStatus", (E) cmbStatus);
+        parameters.put("comboMateriaal",(E) cmbMateriaal);
+        parameters.put("comboGebruiker", (E) cmbNaam);
         boolean succes = ReservatieHulpController.wijzigReservatie(parameters);
         if (succes) {
             lblMelding.setText("");

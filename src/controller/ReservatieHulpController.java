@@ -1,6 +1,7 @@
 package controller;
 
 import domein.Gebruiker;
+import domein.HulpMethode;
 import domein.Materiaal;
 import domein.Reservatie;
 import gui.LoaderSchermen;
@@ -32,29 +33,41 @@ public class ReservatieHulpController {
     private static TextField txfAantalTerug;
     private static CheckBox checkOverruul;
     private static OperatieType type;
+    private static DatePicker datePickerBegin;
+    private static DatePicker datePickerEind;
+    private static ComboBox comboStatus;
+    private static ComboBox comboGebruiker;
+    private static ComboBox comboMateriaal;
     private static final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
     public static <E> boolean wijzigReservatie(Map<String, E> parameters){
         boolean flag = true;
-        gebruiker = (Gebruiker) parameters.get("gebruiker");
-        materiaal = (Materiaal) parameters.get("materiaal");
-        status = (ReservatieStateEnum) parameters.get("status");
+        gebruiker = ((ComboBox<Gebruiker>) parameters.get("comboGebruiker")).getSelectionModel().getSelectedItem();
+        materiaal = ((ComboBox<Materiaal>) parameters.get("comboMateriaal")).getSelectionModel().getSelectedItem();
+        status = ((ComboBox<ReservatieStateEnum>) parameters.get("comboStatus")).getSelectionModel().getSelectedItem();
         reservatie = parameters.containsKey("reservatie") ? (Reservatie) parameters.get("reservatie") : null;
-        startDate = (Date) parameters.get("startDate");
-        endDate = (Date) parameters.get("endDate");
+        startDate =  ((DatePicker) parameters.get("datePickerBegin")).getValue() == null ? null : HulpMethode.convertLocalDateToDate(((DatePicker) parameters.get("datePickerBegin")).getValue());
+        endDate = ((DatePicker) parameters.get("datePickerEind")).getValue() == null ? null : HulpMethode.convertLocalDateToDate(((DatePicker) parameters.get("datePickerEind")).getValue());
         lblMelding = (Label) parameters.get("lblMelding");
         txfAantalGereserveerd = (TextField) parameters.get("txfAantalGereserveerd");
         txfAantalUit = (TextField) parameters.get("txfAantalUit");
         txfAantalTerug = (TextField) parameters.get("txfAantalTerug");
         type = (OperatieType) parameters.get("operatieType");
         checkOverruul = (CheckBox) parameters.get("checkOverruul");
+        datePickerBegin = (DatePicker) parameters.get("datePickerBegin");
+        datePickerEind = (DatePicker) parameters.get("datePickerEind");
         rc = (ReservatieController) parameters.get("reservatieController");
+        comboStatus = (ComboBox) parameters.get("comboStatus");
+        comboMateriaal = (ComboBox) parameters.get("comboMateriaal");
+        comboGebruiker = (ComboBox) parameters.get("comboGebruiker");
+        cleanInputFields();
         int aantalGereserveerd = 0, aantalUit = 0, aantalTerug =0;
         try{
             aantalGereserveerd = Integer.parseInt(txfAantalGereserveerd.getText());
         }
         catch (NumberFormatException e){
             lblMelding.setText("Het aantal gereserveerde stuks moet een nummer zijn groter dan 0");
+            txfAantalGereserveerd.getStyleClass().add("errorField");
             flag = false;
         }
         try{
@@ -64,6 +77,7 @@ public class ReservatieHulpController {
         }
         catch (NumberFormatException e){
             lblMelding.setText("Het aantal uitgeleende stuks moet een nummer zijn groter dan 0");
+            txfAantalUit.getStyleClass().add("errorField");
             flag = false;
         }
         try{
@@ -73,10 +87,11 @@ public class ReservatieHulpController {
         }
         catch (NumberFormatException e){
             lblMelding.setText("Het aantal teruggebrachte stuks moet een nummer zijn groter dan 0");
+            txfAantalTerug.getStyleClass().add("errorField");
             flag = false;
         }
         if(flag){
-            String controle = LoaderSchermen.getInstance().reservatieInvoerControle(aantalGereserveerd,aantalUit, aantalTerug, startDate, endDate, status, materiaal, gebruiker);
+            String controle = reservatieInvoerControle(aantalGereserveerd,aantalUit, aantalTerug, startDate, endDate, status, materiaal, gebruiker);
             if(!controle.isEmpty()){
                 flag = false;
                 lblMelding.setText(controle);
@@ -164,6 +179,75 @@ public class ReservatieHulpController {
         verschil += materiaal.getAantalOnbeschikbaar();
         materiaal.setAantalOnbeschikbaar(verschil);
         mc.wijzigMateriaal(materiaal);
+    }
+    private static void cleanInputFields(){
+        txfAantalGereserveerd.getStyleClass().remove("errorField");
+        txfAantalUit.getStyleClass().remove("errorField");
+        txfAantalTerug.getStyleClass().remove("errorField");
+        datePickerBegin.getStyleClass().remove("errorField");
+        datePickerEind.getStyleClass().remove("errorField");
+        comboStatus.getStyleClass().remove("errorField");
+        comboGebruiker.getStyleClass().remove("errorField");
+        comboMateriaal.getStyleClass().remove("errorField");
+    }
+    private static String reservatieInvoerControle(int aantal,int aantalUit, int aantalTerug, Date startDatum, Date eindDatum, ReservatieStateEnum status, Materiaal materiaal, Gebruiker gebruiker){
+        if (aantal <= 0)
+        {
+            txfAantalGereserveerd.getStyleClass().add("errorField");
+            return "Het aantal gereserveerde stuks moet groter dan 0 zijn";
+        }
+        if(aantalUit < 0){
+            txfAantalUit.getStyleClass().add("errorField");
+            return "Het aantal uitgeleende stuks kan niet negatief zijn";
+        }
+        if(aantalTerug < 0){
+            txfAantalTerug.getStyleClass().add("errorField");
+            return "Het aantal teruggebrachte stuks kan niet negatief zijn";
+        }
+        if(aantalUit > aantal){
+            txfAantalUit.getStyleClass().add("errorField");
+            return "Het aantal uitgeleende stuks kan niet groter dan het aantal gereserveerde stuks zijn";
+        }
+        if(aantalTerug > aantalUit){
+            txfAantalTerug.getStyleClass().add("errorField");
+            return "Het aantal teruggebrachte stuks kan niet groter zijn dan het aantal uitgeleende stuks";
+        }
+        if (eindDatum == null)
+        {
+            datePickerEind.getStyleClass().add("errorField");
+            return "Selecteer een terugbrengdatum";
+        }
+        if (startDatum == null)
+        {
+            datePickerBegin.getStyleClass().add("errorField");
+            return "Selecteer een ophaaldatum";
+        }
+        if (eindDatum != null && startDatum != null && eindDatum.before(startDatum))
+        {
+            datePickerEind.getStyleClass().add("errorField");
+            return "Tergubrengdatum moet groter zijn dat ophaaldatum";
+        }
+        if(startDatum.before(HulpMethode.convertLocalDateToDate(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusDays(1)))){
+            datePickerBegin.getStyleClass().add("errorField");
+            datePickerEind.getStyleClass().add("errorField");
+            return "Je kan niet in het verleden reserveren";
+        }
+        if (status == null)
+        {
+            comboStatus.getStyleClass().add("errorField");
+            return "Selecteer een status";
+        }
+        if (materiaal == null)
+        {
+            comboMateriaal.getStyleClass().add("errorField");
+            return "Selecteer een materiaal";
+        }
+        if (gebruiker == null)
+        {
+            comboGebruiker.getStyleClass().add("errorField");
+            return "Selecteer een gebruiker";
+        }
+        return "";
     }
     public enum OperatieType{
         NIEUW, WIJZIG
