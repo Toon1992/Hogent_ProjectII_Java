@@ -107,14 +107,7 @@ public class BeheerderSchermController extends GridPane
 
     @FXML
     private void nieuwBeheerder(ActionEvent event)
-    {
-//        BorderPane bp = (BorderPane) this.getParent();
-//        bp.setCenter(new NieuwBeheerderSchermController(this, controller));
-//
-//        Stage stage = new Stage();
-//        Scene scene = new Scene(new NieuwBeheerderSchermController(this));
-//        stage.setScene(scene);
-//        stage.show();
+    {    
         String tekst = txfEmail.getText();
 
         if (tekst == null || tekst.isEmpty())
@@ -123,8 +116,11 @@ public class BeheerderSchermController extends GridPane
         } else if (komtEmailVoor(tekst))
         {
             LoaderSchermen.getInstance().popupMessageOneButton("Waarschuwing", "Email staat al bij de beheerders", "OK");
-        } else if (validateEmail(tekst))
+        } else if (!validateEmail(tekst))
         {
+           LoaderSchermen.getInstance().popupMessageOneButton("Waarschuwing", "Foute Email", "OK"); 
+        }
+        else{
 
             boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Confirm", "Bent u zeker dat je de gebruiker wilt toevoegen?", "ja", "nee");
 
@@ -132,10 +128,11 @@ public class BeheerderSchermController extends GridPane
             {
                 voegNieuweBeheerderToe(new Beheerder(tekst, false));
                 vulListViewIn();
+                txfEmail.clear();
             }
         }
 
-        txfEmail.clear();
+       
 
     }
 
