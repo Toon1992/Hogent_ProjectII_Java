@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.web.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -7,13 +9,24 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="1083.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="1461.0" type="HBox" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ListView fx:id="listViewMail" prefHeight="624.0" prefWidth="404.0" />
+      <ListView fx:id="listViewMail" prefHeight="668.0" prefWidth="466.0" />
       <VBox alignment="CENTER" prefHeight="624.0" prefWidth="961.0" HBox.hgrow="ALWAYS">
          <children>
-            <HTMLEditor fx:id="editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="593.0" prefWidth="809.0" />
-            <Button fx:id="btnWijzig" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnWijzigOnAction" prefHeight="59.0" prefWidth="274.0" text="Wijzigingen opslaan" VBox.vgrow="ALWAYS" />
+            <HTMLEditor fx:id="editor" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" prefHeight="666.0" prefWidth="817.0" />
+            <Button fx:id="btnWijzig" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#btnWijzigOnAction" prefHeight="70.0" prefWidth="299.0" text="Wijzigingen opslaan" VBox.vgrow="ALWAYS" />
+         </children>
+      </VBox>
+      <VBox alignment="CENTER" prefHeight="681.0" prefWidth="466.0">
+         <children>
+            <Label prefHeight="48.0" prefWidth="167.0" text="Verplichte woorden">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="(Muis bewegen over woorden geeft meer info)" />
+            <ListView fx:id="listviewVerplichteItems" prefHeight="628.0" prefWidth="252.0" />
          </children>
       </VBox>
    </children>
