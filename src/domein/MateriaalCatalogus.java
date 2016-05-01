@@ -69,7 +69,7 @@ public class MateriaalCatalogus {
         lokalen = new ArrayList<>();
         geefMaterialen().stream().forEach(materiaal -> {
             String lokaal = materiaal.getPlaats();
-            if (!lokalen.contains(lokaal)){
+            if (!lokalen.contains(lokaal) && !lokaal.trim().isEmpty()){
                 lokalen.add(lokaal);
             }
         });
@@ -159,7 +159,7 @@ public class MateriaalCatalogus {
         for (Materiaal m : materiaalDao.getMaterialen().stream().filter(mat -> !mat.equals(materiaal)).collect(Collectors.toList())) {
             if(m.getNaam().toLowerCase().equals(naam.toLowerCase()))
             {
-                throw new IllegalArgumentException("Er bestaat al een materiaal met deze naam!");
+                throw new NaamException("Er bestaat al een materiaal met deze naam!");
             }
         }
     }
@@ -183,7 +183,7 @@ public class MateriaalCatalogus {
                     || zoektermen.stream().anyMatch(zoekterm -> m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm)))
                     || zoektermen.contains(m.getPlaats().toLowerCase())
                     || zoektermen.contains(m.artikelNummerProperty().get())
-                    || zoektermen.contains(m.getFirma().getNaam().toLowerCase())) {
+                    || (m.getFirma() != null && zoektermen.contains(m.getFirma().getNaam().toLowerCase()))) {
                 return true;
             }
             return false;
@@ -248,6 +248,12 @@ public class MateriaalCatalogus {
                 break;
             case FIRMA:
                 filteredmaterialen.setPredicate(m -> {
+                    if(zoektermen.isEmpty()){
+                        return true;
+                    }
+                    if(m.getFirma() == null){
+                        return false;
+                    }
                     if (zoektermen.contains(m.getFirma().getNaam().toLowerCase()) || zoektermen.isEmpty()) {
                         return true;
                     }

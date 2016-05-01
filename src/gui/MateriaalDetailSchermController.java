@@ -13,12 +13,15 @@ import domein.*;
 import java.io.File;
 import java.util.*;
 
+import exceptions.EmailException;
+import exceptions.NaamException;
 import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -85,7 +88,7 @@ public class MateriaalDetailSchermController extends VBox {
     private FileChooser fileChooser;
     private Leergebied l = new Leergebied("l");
     Doelgroep d = new Doelgroep("d");
-    private String foto = "";
+    private String foto = "EMPTY";
 
     public MateriaalDetailSchermController(Materiaal materiaal) {
         LoaderSchermen.getInstance().setLocation("MateriaalDetailScherm.fxml", this);
@@ -134,89 +137,77 @@ public class MateriaalDetailSchermController extends VBox {
         foto = file.getAbsolutePath();
         imgViewMateriaal.setImage(SwingFXUtils.toFXImage(HulpMethode.convertUrlToImage(foto), null));
     }
-    
+
     @FXML
     private void verwijderFoto(ActionEvent event) {
         foto = "";
-        imgViewMateriaal.setImage(null);
+        imgViewMateriaal.setImage(new Image("images/add.png"));
     }
 
 
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
-        try {
+        if (invoerControle()) {
+            try {
+                mc.controleerUniekheidMateriaalnaam(materiaal, txfNaam.getText());
 
-            if (listDoelgroep.getItems().isEmpty()) {
-                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+                materiaal.setNaam(txfNaam.getText());
+                materiaal.setOmschrijving(txfOmschrijving.getText());
+                int aantal = Integer.parseInt(txfAantal.getText());
+                int aantalOnbeschikbaar = Integer.parseInt(txfOnbeschikbaar.getText());
+                materiaal.setAantal(aantal);
+                materiaal.setAantalOnbeschikbaar(aantalOnbeschikbaar);
+                materiaal.setPlaats(txfPlaats.getText());
+                materiaal.setDoelgroepen(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
+                materiaal.setLeergebieden(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
+                materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
+                String prijs = txfPrijs.getText().replace(",", ".");
+                materiaal.setPrijs(Double.valueOf(prijs));
+                materiaal.setIsReserveerbaar(radioStudent.isSelected());
+
+                //firma maken
+                if (comboFirma.getValue() != null && !comboFirma.getValue().equals("-- geen firma --")) {
+                    Firma f = firmaRepo.geefFirma(comboFirma.getValue()); // omdat als het al gewijzigd is dan kan je nooit opvragen
+                    f.setEmailContact(txfContactPersoon.getText());
+                    materiaal.setFirma(f);
+                    firmaRepo.wijzigFirma(f);
+                }
+                if (comboFirma.getValue().equals("-- geen firma --")) {
+                    materiaal.setFirma(null);
+                }
+                if (!foto.equals("EMPTY")) {
+                    materiaal.setFoto(foto);
+                }
+
+                mc.wijzigMateriaal(materiaal);
+                lblErrorMessage.setText("");
+                LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(), "Al uw wijzigingen zijn correct doorgevoerd", "Ok");
+                terugNaarOverzicht(null);
+            } catch (EmailException ex) {
+                txfContactPersoon.getStyleClass().add("errorField");
+                lblErrorMessage.setText(ex.getLocalizedMessage());
             }
-
-            if (listLeergbedied.getItems().isEmpty()) {
-                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
+            catch(NaamException e){
+                txfNaam.getStyleClass().add("errorField");
+                lblErrorMessage.setText(e.getLocalizedMessage());
+            }catch(Exception ex) {
+                lblErrorMessage.setText(ex.getMessage());
             }
-
-            if (txfAantal.getText() == null || txfAantal.getText().isEmpty()) {
-                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
-            }
-
-            if (txfNaam.getText() == null || txfNaam.getText().isEmpty()) {
-                throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
-            }
-
-            
-            //materiaal wijzigen
-         
-            mc.controleerUniekheidMateriaalnaam(materiaal, txfNaam.getText());
-            
-            materiaal.setNaam(txfNaam.getText());
-            materiaal.setOmschrijving(txfOmschrijving.getText());
-            materiaal.setAantal(Integer.parseInt(txfAantal.getText()));
-            materiaal.setAantalOnbeschikbaar(Integer.parseInt(txfOnbeschikbaar.getText()));
-            materiaal.setPlaats(txfPlaats.getText());
-
-            materiaal.setDoelgroepen(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
-
-
-            materiaal.setLeergebieden(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
-
-
-            materiaal.setArtikelNr(Integer.parseInt(txfArtikelNummer.getText()));
-            String prijs = txfPrijs.getText().replace(",", ".");
-            materiaal.setPrijs(Double.valueOf(prijs));
-
-            materiaal.setIsReserveerbaar(radioStudent.isSelected());
-
-            //firma maken
-            if (comboFirma.getValue() != null && !comboFirma.getValue().equals("-- geen firma --")) {
-                Firma f = firmaRepo.geefFirma(comboFirma.getValue()); // omdat als het al gewijzigd is dan kan je nooit opvragen
-                f.setEmailContact(txfContactPersoon.getText());
-                materiaal.setFirma(f);
-                firmaRepo.wijzigFirma(f);
-            }
-            if(comboFirma.getValue().equals("-- geen firma --")){
-                materiaal.setFirma(null);
-            }
-            
-                materiaal.setFoto(foto);
-            
-
-
-            mc.wijzigMateriaal(materiaal);
-            lblErrorMessage.setText("");
-            LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd : " + materiaal.getNaam(), "Al uw wijzigingen zijn correct doorgevoerd", "Ok");
-            terugNaarOverzicht(null);
-        } catch (MultiException ex) {
-            txfNaam.getStyleClass().add("errorField");
-            txfAantal.getStyleClass().add("errorField");
-            listDoelgroep.getStyleClass().add("errorField");
-            listLeergbedied.getStyleClass().add("errorField");
-            lblErrorMessage.setText(ex.getLocalizedMessage());
-
-        } catch (NumberFormatException ex) {
-            lblErrorMessage.setText("Er werd een foute waarde ingegeven.");
-        } catch (IllegalArgumentException ex) {
-            lblErrorMessage.setText(ex.getMessage());
         }
+    }
 
+    private <E> boolean invoerControle() {
+        Map<String, E> data = new HashMap<>();
+        data.put("naam", (E) txfNaam);
+        data.put("aantal", (E) txfAantal);
+        data.put("aantalonbeschikbaar", (E) txfOnbeschikbaar);
+        data.put("doelgroepen", (E) listDoelgroep);
+        data.put("leergebieden", (E) listLeergbedied);
+        data.put("prijs", (E) txfPrijs);
+        data.put("artikelnummer", (E) txfArtikelNummer);
+        data.put("contact", (E) txfContactPersoon);
+        data.put("label", (E) lblErrorMessage);
+        return MateriaalHulpController.controleerInvoer(data);
     }
 
     public void update(Materiaal materiaal) {
@@ -230,8 +221,7 @@ public class MateriaalDetailSchermController extends VBox {
             comboFirma.setPromptText(materiaal.getFirma().getNaam());
             comboFirma.setValue(materiaal.getFirma().getNaam());
             txfContactPersoon.setDisable(false);
-        }
-        else{
+        } else {
             comboFirma.setValue("-- geen firma --");
             txfContactPersoon.setText("");
             txfContactPersoon.setDisable(true);
@@ -239,7 +229,7 @@ public class MateriaalDetailSchermController extends VBox {
         listDoelgroep.setItems(mc.objectCollectionToObservableList(materiaal.getDoelgroepen()).sorted());
         listLeergbedied.setItems(mc.objectCollectionToObservableList(materiaal.getLeergebieden()).sorted());
 
-        
+
         txfNaam.setText(materiaal.getNaam());
         txfOmschrijving.setText(materiaal.getOmschrijving());
         txfOnbeschikbaar.setText(String.format("%d", materiaal.getAantalOnbeschikbaar()));
@@ -332,6 +322,6 @@ public class MateriaalDetailSchermController extends VBox {
 
 
     }
-    
+
 
 }

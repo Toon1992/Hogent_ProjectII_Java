@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package gui;
+
 import controller.*;
 import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
 
+import java.security.Key;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -35,8 +37,7 @@ import stateMachine.ReservatieStateEnum;
  *
  * @author ToonDT
  */
-public class ReservatieSchermController extends HBox
-{
+public class ReservatieSchermController extends HBox {
 
     @FXML
     private TextField txfZoek;
@@ -82,6 +83,12 @@ public class ReservatieSchermController extends HBox
     private Label lblMelding;
     @FXML
     private CheckBox checkOverruul;
+    @FXML
+    private Button btnNieuw;
+    @FXML
+    private Button btnWijzig;
+    @FXML
+    private Button btnVerwijderen;
 
     private ReservatieController rc;
     private MateriaalController mc;
@@ -90,25 +97,23 @@ public class ReservatieSchermController extends HBox
     private Reservatie currentReservatie;
     private Reservatie reservatie;
 
-    public ReservatieSchermController()
-    {
-        LoaderSchermen.getInstance().setLocation("ReservatieScherm.fxml",this);
+    public ReservatieSchermController() {
+        LoaderSchermen.getInstance().setLocation("ReservatieScherm.fxml", this);
         this.rc = ControllerSingelton.getReservatieControllerInstance();
         this.mc = ControllerSingelton.getMateriaalControllerInstance();
         this.gc = ControllerSingelton.getGebruikerControllerInstance();
-        
+
         invullenTable();
         vulComboBoxStatus();
         vulComboBoxMateriaal();
         vulComboBoxGebruiker();
-        
+
         rc.setFormatDatepicker(dtpOphaal);
         rc.setFormatDatepicker(dtpTerugbreng);
         rc.setFormatDatepicker(datePickerBegin);
         rc.setFormatDatepicker(datePickerEind);
-        
-        if(reservatie==null)
-        {
+
+        if (reservatie == null) {
             dtpOphaal.setDisable(true);
             dtpTerugbreng.setDisable(true);
             cmbNaam.setDisable(true);
@@ -118,24 +123,25 @@ public class ReservatieSchermController extends HBox
             txfAantalUitgeleend.setDisable(true);
             txfAantalTerug.setDisable(true);
             checkOverruul.setDisable(true);
+            btnWijzig.setDisable(true);
+            btnVerwijderen.setDisable(true);
         }
     }
-    
-    private void invullenTable()
-    {
+
+    private void invullenTable() {
         sortedReservatie = rc.getReservaties();
         reservatieTable.setItems(sortedReservatie.sorted(Comparator.comparing(Reservatie::getBeginDatum)));
         sortedReservatie.comparatorProperty().bind(reservatieTable.comparatorProperty());
-        
-        this.materiaalColumn.setCellValueFactory(reservatie->reservatie.getValue().naamMateriaalProperty());    
-        this.aantalColumn.setCellValueFactory(reservatie->reservatie.getValue().aantalProperty());
+
+        this.materiaalColumn.setCellValueFactory(reservatie -> reservatie.getValue().naamMateriaalProperty());
+        this.aantalColumn.setCellValueFactory(reservatie -> reservatie.getValue().aantalProperty());
         this.aantalBeschikbaarColumn.setCellValueFactory(reservatie -> reservatie.getValue().getMateriaal().aantalProperty());
-        this.BeginDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().beginDatumProperty());
-        this.EindDatumColumn.setCellValueFactory(reservatie->reservatie.getValue().eindDatumProperty());
-        this.naamColumn.setCellValueFactory(reservatie->reservatie.getValue().naamGebruikerProperty());
-        this.statusColumn.setCellValueFactory(reservatie->reservatie.getValue().statusProperty());
+        this.BeginDatumColumn.setCellValueFactory(reservatie -> reservatie.getValue().beginDatumProperty());
+        this.EindDatumColumn.setCellValueFactory(reservatie -> reservatie.getValue().eindDatumProperty());
+        this.naamColumn.setCellValueFactory(reservatie -> reservatie.getValue().naamGebruikerProperty());
+        this.statusColumn.setCellValueFactory(reservatie -> reservatie.getValue().statusProperty());
         this.typeColumn.setCellValueFactory(reservatie -> reservatie.getValue().getGebruiker().typeProperty());
-        
+
         reservatieTable.getSelectionModel().selectedItemProperty().addListener((ObservableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 if (oldValue == null || !oldValue.equals(newValue)) {
@@ -147,42 +153,41 @@ public class ReservatieSchermController extends HBox
 
         });
     }
-    private void vulComboBoxStatus()
-    {
+
+    private void vulComboBoxStatus() {
         cmbStatus.setItems(FXCollections.observableArrayList(ReservatieStateEnum.Gereserveerd, ReservatieStateEnum.Geblokkeerd, ReservatieStateEnum.Opgehaald, ReservatieStateEnum.Overruled, ReservatieStateEnum.TeLaat));
     }
 
-    private void vulComboBoxMateriaal()
-    {
+    private void vulComboBoxMateriaal() {
         cmbMateriaal.setItems(mc.getMateriaalFilterList());
     }
-    private void vulComboBoxGebruiker(){
-        cmbNaam.setItems(gc.getGebruikers());;
+
+    private void vulComboBoxGebruiker() {
+        cmbNaam.setItems(gc.getGebruikers());
+        ;
     }
+
     @FXML
-    private void zoeken(KeyEvent event)
-    {
+    private void zoeken(KeyEvent event) {
         String zoekterm = txfZoek.getText() + event.getCharacter().trim();
         rc.zoek(zoekterm);
     }
 
     @FXML
-    private void zoekOpBeginDatum(ActionEvent event)
-    {
+    private void zoekOpBeginDatum(ActionEvent event) {
         LocalDate dateBegin = datePickerBegin.getValue();
         LocalDate dateEind = datePickerEind.getValue();
         rc.zoekOpBeginDatum(dateBegin);
-        if(dateEind != null){
+        if (dateEind != null) {
             rc.zoekOpBeginDatum(dateEind);
         }
     }
 
     @FXML
-    private void zoekOpEindDatum(ActionEvent event)
-    {
+    private void zoekOpEindDatum(ActionEvent event) {
         LocalDate dateBegin = datePickerBegin.getValue();
         LocalDate dateEind = datePickerEind.getValue();
-        if(dateBegin != null){
+        if (dateBegin != null) {
             rc.zoekOpBeginDatum(dateBegin);
         }
         rc.zoekOpEindDatum(dateEind);
@@ -190,36 +195,35 @@ public class ReservatieSchermController extends HBox
 
     @FXML
     private void verwijderReservatie(ActionEvent event) {
-        if (reservatie == null)
-        {
+        if (reservatie == null) {
             LoaderSchermen.getInstance().popupMessageOneButton("Reservatie verwijderen", "Je moet eerst een reservatie selecteren", "Ok");
-        } else
-        {
+        } else {
             boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("Reservatie Verwijderen", "Ben je zeker dat je de reservatie wilt verwijderen", "Ja", "Nee");
-            if (isOk)
-            {
+            if (isOk) {
                 rc.verwijderReservatie(reservatie);
             }
         }
     }
-    public void setCurrenReservatie(Reservatie reservatie)
-    {
+
+    public void setCurrenReservatie(Reservatie reservatie) {
         this.reservatie = reservatie;
         dtpOphaal.setDisable(false);
-            dtpTerugbreng.setDisable(false);
-            cmbNaam.setDisable(false);
-            cmbMateriaal.setDisable(false);
-            cmbStatus.setDisable(false);
-            txfAantalGereserveerd.setDisable(false);
-            txfAantalUitgeleend.setDisable(false);
-            txfAantalTerug.setDisable(false);
-            checkOverruul.setDisable(false);
+        dtpTerugbreng.setDisable(false);
+        cmbNaam.setDisable(false);
+        cmbMateriaal.setDisable(false);
+        cmbStatus.setDisable(false);
+        txfAantalGereserveerd.setDisable(false);
+        txfAantalUitgeleend.setDisable(false);
+        txfAantalTerug.setDisable(false);
+        checkOverruul.setDisable(false);
+        btnWijzig.setDisable(false);
+        btnVerwijderen.setDisable(false);
+
         update();
     }
-    public void update()
-    {
-        if (reservatie == null)
-        {
+
+    public void update() {
+        if (reservatie == null) {
             return;
         }
 
@@ -229,10 +233,25 @@ public class ReservatieSchermController extends HBox
         cmbMateriaal.setValue(reservatie.getMateriaal());
         cmbNaam.setValue(reservatie.getGebruiker());
         txfAantalGereserveerd.setText(String.format("%d", reservatie.getAantalGereserveerd()));
-        txfAantalUitgeleend.setText(String.format("%d", reservatie.getAantalUitgeleend()));
-        txfAantalTerug.setText(String.format("%d", reservatie.getAantalTeruggebracht()));
-    }
 
+        if(reservatie.getAantalUitgeleend() == 0){
+            txfAantalTerug.setDisable(true);
+            txfAantalUitgeleend.setText("");
+            txfAantalTerug.setText("");
+        }
+        else{
+            txfAantalTerug.setDisable(false);
+            txfAantalUitgeleend.setText(String.format("%d", reservatie.getAantalUitgeleend()));
+            txfAantalTerug.setText(String.format("%d", reservatie.getAantalTeruggebracht()));
+        }
+
+    }
+    @FXML
+    private void updateAantalUitgeleend(KeyEvent event){
+        if(!(txfAantalUitgeleend.getText() + event.getCharacter().trim()).isEmpty()){
+            txfAantalTerug.setDisable(false);
+        }
+    }
     @FXML
     private <E> void wijzigReservatie(ActionEvent event) {
         Map<String, E> parameters = new HashMap<>();
@@ -240,7 +259,7 @@ public class ReservatieSchermController extends HBox
         parameters.put("materiaal", (E) cmbMateriaal.getSelectionModel().getSelectedItem());
         parameters.put("status", (E) cmbStatus.getSelectionModel().getSelectedItem());
         parameters.put("reservatie", (E) reservatie);
-        parameters.put("startDate", (E) dtpOphaal.getValue() == null ? null :(E)Date.from(dtpOphaal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
+        parameters.put("startDate", (E) dtpOphaal.getValue() == null ? null : (E) Date.from(dtpOphaal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parameters.put("endDate", (E) dtpTerugbreng.getValue() == null ? null : (E) Date.from(dtpTerugbreng.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant()));
         parameters.put("txfAantalGereserveerd", (E) txfAantalGereserveerd);
         parameters.put("txfAantalUit", (E) txfAantalUitgeleend);
@@ -251,7 +270,7 @@ public class ReservatieSchermController extends HBox
         parameters.put("reservatieController", (E) rc);
         parameters.put("operatieType", (E) ReservatieHulpController.OperatieType.WIJZIG);
         boolean succes = ReservatieHulpController.wijzigReservatie(parameters);
-        if(succes){
+        if (succes) {
             lblMelding.setText("");
             invullenTable();
         }
@@ -259,7 +278,7 @@ public class ReservatieSchermController extends HBox
 
     @FXML
     private void nieuweReservatie(ActionEvent event) {
-        BorderPane bp = (BorderPane)this.getParent();
+        BorderPane bp = (BorderPane) this.getParent();
         bp.setCenter(new ReservatieNieuwSchermController());
     }
 }

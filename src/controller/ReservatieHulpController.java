@@ -61,7 +61,6 @@ public class ReservatieHulpController {
             if(!txfAantalUit.getText().isEmpty()){
                 aantalUit = Integer.parseInt(txfAantalUit.getText());
             }
-
         }
         catch (NumberFormatException e){
             lblMelding.setText("Het aantal uitgeleende stuks moet een nummer zijn groter dan 0");
@@ -83,6 +82,12 @@ public class ReservatieHulpController {
                 lblMelding.setText(controle);
             }
             else{
+                if(txfAantalUit.getText().isEmpty()){
+                    aantalUit = -1;
+                }
+                if(txfAantalTerug.getText().isEmpty()){
+                    aantalTerug = -1;
+                }
                 return berekenBeschikbaarheden(startDate, endDate, materiaal, gebruiker, aantalGereserveerd,aantalUit, aantalTerug, status, flag);
             }
         }
@@ -120,7 +125,7 @@ public class ReservatieHulpController {
                         rc.overruleStudent(aantalOverruled, materiaal);
                     }
                     //Indien niet alle stuks van een materiaal teruggebracht worden moet het aantalonbeschikbaar van het materiaal aangepast worden.
-                    if(aantalUit > aantalTerug){
+                    if(aantalUit > aantalTerug && aantalTerug != -1){
                         updateAantalOnbeschikbaar(materiaal, aantalUit - aantalTerug);
                     }
                     return true;
@@ -144,7 +149,7 @@ public class ReservatieHulpController {
                         LoaderSchermen.getInstance().popupMessageOneButton("Reservatie succesvol gewijzigd",String.format("Er werden %d stuk(s) van materiaal %s gereserveerd door %s van %s tot %s",aantal, materiaal.getNaam(), gebruiker.getNaam(), df.format(startDate), df.format(endDate)), "Ok");
                     } break;
                 }
-                if(aantalUit > aantalTerug){
+                if(aantalUit > aantalTerug && aantalTerug != -1){
                     updateAantalOnbeschikbaar(materiaal, aantalUit - aantalTerug);
                 }
             }
@@ -156,6 +161,7 @@ public class ReservatieHulpController {
         if(mc == null){
             mc = new MateriaalController();
         }
+        verschil += materiaal.getAantalOnbeschikbaar();
         materiaal.setAantalOnbeschikbaar(verschil);
         mc.wijzigMateriaal(materiaal);
     }

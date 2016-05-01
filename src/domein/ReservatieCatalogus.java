@@ -297,8 +297,12 @@ public class ReservatieCatalogus
         Reservatie oldReservatie = reservatie;
         //De parameters setten
         reservatie.setAantalGereserveerd(aantal);
-        reservatie.setAantalUitgeleend(aantalUit);
-        reservatie.setAantalTeruggebracht(aantalTerug);
+        if(aantalUit != -1){
+            reservatie.setAantalUitgeleend(aantalUit);
+        }
+        if(aantalTerug != -1){
+            reservatie.setAantalTeruggebracht(aantalTerug);
+        }
         reservatie.setGebruiker(gebruiker);
         reservatie.setStartDatum(startDate);
         reservatie.setEindDatum(endDate);

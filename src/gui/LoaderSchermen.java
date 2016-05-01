@@ -6,10 +6,12 @@
 package gui;
 
 import java.io.IOException;
+import java.time.ZoneId;
 import java.util.Date;
 import java.util.Optional;
 
 import domein.Gebruiker;
+import domein.HulpMethode;
 import domein.Materiaal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -166,6 +168,9 @@ public class LoaderSchermen
         if (eindDatum != null && startDatum != null && eindDatum.before(startDatum))
         {
             return "Tergubrengdatum moet groter zijn dat ophaaldatum";
+        }
+        if(startDatum.before(HulpMethode.convertLocalDateToDate(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusDays(1)))){
+            return "Je kan niet in het verleden reserveren";
         }
         if (status == null)
         {

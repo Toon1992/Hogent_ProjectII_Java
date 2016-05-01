@@ -15,6 +15,7 @@ import domein.Firma;
 import domein.HulpMethode;
 import domein.Leergebied;
 import exceptions.AantalException;
+import exceptions.EmailException;
 import exceptions.MultiException;
 import exceptions.NaamException;
 import gui.LoaderSchermen;
@@ -149,52 +150,48 @@ public class MateriaalNieuwSchermController extends VBox {
 
         naam = txfNaam.getText();
         omschrijving = txfOmschrijving.getText();
-        plaats = txfPlaats.getText();
+        plaats = txfPlaats.getText().trim();
         firmaNaam = comboFirma.getValue();
         firmaContact = txfContactPersoon.getText();
         artikelNrString = txfArtikelNummer.getText();
         aantalString = txfAantal.getText();
         aantalOnbeschikbaarString = txfOnbeschikbaar.getText();
         prijsString = txfPrijs.getText();
-
         uitleenbaar = radioStudent.isSelected();
-        try {
-            Firma firma = null;
-            if(firmaNaam != null && !firmaNaam.equals("-- geen firma --")){
-                firma = mc.geefFirma(firmaNaam, firmaContact);
-            }
-            mc.controleerUniekheidMateriaalnaam(null, naam);
-            mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
-            txfNaam.getStyleClass().remove("errorField");
-            txfAantal.getStyleClass().remove("errorField");
-            listDoelgroep.getStyleClass().remove("errorField");
-            listLeergbedied.getStyleClass().remove("errorField");
-            lblError.setText("");
-            LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
-        }
-        catch (MultiException e){
-            txfNaam.getStyleClass().add("errorField");
-            txfAantal.getStyleClass().add("errorField");
-            listDoelgroep.getStyleClass().add("errorField");
-            listLeergbedied.getStyleClass().add("errorField");
-            lblError.setText(e.getLocalizedMessage());
-        }
-        catch (NaamException e){
-            txfNaam.getStyleClass().add("errorField");
-            txfAantal.getStyleClass().remove("errorField");
-        }
-        catch(AantalException e){
-            txfAantal.getStyleClass().add("errorField");
-            lblError.setText(e.getLocalizedMessage());
-            txfNaam.getStyleClass().remove("errorField");
-        }
-        catch (Exception e) {
-            txfNaam.getStyleClass().remove("errorField");
-            txfAantal.getStyleClass().remove("errorField");
-            lblError.setText(e.getLocalizedMessage());
-        }        
-    }
 
+        if(invoerControle()){
+            try {
+                Firma firma = null;
+                if(firmaNaam != null && !firmaNaam.equals("-- geen firma --")){
+                    firma = mc.geefFirma(firmaNaam, firmaContact);
+                }
+                mc.controleerUniekheidMateriaalnaam(null, naam);
+                mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+                lblError.setText("");
+                LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
+            }
+            catch(EmailException e){
+                lblError.setText(e.getLocalizedMessage());
+                txfContactPersoon.getStyleClass().add("errorField");
+            }
+            catch (Exception e) {
+                lblError.setText(e.getLocalizedMessage());
+            }
+        }
+    }
+    private <E> boolean invoerControle(){
+        Map<String, E> data = new HashMap<>();
+        data.put("naam", (E) txfNaam);
+        data.put("aantal", (E) txfAantal);
+        data.put("aantalonbeschikbaar", (E) txfOnbeschikbaar);
+        data.put("doelgroepen", (E) listDoelgroep);
+        data.put("leergebieden", (E) listLeergbedied);
+        data.put("prijs", (E) txfPrijs);
+        data.put("artikelnummer",(E) txfArtikelNummer);
+        data.put("contact", (E) txfContactPersoon);
+        data.put("label", (E) lblError);
+        return MateriaalHulpController.controleerInvoer(data);
+    }
     @FXML
     private void terugNaarOverzicht(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();

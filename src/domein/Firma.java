@@ -5,6 +5,8 @@
  */
 package domein;
 
+import exceptions.EmailException;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -69,7 +71,7 @@ public class Firma
     public void setEmailContact(String emailContact)
     {
         if(!emailContact.matches("^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\\.[a-zA-Z0-9-.]+$")){
-            throw new IllegalArgumentException("Email is niet correct.");
+            throw new EmailException("Email is niet correct.");
         }
         this.email = emailContact;
     }

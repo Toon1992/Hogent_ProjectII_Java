@@ -4,13 +4,17 @@ import gui.FirmaDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import org.controlsfx.control.CheckComboBox;
 import domein.MateriaalCatalogus.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -74,6 +78,107 @@ public class MateriaalHulpController {
             }
         });
         return uitvoer.toString();
+    }
+    public static <E> boolean controleerInvoer(Map<String, E> data){
+        int aantal = 0;
+        Map<String, E> fouteWaarden = new HashMap<>();
+        String naam = ((TextField)data.get("naam")).getText();
+        if(naam.trim().isEmpty()){
+            fouteWaarden.put("naam", data.get("naam"));
+        }
+        try{
+            aantal = Integer.parseInt(((TextField)data.get("aantal")).getText());
+            if(aantal < 0){
+                fouteWaarden.put("aantal", data.get("aantal"));
+            }
+        }
+        catch (Exception e){
+            fouteWaarden.put("aantal", data.get("aantal"));
+        }
+        try{
+            if(((ListView)data.get("leergebieden")).getItems().isEmpty()){
+                fouteWaarden.put("leergebieden", data.get("leergebieden"));
+            }
+        }
+        catch(Exception e){
+            fouteWaarden.put("leergebieden", data.get("leergebieden"));
+        }
+        try{
+            if(((ListView)data.get("doelgroepen")).getItems().isEmpty()){
+                fouteWaarden.put("doelgroepen", data.get("doelgroepen"));
+            }
+        }
+        catch(Exception e){
+            fouteWaarden.put("doelgroepen", data.get("doelgroepen"));
+        }
+        if(!((TextField)data.get("aantalonbeschikbaar")).getText().trim().isEmpty()){
+            try{
+                int aantalOnbeschikbaar = Integer.parseInt(((TextField)data.get("aantalonbeschikbaar")).getText());
+                if(aantalOnbeschikbaar < 0 || aantalOnbeschikbaar > aantal){
+                    fouteWaarden.put("aantalonbeschikbaar", data.get("aantalonbeschikbaar"));
+                }
+            }
+            catch (Exception e){
+                fouteWaarden.put("aantalonbeschikbaar", data.get("aantalonbeschikbaar"));
+            }
+        }
+        if(!((TextField)data.get("artikelnummer")).getText().trim().isEmpty()){
+            try{
+                int artikelnr = Integer.parseInt(((TextField)data.get("artikelnummer")).getText());
+                if(artikelnr < 0){
+                    fouteWaarden.put("artikelnummer", data.get("artikelnummer"));
+                }
+            }
+            catch (Exception e){
+                fouteWaarden.put("artikelnummer", data.get("artikelnummer"));
+            }
+        }
+        if(!((TextField)data.get("prijs")).getText().trim().isEmpty()){
+            try{
+                double prijs = Double.parseDouble(((TextField)data.get("prijs")).getText());
+                if(prijs < 0){
+                    fouteWaarden.put("prijs", data.get("prijs"));
+                }
+            }
+            catch (Exception e){
+                fouteWaarden.put("prijs", data.get("prijs"));
+            }
+        }
+
+        data.entrySet().stream().forEach(entry -> {
+            if(entry.getKey().equals("doelgroepen")){
+                ((ListView)data.get("doelgroepen")).getStyleClass().remove("errorField");
+            }
+            else if(entry.getKey().equals("leergebieden")){
+                ((ListView)data.get("leergebieden")).getStyleClass().remove("errorField");
+            }
+            else if(entry.getKey().equals("label")){
+                ((Label)data.get("label")).getStyleClass().remove("errorField");
+            }
+            else{
+                ((TextField)entry.getValue()).getStyleClass().remove("errorField");
+            }
+            ((Label)data.get("label")).setText("");
+        });
+        if(!fouteWaarden.entrySet().isEmpty()){
+            fouteWaarden.entrySet().stream().forEach(entry -> {
+                if(entry.getKey().equals("doelgroepen")){
+                    ((ListView)data.get("doelgroepen")).getStyleClass().add("errorField");
+                }
+                else if(entry.getKey().equals("leergebieden")){
+                    ((ListView)data.get("leergebieden")).getStyleClass().add("errorField");
+                }
+                else if(entry.getKey().equals("label")){
+                    ((Label)data.get("label")).getStyleClass().add("errorField");
+                }
+                else{
+                    System.out.println(entry.getValue());
+                    ((TextField)entry.getValue()).getStyleClass().add("errorField");
+                }
+            });
+            ((Label)data.get("label")).setText("Niet alle invoervelden zijn correct ingevuld");
+        }
+        return fouteWaarden.entrySet().isEmpty();
     }
     public static String[] inputDialogFirma(){
         return new FirmaDialog().getFirma();
