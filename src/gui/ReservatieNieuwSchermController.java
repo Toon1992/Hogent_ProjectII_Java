@@ -20,8 +20,6 @@ import java.util.Map;
 
 import domein.Gebruiker;
 import domein.Materiaal;
-import gui.LoaderSchermen;
-import gui.ReservatieSchermController;
 import javafx.collections.FXCollections;
 import javafx.event.*;
 import javafx.event.Event;

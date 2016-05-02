@@ -6,7 +6,6 @@
 package gui;
 
 import controller.MateriaalController;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 

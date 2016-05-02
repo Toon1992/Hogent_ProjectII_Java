@@ -5,7 +5,6 @@
  */
 package domein;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.nio.file.Files;

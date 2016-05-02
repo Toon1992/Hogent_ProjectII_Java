@@ -15,7 +15,6 @@ import java.util.*;
 
 import exceptions.EmailException;
 import exceptions.NaamException;
-import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -33,8 +32,6 @@ import org.controlsfx.control.CheckComboBox;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
 import domein.MateriaalCatalogus.*;
-import exceptions.MultiException;
-import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class

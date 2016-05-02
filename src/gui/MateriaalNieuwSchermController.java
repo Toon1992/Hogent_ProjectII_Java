@@ -14,16 +14,11 @@ import domein.Doelgroep;
 import domein.Firma;
 import domein.HulpMethode;
 import domein.Leergebied;
-import exceptions.AantalException;
 import exceptions.EmailException;
-import exceptions.MultiException;
-import exceptions.NaamException;
-import gui.LoaderSchermen;
 
 import java.io.File;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
