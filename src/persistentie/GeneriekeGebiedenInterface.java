@@ -5,7 +5,6 @@
  */
 package persistentie;
 
-import domein.Doelgroep;
 import javafx.collections.ObservableList;
 
 import java.util.List;

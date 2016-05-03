@@ -5,7 +5,6 @@
  */
 package domein;
 
-import java.sql.*;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.*;
@@ -18,7 +17,6 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import persistentie.ReservatieDao;
 import persistentie.ReservatieDaoJpa;
-import repository.GeneriekeRepository;
 import stateMachine.ReservatieStateEnum;
 
 /**

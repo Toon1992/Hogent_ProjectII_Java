@@ -5,7 +5,6 @@
  */
 package persistentie;
 
-import domein.Beheerder;
 import domein.Materiaal;
 import domein.Reservatie;
 

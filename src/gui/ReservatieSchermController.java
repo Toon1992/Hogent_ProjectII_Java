@@ -10,13 +10,9 @@ import domein.Gebruiker;
 import domein.Materiaal;
 import domein.Reservatie;
 
-import java.security.Key;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 

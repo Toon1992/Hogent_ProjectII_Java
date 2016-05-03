@@ -7,7 +7,6 @@ package controller;
 
 import domein.Beheerder;
 import java.util.List;
-import javax.persistence.TypedQuery;
 import persistentie.BeheerderDaoJpa;
 import repository.BeheerderRepository;
 

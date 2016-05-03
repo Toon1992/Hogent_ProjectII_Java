@@ -2,7 +2,6 @@ package persistentie;
 
 import domein.Beheerder;
 import java.util.List;
-import repository.BeheerderRepository;
 
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.NoResultException;

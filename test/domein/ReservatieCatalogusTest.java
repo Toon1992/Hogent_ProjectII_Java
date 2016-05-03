@@ -5,9 +5,6 @@ package domein;
  * and open the template in the editor.
  */
 
-import domein.HulpMethode;
-import domein.Materiaal;
-import domein.Reservatie;
 import org.junit.Assert;
 import org.junit.Before;
 
@@ -16,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import persistentie.ReservatieDao;
-import domein.ReservatieCatalogus;
 import stateMachine.ReservatieStateEnum;
 
 import java.time.LocalDate;
