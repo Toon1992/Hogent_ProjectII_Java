@@ -116,7 +116,6 @@ public class MateriaalDetailSchermController extends VBox {
         checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(200);
 
-
         List<String> firmas = firmaRepo.geefAlleFirmas();
         firmas.add("-- geen firma --");
         comboFirma.setItems(FXCollections.observableArrayList(firmas));
@@ -126,7 +125,6 @@ public class MateriaalDetailSchermController extends VBox {
         gp.add(checkLeergebieden, 3, 6);
         MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
         MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
-
 
     }
 
@@ -143,7 +141,6 @@ public class MateriaalDetailSchermController extends VBox {
         foto = "";
         imgViewMateriaal.setImage(new Image("images/add.png"));
     }
-
 
     @FXML
     private void materiaalWijzigen(ActionEvent event) {
@@ -186,11 +183,10 @@ public class MateriaalDetailSchermController extends VBox {
             } catch (EmailException ex) {
                 txfContactPersoon.getStyleClass().add("errorField");
                 lblErrorMessage.setText(ex.getLocalizedMessage());
-            }
-            catch(NaamException e){
+            } catch (NaamException e) {
                 txfNaam.getStyleClass().add("errorField");
                 lblErrorMessage.setText(e.getLocalizedMessage());
-            }catch(Exception ex) {
+            } catch (Exception ex) {
                 lblErrorMessage.setText(ex.getMessage());
             }
         }
@@ -213,8 +209,7 @@ public class MateriaalDetailSchermController extends VBox {
     public void update(Materiaal materiaal) {
         if (materiaal.getFoto() != null) {
             imgViewMateriaal.setImage(SwingFXUtils.toFXImage(materiaal.getFoto(), null));
-        }
-        else{
+        } else {
             imgViewMateriaal.setImage(new Image("images/add.png"));
         }
         txfAantal.setText(String.format("%d", materiaal.getAantal()));
@@ -232,7 +227,6 @@ public class MateriaalDetailSchermController extends VBox {
         listDoelgroep.setItems(mc.objectCollectionToObservableList(materiaal.getDoelgroepen()).sorted());
         listLeergbedied.setItems(mc.objectCollectionToObservableList(materiaal.getLeergebieden()).sorted());
 
-
         txfNaam.setText(materiaal.getNaam());
         txfOmschrijving.setText(materiaal.getOmschrijving());
         txfOnbeschikbaar.setText(String.format("%d", materiaal.getAantalOnbeschikbaar()));
@@ -247,8 +241,13 @@ public class MateriaalDetailSchermController extends VBox {
 
     @FXML
     private void terugNaarOverzicht(ActionEvent event) {
-        BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, (HBox) LoaderSchermen.getInstance().getNode());
+
+        boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Terug naar overzicht", "Wilt u terug gaan naar het overzicht?", "Ja", "Nee");
+        if (result) {
+            BorderPane bp = (BorderPane) this.getParent();
+            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, (HBox) LoaderSchermen.getInstance().getNode());
+        }
+
     }
 
     @FXML
@@ -301,7 +300,6 @@ public class MateriaalDetailSchermController extends VBox {
         }
     }
 
-
     @FXML
     private void btnNieuweFirma(ActionEvent event) {
         String[] firma = MateriaalHulpController.inputDialogFirma();
@@ -323,8 +321,6 @@ public class MateriaalDetailSchermController extends VBox {
             }
         }
 
-
     }
-
 
 }

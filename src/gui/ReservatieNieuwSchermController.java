@@ -75,14 +75,15 @@ public class ReservatieNieuwSchermController extends GridPane {
     private GebruikerController gc;
     private final DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 
-    public ReservatieNieuwSchermController(){
+    public ReservatieNieuwSchermController() {
         LoaderSchermen.getInstance().setLocation("ReservatieNieuwScherm.fxml", this);
         this.rc = ControllerSingelton.getReservatieControllerInstance();
         this.mc = ControllerSingelton.getMateriaalControllerInstance();
         this.gc = ControllerSingelton.getGebruikerControllerInstance();
         initializeData();
     }
-    private void initializeData(){
+
+    private void initializeData() {
         cmbStatus.setItems(FXCollections.observableArrayList(ReservatieStateEnum.Gereserveerd, ReservatieStateEnum.Geblokkeerd, ReservatieStateEnum.Opgehaald, ReservatieStateEnum.Overruled, ReservatieStateEnum.TeLaat));
         cmbMateriaal.setItems(mc.getMateriaalFilterList());
         cmbNaam.setItems(gc.getGebruikers());
@@ -95,7 +96,7 @@ public class ReservatieNieuwSchermController extends GridPane {
         dtpOphaal.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                if(dtpTerugbreng.getValue() == null ){
+                if (dtpTerugbreng.getValue() == null) {
                     LocalDate date = dtpOphaal.getValue();
                     Date maandag = HulpMethode.geefEersteDagVanDeWeek(date);
                     LocalDate vrijdag = maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4);
@@ -110,24 +111,30 @@ public class ReservatieNieuwSchermController extends GridPane {
 
     @FXML
     private void terug(ActionEvent event) {
-        BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController());
-    }
-    @FXML
-    private void changeMateriaal(ActionEvent event){
-        Materiaal materiaal = cmbMateriaal.getSelectionModel().getSelectedItem();
-        txfMaxAantal.setText(String.format("%d", materiaal.getAantal()-materiaal.getAantalOnbeschikbaar()));
-    }
-    @FXML
-    private void wijzigGebruiker(ActionEvent event){
-        Gebruiker gebruiker = cmbNaam.getSelectionModel().getSelectedItem();
-        if(gebruiker.getType().equals("LE")){
-            cmbStatus.getSelectionModel().select(ReservatieStateEnum.Geblokkeerd);
+        boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Terug naar overzicht", "Wilt u terug gaan naar het overzicht?", "Ja", "Nee");
+        if (result) {
+            BorderPane bp = (BorderPane) this.getParent();
+            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new ReservatieSchermController());
         }
-        else{
+
+    }
+
+    @FXML
+    private void changeMateriaal(ActionEvent event) {
+        Materiaal materiaal = cmbMateriaal.getSelectionModel().getSelectedItem();
+        txfMaxAantal.setText(String.format("%d", materiaal.getAantal() - materiaal.getAantalOnbeschikbaar()));
+    }
+
+    @FXML
+    private void wijzigGebruiker(ActionEvent event) {
+        Gebruiker gebruiker = cmbNaam.getSelectionModel().getSelectedItem();
+        if (gebruiker.getType().equals("LE")) {
+            cmbStatus.getSelectionModel().select(ReservatieStateEnum.Geblokkeerd);
+        } else {
             cmbStatus.getSelectionModel().select(ReservatieStateEnum.Gereserveerd);
         }
     }
+
     @FXML
     private <E> void saveReservatie(ActionEvent event) {
         boolean flag = true;
@@ -147,10 +154,10 @@ public class ReservatieNieuwSchermController extends GridPane {
         parameters.put("datePickerBegin", (E) dtpOphaal);
         parameters.put("datePickerEind", (E) dtpTerugbreng);
         parameters.put("comboStatus", (E) cmbStatus);
-        parameters.put("comboMateriaal",(E) cmbMateriaal);
+        parameters.put("comboMateriaal", (E) cmbMateriaal);
         parameters.put("comboGebruiker", (E) cmbNaam);
         boolean succes = ReservatieHulpController.wijzigReservatie(parameters);
-        if(succes){
+        if (succes) {
             lblOnvolledigheid.setText("");
         }
     }
