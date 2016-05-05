@@ -35,12 +35,12 @@
                   <Image url="@../images/catalogus.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnReserveren" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="4" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnReserveren" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarReservaties" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/reservaties.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+            <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                <image>
                   <Image url="@../images/NieuweGebruikers.jpg" />
                </image>

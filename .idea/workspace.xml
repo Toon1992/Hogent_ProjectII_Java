@@ -2,30 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$1.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$2.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/controller/MateriaalHulpController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderSchermController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderSchermController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/LoaderSchermen.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/LoaderSchermen.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/ReservatieSchermController.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" afterPath="$PROJECT_DIR$/out/production/groep06Java/main/StartUp.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/out/production/groep06Java/META-INF/persistence.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/BeheerderScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/MateriaalDetailScherm.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/MateriaalDetailScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" afterPath="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" afterPath="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/Firma.java" afterPath="$PROJECT_DIR$/src/domein/Firma.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/groep06Java/gui/LayoutFrame.fxml" afterPath="$PROJECT_DIR$/out/production/groep06Java/gui/LayoutFrame.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" afterPath="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" afterPath="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/LoaderSchermen.java" afterPath="$PROJECT_DIR$/src/gui/LoaderSchermen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" afterPath="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" afterPath="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieScherm.fxml" afterPath="$PROJECT_DIR$/src/gui/ReservatieScherm.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" afterPath="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/StartUp.java" afterPath="$PROJECT_DIR$/src/main/StartUp.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/styleSheet/style.css" afterPath="$PROJECT_DIR$/src/styleSheet/style.css" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -99,110 +83,87 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ReservatieHulpController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.740741">
-              <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoaderSchermen.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/LoaderSchermen.java">
+      <file leaf-file-name="MateriaalDetailSchermController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="141" column="18" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="18" />
+              <caret line="217" column="63" selection-start-line="217" selection-start-column="63" selection-end-line="217" selection-end-column="63" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservatieSchermController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/ReservatieSchermController.java">
+      <file leaf-file-name="MateriaalNieuwSchermController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="274" column="28" selection-start-line="274" selection-start-column="28" selection-end-line="274" selection-end-column="28" />
+              <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MateriaalController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MateriaalController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/controller/MateriaalController.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.2">
+              <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GebiedenRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/repository/GebiedenRepository.java">
+          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="89" column="16" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
+              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaalOverzichtSchermController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/MateriaalOverzichtSchermController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MateriaalCatalogus.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/domein/MateriaalCatalogus.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="185" column="91" selection-start-line="185" selection-start-column="91" selection-end-line="185" selection-end-column="91" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeheerderController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controller/BeheerderController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
               <folding>
-                <element signature="e#3275#3276#0" expanded="true" />
-                <element signature="e#3322#3323#0" expanded="true" />
+                <element signature="e#1109#1110#0" expanded="true" />
+                <element signature="e#1157#1158#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ReservatieCatalogus.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java">
+      <file leaf-file-name="LoginSchermController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MateriaalHulpController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/MateriaalHulpController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MateriaalDetailScherm.fxml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="4.303258">
-              <caret line="161" column="55" selection-start-line="161" selection-start-column="55" selection-end-line="161" selection-end-column="55" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MateriaalDetailSchermController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RegistreerSchermController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/RegistreerSchermController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ReservatieController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controller/ReservatieController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+              <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
               <folding>
-                <element signature="e#1505#1506#0" expanded="true" />
-                <element signature="e#1556#1557#0" expanded="true" />
+                <element signature="e#0#3078#0" expanded="false" />
+                <element signature="imports" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -234,7 +195,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/controller/MateriaalScherm1Controller.java" />
         <option value="$PROJECT_DIR$/src/controller/MateriaalSchermController.java" />
         <option value="$PROJECT_DIR$/src/domein/Materiaal.java" />
         <option value="$PROJECT_DIR$/src/controller/MateriaalToevoegenSchermController.java" />
@@ -253,7 +213,6 @@
         <option value="$PROJECT_DIR$/src/persistentie/GeneriekeGebiedenInterface.java" />
         <option value="$PROJECT_DIR$/src/repository/GebiedenRepository.java" />
         <option value="$PROJECT_DIR$/src/persistentie/GeneriekeGebieden.java" />
-        <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/src/gui/LayoutFrame.fxml" />
         <option value="$PROJECT_DIR$/src/gui/BeheerderSchermController.java" />
         <option value="$PROJECT_DIR$/src/repository/FirmaRepository.java" />
@@ -266,7 +225,6 @@
         <option value="$PROJECT_DIR$/src/controller/ReservatieNieuwSchermController.java" />
         <option value="$PROJECT_DIR$/src/repository/MateriaalCatalogus.java" />
         <option value="$PROJECT_DIR$/src/repository/ReservatieRepository.java" />
-        <option value="$PROJECT_DIR$/src/controller/MateriaalController.java" />
         <option value="$PROJECT_DIR$/src/repository/GeneriekeRepository.java" />
         <option value="$PROJECT_DIR$/src/domein/HulpMethode.java" />
         <option value="$PROJECT_DIR$/src/controller/ReservatieController.java" />
@@ -274,17 +232,20 @@
         <option value="$PROJECT_DIR$/src/controller/MailController.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
         <option value="$PROJECT_DIR$/src/main/StartUp.java" />
-        <option value="$PROJECT_DIR$/src/gui/LoaderSchermen.java" />
         <option value="$PROJECT_DIR$/src/styleSheet/style.css" />
         <option value="$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java" />
-        <option value="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" />
-        <option value="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" />
         <option value="$PROJECT_DIR$/src/domein/Firma.java" />
-        <option value="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" />
         <option value="$PROJECT_DIR$/src/domein/ReservatieCatalogus.java" />
-        <option value="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" />
-        <option value="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" />
         <option value="$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml" />
+        <option value="$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java" />
+        <option value="$PROJECT_DIR$/src/META-INF/persistence.xml" />
+        <option value="$PROJECT_DIR$/src/gui/ReservatieSchermController.java" />
+        <option value="$PROJECT_DIR$/src/controller/ReservatieHulpController.java" />
+        <option value="$PROJECT_DIR$/src/gui/LoaderSchermen.java" />
+        <option value="$PROJECT_DIR$/src/controller/MateriaalHulpController.java" />
+        <option value="$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java" />
+        <option value="$PROJECT_DIR$/src/domein/MateriaalCatalogus.java" />
+        <option value="$PROJECT_DIR$/src/controller/MateriaalController.java" />
       </list>
     </option>
   </component>
@@ -338,7 +299,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+      </pane>
       <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -603,10 +568,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-      </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -630,6 +591,7 @@
     <property name="js-jscs-nodeInterpreter" value="C:\Program Files\nodejs\node.exe" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="SQL Server (Microsoft)&#10;SQL Server (jTds)" />
     <property name="FullScreen" value="true" />
+    <property name="SearchEverywhereHistoryKey" value="zoeken&#9;PSI&#9;JAVA://gui.MateriaalOverzichtSchermController#zoeken" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -1279,7 +1241,12 @@
       <workItem from="1461849691874" duration="51000" />
       <workItem from="1461857694187" duration="2768000" />
       <workItem from="1462037982576" duration="3455000" />
-      <workItem from="1462093495495" duration="8002000" />
+      <workItem from="1462093495495" duration="11777000" />
+      <workItem from="1462174900223" duration="482000" />
+      <workItem from="1462176634851" duration="312000" />
+      <workItem from="1462182847487" duration="361000" />
+      <workItem from="1462264388338" duration="7000" />
+      <workItem from="1462437280736" duration="945000" />
     </task>
     <task id="LOCAL-00001" summary="merge">
       <created>1460114868716</created>
@@ -1359,7 +1326,19 @@
       <option name="project" value="LOCAL" />
       <updated>1461849734779</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="feedback">
+      <created>1462105899153</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1462105899153</updated>
+    </task>
+    <task id="LOCAL-00015" summary="feedback">
+      <created>1462114809029</created>
+      <option name="number" value="00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1462114809029</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1389,7 +1368,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193440000" />
+    <option name="totallyTimeSpent" value="199322000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1402,7 +1381,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.037204057" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1411,12 +1390,12 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32421342" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3269494" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.43728018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32590857" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.43728018" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919955" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24027778" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24027778" sideWeight="0.6703755" order="1" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17222223" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1435,7 +1414,7 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3255814" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32473624" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1460,49 +1439,44 @@
     <MESSAGE value="[Sprint2 #15] Vervallen reservaties verwijderen&#10;[Sprint2 #7] Statussen berekenen niet binnengebrachte materialen&#10;[Sprint2 #12] Uittrekken repositories" />
     <MESSAGE value="fix" />
     <MESSAGE value="feedback firma" />
-    <option name="LAST_COMMIT_MESSAGE" value="feedback firma" />
+    <MESSAGE value="feedback" />
+    <option name="LAST_COMMIT_MESSAGE" value="feedback" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/domein/MateriaalCatalogus.java</url>
-          <line>263</line>
+          <line>264</line>
           <properties />
           <option name="timeStamp" value="182" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java</url>
-          <line>127</line>
+          <line>142</line>
           <properties />
           <option name="timeStamp" value="185" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java</url>
-          <line>151</line>
-          <properties />
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java</url>
-          <line>121</line>
+          <line>136</line>
           <properties />
           <option name="timeStamp" value="188" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java</url>
-          <line>298</line>
+          <line>356</line>
           <properties />
           <option name="timeStamp" value="189" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/controller/MateriaalHulpController.java</url>
-          <line>135</line>
+          <url>file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java</url>
+          <line>206</line>
           <properties />
-          <option name="timeStamp" value="190" />
+          <option name="timeStamp" value="193" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="191" />
+      <option name="time" value="194" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1511,39 +1485,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwScherm.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MailController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="5" selection-start-line="24" selection-start-column="5" selection-end-line="24" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/TextInputControl.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/javafx-src.zip!/javafx/beans/property/BooleanPropertyBase.java" />
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/javafx-src.zip!/javafx/scene/control/CheckBox.java" />
@@ -1553,13 +1494,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="45" column="99" selection-start-line="45" selection-start-column="99" selection-end-line="45" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/GebruikerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1574,20 +1508,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="13" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/BeheerderController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/repository/BeheerderRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="24" selection-start-line="59" selection-start-column="24" selection-end-line="59" selection-end-column="24" />
         </state>
       </provider>
     </entry>
@@ -1655,25 +1575,25 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/LoginScherm.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.245283">
           <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwScherm.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwScherm.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
           <folding />
         </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controller/MailController.java">
@@ -1695,30 +1615,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="146" column="63" selection-start-line="146" selection-start-column="63" selection-end-line="146" selection-end-column="63" />
-          <folding>
-            <element signature="e#0#6194#0" expanded="false" />
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_60.jdk/Contents/Home/javafx-src.zip!/javafx/event/Event.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.75609756">
           <caret line="198" column="0" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalOverzichtSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="118" column="83" selection-start-line="118" selection-start-column="83" selection-end-line="118" selection-end-column="83" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1726,7 +1626,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-24.625">
           <caret line="246" column="38" selection-start-line="246" selection-start-column="38" selection-end-line="246" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1734,10 +1633,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.86283183">
           <caret line="1045" column="40" selection-start-line="1045" selection-start-column="40" selection-end-line="1045" selection-end-column="40" />
-          <folding>
-            <element signature="e#44635#44636#0" expanded="false" />
-            <element signature="e#44668#44669#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1745,17 +1640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36382115">
           <caret line="1773" column="0" selection-start-line="1773" selection-start-column="0" selection-end-line="1773" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="181" column="4" selection-start-line="181" selection-start-column="4" selection-end-line="193" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1763,7 +1647,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1772,8 +1655,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="30" selection-start-line="25" selection-start-column="30" selection-end-line="25" selection-end-column="30" />
           <folding>
-            <element signature="e#534#535#0" expanded="true" />
-            <element signature="e#581#582#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="false" />
+            <element signature="e#581#582#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1782,30 +1665,66 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="73" column="37" selection-start-line="73" selection-start-column="37" selection-end-line="73" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/ReservatieController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.21818182">
+          <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.2240932">
+          <caret line="161" column="55" selection-start-line="161" selection-start-column="55" selection-end-line="161" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/RegistreerSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.25454545">
+          <caret line="53" column="44" selection-start-line="53" selection-start-column="44" selection-end-line="53" selection-end-column="44" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domein/MateriaalCatalogus.java">
+    <entry file="file://$PROJECT_DIR$/src/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="185" column="106" selection-start-line="185" selection-start-column="106" selection-end-line="185" selection-end-column="106" />
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/ReservatieNieuwSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="154" column="0" selection-start-line="154" selection-start-column="0" selection-end-line="155" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#6491#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/StartUp.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0995575">
+        <state vertical-scroll-proportion="0.0">
           <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/RegistreerSchermController.java">
+    <entry file="file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="13" selection-start-line="24" selection-start-column="13" selection-end-line="24" selection-end-column="13" />
+          <caret line="193" column="21" selection-start-line="193" selection-start-column="21" selection-end-line="193" selection-end-column="21" />
           <folding />
         </state>
       </provider>
@@ -1813,34 +1732,7 @@
     <entry file="file://$PROJECT_DIR$/src/gui/LoaderSchermen.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="141" column="18" selection-start-line="141" selection-start-column="18" selection-end-line="141" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ReservatieHulpController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.740741">
-          <caret line="90" column="0" selection-start-line="90" selection-start-column="0" selection-end-line="90" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/ReservatieController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="53" column="38" selection-start-line="53" selection-start-column="38" selection-end-line="53" selection-end-column="38" />
-          <folding>
-            <element signature="e#1505#1506#0" expanded="true" />
-            <element signature="e#1556#1557#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+          <caret line="139" column="5" selection-start-line="139" selection-start-column="5" selection-end-line="139" selection-end-column="5" />
           <folding />
         </state>
       </provider>
@@ -1848,26 +1740,15 @@
     <entry file="file://$PROJECT_DIR$/src/gui/ReservatieSchermController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="274" column="28" selection-start-line="274" selection-start-column="28" selection-end-line="274" selection-end-column="28" />
+          <caret line="272" column="58" selection-start-line="272" selection-start-column="58" selection-end-line="272" selection-end-column="58" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalController.java">
+    <entry file="file://$PROJECT_DIR$/src/domein/ReservatieCatalogus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="16" selection-start-line="89" selection-start-column="16" selection-end-line="89" selection-end-column="16" />
-          <folding>
-            <element signature="e#3275#3276#0" expanded="true" />
-            <element signature="e#3322#3323#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="194" column="0" selection-start-line="194" selection-start-column="0" selection-end-line="194" selection-end-column="0" />
+          <caret line="356" column="0" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1875,18 +1756,104 @@
     <entry file="file://$PROJECT_DIR$/src/controller/MateriaalHulpController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <caret line="138" column="57" selection-start-line="138" selection-start-column="57" selection-end-line="138" selection-end-column="57" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailScherm.fxml">
+    <entry file="file://$PROJECT_DIR$/src/gui/StartScherm.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/BeheerderController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="4.303258">
-          <caret line="161" column="55" selection-start-line="161" selection-start-column="55" selection-end-line="161" selection-end-column="55" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding>
+            <element signature="e#1109#1110#0" expanded="true" />
+            <element signature="e#1157#1158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/LoginSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="71" column="17" selection-start-line="71" selection-start-column="17" selection-end-line="71" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#3078#0" expanded="false" />
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domein/MateriaalCatalogus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="185" column="91" selection-start-line="185" selection-start-column="91" selection-end-line="185" selection-end-column="91" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/GebruikerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36363637">
+          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/repository/BeheerderRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.018181818">
+          <caret line="87" column="39" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalOverzichtSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="65" column="37" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/repository/GebiedenRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalDetailSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="217" column="63" selection-start-line="217" selection-start-column="63" selection-end-line="217" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/MateriaalNieuwSchermController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="89" column="28" selection-start-line="89" selection-start-column="28" selection-end-line="89" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controller/MateriaalController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2">
+          <caret line="25" column="40" selection-start-line="25" selection-start-column="40" selection-end-line="25" selection-end-column="40" />
           <folding />
         </state>
       </provider>
