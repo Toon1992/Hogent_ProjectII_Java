@@ -5,11 +5,6 @@ package domein;
  * and open the template in the editor.
  */
 
-import domein.Firma;
-import domein.Materiaal;
-import domein.MateriaalCatalogus;
-import domein.MateriaalCatalogus.MateriaalFilter;
-import domein.MateriaalData;
 import org.junit.Assert;
 import org.junit.Before;
 
@@ -18,9 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import java.util.*;
-import static org.mockito.Matchers.anyString;
-import org.mockito.invocation.InvocationOnMock;
-import org.mockito.stubbing.Answer;
 import persistentie.FirmaDao;
 import persistentie.MateriaalDao;
 

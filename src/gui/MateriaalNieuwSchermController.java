@@ -14,16 +14,11 @@ import domein.Doelgroep;
 import domein.Firma;
 import domein.HulpMethode;
 import domein.Leergebied;
-import exceptions.AantalException;
 import exceptions.EmailException;
-import exceptions.MultiException;
-import exceptions.NaamException;
-import gui.LoaderSchermen;
 
 import java.io.File;
 
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -159,27 +154,26 @@ public class MateriaalNieuwSchermController extends VBox {
         prijsString = txfPrijs.getText();
         uitleenbaar = radioStudent.isSelected();
 
-        if(invoerControle()){
+        if (invoerControle()) {
             try {
                 Firma firma = null;
-                if(firmaNaam != null && !firmaNaam.equals("-- geen firma --")){
+                if (firmaNaam != null && !firmaNaam.equals("-- geen firma --")) {
                     firma = mc.geefFirma(firmaNaam, firmaContact);
                 }
                 mc.controleerUniekheidMateriaalnaam(null, naam);
-                mc.voegMateriaalToe(foto, naam, omschrijving, plaats,firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
+                mc.voegMateriaalToe(foto, naam, omschrijving, plaats, firma, artikelNrString, aantalString, aantalOnbeschikbaarString, prijsString, uitleenbaar, doelgroepen, leergebieden);
                 lblError.setText("");
-                LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: "+naam+" werd succesvol opgeslaan", "Ok");
-            }
-            catch(EmailException e){
+                LoaderSchermen.getInstance().popupMessageOneButton("Materiaal gewijzigd opgeslagen", "Het materiaal: " + naam + " werd succesvol opgeslaan", "Ok");
+            } catch (EmailException e) {
                 lblError.setText(e.getLocalizedMessage());
                 txfContactPersoon.getStyleClass().add("errorField");
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 lblError.setText(e.getLocalizedMessage());
             }
         }
     }
-    private <E> boolean invoerControle(){
+
+    private <E> boolean invoerControle() {
         Map<String, E> data = new HashMap<>();
         data.put("naam", (E) txfNaam);
         data.put("aantal", (E) txfAantal);
@@ -187,15 +181,20 @@ public class MateriaalNieuwSchermController extends VBox {
         data.put("doelgroepen", (E) listDoelgroep);
         data.put("leergebieden", (E) listLeergbedied);
         data.put("prijs", (E) txfPrijs);
-        data.put("artikelnummer",(E) txfArtikelNummer);
+        data.put("artikelnummer", (E) txfArtikelNummer);
         data.put("contact", (E) txfContactPersoon);
         data.put("label", (E) lblError);
         return MateriaalHulpController.controleerInvoer(data);
     }
+
     @FXML
     private void terugNaarOverzicht(ActionEvent event) {
-        BorderPane bp = (BorderPane) this.getParent();
-        LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController());
+        boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Terug naar overzicht", "Wilt u terug gaan naar het overzicht?", "Ja", "Nee");
+        if (result) {
+            BorderPane bp = (BorderPane) this.getParent();
+            LoaderSchermen.getInstance().setMateriaalOvezichtScherm(bp, new MateriaalOverzichtSchermController());
+        }
+
     }
 
     @FXML
@@ -233,18 +232,18 @@ public class MateriaalNieuwSchermController extends VBox {
             gebiedenRepo.voegNieuwGebiedToe(leergebied, l);
         }
     }
+
     @FXML
     private void comboFirmaOnClick(ActionEvent event) {
-        if(comboFirma.getSelectionModel().getSelectedItem()!=null){
+        if (comboFirma.getSelectionModel().getSelectedItem() != null) {
 
-            String naam=comboFirma.getSelectionModel().getSelectedItem();
-            if(naam.equals("-- geen firma --")){
+            String naam = comboFirma.getSelectionModel().getSelectedItem();
+            if (naam.equals("-- geen firma --")) {
                 txfContactPersoon.setDisable(true);
                 txfContactPersoon.setText("");
-            }
-            else{
+            } else {
                 txfContactPersoon.setDisable(false);
-                Firma f=firmaRepo.geefFirma(naam);
+                Firma f = firmaRepo.geefFirma(naam);
                 comboFirma.setPromptText(comboFirma.getSelectionModel().getSelectedItem());
                 comboFirma.setValue(comboFirma.getSelectionModel().getSelectedItem());
                 txfContactPersoon.setText(f.getEmailContact());
@@ -252,16 +251,17 @@ public class MateriaalNieuwSchermController extends VBox {
 
         }
     }
+
     @FXML
     private void btnNieuweFirma(ActionEvent event) {
         String[] firma = MateriaalHulpController.inputDialogFirma();
-        if(firma != null){
+        if (firma != null) {
             String firmaNaam = firma[0];
             String contactFirma = firma[1];
             if (comboFirma.getItems().contains(firmaNaam)) {
                 lblError.setText("Deze firma bestaat al!");
             } else {
-                firmaRepo.voegFirmaToe(firmaNaam,contactFirma);
+                firmaRepo.voegFirmaToe(firmaNaam, contactFirma);
                 List<String> firmas = new ArrayList<>();
                 firmas.addAll(comboFirma.getItems());
                 firmas.add(firmaNaam);

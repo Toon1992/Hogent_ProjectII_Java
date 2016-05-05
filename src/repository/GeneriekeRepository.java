@@ -1,7 +1,5 @@
 package repository;
 
-import domein.Materiaal;
-import javafx.collections.transformation.FilteredList;
 import persistentie.GenericDaoJpa;
 
 /**

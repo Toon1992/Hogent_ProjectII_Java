@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 import domein.Doelgroep;
 import domein.Leergebied;
 import domein.Materiaal;
-import gui.LoaderSchermen;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.SortedList;

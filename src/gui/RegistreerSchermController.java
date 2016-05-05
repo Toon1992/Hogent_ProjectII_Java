@@ -7,8 +7,6 @@ package gui;
 
 import controller.ControllerSingelton;
 import controller.GebruikerController;
-import controller.GebruikerController;
-import gui.LoaderSchermen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

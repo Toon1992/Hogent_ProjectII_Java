@@ -7,7 +7,6 @@ package repository;
 
 import domein.Beheerder;
 import domein.Gebruiker;
-import domein.Materiaal;
 import exceptions.EmailException;
 import exceptions.WachtwoordException;
 

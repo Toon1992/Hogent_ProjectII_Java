@@ -2,7 +2,6 @@ package persistentie;
 
 import domein.Materiaal;
 
-import javax.persistence.EntityExistsException;
 import java.util.List;
 
 /**

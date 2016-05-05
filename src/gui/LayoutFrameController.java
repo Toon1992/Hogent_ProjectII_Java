@@ -5,12 +5,6 @@
  */
 package gui;
 
-import controller.GebruikerController;
-import controller.MateriaalController;
-import controller.ReservatieController;
-import gui.BeheerderSchermController;
-import gui.LoaderSchermen;
-import gui.ReservatieSchermController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;

@@ -6,7 +6,6 @@
 package domein;
 
 import javax.persistence.Entity;
-import javax.persistence.Table;
 
 /**
  *

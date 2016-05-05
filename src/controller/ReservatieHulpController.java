@@ -6,7 +6,6 @@ import domein.Materiaal;
 import domein.Reservatie;
 import gui.LoaderSchermen;
 import javafx.scene.control.*;
-import org.controlsfx.control.CheckComboBox;
 import stateMachine.ReservatieStateEnum;
 
 import java.text.DateFormat;

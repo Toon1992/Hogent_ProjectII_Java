@@ -6,13 +6,8 @@
 package gui;
 
 import java.io.IOException;
-import java.time.ZoneId;
-import java.util.Date;
 import java.util.Optional;
 
-import domein.Gebruiker;
-import domein.HulpMethode;
-import domein.Materiaal;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -23,7 +18,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import stateMachine.ReservatieStateEnum;
 
 /**
  *
