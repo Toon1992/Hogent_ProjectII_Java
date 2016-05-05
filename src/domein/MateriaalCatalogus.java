@@ -179,8 +179,9 @@ public class MateriaalCatalogus {
                     || m.getOmschrijving().toLowerCase().contains(zoektermen.iterator().next())
                     || zoektermen.stream().anyMatch(zoekterm -> m.getLeergebieden().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm)))
                     || zoektermen.stream().anyMatch(zoekterm -> m.getDoelgroepen().stream().anyMatch(l -> l.getNaam().toLowerCase().contains(zoekterm)))
-                    || zoektermen.contains(m.getPlaats().toLowerCase())
-                    || zoektermen.contains(m.artikelNummerProperty().get())
+                    || zoektermen.stream().anyMatch(z -> m.getPlaats().toLowerCase().contains(z))
+                    || zoektermen.stream().anyMatch(z -> m.artikelNummerProperty().toString().contains(z))
+                    || zoektermen.stream().anyMatch(z -> String.format("%.2f",m.getPrijs()).contains(z))
                     || (m.getFirma() != null && zoektermen.contains(m.getFirma().getNaam().toLowerCase()))) {
                 return true;
             }
