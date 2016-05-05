@@ -107,7 +107,10 @@ public class MateriaalOverzichtSchermController extends HBox {
                     setGraphic(null);
                 }
             }
+          
         });
+        materiaalTable.setPlaceholder(new Label("Er zijn geen zoekresultaten gevonden"));
+        
         txfZoek.setPromptText("Zoeken");
         checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(d))));
         checkDoelgroepen.setMaxWidth(150);
@@ -134,6 +137,8 @@ public class MateriaalOverzichtSchermController extends HBox {
             }
 
         });
+        
+        
     }
     private void addListeners(){
         checkcomboboxListener(checkDoelgroepen, "doelgroepen");
