@@ -32,4 +32,15 @@ public class GebiedenRepository<T> {
     public ObservableList<String> geefAlleGebieden(T naam){
         return filter.geefAlleGebieden(naam);
     }
+    
+    public void deleteGebied(T gebied)
+    {
+        filter.deleteGebied(gebied);
+    }
+    
+    public T geefGebied(T gebied, String naam)
+    {
+        return (T) filter.geeftGebied(gebied, naam);
+    }
+    
 }

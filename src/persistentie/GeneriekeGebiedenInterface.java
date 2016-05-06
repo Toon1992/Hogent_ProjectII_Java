@@ -18,4 +18,8 @@ public interface GeneriekeGebiedenInterface<T>{
     public Set<T> geefGebiedenVoorNamen(List<String> namen,T filter);
     public <T>void voegGebiedToe(String naam,T filter);
     public ObservableList<String> geefAlleGebieden(T filter);
+    public void deleteGebied(T filter);
+    public T geeftGebied(T filter, String naam);
+            
+            
 }

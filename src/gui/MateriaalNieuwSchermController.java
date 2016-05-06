@@ -6,6 +6,7 @@
 package gui;
 
 import controller.ControllerSingelton;
+import controller.GebiedenController;
 import controller.MateriaalController;
 import controller.MateriaalHulpController;
 import java.util.*;
@@ -33,6 +34,7 @@ import org.controlsfx.control.CheckComboBox;
 import repository.FirmaRepository;
 import repository.GebiedenRepository;
 import domein.MateriaalCatalogus.*;
+import javafx.scene.Scene;
 
 /**
  * FXML Controller class
@@ -43,8 +45,6 @@ public class MateriaalNieuwSchermController extends VBox {
 
     @FXML
     private TextArea txfOmschrijving;
-    @FXML
-    private TextField txfFirma;
     @FXML
     private TextField txfArtikelNummer;
     @FXML
@@ -61,8 +61,6 @@ public class MateriaalNieuwSchermController extends VBox {
     private TextField txfPlaats;
     @FXML
     private TextField txfPrijs;
-    @FXML
-    private Button btnOpslaan;
     @FXML
     private ListView<String> listDoelgroep;
     @FXML
@@ -90,7 +88,7 @@ public class MateriaalNieuwSchermController extends VBox {
     private String foto = "";
     private CheckComboBox<String> checkDoelgroepen;
     private CheckComboBox<String> checkLeergebieden;
-    private GebiedenRepository gebiedenRepo;
+    private GebiedenController gebiedenController;
     private FirmaRepository firmaRepo;
     private GridPane gp;
     private Leergebied l = new Leergebied("l");
@@ -102,8 +100,9 @@ public class MateriaalNieuwSchermController extends VBox {
         initializeItems();
     }
 
-    private void initializeItems() {
-        gebiedenRepo = new GebiedenRepository();
+    private void initializeItems()
+    {
+        gebiedenController = ControllerSingelton.getGebiedenControllerInstance();
         firmaRepo = new FirmaRepository();
 
         fileChooser = new FileChooser();
@@ -116,10 +115,10 @@ public class MateriaalNieuwSchermController extends VBox {
         radioStudent.setSelected(true);
         radioLector.setToggleGroup(group);
 
-        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(d)));
+        checkDoelgroepen = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenController.geefAlleGebieden(d)));
         checkDoelgroepen.setMaxWidth(200);
 
-        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenRepo.geefAlleGebieden(l)));
+        checkLeergebieden = new CheckComboBox<>(FXCollections.observableArrayList(gebiedenController.geefAlleGebieden(l)));
         checkLeergebieden.setMaxWidth(200);
 
         List<String> firmas = firmaRepo.geefAlleFirmas();
@@ -140,8 +139,8 @@ public class MateriaalNieuwSchermController extends VBox {
     private void voegToe(ActionEvent event) {
         String naam = "", omschrijving = "", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
         boolean uitleenbaar;
-        Set<Doelgroep> doelgroepen = new HashSet<>(gebiedenRepo.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
-        Set<Leergebied> leergebieden = new HashSet<>(gebiedenRepo.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
+        Set<Doelgroep> doelgroepen = new HashSet<>(gebiedenController.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
+        Set<Leergebied> leergebieden = new HashSet<>(gebiedenController.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
 
         naam = txfNaam.getText();
         omschrijving = txfOmschrijving.getText();
@@ -215,7 +214,7 @@ public class MateriaalNieuwSchermController extends VBox {
             checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
             gp.add(checkDoelgroepen, 1, 5);
-            gebiedenRepo.voegNieuwGebiedToe(doelgroep, d);
+            gebiedenController.voegNieuwGebiedToe(doelgroep, d);
         }
     }
 
@@ -229,7 +228,7 @@ public class MateriaalNieuwSchermController extends VBox {
             checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
             gp.add(checkLeergebieden, 3, 5);
-            gebiedenRepo.voegNieuwGebiedToe(leergebied, l);
+            gebiedenController.voegNieuwGebiedToe(leergebied, l);
         }
     }
 
@@ -273,5 +272,31 @@ public class MateriaalNieuwSchermController extends VBox {
             }
         }
 
+    }
+
+    @FXML
+    private void deleteDoelGroep(ActionEvent event)
+    {
+        openDeleteScherm(gebiedenController.geefAlleGebieden(d), "Doelgroepen",'d');
+    }
+
+    @FXML
+    private void deleteLeergebied(ActionEvent event)
+    {
+         openDeleteScherm(gebiedenController.geefAlleGebieden(l), "Leergebieden",'l');
+    }
+
+    @FXML
+    private void deleteFirma(ActionEvent event)
+    {
+         openDeleteScherm(firmaRepo.geefAlleFirmas(), "Firma's",'f');
+    }
+    
+    private void openDeleteScherm(List<String> items, String lblName, char code)
+    {
+        Stage newStage = new Stage();
+        newStage.setTitle("Verwijderen");
+        newStage.setScene(new Scene(new DeleteSchermController(items,lblName,code)));
+        newStage.show();
     }
 }

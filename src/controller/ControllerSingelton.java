@@ -16,9 +16,18 @@ public class ControllerSingelton
     private static MateriaalController mtc;
     private static ReservatieController rsc;
     private static MailController mlc;
+    private static GebiedenController gebiedenc;
     
     private ControllerSingelton()
     {}
+    
+    public static GebiedenController getGebiedenControllerInstance()
+    {
+         if(gebiedenc == null)
+            gebiedenc = new GebiedenController();
+        
+        return gebiedenc;
+    }
     
     public static BeheerderController getBeheerderControllerInstance()
     {
