@@ -11,7 +11,11 @@ import controller.GebiedenController;
 import domein.Doelgroep;
 import domein.Firma;
 import domein.Leergebied;
+
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -134,14 +138,10 @@ public class DeleteSchermController extends GridPane
                 }
                 try
                 {
-                    gebiedencontroller.deleteGebied(doelgroep);
-                    items.remove(doelgroep.getNaam());
-                    vulListView();
-                    mc.vulDoelgroepenLijstIn();
-                    break;
+                    updateListAndComboBox("d");
                 } catch (Exception ex)
                 {
-                    LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Dit Doelgroep kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
+                    LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Deze doelgroep kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
                 }
                 break;
             case 'l':
@@ -152,13 +152,10 @@ public class DeleteSchermController extends GridPane
                 }
                 try
                 {
-                    gebiedencontroller.deleteGebied(leergebied);
-                    items.remove(leergebied.getNaam());
-                    vulListView();
-                    mc.vulLeergebiedenLijstIn();
-                    break;
+                    updateListAndComboBox("l");
                 } catch (Exception ex)
                 {
+                    ex.printStackTrace();
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Dit leergebied kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
                 }
                 break;
@@ -170,15 +167,51 @@ public class DeleteSchermController extends GridPane
                 }
                 try
                 {
-                    firmaController.deleteFirma(firma);
-                    items.remove(firma.getNaam());
-                    vulListView();
-                    mc.vulFirmaLijstenIn();
+                    updateListAndComboBox("f");
                 } catch (Exception e)
                 {
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Deze firma kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
                 }
                 break;
+        }
+    }
+    private void updateListAndComboBox(String type){
+        switch (type){
+            case "d": {
+                gebiedencontroller.deleteGebied(doelgroep);
+                items.remove(doelgroep.getNaam());
+                vulListView();
+
+                List<String> checkedGebieden = mc.getCheckedGebieden("d");
+                int index = checkedGebieden.indexOf(doelgroep.getNaam());
+                if(index > -1){
+                    checkedGebieden.remove(index);
+                }
+                mc.vulDoelgroepenLijstIn();
+                mc.checkItems(checkedGebieden, "d");
+                break;
+            }
+            case "l":{
+                gebiedencontroller.deleteGebied(leergebied);
+                items.remove(leergebied.getNaam());
+                vulListView();
+
+                List<String> checkedGebieden = mc.getCheckedGebieden("l");
+                int index = checkedGebieden.indexOf(leergebied.getNaam());
+                if(index > -1){
+                    checkedGebieden.remove(index);
+                }
+                mc.vulLeergebiedenLijstIn();
+                mc.checkItems(checkedGebieden, "l");
+                break;
+            }
+            case "f":{
+                firmaController.deleteFirma(firma);
+                items.remove(firma.getNaam());
+                vulListView();
+                mc.vulFirmaLijstenIn();
+                break;
+            }
         }
     }
 

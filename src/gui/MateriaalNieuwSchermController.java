@@ -129,7 +129,7 @@ public class MateriaalNieuwSchermController extends VBox
     }
 
     protected void vulGridPaneOp()
-    {    
+    {
         MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
         MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);
     }
@@ -344,8 +344,30 @@ public class MateriaalNieuwSchermController extends VBox
     private void deleteLeergebied(ActionEvent event)
     {
         openDeleteScherm(gebiedenController.geefAlleGebieden(new Leergebied("l")), "Leergebieden", 'l');
-    }
 
+    }
+    public List<String> getCheckedGebieden(String type){
+        List<String> list = new ArrayList<>();
+        switch (type){
+            case "d": checkDoelgroepen.getCheckModel().getCheckedItems().forEach(item -> list.add(item));break;
+            case "l": checkLeergebieden.getCheckModel().getCheckedItems().forEach(item -> list.add(item));break;
+        }
+        return list;
+    }
+    public void checkItems(List<String> items, String type){
+        switch (type){
+            case "d": {
+                items.forEach(i -> checkDoelgroepen.getCheckModel().check(i));
+                listDoelgroep.setItems(FXCollections.observableArrayList(items));
+                break;
+            }
+            case "l": {
+                items.forEach(i -> checkLeergebieden.getCheckModel().check(i));
+                listLeergbedied.setItems(FXCollections.observableArrayList(items));
+                break;
+            }
+        }
+    }
     @FXML
     private void deleteFirma(ActionEvent event)
     {
