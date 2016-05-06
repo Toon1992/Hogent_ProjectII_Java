@@ -16,6 +16,7 @@ import domein.Doelgroep;
 import domein.Firma;
 import domein.HulpMethode;
 import domein.Leergebied;
+import domein.Materiaal;
 import exceptions.EmailException;
 
 import java.io.File;
@@ -37,6 +38,7 @@ import repository.GebiedenRepository;
 import domein.MateriaalCatalogus.*;
 import java.util.stream.Collectors;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 
 /**
  * FXML Controller class
@@ -97,11 +99,22 @@ public class MateriaalNieuwSchermController extends VBox
     private Leergebied l = new Leergebied("l");
     private Doelgroep d = new Doelgroep("d");
     private List<String> firmas;
+    private Materiaal currentMateriaal;
 
-    public MateriaalNieuwSchermController()
+    public MateriaalNieuwSchermController(Materiaal currentMateriaal)
     {
         LoaderSchermen.getInstance().setLocation("MateriaalNieuwScherm.fxml", this);
         this.mc = ControllerSingelton.getMateriaalControllerInstance();
+        this.currentMateriaal = currentMateriaal;
+
+        if (currentMateriaal == null)
+        {
+            btnToevoegen.setText("Voeg toe");
+        } else
+        {
+            btnToevoegen.setText("Wijzigen");
+        }
+
         initializeItems();
     }
 
@@ -136,15 +149,12 @@ public class MateriaalNieuwSchermController extends VBox
 
     protected void vullijsten()
     {
-        gp = (GridPane) this.getChildren().get(0);    
-          
+        gp = (GridPane) this.getChildren().get(0);
+
         vulDoelgroepenLijstIn();
         vulLeergebiedenLijstIn();
         vulFirmaLijstenIn();
 
-               
-        
-        
         vulGridPaneOp();
 
     }
@@ -164,9 +174,52 @@ public class MateriaalNieuwSchermController extends VBox
         radioStudent.setSelected(true);
         radioLector.setToggleGroup(group);
 
+        if (currentMateriaal != null)
+        {
+            update();
+        }
+
         vullijsten();
 
         txfContactPersoon.setDisable(true);
+
+    }
+
+    private void update()
+    {
+        if (currentMateriaal.getFoto() != null)
+        {
+            imgView.setImage(SwingFXUtils.toFXImage(currentMateriaal.getFoto(), null));
+        } else
+        {
+            imgView.setImage(new Image("images/add.png"));
+        }
+        txfAantal.setText(String.format("%d", currentMateriaal.getAantal()));
+        txfArtikelNummer.setText(String.format("%d", currentMateriaal.getArtikelNr()));
+        if (currentMateriaal.getFirma() != null)
+        {
+            txfContactPersoon.setText(currentMateriaal.getFirma().getEmailContact());
+            comboFirma.setPromptText(currentMateriaal.getFirma().getNaam());
+            comboFirma.setValue(currentMateriaal.getFirma().getNaam());
+            txfContactPersoon.setDisable(false);
+        } else
+        {
+            comboFirma.setValue("-- geen firma --");
+            txfContactPersoon.setText("");
+            txfContactPersoon.setDisable(true);
+        }
+        listDoelgroep.setItems(mc.objectCollectionToObservableList(currentMateriaal.getDoelgroepen()).sorted());
+        listLeergbedied.setItems(mc.objectCollectionToObservableList(currentMateriaal.getLeergebieden()).sorted());
+
+        txfNaam.setText(currentMateriaal.getNaam());
+        txfOmschrijving.setText(currentMateriaal.getOmschrijving());
+        txfOnbeschikbaar.setText(String.format("%d", currentMateriaal.getAantalOnbeschikbaar()));
+        txfPlaats.setText(currentMateriaal.getPlaats());
+        txfPrijs.setText(String.format("%.2f", currentMateriaal.getPrijs()));
+        radioStudent.setToggleGroup(group);
+        radioStudent.setSelected(currentMateriaal.getIsReserveerbaar());
+        radioLector.setSelected(!currentMateriaal.getIsReserveerbaar());
+        radioLector.setToggleGroup(group);
 
     }
 
@@ -346,28 +399,41 @@ public class MateriaalNieuwSchermController extends VBox
         openDeleteScherm(gebiedenController.geefAlleGebieden(new Leergebied("l")), "Leergebieden", 'l');
 
     }
-    public List<String> getCheckedGebieden(String type){
+
+    public List<String> getCheckedGebieden(String type)
+    {
         List<String> list = new ArrayList<>();
-        switch (type){
-            case "d": checkDoelgroepen.getCheckModel().getCheckedItems().forEach(item -> list.add(item));break;
-            case "l": checkLeergebieden.getCheckModel().getCheckedItems().forEach(item -> list.add(item));break;
+        switch (type)
+        {
+            case "d":
+                checkDoelgroepen.getCheckModel().getCheckedItems().forEach(item -> list.add(item));
+                break;
+            case "l":
+                checkLeergebieden.getCheckModel().getCheckedItems().forEach(item -> list.add(item));
+                break;
         }
         return list;
     }
-    public void checkItems(List<String> items, String type){
-        switch (type){
-            case "d": {
+
+    public void checkItems(List<String> items, String type)
+    {
+        switch (type)
+        {
+            case "d":
+            {
                 items.forEach(i -> checkDoelgroepen.getCheckModel().check(i));
                 listDoelgroep.setItems(FXCollections.observableArrayList(items));
                 break;
             }
-            case "l": {
+            case "l":
+            {
                 items.forEach(i -> checkLeergebieden.getCheckModel().check(i));
                 listLeergbedied.setItems(FXCollections.observableArrayList(items));
                 break;
             }
         }
     }
+
     @FXML
     private void deleteFirma(ActionEvent event)
     {
@@ -380,5 +446,12 @@ public class MateriaalNieuwSchermController extends VBox
         newStage.setTitle("Verwijderen");
         newStage.setScene(new Scene(new DeleteSchermController(this, items, lblName, code)));
         newStage.show();
+    }
+
+    @FXML
+    private void verwijderImage(ActionEvent event)
+    {
+        foto = "";
+        imgView.setImage(new Image("images/add.png"));
     }
 }

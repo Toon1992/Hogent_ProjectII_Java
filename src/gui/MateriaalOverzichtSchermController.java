@@ -154,7 +154,7 @@ public class MateriaalOverzichtSchermController extends HBox {
         else{
             BorderPane bp = (BorderPane) this.getParent();
             LoaderSchermen.getInstance().setNode(this);
-            bp.setCenter(new MateriaalDetailSchermController(materiaal));
+            bp.setCenter(new MateriaalNieuwSchermController(materiaal));
         }
 
     }
@@ -162,7 +162,7 @@ public class MateriaalOverzichtSchermController extends HBox {
     @FXML
     private void nieuwMateriaal(ActionEvent event) {
         BorderPane bp = (BorderPane) this.getParent();
-        bp.setCenter(new MateriaalNieuwSchermController());
+        bp.setCenter(new MateriaalNieuwSchermController(null));
     }
 
     @FXML
