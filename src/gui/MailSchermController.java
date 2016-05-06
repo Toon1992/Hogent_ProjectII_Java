@@ -60,7 +60,7 @@ public class MailSchermController extends HBox {
             namen = mails.stream().map(b -> b.getOnderwerp()).collect(Collectors.toList());
         }
         
-        Tooltip t=new Tooltip("Deze items moeten verplicht aanwezig zijn in de mail. De naam duidt op waarmee het wordt ingevuld. Deze moeten ook in het vet geschreven worden!");
+        Tooltip t=new Tooltip("Deze items moeten verplicht aanwezig zijn in de mail. De naam duidt op waarmee het wordt ingevuld.");
         listviewVerplichteItems.setTooltip(t);
         editor.setDisable(true);
         btnWijzig.setDisable(true);
@@ -93,7 +93,7 @@ public class MailSchermController extends HBox {
     private void btnWijzigOnAction(ActionEvent event) {
 
         if (mailVoldoetAanVerplichteItems()) {
-            boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Wijzig mail", "Bent u zeker dat u de wijzigingen wilt doorvoeren voor volgende mail:" + currentMail.getOnderwerp(), "Ja", "Nee");
+            boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Wijzig mail", "Bent u zeker dat u de wijzigingen wilt doorvoeren voor volgende mail: " + currentMail.getOnderwerp(), "Ja", "Nee");
             if (result) {
                 MailTemplate mail = mails.stream().filter(m -> m.getOnderwerp().equals(currentMail.getOnderwerp())).findFirst().get();
                 mail.setBody(editor.getHtmlText());
@@ -104,7 +104,7 @@ public class MailSchermController extends HBox {
 
         }
         else{
-            LoaderSchermen.getInstance().popupMessageOneButton("Fout in mail", "Er ontbreekt een verplicht item in de gewijzigde mail: " + woordVerplicht +"!" +" Let op: maak dat alles in het vet staat!", "Ok");
+            LoaderSchermen.getInstance().popupMessageOneButton("Fout in mail", "Er ontbreekt een verplicht item in de gewijzigde mail: " + woordVerplicht +" !", "Ok");
         }
 
     }
