@@ -60,8 +60,6 @@ public class BeheerderRepository
     {
         //AANPASSEN
         //AANPASSEN
-        //AANPASSEN
-        //AANPASSEN
         if(email.isEmpty() && wachtwoord.isEmpty()){
             beheerder = new Beheerder("sdf",true);
         }
