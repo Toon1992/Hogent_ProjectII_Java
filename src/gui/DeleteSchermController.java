@@ -6,6 +6,7 @@
 package gui;
 
 import controller.ControllerSingelton;
+import controller.FirmaController;
 import controller.GebiedenController;
 import domein.Doelgroep;
 import domein.Firma;
@@ -44,22 +45,24 @@ public class DeleteSchermController extends GridPane
     private Firma firma;
     private char deleteCode;
     private GebiedenController gebiedencontroller;
-    private FirmaRepository firmaRepo;
+    private FirmaController firmaController;
+    private MateriaalNieuwSchermController mc;
 
-    public DeleteSchermController(List<String> items, String lblName, char deleteCode)
+    public DeleteSchermController(MateriaalNieuwSchermController mc, List<String> items, String lblName, char deleteCode)
     {
         LoaderSchermen.getInstance().setLocation("DeleteScherm.fxml", this);
         this.items = items;
         this.deleteCode = deleteCode;
         lblHeader.setText(lblName);
         gebiedencontroller = ControllerSingelton.getGebiedenControllerInstance();
-        firmaRepo = new FirmaRepository();
+        firmaController = ControllerSingelton.getFirmaControllerInstance();
+        this.mc = mc;
 
-        vulListView(items);
+        vulListView();
         selectListViewListener();
     }
 
-    private void vulListView(List<String> items)
+    private void vulListView()
     {
         lstvDeleteItems.setItems(FXCollections.observableArrayList(items));
     }
@@ -68,17 +71,16 @@ public class DeleteSchermController extends GridPane
     {
         switch (deleteCode)
         {
-            case 'd':               
+            case 'd':
                 doelgroep = (Doelgroep) gebiedencontroller.geefGebied(new Doelgroep("d"), value);
                 break;
             case 'l':
-                ObservableList<Leergebied> leergebieden = gebiedencontroller.geefAlleGebieden(new Leergebied("l"));
-                leergebied = leergebieden.stream().filter(d -> d.getNaam().equals(value)).findFirst().get();
+                leergebied = (Leergebied) gebiedencontroller.geefGebied(new Leergebied("l"), value);
                 break;
             case 'f':
-                List<String> firmas = firmaRepo.geefAlleFirmas();
-                String firmaNaam = firmas.stream().filter(f -> f.equals(value)).findFirst().get();
-                firma = firmaRepo.geefFirma(firmaNaam);
+                //List<String> firmas = firmaController.geefAlleFirmas();
+                String firmaNaam = items.stream().filter(f -> f.equals(value)).findFirst().get();
+                firma = firmaController.geefFirma(firmaNaam);
                 break;
         }
     }
@@ -112,10 +114,11 @@ public class DeleteSchermController extends GridPane
     private void verwijderen(ActionEvent event)
     {
         boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("warning", "Bent u zeker?", "ja", "nee");
-        
-        if(isOk)
+
+        if (isOk)
         {
             verwijder();
+            mc.vulGridPaneOp();
         }
     }
 
@@ -129,7 +132,17 @@ public class DeleteSchermController extends GridPane
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Er is geen doelgroep geselecteerd", "ok");
                     break;
                 }
-                gebiedencontroller.deleteGebied(doelgroep);
+                try
+                {
+                    gebiedencontroller.deleteGebied(doelgroep);
+                    items.remove(doelgroep.getNaam());
+                    vulListView();
+                    mc.vulDoelgroepenLijstIn();
+                    break;
+                } catch (Exception ex)
+                {
+                    LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Dit Doelgroep kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
+                }
                 break;
             case 'l':
                 if (leergebied == null)
@@ -137,13 +150,33 @@ public class DeleteSchermController extends GridPane
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Er is geen leergebied geselecteerd", "ok");
                     break;
                 }
-                gebiedencontroller.deleteGebied(leergebied);
+                try
+                {
+                    gebiedencontroller.deleteGebied(leergebied);
+                    items.remove(leergebied.getNaam());
+                    vulListView();
+                    mc.vulLeergebiedenLijstIn();
+                    break;
+                } catch (Exception ex)
+                {
+                    LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Dit leergebied kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
+                }
                 break;
             case 'f':
                 if (firma == null)
                 {
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Er is geen firma geselecteerd", "ok");
                     break;
+                }
+                try
+                {
+                    firmaController.deleteFirma(firma);
+                    items.remove(firma.getNaam());
+                    vulListView();
+                    mc.vulFirmaLijstenIn();
+                } catch (Exception e)
+                {
+                    LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Deze firma kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
                 }
                 break;
         }

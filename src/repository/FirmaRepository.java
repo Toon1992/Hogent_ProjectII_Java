@@ -40,4 +40,11 @@ public class FirmaRepository {
         firmaDao.update(f);
         firmaDao.commitTransaction();
     }
+    
+    public void deleteFirma(Firma firma)
+    {
+        firmaDao.startTransaction();
+        firmaDao.delete(firma);
+        firmaDao.commitTransaction();
+    }
 }
