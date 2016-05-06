@@ -17,9 +17,18 @@ public class ControllerSingelton
     private static ReservatieController rsc;
     private static MailController mlc;
     private static GebiedenController gebiedenc;
+    private static FirmaController fmc;
     
     private ControllerSingelton()
     {}
+    
+    public static FirmaController getFirmaControllerInstance()
+    {
+        if(fmc == null)
+            fmc = new FirmaController();
+        
+        return fmc; 
+    }
     
     public static GebiedenController getGebiedenControllerInstance()
     {

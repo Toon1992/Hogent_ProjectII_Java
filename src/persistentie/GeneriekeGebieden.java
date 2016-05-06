@@ -127,11 +127,15 @@ public class GeneriekeGebieden<T> implements GeneriekeGebiedenInterface<T>
         if (filter.getClass() == Doelgroep.class)
         {
             GenericDaoJpa<Doelgroep> jpa = new GenericDaoJpa<>(Doelgroep.class);
+            jpa.startTransaction();
             jpa.delete((Doelgroep) filter);
+            jpa.commitTransaction();
         } else if (filter.getClass() == Leergebied.class)
         {
             GenericDaoJpa<Leergebied> jpa = new GenericDaoJpa<>(Leergebied.class);
+            jpa.startTransaction();
             jpa.delete((Leergebied) filter);
+            jpa.commitTransaction();
         }
 
     }
@@ -139,17 +143,25 @@ public class GeneriekeGebieden<T> implements GeneriekeGebiedenInterface<T>
     @Override
     public T geeftGebied(T filter, String naam)
     {
-        
+
         if (filter.getClass() == Doelgroep.class)
         {
             List<Doelgroep> lijst = new ArrayList<>();
             GenericDaoJpa<Doelgroep> jpa = new GenericDaoJpa<>(Doelgroep.class);
             lijst = (List<Doelgroep>) jpa.findAll();
-            
-            return (T) lijst.stream().filter(p->p.getNaam().equals(naam)).findFirst().get();
-            
+
+            return (T) lijst.stream().filter(p -> p.getNaam().equals(naam)).findFirst().get();
         }
-        
+
+        if (filter.getClass() == Leergebied.class)
+        {
+            List<Leergebied> lijst = new ArrayList<>();
+            GenericDaoJpa<Leergebied> jpa = new GenericDaoJpa<>(Leergebied.class);
+            lijst = (List<Leergebied>) jpa.findAll();
+
+            return (T) lijst.stream().filter(p -> p.getNaam().equals(naam)).findFirst().get();
+        }
+
         return null;
     }
 
