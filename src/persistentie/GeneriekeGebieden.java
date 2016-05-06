@@ -10,6 +10,7 @@ import domein.Leergebied;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.lang.reflect.Constructor;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +34,7 @@ public class GeneriekeGebieden<T> implements GeneriekeGebiedenInterface<T>
     {
         Set<T> filters = new HashSet<>();
         List<T> lijst = new ArrayList<>();
+
         try
         {
             if (filter.getClass() == Doelgroep.class)
