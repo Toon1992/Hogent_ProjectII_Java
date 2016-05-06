@@ -298,8 +298,14 @@ public class MateriaalNieuwSchermController extends VBox
     {
         Stage stage = (Stage) this.getScene().getWindow();
         File file = fileChooser.showOpenDialog(stage);
-        foto = file.getAbsolutePath();
-        imgView.setImage(SwingFXUtils.toFXImage(HulpMethode.convertUrlToImage(foto), null));
+        if (file != null)
+        {
+            foto = file.getAbsolutePath();
+            if (foto != null && foto.isEmpty())
+            {
+                imgView.setImage(SwingFXUtils.toFXImage(HulpMethode.convertUrlToImage(foto), null));
+            }
+        }
     }
 
     @FXML
