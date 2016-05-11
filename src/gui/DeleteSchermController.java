@@ -117,13 +117,15 @@ public class DeleteSchermController extends GridPane
     @FXML
     private void verwijderen(ActionEvent event)
     {
-        boolean isOk = LoaderSchermen.getInstance().popupMessageTwoButtons("warning", "Bent u zeker?", "ja", "nee");
 
-        if (isOk)
-        {
-            verwijder();
-            mc.vulGridPaneOp();
-        }
+        verwijder();
+        mc.vulGridPaneOp();
+
+    }
+
+    private boolean isBevestigd()
+    {
+        return LoaderSchermen.getInstance().popupMessageTwoButtons("warning", "Bent u zeker?", "ja", "nee");
     }
 
     private void verwijder()
@@ -138,7 +140,10 @@ public class DeleteSchermController extends GridPane
                 }
                 try
                 {
-                    updateListAndComboBox("d");
+                    if (isBevestigd())
+                    {
+                        updateListAndComboBox("d");
+                    }
                 } catch (Exception ex)
                 {
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Deze doelgroep kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
@@ -152,7 +157,10 @@ public class DeleteSchermController extends GridPane
                 }
                 try
                 {
-                    updateListAndComboBox("l");
+                    if (isBevestigd())
+                    {
+                        updateListAndComboBox("l");
+                    }
                 } catch (Exception ex)
                 {
                     ex.printStackTrace();
@@ -167,7 +175,10 @@ public class DeleteSchermController extends GridPane
                 }
                 try
                 {
-                    updateListAndComboBox("f");
+                    if (isBevestigd())
+                    {
+                        updateListAndComboBox("f");
+                    }
                 } catch (Exception e)
                 {
                     LoaderSchermen.getInstance().popupMessageOneButton("Warning", "Deze firma kan niet verwijderd worden omdat het nog bij een materiaal hoort", "Ok");
@@ -175,37 +186,45 @@ public class DeleteSchermController extends GridPane
                 break;
         }
     }
-    private void updateListAndComboBox(String type){
-        switch (type){
-            case "d": {
+
+    private void updateListAndComboBox(String type)
+    {
+        switch (type)
+        {
+            case "d":
+            {
                 gebiedencontroller.deleteGebied(doelgroep);
                 items.remove(doelgroep.getNaam());
                 vulListView();
 
                 List<String> checkedGebieden = mc.getCheckedGebieden("d");
                 int index = checkedGebieden.indexOf(doelgroep.getNaam());
-                if(index > -1){
+                if (index > -1)
+                {
                     checkedGebieden.remove(index);
                 }
                 mc.vulDoelgroepenLijstIn();
                 mc.checkItems(checkedGebieden, "d");
                 break;
             }
-            case "l":{
+            case "l":
+            {
                 gebiedencontroller.deleteGebied(leergebied);
                 items.remove(leergebied.getNaam());
                 vulListView();
 
                 List<String> checkedGebieden = mc.getCheckedGebieden("l");
                 int index = checkedGebieden.indexOf(leergebied.getNaam());
-                if(index > -1){
+                if (index > -1)
+                {
                     checkedGebieden.remove(index);
                 }
                 mc.vulLeergebiedenLijstIn();
                 mc.checkItems(checkedGebieden, "l");
                 break;
             }
-            case "f":{
+            case "f":
+            {
                 firmaController.deleteFirma(firma);
                 items.remove(firma.getNaam());
                 vulListView();
