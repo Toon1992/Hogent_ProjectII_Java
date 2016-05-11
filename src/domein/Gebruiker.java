@@ -36,8 +36,7 @@ public class Gebruiker
     @Column(name = "Type")
     private String type;
 
-    @OneToOne
-    private Verlanglijst verlanglijst;
+
     
     @Column(name ="Faculteit")
     private String Faculteit;

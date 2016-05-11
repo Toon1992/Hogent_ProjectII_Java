@@ -70,6 +70,9 @@ public class Reservatie
     @JoinColumn(name = "GebruikerEmail")
     private Gebruiker gebruiker;
 
+    @Column(name = "Lector_Email")
+    private String lectorEmail;
+
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "MateriaalId")
     private Materiaal materiaal;
@@ -86,9 +89,7 @@ public class Reservatie
 
     protected Reservatie()
     {
-    }
-
-    ;
+    };
    
    public Reservatie(int aantalGereserveerd, int aantalUitgeleend, int aantalTeruggebracht, Date startDatum, Date eindDatum, Date aanmaakDatum, Set<Dag> dagen, ReservatieStateEnum reservatieEnum, Gebruiker gebruiker, Materiaal materiaal)
     {
@@ -281,6 +282,12 @@ public class Reservatie
     public void setMateriaal(Materiaal materiaal)
     {
         this.materiaal = materiaal;
+    }
+    public void setLectorEmail(String email){
+        this.lectorEmail = email;
+    }
+    public String getLectorEmail(){
+        return lectorEmail;
     }
 
     public Date getAanmaakDatum()

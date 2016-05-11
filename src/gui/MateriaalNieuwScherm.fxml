@@ -154,7 +154,7 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" prefHeight="33.0" prefWidth="160.0" text="Foto toevoegen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button fx:id="btnAddImage" mnemonicParsing="false" onAction="#voegFotoToe" prefHeight="33.0" prefWidth="165.0" text="Foto toevoegen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -195,7 +195,7 @@
                   <Insets left="175.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" onAction="#verwijderImage" prefWidth="160.0" text="Foto verwijderen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#verwijderImage" prefWidth="165.0" text="Foto verwijderen" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets top="85.0" />
                </GridPane.margin>

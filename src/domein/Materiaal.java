@@ -59,21 +59,24 @@ public class Materiaal
     private Firma firma;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "MateriaalDoelgroep", joinColumns = @JoinColumn(name = "ArtikelNr", referencedColumnName = "materiaalId"),
+    @JoinTable(name = "MateriaalDoelgroep", joinColumns = @JoinColumn(name = "MateriaalId", referencedColumnName = "materiaalId"),
             inverseJoinColumns = @JoinColumn(name = "DoelgroepId", referencedColumnName = "doelgroepId"))
     Set<Doelgroep> doelgroepen;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "MateriaalLeergebied", joinColumns = @JoinColumn(name = "ArtikelNr", referencedColumnName = "materiaalId"),
+    @JoinTable(name = "MateriaalLeergebied", joinColumns = @JoinColumn(name = "MateriaalId", referencedColumnName = "materiaalId"),
             inverseJoinColumns = @JoinColumn(name = "LeergebiedId", referencedColumnName = "leergebiedId"))
     Set<Leergebied> leergebieden;
 
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @JoinTable(name = "MaterialenVerlanglijst", joinColumns = @JoinColumn(name = "ArtikelNr", referencedColumnName = "materiaalId"),
+            inverseJoinColumns = @JoinColumn(name = "VerlanglijstId", referencedColumnName = "id"))
+    Set<Verlanglijst> verlanglijsten;
     @Lob
     @Column(name = "Foto")
     private byte[] foto;
-    
-    @ManyToOne
-    private Verlanglijst verlanglijst;
+
+
 
     protected Materiaal()
     {

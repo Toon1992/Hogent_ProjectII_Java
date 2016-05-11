@@ -30,7 +30,7 @@
          </rowConstraints>
          <children>
             <Button mnemonicParsing="false" onAction="#terug" prefWidth="125.0" text="Terug" GridPane.halignment="CENTER" />
-            <Button mnemonicParsing="false" onAction="#verwijderen" prefWidth="125.0" text="Verwijderen" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+            <Button mnemonicParsing="false" onAction="#verwijderen" prefWidth="135.0" text="Verwijderen" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </children>
