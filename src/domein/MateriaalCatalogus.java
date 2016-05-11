@@ -134,8 +134,9 @@ public class MateriaalCatalogus {
             {
                 throw new MultiException("De verplichte vakken mogen niet leeg zijn!");
             }
-            
-
+            if(foto.toLowerCase().equals("empty")){
+                foto = "";
+            }
 
             Materiaal materiaal = new Materiaal(foto, naam, omschrijving, plaats, artikelNr, aantal, aantalOnbeschikbaar, prijs, uitleenbaar, firma, doelgroepen, leergebieden);
             opgehaaldeMaterialen.add(materiaal);

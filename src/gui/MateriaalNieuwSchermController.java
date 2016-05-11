@@ -396,7 +396,7 @@ public class MateriaalNieuwSchermController extends VBox
         {
             String firmaNaam = firma[0];
             String contactFirma = firma[1];
-            if (comboFirma.getItems().contains(firmaNaam))
+            if(comboFirma.getItems().stream().anyMatch(f -> f.toLowerCase().equals(firmaNaam.toLowerCase())))
             {
                 lblError.setText("Deze firma bestaat al!");
             } else
