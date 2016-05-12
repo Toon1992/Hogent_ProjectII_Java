@@ -125,6 +125,7 @@ public class ReservatieSchermController extends HBox {
     }
 
     private void invullenTable() {
+        reservatieTable.setPlaceholder(new Label("Geen reservaties aanwezig"));
         sortedReservatie = rc.getReservaties();
         reservatieTable.setItems(sortedReservatie.sorted(Comparator.comparing(Reservatie::getBeginDatum)));
         sortedReservatie.comparatorProperty().bind(reservatieTable.comparatorProperty());

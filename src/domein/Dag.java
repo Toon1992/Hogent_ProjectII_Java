@@ -1,13 +1,7 @@
 package domein;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
 
 /**
  * Created by donovandesmedt on 08/04/16.
@@ -25,6 +19,10 @@ public class Dag implements Comparable<Dag>
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(name = "Datum")
     public Date datum;
+
+    @ManyToOne
+    @JoinColumn(name="ReservatieId")
+    public Reservatie reservatie;
 
     protected Dag()
     {

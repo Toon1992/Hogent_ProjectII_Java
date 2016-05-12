@@ -20,6 +20,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.web.HTMLEditor;
 
@@ -28,7 +29,7 @@ import javafx.scene.web.HTMLEditor;
  *
  * @author manu
  */
-public class MailSchermController extends HBox {
+public class MailSchermController extends GridPane {
 
     @FXML
     private HTMLEditor editor;

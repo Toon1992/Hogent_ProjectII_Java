@@ -83,6 +83,8 @@ public class MateriaalNieuwSchermController extends VBox
     @FXML
     private Label lblError;
     @FXML
+    private Label lblHeader;
+    @FXML
     private ComboBox<String> comboFirma;
 
     private MateriaalController mc;
@@ -112,9 +114,11 @@ public class MateriaalNieuwSchermController extends VBox
         if (currentMateriaal == null)
         {
             btnToevoegen.setText("Voeg toe");
+            lblHeader.setText("Algemeen nieuw materiaal");
         } else
         {
             btnToevoegen.setText("Wijzigen");
+            lblHeader.setText("Algemeen materiaal wijzigen");
             wijzigen = true;
         }
 
@@ -338,7 +342,10 @@ public class MateriaalNieuwSchermController extends VBox
         {
             lblError.setText("Deze doelgroep bestaat al!");
         }
-        if (!doelgroep.isEmpty() && !doelgroep.trim().isEmpty() && !bestaatDoelgroep)
+        if(doelgroep.trim().isEmpty()){
+            lblError.setText("Doelgroep mag niet leeg zijn!");
+        }
+        if (!doelgroep.trim().isEmpty() && !bestaatDoelgroep)
         {
             checkDoelgroepen = MateriaalHulpController.nieuwItemListView(checkDoelgroepen, listDoelgroep, doelgroep);
             MateriaalHulpController.linkComboboxListView(listDoelgroep, checkDoelgroepen, MateriaalFilter.DOELGROEP);
@@ -356,7 +363,10 @@ public class MateriaalNieuwSchermController extends VBox
         {
             lblError.setText("Dit leergebied bestaat al!");
         }
-        if (!leergebied.isEmpty() && !leergebied.trim().isEmpty() && !bestaatLeergebied)
+        if(leergebied.trim().isEmpty()){
+            lblError.setText("Leergebied mag niet leeg zijn!");
+        }
+        if (!leergebied.trim().isEmpty() && !bestaatLeergebied)
         {
             checkLeergebieden = MateriaalHulpController.nieuwItemListView(checkLeergebieden, listLeergbedied, leergebied);
             MateriaalHulpController.linkComboboxListView(listLeergbedied, checkLeergebieden, MateriaalFilter.LEERGEBIED);

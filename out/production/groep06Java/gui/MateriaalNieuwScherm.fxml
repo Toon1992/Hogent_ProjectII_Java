@@ -143,7 +143,7 @@
                   <Insets right="15.0" />
                </GridPane.margin>
             </Label>
-            <Label styleClass="label-header-small" text="Algemeen nieuw materiaal" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="lblHeader" styleClass="label-header-small" text="Algemeen nieuw materiaal" GridPane.columnSpan="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <padding>
                   <Insets right="15.0" />
                </padding>

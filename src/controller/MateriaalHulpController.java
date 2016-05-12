@@ -4,10 +4,7 @@ import gui.FirmaDialog;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.transformation.FilteredList;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.*;
 import org.controlsfx.control.CheckComboBox;
 import domein.MateriaalCatalogus.*;
 

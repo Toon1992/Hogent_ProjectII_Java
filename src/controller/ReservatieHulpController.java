@@ -226,7 +226,7 @@ public class ReservatieHulpController {
             datePickerEind.getStyleClass().add("errorField");
             return "Tergubrengdatum moet groter zijn dat ophaaldatum";
         }
-        if(startDatum.before(HulpMethode.convertLocalDateToDate(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusDays(1)))){
+        if(eindDatum.before(HulpMethode.convertLocalDateToDate(new Date().toInstant().atZone(ZoneId.systemDefault()).toLocalDate().minusDays(1)))){
             datePickerBegin.getStyleClass().add("errorField");
             datePickerEind.getStyleClass().add("errorField");
             return "Je kan niet in het verleden reserveren";
