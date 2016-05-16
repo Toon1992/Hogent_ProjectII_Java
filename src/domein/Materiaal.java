@@ -58,6 +58,9 @@ public class Materiaal
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Firma firma;
 
+    @Column(name = "InVerlanglijst")
+    private boolean InVerlanglijst;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     @JoinTable(name = "MateriaalDoelgroep", joinColumns = @JoinColumn(name = "MateriaalId", referencedColumnName = "materiaalId"),
             inverseJoinColumns = @JoinColumn(name = "DoelgroepId", referencedColumnName = "doelgroepId"))
@@ -146,6 +149,7 @@ public class Materiaal
         setDoelgroepen(doelgroepen);
         setLeergebieden(leergebieden);
         setNaam(naam);
+        setInVerlanglijst(false);
     }
 
     public int getMateriaalId()
@@ -245,6 +249,14 @@ public class Materiaal
     public Set<Leergebied> getLeergebieden()
     {
         return leergebieden;
+    }
+
+    public boolean isInVerlanglijst() {
+        return InVerlanglijst;
+    }
+
+    public void setInVerlanglijst(boolean inVerlanglijst) {
+        InVerlanglijst = inVerlanglijst;
     }
 
     public void setLeergebieden(Set<Leergebied> leergebieden)
