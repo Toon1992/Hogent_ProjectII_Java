@@ -43,6 +43,12 @@ public class Firma
     @Column(name = "Adres")
     private String adres;
 
+    @Column(name= "ContactPersoon")
+    private String contactPersoon;
+
+    @Column(name= "Website")
+    private String website;
+    
     protected Firma()
     {
     }
