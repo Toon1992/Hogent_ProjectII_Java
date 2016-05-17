@@ -84,7 +84,7 @@ public class Reservatie
     @Column(name = "Discriminator")
     private ReservatieGebruikerEnum discriminator;
 
-    @OneToMany(mappedBy = "reservatie")
+    @OneToMany(mappedBy = "reservatie", cascade = CascadeType.PERSIST)
     private Set<Dag> dagen = new HashSet<>();
 
     protected Reservatie()

@@ -19,7 +19,7 @@ public class Verlanglijst
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id")
-    private long id;
+    private int id;
     
     @Column(name = "GebruikerEmail")
     private String GebruikerEmail;

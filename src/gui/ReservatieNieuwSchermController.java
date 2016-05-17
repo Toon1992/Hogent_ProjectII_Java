@@ -94,12 +94,10 @@ public class ReservatieNieuwSchermController extends GridPane {
         dtpOphaal.setOnAction(new EventHandler() {
             @Override
             public void handle(Event event) {
-                if (dtpTerugbreng.getValue() == null) {
-                    LocalDate date = dtpOphaal.getValue();
-                    Date maandag = HulpMethode.geefEersteDagVanDeWeek(date);
-                    LocalDate vrijdag = maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4);
-                    dtpTerugbreng.setValue(vrijdag);
-                }
+                LocalDate date = dtpOphaal.getValue();
+                Date maandag = HulpMethode.geefEersteDagVanDeWeek(date);
+                LocalDate vrijdag = maandag.toInstant().atZone(ZoneId.systemDefault()).toLocalDate().plusDays(4);
+                dtpTerugbreng.setValue(vrijdag);
             }
         });
         tooltip = new Tooltip();
