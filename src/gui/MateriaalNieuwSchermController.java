@@ -244,6 +244,9 @@ public class MateriaalNieuwSchermController extends VBox
         aantalString = txfAantal.getText();
         aantalOnbeschikbaarString = txfOnbeschikbaar.getText();
         prijsString = txfPrijs.getText();
+        if(prijsString.contains(",")){
+            prijsString = prijsString.replace(",",".");
+        }
         uitleenbaar = radioStudent.isSelected();
 
         if (invoerControle())

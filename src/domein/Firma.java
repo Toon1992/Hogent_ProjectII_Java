@@ -48,7 +48,7 @@ public class Firma
 
     @Column(name= "Website")
     private String website;
-    
+
     protected Firma()
     {
     }

@@ -55,6 +55,7 @@ public class Materiaal
 
     @Column(name = "IsReserveerbaar")
     private boolean isReserveerbaar;
+
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private Firma firma;
 

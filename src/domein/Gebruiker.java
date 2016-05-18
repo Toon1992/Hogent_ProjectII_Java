@@ -35,11 +35,11 @@ public class Gebruiker
 
     @Column(name = "Type")
     private String type;
-
-
     
     @Column(name ="Faculteit")
     private String Faculteit;
+
+
 
     protected Gebruiker()
     {

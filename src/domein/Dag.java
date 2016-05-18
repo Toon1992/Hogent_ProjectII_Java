@@ -13,7 +13,7 @@ public class Dag implements Comparable<Dag>
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-     @Column(name = "DagId")
+    @Column(name = "DagId")
     public int dagId;
     
     @Temporal(javax.persistence.TemporalType.DATE)

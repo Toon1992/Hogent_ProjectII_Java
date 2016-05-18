@@ -19,10 +19,11 @@ public class Verlanglijst
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="Id")
-    private long id;
-    
-    @Column(name = "GebruikerEmail")
-    private String GebruikerEmail;
+    private int id;
+
+    @OneToOne
+    @JoinColumn(name= "GebruikerEmail")
+    private Gebruiker gebruiker;
 
     @ManyToMany(mappedBy = "verlanglijsten")
     private Set<Materiaal> materialen;
@@ -30,19 +31,11 @@ public class Verlanglijst
     protected Verlanglijst()
     {}
     
-    public Verlanglijst(String email)
-    {
-        this.GebruikerEmail = email;
+    public Gebruiker getGebruiker(){
+        return gebruiker;
     }
-
-    public String getGebruikerEmail()
-    {
-        return GebruikerEmail;
-    }
-
-    public void setGebruikerEmail(String GebruikerEmail)
-    {
-        this.GebruikerEmail = GebruikerEmail;
+    public void setGebruiker(Gebruiker gebruiker){
+        this.gebruiker = gebruiker;
     }
 
     public Set<Materiaal> getMaterialen()

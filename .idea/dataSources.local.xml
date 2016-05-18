@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="Derby (Remote) - DidactischeLeermiddelen@localhost" uuid="bc23b540-c32f-4008-b22a-e1a287eca163">
+    <data-source name="SQL Server (Microsoft) - DidactischeLeermiddelen@DONOVANDESM2906" uuid="f47da22a-4f21-4771-b094-3da20a2a7d10">
       <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
+      <user-name>sa</user-name>
     </data-source>
-    <data-source name="SQL Server (Microsoft) - DidactischeLeermiddelen@PCMANU" uuid="17b9a73d-89a0-4f56-8d4e-ad2136ecbb11" />
   </component>
 </project>
