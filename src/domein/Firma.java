@@ -53,10 +53,11 @@ public class Firma
     {
     }
 
-    public Firma(String naam, String emailContact)
+    public Firma(String naam, String emailContact, String website)
     {
         this.naam = naam;
         this.email = emailContact;
+        this.website = website;
     }
 
     public String getNaam()
@@ -73,6 +74,8 @@ public class Firma
     {
         return email;
     }
+    public String getWebsite(){return website;}
+    public void setWebsite(String website){this.website = website;}
 
     public void setEmailContact(String emailContact)
     {

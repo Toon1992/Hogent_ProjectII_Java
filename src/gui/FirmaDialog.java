@@ -9,6 +9,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.util.Pair;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
@@ -21,7 +23,7 @@ public class FirmaDialog {
     private String[] uitvoer;
     private boolean flag;
     public String[] getFirma(){
-        Dialog<Pair<String, String>> dialog = new Dialog<>();
+        Dialog<List<String>> dialog = new Dialog<>();
         dialog.setTitle("Nieuwe firma");
         dialog.setHeaderText("Nieuwe firma toevoegen");
 
@@ -30,9 +32,10 @@ public class FirmaDialog {
 
 // Set the button types.
         ButtonType nieuwButtonType = new ButtonType("Nieuw", ButtonBar.ButtonData.OK_DONE);
+
         dialog.getDialogPane().getButtonTypes().addAll(nieuwButtonType, ButtonType.CANCEL);
 
-        String css = this.getClass().getResource("/styleSheet/style.css").toExternalForm();
+        String css = this.getClass().getResource("/styleSheet/dialog.css").toExternalForm();
         dialog.getDialogPane().getStylesheets().add(css);
 
 // Create the username and password labels and fields.
@@ -45,11 +48,15 @@ public class FirmaDialog {
         name.setPromptText("Firmanaam");
         TextField contact = new TextField();
         contact.setPromptText("E-mailadres contactpersoon");
+        TextField website = new TextField();
+        website.setPromptText("Website firma");
 
         grid.add(new Label("Firmanaam:"), 0, 0);
         grid.add(name, 1, 0);
         grid.add(new Label("E-mailadres:"), 0, 1);
         grid.add(contact, 1, 1);
+        grid.add(new Label("Website"), 0, 2);
+        grid.add(website, 1, 2);
 
         Label lblErrorNaam = new Label("Voer een firmanaam in");
         Label lblErrorContact = new Label("Voer een geldig emailadres in");
@@ -57,7 +64,7 @@ public class FirmaDialog {
         lblErrorNaam.setVisible(false);
         lblErrorContact.getStyleClass().add("label-error");
         lblErrorContact.setVisible(false);
-        grid.add(lblErrorNaam, 1, 2);
+        grid.add(lblErrorNaam, 1, 3);
         grid.add(lblErrorContact, 1, 3);
 
 // Enable/Disable login button depending on whether a username was entered.
@@ -70,11 +77,11 @@ public class FirmaDialog {
             flag = !textName.isEmpty() && !textContact.isEmpty();
             if(textName.isEmpty()){
                 lblErrorNaam.setVisible(true);
-                name.getStyleClass().add("errorField");
+                //name.getStyleClass().add("errorField");
             }
             else{
                 lblErrorNaam.setVisible(false);
-                name.getStyleClass().remove("errorField");
+                //name.getStyleClass().remove("errorField");
             }
             nieuwButton.setDisable(!flag);
         });
@@ -83,10 +90,10 @@ public class FirmaDialog {
             flag = !textName.isEmpty() && Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact);
             if(!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", textContact)) {
                 lblErrorContact.setVisible(true);
-                contact.getStyleClass().add("errorField");
+                //contact.getStyleClass().add("errorField");
             }
             else{
-                contact.getStyleClass().remove("errorField");
+                //contact.getStyleClass().remove("errorField");
                 lblErrorContact.setVisible(false);
 
             }
@@ -101,15 +108,14 @@ public class FirmaDialog {
 // Convert the result to a username-password-pair when the login button is clicked.
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == nieuwButtonType) {
-                return new Pair<>(name.getText(), contact.getText());
+                return Arrays.asList(name.getText(), contact.getText(),website.getText());
             }
             return null;
         });
-
-        Optional<Pair<String, String>> result = dialog.showAndWait();
+        Optional<List<String>> result = dialog.showAndWait();
 
         result.ifPresent(gegevens -> {
-            uitvoer =  new String[]{gegevens.getKey(),gegevens.getValue()};
+            uitvoer =  new String[]{gegevens.get(0),gegevens.get(1), gegevens.get(2)};
         });
         return uitvoer;
     }

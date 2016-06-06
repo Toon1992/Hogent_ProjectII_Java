@@ -143,15 +143,18 @@ public class MateriaalCatalogus {
             return materiaal;
         }
     }
-    public Firma geefFirma(String firmaNaam, String firmaContact){
+    public Firma geefFirma(String firmaNaam, String firmaContact, String website){
         Firma f = firmaDao.geefFirma(firmaNaam);
         if(!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", firmaContact)){
             throw new EmailException("Email firma ongeldig");
         }
         if(!f.getEmailContact().equals(firmaContact)) {
             f.setEmailContact(firmaContact);
-            firmaDao.update(f);
         }
+        if(f.getWebsite() == null || !f.getWebsite().equals(website)) {
+            f.setWebsite(website);
+        }
+        firmaDao.update(f);
         return f;
     }
     public void controleerUniekheidMateriaalnaam(Materiaal materiaal, String naam){

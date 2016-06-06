@@ -25,9 +25,9 @@ public class FirmaRepository {
     public Firma geefFirma(String naam){
         return firmaDao.geefFirma(naam);
     }
-    public void voegFirmaToe(String firma, String email){
+    public void voegFirmaToe(String firma, String email, String website){
         firmaDao.startTransaction();
-        firmaDao.insert(new Firma(firma, email));
+        firmaDao.insert(new Firma(firma, email, website));
         firmaDao.commitTransaction();
 
     }

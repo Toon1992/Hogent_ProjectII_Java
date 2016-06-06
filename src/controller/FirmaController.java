@@ -32,9 +32,9 @@ public class FirmaController
         return repos.geefFirma(naam);
     }
     
-     public void voegFirmaToe(String firma, String email)
+     public void voegFirmaToe(String firma, String email, String website)
      {
-         repos.voegFirmaToe(firma, email);
+         repos.voegFirmaToe(firma, email, website);
      }
      
      public void deleteFirma(Firma firma)

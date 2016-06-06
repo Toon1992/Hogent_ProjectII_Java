@@ -13,181 +13,130 @@
       </database>
       <schema id="2" parent="1" name="dbo">
         <object-id>1</object-id>
-        <introspection-timestamp>2016-05-17.17:33:06.007</introspection-timestamp>
+        <introspection-timestamp>2016-06-06.11:42:59.530</introspection-timestamp>
       </schema>
       <table id="3" parent="2" name="__MigrationHistory">
         <object-id>1077578877</object-id>
-        <created-timestamp>2016-05-17.14:55:47.840</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.840</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:54.413</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.413</modified-timestamp>
       </table>
       <table id="4" parent="2" name="AspNetRoles">
         <object-id>565577053</object-id>
-        <created-timestamp>2016-05-17.14:55:47.340</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.720</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.823</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.273</modified-timestamp>
       </table>
       <table id="5" parent="2" name="AspNetUserClaims">
         <object-id>661577395</object-id>
-        <created-timestamp>2016-05-17.14:55:47.367</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.740</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.863</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.297</modified-timestamp>
       </table>
       <table id="6" parent="2" name="AspNetUserLogins">
         <object-id>693577509</object-id>
-        <created-timestamp>2016-05-17.14:55:47.377</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.750</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.877</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.307</modified-timestamp>
       </table>
       <table id="7" parent="2" name="AspNetUserRoles">
         <object-id>597577167</object-id>
-        <created-timestamp>2016-05-17.14:55:47.347</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.730</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.837</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.283</modified-timestamp>
       </table>
       <table id="8" parent="2" name="AspNetUsers">
         <object-id>629577281</object-id>
-        <created-timestamp>2016-05-17.14:55:47.357</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.750</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.850</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.307</modified-timestamp>
       </table>
       <table id="9" parent="2" name="Beheerder">
-        <object-id>245575913</object-id>
-        <created-timestamp>2016-05-17.14:55:47.197</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.197</modified-timestamp>
+        <object-id>110623437</object-id>
+        <created-timestamp>2016-05-17.21:01:47.450</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.450</modified-timestamp>
       </table>
       <table id="10" parent="2" name="Dag">
-        <object-id>373576369</object-id>
-        <created-timestamp>2016-05-17.14:55:47.260</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.677</modified-timestamp>
+        <object-id>382624406</object-id>
+        <created-timestamp>2016-05-17.21:01:47.470</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.490</modified-timestamp>
       </table>
       <table id="11" parent="2" name="Doelgroep">
-        <object-id>277576027</object-id>
-        <created-timestamp>2016-05-17.14:55:47.210</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.770</modified-timestamp>
+        <object-id>158623608</object-id>
+        <created-timestamp>2016-05-17.21:01:47.453</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.493</modified-timestamp>
       </table>
       <table id="12" parent="2" name="Firma">
-        <object-id>437576597</object-id>
-        <created-timestamp>2016-05-17.14:55:47.280</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.687</modified-timestamp>
+        <object-id>190623722</object-id>
+        <created-timestamp>2016-05-17.21:01:47.457</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.487</modified-timestamp>
       </table>
       <table id="13" parent="2" name="Gebruiker">
-        <object-id>309576141</object-id>
-        <created-timestamp>2016-05-17.14:55:47.230</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.710</modified-timestamp>
+        <object-id>318624178</object-id>
+        <created-timestamp>2016-05-17.21:01:47.467</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.493</modified-timestamp>
       </table>
       <table id="14" parent="2" name="Leergebied">
-        <object-id>469576711</object-id>
-        <created-timestamp>2016-05-17.14:55:47.290</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.790</modified-timestamp>
+        <object-id>222623836</object-id>
+        <created-timestamp>2016-05-17.21:01:47.460</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.497</modified-timestamp>
       </table>
       <table id="15" parent="2" name="MailTemplate">
-        <object-id>533576939</object-id>
-        <created-timestamp>2016-05-17.14:55:47.330</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.330</modified-timestamp>
+        <object-id>414624520</object-id>
+        <created-timestamp>2016-05-17.21:01:47.473</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.473</modified-timestamp>
       </table>
       <table id="16" parent="2" name="Materiaal">
-        <object-id>405576483</object-id>
-        <created-timestamp>2016-05-17.14:55:47.270</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.830</modified-timestamp>
+        <object-id>254623950</object-id>
+        <created-timestamp>2016-05-17.21:01:47.463</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.500</modified-timestamp>
       </table>
       <table id="17" parent="2" name="MateriaalDoelgroep">
-        <object-id>725577623</object-id>
-        <created-timestamp>2016-05-17.14:55:47.387</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.770</modified-timestamp>
+        <object-id>478624748</object-id>
+        <created-timestamp>2016-05-17.21:01:47.480</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.497</modified-timestamp>
       </table>
       <table id="18" parent="2" name="MateriaalLeergebied">
-        <object-id>757577737</object-id>
-        <created-timestamp>2016-05-17.14:55:47.397</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.787</modified-timestamp>
+        <object-id>510624862</object-id>
+        <created-timestamp>2016-05-17.21:01:47.480</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.500</modified-timestamp>
       </table>
       <table id="19" parent="2" name="MaterialenVerlanglijst">
-        <object-id>789577851</object-id>
-        <created-timestamp>2016-05-17.14:55:47.420</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.830</modified-timestamp>
+        <object-id>542624976</object-id>
+        <created-timestamp>2016-05-17.21:01:47.483</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.503</modified-timestamp>
       </table>
       <table id="20" parent="2" name="Reservatie">
-        <object-id>341576255</object-id>
-        <created-timestamp>2016-05-17.14:55:47.247</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.677</modified-timestamp>
+        <object-id>350624292</object-id>
+        <created-timestamp>2016-05-17.21:01:47.467</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.493</modified-timestamp>
       </table>
-      <table id="21" parent="2" name="sysdiagrams">
-        <object-id>1221579390</object-id>
-        <created-timestamp>2016-05-17.14:56:30.160</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.160</modified-timestamp>
+      <table id="21" parent="2" name="user_roles">
+        <object-id>798625888</object-id>
+        <created-timestamp>2016-05-17.21:05:41.587</created-timestamp>
+        <modified-timestamp>2016-05-17.21:05:41.587</modified-timestamp>
       </table>
-      <table id="22" parent="2" name="Verlanglijst">
-        <object-id>501576825</object-id>
-        <created-timestamp>2016-05-17.14:55:47.313</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.797</modified-timestamp>
+      <table id="22" parent="2" name="users">
+        <object-id>750625717</object-id>
+        <created-timestamp>2016-05-17.21:05:41.587</created-timestamp>
+        <modified-timestamp>2016-05-17.21:05:41.587</modified-timestamp>
       </table>
-      <routine id="23" parent="2" name="fn_diagramobjects">
-        <object-id>1365579903</object-id>
-        <created-timestamp>2016-05-17.14:56:30.170</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.170</modified-timestamp>
-        <routine-kind>FUNCTION</routine-kind>
-        <type>SCALAR_FUN</type>
-      </routine>
-      <routine id="24" parent="2" name="sp_alterdiagram">
-        <object-id>1333579789</object-id>
-        <created-timestamp>2016-05-17.14:56:30.167</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.167</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <routine id="25" parent="2" name="sp_creatediagram">
-        <object-id>1301579675</object-id>
-        <created-timestamp>2016-05-17.14:56:30.167</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.167</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <routine id="26" parent="2" name="sp_dropdiagram">
-        <object-id>1349579846</object-id>
-        <created-timestamp>2016-05-17.14:56:30.170</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.170</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <routine id="27" parent="2" name="sp_helpdiagramdefinition">
-        <object-id>1285579618</object-id>
-        <created-timestamp>2016-05-17.14:56:30.163</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.163</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <routine id="28" parent="2" name="sp_helpdiagrams">
-        <object-id>1269579561</object-id>
-        <created-timestamp>2016-05-17.14:56:30.163</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.163</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <routine id="29" parent="2" name="sp_renamediagram">
-        <object-id>1317579732</object-id>
-        <created-timestamp>2016-05-17.14:56:30.167</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.167</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <routine id="30" parent="2" name="sp_upgraddiagrams">
-        <object-id>1205579333</object-id>
-        <created-timestamp>2016-05-17.14:56:30.157</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.157</modified-timestamp>
-        <routine-kind>PROCEDURE</routine-kind>
-        <type>PROC</type>
-      </routine>
-      <column id="31" parent="3" name="MigrationId">
+      <table id="23" parent="2" name="Verlanglijst">
+        <object-id>446624634</object-id>
+        <created-timestamp>2016-05-17.21:01:47.477</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.500</modified-timestamp>
+      </table>
+      <column id="24" parent="3" name="MigrationId">
         <mandatory>1</mandatory>
         <data-type>nvarchar(150)</data-type>
       </column>
-      <column id="32" parent="3" name="ContextKey">
+      <column id="25" parent="3" name="ContextKey">
         <mandatory>1</mandatory>
         <data-type>nvarchar(300)</data-type>
       </column>
-      <column id="33" parent="3" name="Model">
+      <column id="26" parent="3" name="Model">
         <mandatory>1</mandatory>
         <data-type>varbinary</data-type>
       </column>
-      <column id="34" parent="3" name="ProductVersion">
+      <column id="27" parent="3" name="ProductVersion">
         <mandatory>1</mandatory>
         <data-type>nvarchar(32)</data-type>
       </column>
-      <index id="35" parent="3" name="PK_dbo.__MigrationHistory">
+      <index id="28" parent="3" name="PK_dbo.__MigrationHistory">
         <columns>MigrationId
 ContextKey</columns>
         <desc-columns></desc-columns>
@@ -195,101 +144,101 @@ ContextKey</columns>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <key id="36" parent="3" name="PK_dbo.__MigrationHistory">
+      <key id="29" parent="3" name="PK_dbo.__MigrationHistory">
         <object-id>1093578934</object-id>
-        <created-timestamp>2016-05-17.14:55:47.840</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.840</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:54.413</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.413</modified-timestamp>
         <columns>MigrationId
 ContextKey</columns>
         <underlying-index>PK_dbo\u002E__MigrationHistory</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="37" parent="4" name="Id">
+      <column id="30" parent="4" name="Id">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <column id="38" parent="4" name="Name">
+      <column id="31" parent="4" name="Name">
         <mandatory>1</mandatory>
         <data-type>nvarchar(256)</data-type>
       </column>
-      <index id="39" parent="4" name="PK_dbo.AspNetRoles">
+      <index id="32" parent="4" name="PK_dbo.AspNetRoles">
         <columns>Id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="40" parent="4" name="RoleNameIndex">
+      <index id="33" parent="4" name="RoleNameIndex">
         <columns>Name</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <position>2</position>
       </index>
-      <key id="41" parent="4" name="PK_dbo.AspNetRoles">
+      <key id="34" parent="4" name="PK_dbo.AspNetRoles">
         <object-id>581577110</object-id>
-        <created-timestamp>2016-05-17.14:55:47.340</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.340</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.827</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:53.827</modified-timestamp>
         <columns>Id</columns>
         <underlying-index>PK_dbo\u002EAspNetRoles</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="42" parent="5" name="Id">
+      <column id="35" parent="5" name="Id">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
         <sequence-identity>1</sequence-identity>
       </column>
-      <column id="43" parent="5" name="UserId">
+      <column id="36" parent="5" name="UserId">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <column id="44" parent="5" name="ClaimType">
+      <column id="37" parent="5" name="ClaimType">
         <data-type>nvarchar(max)</data-type>
       </column>
-      <column id="45" parent="5" name="ClaimValue">
+      <column id="38" parent="5" name="ClaimValue">
         <data-type>nvarchar(max)</data-type>
       </column>
-      <index id="46" parent="5" name="PK_dbo.AspNetUserClaims">
+      <index id="39" parent="5" name="PK_dbo.AspNetUserClaims">
         <columns>Id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="47" parent="5" name="IX_UserId">
+      <index id="40" parent="5" name="IX_UserId">
         <columns>UserId</columns>
         <desc-columns></desc-columns>
         <position>2</position>
       </index>
-      <key id="48" parent="5" name="PK_dbo.AspNetUserClaims">
+      <key id="41" parent="5" name="PK_dbo.AspNetUserClaims">
         <object-id>677577452</object-id>
-        <created-timestamp>2016-05-17.14:55:47.367</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.367</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.863</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:53.863</modified-timestamp>
         <columns>Id</columns>
         <underlying-index>PK_dbo\u002EAspNetUserClaims</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="49" parent="5" name="FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId">
+      <foreign-key id="42" parent="5" name="FK_dbo.AspNetUserClaims_dbo.AspNetUsers_UserId">
         <object-id>949578421</object-id>
-        <created-timestamp>2016-05-17.14:55:47.740</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.740</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:54.297</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.297</modified-timestamp>
         <columns>UserId</columns>
         <ref-key>~.AspNetUsers.PK_dbo\u002EAspNetUsers</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="50" parent="6" name="LoginProvider">
+      <column id="43" parent="6" name="LoginProvider">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <column id="51" parent="6" name="ProviderKey">
+      <column id="44" parent="6" name="ProviderKey">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <column id="52" parent="6" name="UserId">
+      <column id="45" parent="6" name="UserId">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <index id="53" parent="6" name="PK_dbo.AspNetUserLogins">
+      <index id="46" parent="6" name="PK_dbo.AspNetUserLogins">
         <columns>LoginProvider
 ProviderKey
 UserId</columns>
@@ -298,39 +247,39 @@ UserId</columns>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="54" parent="6" name="IX_UserId">
+      <index id="47" parent="6" name="IX_UserId">
         <columns>UserId</columns>
         <desc-columns></desc-columns>
         <position>2</position>
       </index>
-      <key id="55" parent="6" name="PK_dbo.AspNetUserLogins">
+      <key id="48" parent="6" name="PK_dbo.AspNetUserLogins">
         <object-id>709577566</object-id>
-        <created-timestamp>2016-05-17.14:55:47.377</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.377</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.877</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:53.877</modified-timestamp>
         <columns>LoginProvider
 ProviderKey
 UserId</columns>
         <underlying-index>PK_dbo\u002EAspNetUserLogins</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="56" parent="6" name="FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId">
+      <foreign-key id="49" parent="6" name="FK_dbo.AspNetUserLogins_dbo.AspNetUsers_UserId">
         <object-id>965578478</object-id>
-        <created-timestamp>2016-05-17.14:55:47.750</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.750</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:54.307</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.307</modified-timestamp>
         <columns>UserId</columns>
         <ref-key>~.AspNetUsers.PK_dbo\u002EAspNetUsers</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="57" parent="7" name="UserId">
+      <column id="50" parent="7" name="UserId">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <column id="58" parent="7" name="RoleId">
+      <column id="51" parent="7" name="RoleId">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <index id="59" parent="7" name="PK_dbo.AspNetUserRoles">
+      <index id="52" parent="7" name="PK_dbo.AspNetUserRoles">
         <columns>UserId
 RoleId</columns>
         <desc-columns></desc-columns>
@@ -338,500 +287,483 @@ RoleId</columns>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="60" parent="7" name="IX_UserId">
+      <index id="53" parent="7" name="IX_UserId">
         <columns>UserId</columns>
         <desc-columns></desc-columns>
         <position>2</position>
       </index>
-      <index id="61" parent="7" name="IX_RoleId">
+      <index id="54" parent="7" name="IX_RoleId">
         <columns>RoleId</columns>
         <desc-columns></desc-columns>
         <position>3</position>
       </index>
-      <key id="62" parent="7" name="PK_dbo.AspNetUserRoles">
+      <key id="55" parent="7" name="PK_dbo.AspNetUserRoles">
         <object-id>613577224</object-id>
-        <created-timestamp>2016-05-17.14:55:47.347</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.347</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.837</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:53.837</modified-timestamp>
         <columns>UserId
 RoleId</columns>
         <underlying-index>PK_dbo\u002EAspNetUserRoles</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="63" parent="7" name="FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId">
+      <foreign-key id="56" parent="7" name="FK_dbo.AspNetUserRoles_dbo.AspNetUsers_UserId">
         <object-id>933578364</object-id>
-        <created-timestamp>2016-05-17.14:55:47.730</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.730</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:54.283</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.283</modified-timestamp>
         <columns>UserId</columns>
         <ref-key>~.AspNetUsers.PK_dbo\u002EAspNetUsers</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="64" parent="7" name="FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId">
+      <foreign-key id="57" parent="7" name="FK_dbo.AspNetUserRoles_dbo.AspNetRoles_RoleId">
         <object-id>917578307</object-id>
-        <created-timestamp>2016-05-17.14:55:47.720</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.720</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:54.273</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:54.273</modified-timestamp>
         <columns>RoleId</columns>
         <ref-key>~.AspNetRoles.PK_dbo\u002EAspNetRoles</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="65" parent="8" name="Id">
+      <column id="58" parent="8" name="Id">
         <mandatory>1</mandatory>
         <data-type>nvarchar(128)</data-type>
       </column>
-      <column id="66" parent="8" name="Email">
+      <column id="59" parent="8" name="Email">
         <data-type>nvarchar(256)</data-type>
       </column>
-      <column id="67" parent="8" name="EmailConfirmed">
+      <column id="60" parent="8" name="EmailConfirmed">
         <mandatory>1</mandatory>
         <data-type>bit</data-type>
       </column>
-      <column id="68" parent="8" name="PasswordHash">
+      <column id="61" parent="8" name="PasswordHash">
         <data-type>nvarchar(max)</data-type>
       </column>
-      <column id="69" parent="8" name="SecurityStamp">
+      <column id="62" parent="8" name="SecurityStamp">
         <data-type>nvarchar(max)</data-type>
       </column>
-      <column id="70" parent="8" name="PhoneNumber">
+      <column id="63" parent="8" name="PhoneNumber">
         <data-type>nvarchar(max)</data-type>
       </column>
-      <column id="71" parent="8" name="PhoneNumberConfirmed">
+      <column id="64" parent="8" name="PhoneNumberConfirmed">
         <mandatory>1</mandatory>
         <data-type>bit</data-type>
       </column>
-      <column id="72" parent="8" name="TwoFactorEnabled">
+      <column id="65" parent="8" name="TwoFactorEnabled">
         <mandatory>1</mandatory>
         <data-type>bit</data-type>
       </column>
-      <column id="73" parent="8" name="LockoutEndDateUtc">
+      <column id="66" parent="8" name="LockoutEndDateUtc">
         <data-type>datetime</data-type>
       </column>
-      <column id="74" parent="8" name="LockoutEnabled">
+      <column id="67" parent="8" name="LockoutEnabled">
         <mandatory>1</mandatory>
         <data-type>bit</data-type>
       </column>
-      <column id="75" parent="8" name="AccessFailedCount">
+      <column id="68" parent="8" name="AccessFailedCount">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <column id="76" parent="8" name="UserName">
+      <column id="69" parent="8" name="UserName">
         <mandatory>1</mandatory>
         <data-type>nvarchar(256)</data-type>
       </column>
-      <index id="77" parent="8" name="PK_dbo.AspNetUsers">
+      <index id="70" parent="8" name="PK_dbo.AspNetUsers">
         <columns>Id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="78" parent="8" name="UserNameIndex">
+      <index id="71" parent="8" name="UserNameIndex">
         <columns>UserName</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <position>2</position>
       </index>
-      <key id="79" parent="8" name="PK_dbo.AspNetUsers">
+      <key id="72" parent="8" name="PK_dbo.AspNetUsers">
         <object-id>645577338</object-id>
-        <created-timestamp>2016-05-17.14:55:47.357</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.357</modified-timestamp>
+        <created-timestamp>2016-05-17.19:54:53.850</created-timestamp>
+        <modified-timestamp>2016-05-17.19:54:53.850</modified-timestamp>
         <columns>Id</columns>
         <underlying-index>PK_dbo\u002EAspNetUsers</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="80" parent="9" name="GebruikersId">
+      <column id="73" parent="9" name="GebruikersId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
-        <sequence-identity>1(2)</sequence-identity>
+        <sequence-identity>1(3)</sequence-identity>
       </column>
-      <column id="81" parent="9" name="Email">
-        <data-type>nvarchar(max)</data-type>
+      <column id="74" parent="9" name="Email">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="82" parent="9" name="IsHoofd">
-        <mandatory>1</mandatory>
+      <column id="75" parent="9" name="IsHoofd">
         <data-type>bit</data-type>
+        <default-expression>0</default-expression>
       </column>
-      <index id="83" parent="9" name="PK_dbo.Beheerder">
+      <index id="76" parent="9" name="PK__Beheerde__CC5388836D1245B3">
+        <name-surrogate>1</name-surrogate>
         <columns>GebruikersId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <key id="84" parent="9" name="PK_dbo.Beheerder">
-        <object-id>261575970</object-id>
-        <created-timestamp>2016-05-17.14:55:47.200</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.200</modified-timestamp>
+      <key id="77" parent="9" name="PK__Beheerde__CC5388836D1245B3">
+        <name-surrogate>1</name-surrogate>
+        <object-id>126623494</object-id>
+        <created-timestamp>2016-05-17.21:01:47.450</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.450</modified-timestamp>
         <columns>GebruikersId</columns>
-        <underlying-index>PK_dbo\u002EBeheerder</underlying-index>
+        <underlying-index>PK__Beheerde__CC5388836D1245B3</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="85" parent="10" name="DagId">
+      <column id="78" parent="10" name="DagId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
-        <sequence-identity>1(2)</sequence-identity>
+        <sequence-identity>1(6)</sequence-identity>
       </column>
-      <column id="86" parent="10" name="Datum">
-        <mandatory>1</mandatory>
+      <column id="79" parent="10" name="Datum">
         <data-type>datetime</data-type>
       </column>
-      <column id="87" parent="10" name="ReservatieId">
+      <column id="80" parent="10" name="ReservatieId">
         <data-type>int</data-type>
       </column>
-      <index id="88" parent="10" name="PK_dbo.Dag">
+      <index id="81" parent="10" name="PK__Dag__A4B479A87B683B33">
+        <name-surrogate>1</name-surrogate>
         <columns>DagId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="89" parent="10" name="IX_ReservatieId">
-        <columns>ReservatieId</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <key id="90" parent="10" name="PK_dbo.Dag">
-        <object-id>389576426</object-id>
-        <created-timestamp>2016-05-17.14:55:47.260</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.260</modified-timestamp>
+      <key id="82" parent="10" name="PK__Dag__A4B479A87B683B33">
+        <name-surrogate>1</name-surrogate>
+        <object-id>398624463</object-id>
+        <created-timestamp>2016-05-17.21:01:47.470</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.470</modified-timestamp>
         <columns>DagId</columns>
-        <underlying-index>PK_dbo\u002EDag</underlying-index>
+        <underlying-index>PK__Dag__A4B479A87B683B33</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="91" parent="10" name="FK_dbo.Dag_dbo.Reservatie_ReservatieId">
-        <object-id>869578136</object-id>
-        <created-timestamp>2016-05-17.14:55:47.677</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.677</modified-timestamp>
+      <foreign-key id="83" parent="10" name="FK_Dag_ReservatieId">
+        <object-id>622625261</object-id>
+        <created-timestamp>2016-05-17.21:01:47.490</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.490</modified-timestamp>
         <columns>ReservatieId</columns>
-        <ref-key>~.Reservatie.PK_dbo\u002EReservatie</ref-key>
+        <ref-key>~.Reservatie.PK__Reservat__EE59987B84734378</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="92" parent="11" name="DoelgroepId">
+      <column id="84" parent="11" name="DoelgroepId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
         <sequence-identity>1(4)</sequence-identity>
       </column>
-      <column id="93" parent="11" name="Naam">
-        <data-type>nvarchar(max)</data-type>
+      <column id="85" parent="11" name="Naam">
+        <data-type>varchar(255)</data-type>
       </column>
-      <index id="94" parent="11" name="PK_dbo.Doelgroep">
+      <index id="86" parent="11" name="PK__Doelgroe__772A61C8AF9DA22E">
+        <name-surrogate>1</name-surrogate>
         <columns>DoelgroepId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <key id="95" parent="11" name="PK_dbo.Doelgroep">
-        <object-id>293576084</object-id>
-        <created-timestamp>2016-05-17.14:55:47.210</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.210</modified-timestamp>
+      <key id="87" parent="11" name="PK__Doelgroe__772A61C8AF9DA22E">
+        <name-surrogate>1</name-surrogate>
+        <object-id>174623665</object-id>
+        <created-timestamp>2016-05-17.21:01:47.453</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.453</modified-timestamp>
         <columns>DoelgroepId</columns>
-        <underlying-index>PK_dbo\u002EDoelgroep</underlying-index>
+        <underlying-index>PK__Doelgroe__772A61C8AF9DA22E</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="96" parent="12" name="FirmaId">
+      <column id="88" parent="12" name="FirmaId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
-        <sequence-identity>1(4)</sequence-identity>
+        <sequence-identity>1(6)</sequence-identity>
       </column>
-      <column id="97" parent="12" name="Naam">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(max)</data-type>
+      <column id="89" parent="12" name="Adres">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="98" parent="12" name="Email">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(max)</data-type>
+      <column id="90" parent="12" name="ContactPersoon">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="99" parent="12" name="Adres">
-        <data-type>nvarchar(max)</data-type>
+      <column id="91" parent="12" name="Email">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="100" parent="12" name="Contactpersoon">
-        <data-type>nvarchar(max)</data-type>
+      <column id="92" parent="12" name="Naam">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="101" parent="12" name="Website">
-        <data-type>nvarchar(max)</data-type>
+      <column id="93" parent="12" name="Website">
+        <data-type>varchar(255)</data-type>
       </column>
-      <index id="102" parent="12" name="PK_dbo.Firma">
+      <index id="94" parent="12" name="PK__Firma__CD9C5E2FF3847A73">
+        <name-surrogate>1</name-surrogate>
         <columns>FirmaId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <key id="103" parent="12" name="PK_dbo.Firma">
-        <object-id>453576654</object-id>
-        <created-timestamp>2016-05-17.14:55:47.280</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.280</modified-timestamp>
+      <key id="95" parent="12" name="PK__Firma__CD9C5E2FF3847A73">
+        <name-surrogate>1</name-surrogate>
+        <object-id>206623779</object-id>
+        <created-timestamp>2016-05-17.21:01:47.457</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.457</modified-timestamp>
         <columns>FirmaId</columns>
-        <underlying-index>PK_dbo\u002EFirma</underlying-index>
+        <underlying-index>PK__Firma__CD9C5E2FF3847A73</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="104" parent="13" name="Email">
+      <column id="96" parent="13" name="Email">
         <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="105" parent="13" name="Naam">
-        <data-type>nvarchar(max)</data-type>
+      <column id="97" parent="13" name="Faculteit">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="106" parent="13" name="Faculteit">
-        <data-type>nvarchar(max)</data-type>
+      <column id="98" parent="13" name="Naam">
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="107" parent="13" name="Type">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
+      <column id="99" parent="13" name="Type">
+        <data-type>varchar(255)</data-type>
       </column>
-      <index id="108" parent="13" name="PK_dbo.Gebruiker">
+      <index id="100" parent="13" name="PK__Gebruike__A9D1053596DDDED9">
+        <name-surrogate>1</name-surrogate>
         <columns>Email</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <key id="109" parent="13" name="PK_dbo.Gebruiker">
-        <object-id>325576198</object-id>
-        <created-timestamp>2016-05-17.14:55:47.230</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.230</modified-timestamp>
+      <key id="101" parent="13" name="PK__Gebruike__A9D1053596DDDED9">
+        <name-surrogate>1</name-surrogate>
+        <object-id>334624235</object-id>
+        <created-timestamp>2016-05-17.21:01:47.467</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.467</modified-timestamp>
         <columns>Email</columns>
-        <underlying-index>PK_dbo\u002EGebruiker</underlying-index>
+        <underlying-index>PK__Gebruike__A9D1053596DDDED9</underlying-index>
         <primary>1</primary>
       </key>
-      <column id="110" parent="14" name="LeergebiedId">
-        <mandatory>1</mandatory>
-        <data-type>int</data-type>
-        <sequence-identity>1(7)</sequence-identity>
-      </column>
-      <column id="111" parent="14" name="Naam">
-        <data-type>nvarchar(max)</data-type>
-      </column>
-      <index id="112" parent="14" name="PK_dbo.Leergebied">
-        <columns>LeergebiedId</columns>
-        <desc-columns></desc-columns>
-        <unique>1</unique>
-        <clustering>1</clustering>
-        <position>1</position>
-      </index>
-      <key id="113" parent="14" name="PK_dbo.Leergebied">
-        <object-id>485576768</object-id>
-        <created-timestamp>2016-05-17.14:55:47.290</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.290</modified-timestamp>
-        <columns>LeergebiedId</columns>
-        <underlying-index>PK_dbo\u002ELeergebied</underlying-index>
-        <primary>1</primary>
-      </key>
-      <column id="114" parent="15" name="Subject">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
-      </column>
-      <column id="115" parent="15" name="Body">
-        <data-type>nvarchar(max)</data-type>
-      </column>
-      <column id="116" parent="15" name="onderwerp">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
-      </column>
-      <index id="117" parent="15" name="PK_dbo.MailTemplate">
-        <columns>Subject</columns>
-        <desc-columns></desc-columns>
-        <unique>1</unique>
-        <clustering>1</clustering>
-        <position>1</position>
-      </index>
-      <key id="118" parent="15" name="PK_dbo.MailTemplate">
-        <object-id>549576996</object-id>
-        <created-timestamp>2016-05-17.14:55:47.330</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.330</modified-timestamp>
-        <columns>Subject</columns>
-        <underlying-index>PK_dbo\u002EMailTemplate</underlying-index>
-        <primary>1</primary>
-      </key>
-      <column id="119" parent="16" name="MateriaalId">
+      <column id="102" parent="14" name="LeergebiedId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
         <sequence-identity>1(10)</sequence-identity>
       </column>
-      <column id="120" parent="16" name="Naam">
+      <column id="103" parent="14" name="Naam">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="104" parent="14" name="PK__Leergebi__9C47DF0BE57F63D2">
+        <name-surrogate>1</name-surrogate>
+        <columns>LeergebiedId</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <clustering>1</clustering>
+        <position>1</position>
+      </index>
+      <key id="105" parent="14" name="PK__Leergebi__9C47DF0BE57F63D2">
+        <name-surrogate>1</name-surrogate>
+        <object-id>238623893</object-id>
+        <created-timestamp>2016-05-17.21:01:47.460</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.460</modified-timestamp>
+        <columns>LeergebiedId</columns>
+        <underlying-index>PK__Leergebi__9C47DF0BE57F63D2</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="106" parent="15" name="Subject">
         <mandatory>1</mandatory>
-        <data-type>nvarchar(max)</data-type>
+        <data-type>varchar(255)</data-type>
       </column>
-      <column id="121" parent="16" name="Omschrijving">
-        <data-type>nvarchar(max)</data-type>
+      <column id="107" parent="15" name="DTYPE">
+        <data-type>varchar(31)</data-type>
       </column>
-      <column id="122" parent="16" name="AantalInCatalogus">
+      <column id="108" parent="15" name="Body">
+        <data-type>text</data-type>
+      </column>
+      <index id="109" parent="15" name="PK__MailTemp__A2B1D9055808E2FA">
+        <name-surrogate>1</name-surrogate>
+        <columns>Subject</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <clustering>1</clustering>
+        <position>1</position>
+      </index>
+      <key id="110" parent="15" name="PK__MailTemp__A2B1D9055808E2FA">
+        <name-surrogate>1</name-surrogate>
+        <object-id>430624577</object-id>
+        <created-timestamp>2016-05-17.21:01:47.473</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.473</modified-timestamp>
+        <columns>Subject</columns>
+        <underlying-index>PK__MailTemp__A2B1D9055808E2FA</underlying-index>
+        <primary>1</primary>
+      </key>
+      <column id="111" parent="16" name="MateriaalId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
+        <sequence-identity>1(6)</sequence-identity>
       </column>
-      <column id="123" parent="16" name="AantalOnbeschikbaar">
-        <mandatory>1</mandatory>
+      <column id="112" parent="16" name="InVerlanglijst">
+        <data-type>bit</data-type>
+        <default-expression>0</default-expression>
+      </column>
+      <column id="113" parent="16" name="AantalInCatalogus">
         <data-type>int</data-type>
       </column>
-      <column id="124" parent="16" name="ArtikelNr">
-        <mandatory>1</mandatory>
+      <column id="114" parent="16" name="AantalOnbeschikbaar">
         <data-type>int</data-type>
       </column>
-      <column id="125" parent="16" name="Plaats">
-        <data-type>nvarchar(max)</data-type>
+      <column id="115" parent="16" name="ArtikelNr">
+        <data-type>int</data-type>
       </column>
-      <column id="126" parent="16" name="Prijs">
-        <mandatory>1</mandatory>
+      <column id="116" parent="16" name="Foto">
+        <data-type>image</data-type>
+      </column>
+      <column id="117" parent="16" name="IsReserveerbaar">
+        <data-type>bit</data-type>
+        <default-expression>0</default-expression>
+      </column>
+      <column id="118" parent="16" name="Naam">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="119" parent="16" name="Omschrijving">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="120" parent="16" name="Plaats">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="121" parent="16" name="Prijs">
         <data-type>float</data-type>
       </column>
-      <column id="127" parent="16" name="IsReserveerBaar">
-        <data-type>bit</data-type>
-      </column>
-      <column id="128" parent="16" name="InVerlanglijst">
-        <data-type>bit</data-type>
-      </column>
-      <column id="129" parent="16" name="Foto">
-        <data-type>varbinary</data-type>
-      </column>
-      <column id="130" parent="16" name="Firma_FirmaId">
+      <column id="122" parent="16" name="FIRMA_FirmaId">
         <data-type>int</data-type>
       </column>
-      <index id="131" parent="16" name="PK_dbo.Materiaal">
+      <index id="123" parent="16" name="PK__Materiaa__207EA76777600A07">
+        <name-surrogate>1</name-surrogate>
         <columns>MateriaalId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="132" parent="16" name="IX_Firma_FirmaId">
-        <columns>Firma_FirmaId</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <key id="133" parent="16" name="PK_dbo.Materiaal">
-        <object-id>421576540</object-id>
-        <created-timestamp>2016-05-17.14:55:47.270</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.270</modified-timestamp>
+      <key id="124" parent="16" name="PK__Materiaa__207EA76777600A07">
+        <name-surrogate>1</name-surrogate>
+        <object-id>270624007</object-id>
+        <created-timestamp>2016-05-17.21:01:47.463</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.463</modified-timestamp>
         <columns>MateriaalId</columns>
-        <underlying-index>PK_dbo\u002EMateriaal</underlying-index>
+        <underlying-index>PK__Materiaa__207EA76777600A07</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="134" parent="16" name="FK_dbo.Materiaal_dbo.Firma_Firma_FirmaId">
-        <object-id>885578193</object-id>
-        <created-timestamp>2016-05-17.14:55:47.683</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.683</modified-timestamp>
-        <columns>Firma_FirmaId</columns>
-        <ref-key>~.Firma.PK_dbo\u002EFirma</ref-key>
+      <foreign-key id="125" parent="16" name="MateriaalFIRMA_FirmaId">
+        <object-id>574625090</object-id>
+        <created-timestamp>2016-05-17.21:01:47.487</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.487</modified-timestamp>
+        <columns>FIRMA_FirmaId</columns>
+        <ref-key>~.Firma.PK__Firma__CD9C5E2FF3847A73</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="135" parent="17" name="MateriaalId">
+      <column id="126" parent="17" name="DoelgroepId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <column id="136" parent="17" name="DoelgroepId">
+      <column id="127" parent="17" name="MateriaalId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <index id="137" parent="17" name="PK_dbo.MateriaalDoelgroep">
-        <columns>MateriaalId
-DoelgroepId</columns>
+      <index id="128" parent="17" name="PK__Materiaa__152D8BBE8BB80429">
+        <name-surrogate>1</name-surrogate>
+        <columns>DoelgroepId
+MateriaalId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="138" parent="17" name="IX_MateriaalId">
-        <columns>MateriaalId</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <index id="139" parent="17" name="IX_DoelgroepId">
+      <key id="129" parent="17" name="PK__Materiaa__152D8BBE8BB80429">
+        <name-surrogate>1</name-surrogate>
+        <object-id>494624805</object-id>
+        <created-timestamp>2016-05-17.21:01:47.480</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.480</modified-timestamp>
+        <columns>DoelgroepId
+MateriaalId</columns>
+        <underlying-index>PK__Materiaa__152D8BBE8BB80429</underlying-index>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="130" parent="17" name="MtralDoelgroepDlgrepId">
+        <object-id>654625375</object-id>
+        <created-timestamp>2016-05-17.21:01:47.493</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.493</modified-timestamp>
         <columns>DoelgroepId</columns>
-        <desc-columns></desc-columns>
-        <position>3</position>
-      </index>
-      <key id="140" parent="17" name="PK_dbo.MateriaalDoelgroep">
-        <object-id>741577680</object-id>
-        <created-timestamp>2016-05-17.14:55:47.387</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.387</modified-timestamp>
-        <columns>MateriaalId
-DoelgroepId</columns>
-        <underlying-index>PK_dbo\u002EMateriaalDoelgroep</underlying-index>
-        <primary>1</primary>
-      </key>
-      <foreign-key id="141" parent="17" name="FK_dbo.MateriaalDoelgroep_dbo.Materiaal_MateriaalId">
-        <object-id>981578535</object-id>
-        <created-timestamp>2016-05-17.14:55:47.760</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.760</modified-timestamp>
+        <ref-key>~.Doelgroep.PK__Doelgroe__772A61C8AF9DA22E</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="131" parent="17" name="MtralDoelgroepMtraalId">
+        <object-id>670625432</object-id>
+        <created-timestamp>2016-05-17.21:01:47.493</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.493</modified-timestamp>
         <columns>MateriaalId</columns>
-        <ref-key>~.Materiaal.PK_dbo\u002EMateriaal</ref-key>
+        <ref-key>~.Materiaal.PK__Materiaa__207EA76777600A07</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="142" parent="17" name="FK_dbo.MateriaalDoelgroep_dbo.Doelgroep_DoelgroepId">
-        <object-id>997578592</object-id>
-        <created-timestamp>2016-05-17.14:55:47.770</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.770</modified-timestamp>
-        <columns>DoelgroepId</columns>
-        <ref-key>~.Doelgroep.PK_dbo\u002EDoelgroep</ref-key>
-        <cascade-update-rule>restrict</cascade-update-rule>
-        <cascade-delete-rule>restrict</cascade-delete-rule>
-      </foreign-key>
-      <column id="143" parent="18" name="MateriaalId">
+      <column id="132" parent="18" name="LeergebiedId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <column id="144" parent="18" name="LeergebiedId">
+      <column id="133" parent="18" name="MateriaalId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <index id="145" parent="18" name="PK_dbo.MateriaalLeergebied">
-        <columns>MateriaalId
-LeergebiedId</columns>
+      <index id="134" parent="18" name="PK__Materiaa__FE40357D1DB1CB0B">
+        <name-surrogate>1</name-surrogate>
+        <columns>LeergebiedId
+MateriaalId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="146" parent="18" name="IX_MateriaalId">
-        <columns>MateriaalId</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <index id="147" parent="18" name="IX_LeergebiedId">
-        <columns>LeergebiedId</columns>
-        <desc-columns></desc-columns>
-        <position>3</position>
-      </index>
-      <key id="148" parent="18" name="PK_dbo.MateriaalLeergebied">
-        <object-id>773577794</object-id>
-        <created-timestamp>2016-05-17.14:55:47.400</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.400</modified-timestamp>
-        <columns>MateriaalId
-LeergebiedId</columns>
-        <underlying-index>PK_dbo\u002EMateriaalLeergebied</underlying-index>
+      <key id="135" parent="18" name="PK__Materiaa__FE40357D1DB1CB0B">
+        <name-surrogate>1</name-surrogate>
+        <object-id>526624919</object-id>
+        <created-timestamp>2016-05-17.21:01:47.483</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.483</modified-timestamp>
+        <columns>LeergebiedId
+MateriaalId</columns>
+        <underlying-index>PK__Materiaa__FE40357D1DB1CB0B</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="149" parent="18" name="FK_dbo.MateriaalLeergebied_dbo.Materiaal_MateriaalId">
-        <object-id>1013578649</object-id>
-        <created-timestamp>2016-05-17.14:55:47.780</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.780</modified-timestamp>
-        <columns>MateriaalId</columns>
-        <ref-key>~.Materiaal.PK_dbo\u002EMateriaal</ref-key>
-        <cascade-update-rule>restrict</cascade-update-rule>
-        <cascade-delete-rule>restrict</cascade-delete-rule>
-      </foreign-key>
-      <foreign-key id="150" parent="18" name="FK_dbo.MateriaalLeergebied_dbo.Leergebied_LeergebiedId">
-        <object-id>1029578706</object-id>
-        <created-timestamp>2016-05-17.14:55:47.787</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.787</modified-timestamp>
+      <foreign-key id="136" parent="18" name="MtrlLeergebiedLrgbedId">
+        <object-id>702625546</object-id>
+        <created-timestamp>2016-05-17.21:01:47.497</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.497</modified-timestamp>
         <columns>LeergebiedId</columns>
-        <ref-key>~.Leergebied.PK_dbo\u002ELeergebied</ref-key>
+        <ref-key>~.Leergebied.PK__Leergebi__9C47DF0BE57F63D2</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="151" parent="19" name="ArtikelNr">
+      <foreign-key id="137" parent="18" name="MtralLeergebiedMtralId">
+        <object-id>686625489</object-id>
+        <created-timestamp>2016-05-17.21:01:47.497</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.497</modified-timestamp>
+        <columns>MateriaalId</columns>
+        <ref-key>~.Materiaal.PK__Materiaa__207EA76777600A07</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="138" parent="19" name="ArtikelNr">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <column id="152" parent="19" name="VerlanglijstId">
+      <column id="139" parent="19" name="VerlanglijstId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <index id="153" parent="19" name="PK_dbo.MaterialenVerlanglijst">
+      <index id="140" parent="19" name="PK__Material__3641755D4F9574DA">
+        <name-surrogate>1</name-surrogate>
         <columns>ArtikelNr
 VerlanglijstId</columns>
         <desc-columns></desc-columns>
@@ -839,309 +771,200 @@ VerlanglijstId</columns>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="154" parent="19" name="IX_ArtikelNr">
-        <columns>ArtikelNr</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <index id="155" parent="19" name="IX_VerlanglijstId">
-        <columns>VerlanglijstId</columns>
-        <desc-columns></desc-columns>
-        <position>3</position>
-      </index>
-      <key id="156" parent="19" name="PK_dbo.MaterialenVerlanglijst">
-        <object-id>805577908</object-id>
-        <created-timestamp>2016-05-17.14:55:47.423</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.423</modified-timestamp>
+      <key id="141" parent="19" name="PK__Material__3641755D4F9574DA">
+        <name-surrogate>1</name-surrogate>
+        <object-id>558625033</object-id>
+        <created-timestamp>2016-05-17.21:01:47.483</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.483</modified-timestamp>
         <columns>ArtikelNr
 VerlanglijstId</columns>
-        <underlying-index>PK_dbo\u002EMaterialenVerlanglijst</underlying-index>
+        <underlying-index>PK__Material__3641755D4F9574DA</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="157" parent="19" name="FK_dbo.MaterialenVerlanglijst_dbo.Verlanglijst_ArtikelNr">
-        <object-id>1045578763</object-id>
-        <created-timestamp>2016-05-17.14:55:47.797</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.797</modified-timestamp>
+      <foreign-key id="142" parent="19" name="MtrlnVrlanglijstrtklNr">
+        <object-id>718625603</object-id>
+        <created-timestamp>2016-05-17.21:01:47.500</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.500</modified-timestamp>
         <columns>ArtikelNr</columns>
-        <ref-key>~.Verlanglijst.PK_dbo\u002EVerlanglijst</ref-key>
+        <ref-key>~.Materiaal.PK__Materiaa__207EA76777600A07</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="158" parent="19" name="FK_dbo.MaterialenVerlanglijst_dbo.Materiaal_VerlanglijstId">
-        <object-id>1061578820</object-id>
-        <created-timestamp>2016-05-17.14:55:47.830</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.830</modified-timestamp>
+      <foreign-key id="143" parent="19" name="MtrlnVrlngljVrlngljstd">
+        <object-id>734625660</object-id>
+        <created-timestamp>2016-05-17.21:01:47.500</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.500</modified-timestamp>
         <columns>VerlanglijstId</columns>
-        <ref-key>~.Materiaal.PK_dbo\u002EMateriaal</ref-key>
+        <ref-key>~.Verlanglijst.PK__Verlangl__3214EC0735BC3837</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="159" parent="20" name="ReservatieId">
+      <column id="144" parent="20" name="ReservatieId">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
-        <sequence-identity>1(2)</sequence-identity>
+        <sequence-identity>1(7)</sequence-identity>
       </column>
-      <column id="160" parent="20" name="AantalGereserveerd">
-        <mandatory>1</mandatory>
-        <data-type>int</data-type>
-      </column>
-      <column id="161" parent="20" name="AantalUitgeleend">
-        <mandatory>1</mandatory>
-        <data-type>int</data-type>
-      </column>
-      <column id="162" parent="20" name="AantalTerugGebracht">
-        <mandatory>1</mandatory>
-        <data-type>int</data-type>
-      </column>
-      <column id="163" parent="20" name="StartDatum">
-        <mandatory>1</mandatory>
+      <column id="145" parent="20" name="AanmaakDatum">
         <data-type>datetime</data-type>
       </column>
-      <column id="164" parent="20" name="EindDatum">
-        <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
-      </column>
-      <column id="165" parent="20" name="AanmaakDatum">
-        <mandatory>1</mandatory>
-        <data-type>datetime</data-type>
-      </column>
-      <column id="166" parent="20" name="ReservatieStateEnum">
-        <mandatory>1</mandatory>
+      <column id="146" parent="20" name="AantalGereserveerd">
         <data-type>int</data-type>
       </column>
-      <column id="167" parent="20" name="Discriminator">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
-      </column>
-      <column id="168" parent="20" name="MateriaalId">
-        <mandatory>1</mandatory>
+      <column id="147" parent="20" name="AantalTeruggebracht">
         <data-type>int</data-type>
       </column>
-      <column id="169" parent="20" name="GebruikerEmail">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
+      <column id="148" parent="20" name="AantalUitgeleend">
+        <data-type>int</data-type>
       </column>
-      <column id="170" parent="20" name="Lector_Email">
-        <data-type>nvarchar(128)</data-type>
+      <column id="149" parent="20" name="Discriminator">
+        <data-type>varchar(255)</data-type>
       </column>
-      <index id="171" parent="20" name="PK_dbo.Reservatie">
+      <column id="150" parent="20" name="EindDatum">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="151" parent="20" name="Lector_Email">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="152" parent="20" name="ReservatieStateEnum">
+        <data-type>int</data-type>
+      </column>
+      <column id="153" parent="20" name="StartDatum">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="154" parent="20" name="GebruikerEmail">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="155" parent="20" name="MateriaalId">
+        <data-type>int</data-type>
+      </column>
+      <index id="156" parent="20" name="PK__Reservat__EE59987B84734378">
+        <name-surrogate>1</name-surrogate>
         <columns>ReservatieId</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="172" parent="20" name="IX_MateriaalId">
-        <columns>MateriaalId</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <index id="173" parent="20" name="IX_GebruikerEmail">
-        <columns>GebruikerEmail</columns>
-        <desc-columns></desc-columns>
-        <position>3</position>
-      </index>
-      <index id="174" parent="20" name="IX_Lector_Email">
-        <columns>Lector_Email</columns>
-        <desc-columns></desc-columns>
-        <position>4</position>
-      </index>
-      <key id="175" parent="20" name="PK_dbo.Reservatie">
-        <object-id>357576312</object-id>
-        <created-timestamp>2016-05-17.14:55:47.250</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.250</modified-timestamp>
+      <key id="157" parent="20" name="PK__Reservat__EE59987B84734378">
+        <name-surrogate>1</name-surrogate>
+        <object-id>366624349</object-id>
+        <created-timestamp>2016-05-17.21:01:47.470</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.470</modified-timestamp>
         <columns>ReservatieId</columns>
-        <underlying-index>PK_dbo\u002EReservatie</underlying-index>
+        <underlying-index>PK__Reservat__EE59987B84734378</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="176" parent="20" name="FK_dbo.Reservatie_dbo.Materiaal_MateriaalId">
-        <object-id>821577965</object-id>
-        <created-timestamp>2016-05-17.14:55:47.643</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.643</modified-timestamp>
-        <columns>MateriaalId</columns>
-        <ref-key>~.Materiaal.PK_dbo\u002EMateriaal</ref-key>
-        <cascade-update-rule>restrict</cascade-update-rule>
-        <cascade-delete-rule>restrict</cascade-delete-rule>
-      </foreign-key>
-      <foreign-key id="177" parent="20" name="FK_dbo.Reservatie_dbo.Gebruiker_GebruikerEmail">
-        <object-id>837578022</object-id>
-        <created-timestamp>2016-05-17.14:55:47.653</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.653</modified-timestamp>
+      <foreign-key id="158" parent="20" name="RservatieGbruikerEmail">
+        <object-id>606625204</object-id>
+        <created-timestamp>2016-05-17.21:01:47.490</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.490</modified-timestamp>
         <columns>GebruikerEmail</columns>
-        <ref-key>~.Gebruiker.PK_dbo\u002EGebruiker</ref-key>
+        <ref-key>~.Gebruiker.PK__Gebruike__A9D1053596DDDED9</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <foreign-key id="178" parent="20" name="FK_dbo.Reservatie_dbo.Gebruiker_Lector_Email">
-        <object-id>853578079</object-id>
-        <created-timestamp>2016-05-17.14:55:47.667</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.667</modified-timestamp>
-        <columns>Lector_Email</columns>
-        <ref-key>~.Gebruiker.PK_dbo\u002EGebruiker</ref-key>
+      <foreign-key id="159" parent="20" name="Reservatie_MateriaalId">
+        <object-id>590625147</object-id>
+        <created-timestamp>2016-05-17.21:01:47.487</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.487</modified-timestamp>
+        <columns>MateriaalId</columns>
+        <ref-key>~.Materiaal.PK__Materiaa__207EA76777600A07</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <column id="179" parent="21" name="name">
-        <mandatory>1</mandatory>
-        <data-type>sysname</data-type>
-      </column>
-      <column id="180" parent="21" name="principal_id">
+      <column id="160" parent="21" name="user_role_id">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
       </column>
-      <column id="181" parent="21" name="diagram_id">
+      <column id="161" parent="21" name="username">
         <mandatory>1</mandatory>
-        <data-type>int</data-type>
-        <sequence-identity>1</sequence-identity>
+        <data-type>varchar(45)</data-type>
       </column>
-      <column id="182" parent="21" name="version">
-        <data-type>int</data-type>
+      <column id="162" parent="21" name="role">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
       </column>
-      <column id="183" parent="21" name="definition">
-        <data-type>varbinary</data-type>
-      </column>
-      <index id="184" parent="21" name="PK__sysdiagr__C2B05B61128FBF65">
+      <index id="163" parent="21" name="PK__user_rol__B8D9ABA20059E870">
         <name-surrogate>1</name-surrogate>
-        <columns>diagram_id</columns>
+        <columns>user_role_id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="185" parent="21" name="UK_principal_name">
-        <columns>principal_id
-name</columns>
-        <desc-columns></desc-columns>
-        <unique>1</unique>
-        <position>2</position>
-      </index>
-      <key id="186" parent="21" name="PK__sysdiagr__C2B05B61128FBF65">
+      <key id="164" parent="21" name="PK__user_rol__B8D9ABA20059E870">
         <name-surrogate>1</name-surrogate>
-        <object-id>1237579447</object-id>
-        <created-timestamp>2016-05-17.14:56:30.163</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.163</modified-timestamp>
-        <columns>diagram_id</columns>
-        <underlying-index>PK__sysdiagr__C2B05B61128FBF65</underlying-index>
+        <object-id>814625945</object-id>
+        <created-timestamp>2016-05-17.21:05:41.587</created-timestamp>
+        <modified-timestamp>2016-05-17.21:05:41.587</modified-timestamp>
+        <columns>user_role_id</columns>
+        <underlying-index>PK__user_rol__B8D9ABA20059E870</underlying-index>
         <primary>1</primary>
       </key>
-      <key id="187" parent="21" name="UK_principal_name">
-        <object-id>1253579504</object-id>
-        <created-timestamp>2016-05-17.14:56:30.163</created-timestamp>
-        <modified-timestamp>2016-05-17.14:56:30.163</modified-timestamp>
-        <columns>principal_id
-name</columns>
-        <underlying-index>UK_principal_name</underlying-index>
+      <column id="165" parent="22" name="username">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="166" parent="22" name="password">
+        <mandatory>1</mandatory>
+        <data-type>varchar(45)</data-type>
+      </column>
+      <column id="167" parent="22" name="enabled">
+        <mandatory>1</mandatory>
+        <data-type>tinyint</data-type>
+        <default-expression>1</default-expression>
+      </column>
+      <index id="168" parent="22" name="PK__users__F3DBC573F609C9D6">
+        <name-surrogate>1</name-surrogate>
+        <columns>username</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+        <clustering>1</clustering>
+        <position>1</position>
+      </index>
+      <key id="169" parent="22" name="PK__users__F3DBC573F609C9D6">
+        <name-surrogate>1</name-surrogate>
+        <object-id>766625774</object-id>
+        <created-timestamp>2016-05-17.21:05:41.587</created-timestamp>
+        <modified-timestamp>2016-05-17.21:05:41.587</modified-timestamp>
+        <columns>username</columns>
+        <underlying-index>PK__users__F3DBC573F609C9D6</underlying-index>
+        <primary>1</primary>
       </key>
-      <column id="188" parent="22" name="Id">
+      <column id="170" parent="23" name="Id">
         <mandatory>1</mandatory>
         <data-type>int</data-type>
         <sequence-identity>1(2)</sequence-identity>
       </column>
-      <column id="189" parent="22" name="GebruikerEmail">
-        <mandatory>1</mandatory>
-        <data-type>nvarchar(128)</data-type>
+      <column id="171" parent="23" name="GebruikerEmail">
+        <data-type>varchar(255)</data-type>
       </column>
-      <index id="190" parent="22" name="PK_dbo.Verlanglijst">
+      <index id="172" parent="23" name="PK__Verlangl__3214EC0735BC3837">
+        <name-surrogate>1</name-surrogate>
         <columns>Id</columns>
         <desc-columns></desc-columns>
         <unique>1</unique>
         <clustering>1</clustering>
         <position>1</position>
       </index>
-      <index id="191" parent="22" name="IX_GebruikerEmail">
-        <columns>GebruikerEmail</columns>
-        <desc-columns></desc-columns>
-        <position>2</position>
-      </index>
-      <key id="192" parent="22" name="PK_dbo.Verlanglijst">
-        <object-id>517576882</object-id>
-        <created-timestamp>2016-05-17.14:55:47.317</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.317</modified-timestamp>
+      <key id="173" parent="23" name="PK__Verlangl__3214EC0735BC3837">
+        <name-surrogate>1</name-surrogate>
+        <object-id>462624691</object-id>
+        <created-timestamp>2016-05-17.21:01:47.477</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.477</modified-timestamp>
         <columns>Id</columns>
-        <underlying-index>PK_dbo\u002EVerlanglijst</underlying-index>
+        <underlying-index>PK__Verlangl__3214EC0735BC3837</underlying-index>
         <primary>1</primary>
       </key>
-      <foreign-key id="193" parent="22" name="FK_dbo.Verlanglijst_dbo.Gebruiker_GebruikerEmail">
-        <object-id>901578250</object-id>
-        <created-timestamp>2016-05-17.14:55:47.710</created-timestamp>
-        <modified-timestamp>2016-05-17.14:55:47.710</modified-timestamp>
+      <foreign-key id="174" parent="23" name="VrlnglijstGbrikerEmail">
+        <object-id>638625318</object-id>
+        <created-timestamp>2016-05-17.21:01:47.493</created-timestamp>
+        <modified-timestamp>2016-05-17.21:01:47.493</modified-timestamp>
         <columns>GebruikerEmail</columns>
-        <ref-key>~.Gebruiker.PK_dbo\u002EGebruiker</ref-key>
+        <ref-key>~.Gebruiker.PK__Gebruike__A9D1053596DDDED9</ref-key>
         <cascade-update-rule>restrict</cascade-update-rule>
         <cascade-delete-rule>restrict</cascade-delete-rule>
       </foreign-key>
-      <argument id="194" parent="23">
-        <direction>RETURN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="195" parent="24" name="@diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
-      <argument id="196" parent="24" name="@owner_id">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="197" parent="24" name="@version">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="198" parent="24" name="@definition">
-        <direction>IN</direction>
-        <data-type>varbinary</data-type>
-      </argument>
-      <argument id="199" parent="25" name="@diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
-      <argument id="200" parent="25" name="@owner_id">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="201" parent="25" name="@version">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="202" parent="25" name="@definition">
-        <direction>IN</direction>
-        <data-type>varbinary</data-type>
-      </argument>
-      <argument id="203" parent="26" name="@diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
-      <argument id="204" parent="26" name="@owner_id">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="205" parent="27" name="@diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
-      <argument id="206" parent="27" name="@owner_id">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="207" parent="28" name="@diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
-      <argument id="208" parent="28" name="@owner_id">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="209" parent="29" name="@diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
-      <argument id="210" parent="29" name="@owner_id">
-        <direction>IN</direction>
-        <data-type>int</data-type>
-      </argument>
-      <argument id="211" parent="29" name="@new_diagramname">
-        <direction>IN</direction>
-        <data-type>sysname</data-type>
-      </argument>
     </database-model>
   </data-source>
 </component>

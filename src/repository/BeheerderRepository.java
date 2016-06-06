@@ -72,10 +72,10 @@ public class BeheerderRepository
         else{
 
 
-            if (!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", email))
+            /*if (!Pattern.matches("\\w+(\\.\\w*)*@\\w+\\.\\w+(\\.\\w+)*", email))
             {
                 throw new EmailException("Ongeldige email");
-            }
+            }*/
             if (wachtwoord.isEmpty())
             {
                 throw new WachtwoordException("Wachtwoord verplicht");

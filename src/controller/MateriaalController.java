@@ -50,8 +50,8 @@ public class MateriaalController extends Observable
     {
         return materiaalCatalogus.geefMaterialen().sorted();
     }
-    public Firma geefFirma(String naam, String email){
-        return materiaalCatalogus.geefFirma(naam, email);
+    public Firma geefFirma(String naam, String email, String website){
+        return materiaalCatalogus.geefFirma(naam, email, website);
     }
     public <E> ObservableList<String> objectCollectionToObservableList(Collection<E> list)
     {

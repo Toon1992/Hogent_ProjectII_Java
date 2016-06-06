@@ -73,6 +73,8 @@ public class MateriaalNieuwSchermController extends VBox
     @FXML
     private TextField txfNaam;
     @FXML
+    private TextField txfWebsite;
+    @FXML
     private Button btnTerug;
     @FXML
     private ImageView imgView;
@@ -171,18 +173,19 @@ public class MateriaalNieuwSchermController extends VBox
 
         fileChooser = new FileChooser();
         fileChooser.setTitle("Kies een foto");
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("JPG", "*.jpg"),
-                new FileChooser.ExtensionFilter("GIF", "*.gif"),
-                new FileChooser.ExtensionFilter("BMP", "*.bmp"),
-                new FileChooser.ExtensionFilter("PNG", "*.png"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg, png, gif, bmp files (*.jpg, *.png, *.gif, *bmp)", "*.jpg", "*.png", "*.gif", "*.bmp"));
         radioStudent.setToggleGroup(group);
         radioStudent.setSelected(true);
         radioLector.setToggleGroup(group);
 
         txfContactPersoon.setDisable(true);
+        txfWebsite.setDisable(true);
         if (currentMateriaal != null)
         {
             update();
+        }
+        else {
+            setDefaultImage();
         }
 
         vullijsten();
@@ -195,14 +198,16 @@ public class MateriaalNieuwSchermController extends VBox
             imgView.setImage(SwingFXUtils.toFXImage(currentMateriaal.getFoto(), null));
         } else
         {
-            imgView.setImage(new Image("images/add.png"));
+            setDefaultImage();
         }
         txfAantal.setText(String.format("%d", currentMateriaal.getAantal()));
         txfArtikelNummer.setText(String.format("%d", currentMateriaal.getArtikelNr()));
         if (currentMateriaal.getFirma() != null)
         {
             txfContactPersoon.setDisable(false);
+            txfWebsite.setDisable(false);
             txfContactPersoon.setText(currentMateriaal.getFirma().getEmailContact());
+            txfWebsite.setText(currentMateriaal.getFirma().getWebsite());
             comboFirma.setPromptText(currentMateriaal.getFirma().getNaam());
             comboFirma.setValue(currentMateriaal.getFirma().getNaam());
 
@@ -211,6 +216,8 @@ public class MateriaalNieuwSchermController extends VBox
             comboFirma.setValue("-- geen firma --");
             txfContactPersoon.setText("");
             txfContactPersoon.setDisable(true);
+            txfWebsite.setText("");
+            txfWebsite.setDisable(true);
         }
         listDoelgroep.setItems(mc.objectCollectionToObservableList(currentMateriaal.getDoelgroepen()).sorted());
         listLeergbedied.setItems(mc.objectCollectionToObservableList(currentMateriaal.getLeergebieden()).sorted());
@@ -230,7 +237,7 @@ public class MateriaalNieuwSchermController extends VBox
     @FXML
     private void voegToe(ActionEvent event)
     {
-        String naam = "", omschrijving = "", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
+        String naam = "", omschrijving = "",website="", plaats = "", firmaNaam = "", firmaContact = "", artikelNrString = "", aantalString = "", aantalOnbeschikbaarString = "", prijsString = "";
         boolean uitleenbaar;
         Set<Doelgroep> doelgroepen = new HashSet<>(gebiedenController.geefGebiedenVoorNamen(listDoelgroep.getItems(), d));
         Set<Leergebied> leergebieden = new HashSet<>(gebiedenController.geefGebiedenVoorNamen(listLeergbedied.getItems(), l));
@@ -240,6 +247,7 @@ public class MateriaalNieuwSchermController extends VBox
         plaats = txfPlaats.getText().trim();
         firmaNaam = comboFirma.getValue();
         firmaContact = txfContactPersoon.getText();
+        website = txfWebsite.getText();
         artikelNrString = txfArtikelNummer.getText();
         aantalString = txfAantal.getText();
         aantalOnbeschikbaarString = txfOnbeschikbaar.getText();
@@ -256,7 +264,7 @@ public class MateriaalNieuwSchermController extends VBox
                 Firma firma = null;
                 if (firmaNaam != null && !firmaNaam.equals("-- geen firma --"))
                 {
-                    firma = mc.geefFirma(firmaNaam, firmaContact);
+                    firma = mc.geefFirma(firmaNaam, firmaContact, website);
                 }
                 if(!naam.toLowerCase().equals(initialName.toLowerCase())){
                     mc.controleerUniekheidMateriaalnaam(null, naam);
@@ -388,14 +396,18 @@ public class MateriaalNieuwSchermController extends VBox
             if (naam.equals("-- geen firma --"))
             {
                 txfContactPersoon.setDisable(true);
+                txfWebsite.setDisable(true);
                 txfContactPersoon.setText("");
+                txfWebsite.setText("");
             } else
             {
                 txfContactPersoon.setDisable(false);
+                txfWebsite.setDisable(false);
                 Firma f = firmaController.geefFirma(naam);
                 comboFirma.setPromptText(comboFirma.getSelectionModel().getSelectedItem());
                 comboFirma.setValue(comboFirma.getSelectionModel().getSelectedItem());
                 txfContactPersoon.setText(f.getEmailContact());
+                txfWebsite.setText(f.getWebsite());
             }
 
         }
@@ -409,18 +421,20 @@ public class MateriaalNieuwSchermController extends VBox
         {
             String firmaNaam = firma[0];
             String contactFirma = firma[1];
+            String website = firma[2];
             if(comboFirma.getItems().stream().anyMatch(f -> f.toLowerCase().equals(firmaNaam.toLowerCase())))
             {
                 lblError.setText("Deze firma bestaat al!");
             } else
             {
-                firmaController.voegFirmaToe(firmaNaam, contactFirma);
+                firmaController.voegFirmaToe(firmaNaam, contactFirma, website);
                 List<String> firmas = new ArrayList<>();
                 firmas.addAll(comboFirma.getItems());
                 firmas.add(firmaNaam);
                 comboFirma.setItems(FXCollections.observableArrayList(firmas));
                 comboFirma.setPromptText(firmaNaam);
                 txfContactPersoon.setText(contactFirma);
+                txfWebsite.setText(website);
                 comboFirma.setValue(firmaNaam);
 
             }
@@ -494,6 +508,11 @@ public class MateriaalNieuwSchermController extends VBox
     private void verwijderImage(ActionEvent event)
     {
         foto = "";
+        setDefaultImage();
+    }
+    private void setDefaultImage(){
+        File file = new File("src/images/add.png");
+        foto = file.getAbsolutePath();
         imgView.setImage(new Image("images/add.png"));
     }
 }

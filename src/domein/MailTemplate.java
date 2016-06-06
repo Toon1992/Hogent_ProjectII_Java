@@ -5,15 +5,7 @@
  */
 package domein;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  *
@@ -26,6 +18,7 @@ import javax.persistence.Table;
 {
     @NamedQuery(name = "MailTemplate.findbyOnderwerp", query = "Select a FROM MailTemplate a WHERE a.subject= :onderwerp")
 })
+@DiscriminatorColumn(name = "onderwerp")
 public abstract class MailTemplate {
    
     @Id

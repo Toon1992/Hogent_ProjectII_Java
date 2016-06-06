@@ -81,11 +81,11 @@
     -fx-size: 35;
     -fx-border-width: 0 0 1 0;
     -fx-background-color: transparent;
-    -fx-border-color: 
-        transparent
-        transparent
-        derive(-fx-base, 80%) 
-        transparent;
+    -fx-border-color:
+            transparent
+            transparent
+            derive(-fx-base, 80%)
+            transparent;
     -fx-border-insets: 0 10 1 0;
 }
 
@@ -143,13 +143,44 @@
 .button {
     -fx-padding: 5 22 5 22;
     -fx-border-color: #009C7C;
-    -fx-border-width: 2;
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill:#009C7C;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+.button:hover {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #009C7C;
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+    -fx-background-color: #009C7C;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill:white;
+}
+.button:default {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #009C7C;
+    -fx-border-width: 1;
     -fx-background-radius: 0;
     -fx-background-color: #009C7C;
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 11pt;
     -fx-text-fill: white;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
+}
+
+.button:default:hover {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #009C7C;
+    -fx-border-width: 1;
+    -fx-background-radius: 0;
+    -fx-background-color: #ffffff;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill:#009C7C;
 }
 .button-inverse{
     -fx-padding: 5 22 5 22;
@@ -160,7 +191,6 @@
     -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
     -fx-font-size: 8pt;
     -fx-text-fill: #009C7C;
-    -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
 .buttonDelete-inverse{
@@ -180,12 +210,7 @@
     -fx-border-width: 0.5;
     -fx-background-radius: 0;
 }
-.button:hover {
-    -fx-border-color: #009C7C;
-    -fx-border-width: 0.5;
-    -fx-background-color: white;
-    -fx-text-fill: #009C7C;
-}
+
 .button-inverse:hover{
     -fx-border-color: #009C7C;
     -fx-border-width: 0.5;
@@ -208,13 +233,19 @@
 .button:focused {
     -fx-border-color: white, white;
     -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
     -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
 }
 .button-inverse:focused{
     -fx-border-color: #009C7C, #009C7C;
-    -fx-border-width: 0.5, 0.5;
+    -fx-border-width: 1, 1;
+    -fx-border-style: solid, segments(1, 1);
     -fx-border-radius: 0, 0;
+    -fx-border-insets: 1 1 1 1, 0;
 }
+
+
 
 .buttonDelete-inverse:focused{
     -fx-border-color: red;
@@ -229,14 +260,7 @@
     -fx-text-fill: white;
 }
 
-.button:default {
-    -fx-background-color: -fx-focus-color;
-    -fx-text-fill: #ffffff;
-}
 
-.button:default:hover {
-    -fx-background-color: derive(-fx-focus-color,30%);
-}
 #layoutTop{
     -fx-background-color: #009C7C;
     -fx-border-color: #009C7C;
