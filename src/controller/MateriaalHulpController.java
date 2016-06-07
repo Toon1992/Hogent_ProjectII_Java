@@ -19,6 +19,9 @@ import java.util.stream.Collectors;
  */
 public class MateriaalHulpController {
 
+    public String getCSS(){
+        return this.getClass().getResource("/styleSheet/dialog.css").toExternalForm();
+    }
     public static void linkComboboxListView(ListView<String> listView, CheckComboBox<String> check, MateriaalFilter filter) {
         listView.getItems().stream().forEach(item ->
         {
@@ -71,6 +74,8 @@ public class MateriaalHulpController {
     public static String textInputDialog(String title, String header, String content) {
         StringBuilder uitvoer = new StringBuilder();
         TextInputDialog dialog = new TextInputDialog();
+        String css = new MateriaalHulpController().getCSS();
+        dialog.getDialogPane().getStylesheets().add(css);
         dialog.setTitle(title);
         dialog.setHeaderText(header);
         dialog.setContentText(content);
