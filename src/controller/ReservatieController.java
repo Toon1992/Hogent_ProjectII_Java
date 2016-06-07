@@ -135,7 +135,7 @@ public class ReservatieController
     }
     public void setFormatDatepicker(DatePicker dp)
     {
-        dp.setOnShowing(e -> Locale.setDefault(Locale.Category.FORMAT, Locale.FRANCE));
+        dp.setOnShowing(e -> Locale.setDefault(Locale.Category.FORMAT, Locale.forLanguageTag("nl-BE")));
         String pattern = "dd-MM-yyy";
         dp.setConverter(new StringConverter<LocalDate>()
         {
