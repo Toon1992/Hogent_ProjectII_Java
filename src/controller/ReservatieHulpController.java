@@ -132,16 +132,8 @@ public class ReservatieHulpController {
                 if (isOk)
                 {
                     switch (type){
-                        case NIEUW: {
-                            rc.maakReservatie(aantal,aantalUit, aantalTerug, startDate, endDate, status, gebruiker, materiaal);
-                            LoaderSchermen.getInstance().popupMessageOneButton("Reservatie succesvol gemaakt",String.format("Er werden %d stuk(s) van materiaal %s gereserveerd door %s van %s tot %s",aantal, materiaal.getNaam(), gebruiker.getNaam(), df.format(startDate), df.format(endDate)), "Ok");
-                            break;
-                        }
-                        case WIJZIG:{
-                            rc.wijzigReservatie(reservatie, aantal,aantalUit, aantalTerug, gebruiker, startDate, endDate, materiaal, status);
-                            LoaderSchermen.getInstance().popupMessageOneButton("Reservatie succesvol gewijzigd",String.format("Er werden %d stuk(s) van materiaal %s gereserveerd door %s van %s tot %s",aantal, materiaal.getNaam(), gebruiker.getNaam(), df.format(startDate), df.format(endDate)), "Ok");
-                            break;
-                        }
+                        case NIEUW: rc.maakReservatie(aantal,aantalUit, aantalTerug, startDate, endDate, status, gebruiker, materiaal);break;
+                        case WIJZIG: rc.wijzigReservatie(reservatie, aantal,aantalUit, aantalTerug, gebruiker, startDate, endDate, materiaal, status); break;
                     }
                     if(checkOverruul.isSelected()){
                         rc.overruleStudent(aantalOverruled, materiaal);
@@ -169,8 +161,7 @@ public class ReservatieHulpController {
                     case WIJZIG: {
                         rc.wijzigReservatie(reservatie, aantal,aantalUit, aantalTerug, gebruiker, startDate, endDate, materiaal, status);
                         LoaderSchermen.getInstance().popupMessageOneButton("Reservatie succesvol gewijzigd",String.format("Er werden %d stuk(s) van materiaal %s gereserveerd door %s van %s tot %s",aantal, materiaal.getNaam(), gebruiker.getNaam(), df.format(startDate), df.format(endDate)), "Ok");
-                        break;
-                    }
+                    } break;
                 }
                 if(aantalUit > aantalTerug && aantalTerug != -1){
                     updateAantalOnbeschikbaar(materiaal, aantalUit - aantalTerug);

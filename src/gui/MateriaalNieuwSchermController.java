@@ -21,10 +21,7 @@ import exceptions.EmailException;
 
 import java.io.File;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -109,7 +106,6 @@ public class MateriaalNieuwSchermController extends VBox
     private Materiaal currentMateriaal;
     private boolean wijzigen;
     private String initialName = "";
-    private boolean changed;
 
     public MateriaalNieuwSchermController(Materiaal currentMateriaal)
     {
@@ -120,11 +116,11 @@ public class MateriaalNieuwSchermController extends VBox
         if (currentMateriaal == null)
         {
             btnToevoegen.setText("Voeg toe");
-            lblHeader.setText("Nieuw materiaal");
+            lblHeader.setText("Algemeen nieuw materiaal");
         } else
         {
             btnToevoegen.setText("Wijzigen");
-            lblHeader.setText("Materiaal wijzigen");
+            lblHeader.setText("Algemeen materiaal wijzigen");
             wijzigen = true;
         }
 
@@ -193,18 +189,6 @@ public class MateriaalNieuwSchermController extends VBox
         }
 
         vullijsten();
-        addListener(txfNaam);
-        addListener(txfAantal);
-        addListener(txfArtikelNummer);
-        addListener(txfContactPersoon);
-        addListener(txfOmschrijving);
-        addListener(txfOnbeschikbaar);
-        addListener(txfPlaats);
-        addListener(txfPrijs);
-        addListener(txfWebsite);
-        addListener(comboFirma);
-        addListener(checkLeergebieden);
-        addListener(checkDoelgroepen);
     }
 
     private void update()
@@ -336,13 +320,7 @@ public class MateriaalNieuwSchermController extends VBox
     @FXML
     private void terugNaarOverzicht(ActionEvent event)
     {
-        boolean result = false;
-        if(changed){
-            result = LoaderSchermen.getInstance().popupMessageTwoButtons("Terug naar overzicht", "Wilt u terug gaan naar het overzicht? Aangebrachte wijzigingen worden niet opgeslaan.", "Ja", "Nee");
-        }
-        else {
-            result = true;
-        }
+        boolean result = LoaderSchermen.getInstance().popupMessageTwoButtons("Terug naar overzicht", "Wilt u terug gaan naar het overzicht?", "Ja", "Nee");
         if (result)
         {
             BorderPane bp = (BorderPane) this.getParent();
@@ -536,35 +514,5 @@ public class MateriaalNieuwSchermController extends VBox
         File file = new File("src/images/add.png");
         foto = file.getAbsolutePath();
         imgView.setImage(new Image("images/add.png"));
-    }
-    private <E> void addListener(E object){
-        if(object instanceof TextField){
-            TextField textField = (TextField) object;
-            textField.textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable,String oldValue, String newValue) {
-                    if(!changed)
-                        changed = true;
-                }
-            });
-        }
-        if(object instanceof ComboBox){
-            ComboBox comboBox = (ComboBox) object;
-            comboBox.valueProperty().addListener(new ChangeListener<String>() {
-                @Override public void changed(ObservableValue ov, String t, String t1) {
-                    if(!changed)
-                        changed = true;
-                }
-            });
-        }
-        if(object instanceof CheckComboBox){
-            CheckComboBox checkComboBox = (CheckComboBox) object;
-            checkComboBox.getCheckModel().getCheckedItems().addListener(new ListChangeListener<E>() {
-                public void onChanged(ListChangeListener.Change<? extends E> c) {
-                    if(!changed)
-                        changed = true;
-                }
-            });
-        }
     }
 }

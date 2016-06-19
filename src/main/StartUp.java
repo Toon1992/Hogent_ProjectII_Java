@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
+import persistentie.GenericDao;
 import persistentie.GenericDaoJpa;
 
 import java.util.*;
@@ -28,7 +29,7 @@ public class StartUp extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        //initializeDatabase();
+        initializeDatabase();
         Scene scene = new Scene(new LayoutFrameController());
         primaryStage.setMaximized(true);
         primaryStage.setScene(scene);
@@ -46,7 +47,8 @@ public class StartUp extends Application {
         //Gebruiker toevoegen
         GenericDaoJpa<Object> jpa = new GenericDaoJpa<>(Object.class);
         jpa.startTransaction();
-        //jpa.insert(new Gebruiker("Lector","jan.pers@hogent.be","LE"));
+        Gebruiker lector = new Gebruiker("Lector","jan.pers@hogent.be","LE");
+        jpa.insert(lector);
 
         Firma globe = new Firma("Globe atmosphere", "globe@atmosphere.com","http://www.atmosphere-newworld.com/");
         Firma prisma = new Firma("Prisma", "helpdesk@prisma.com","http://www.prisma.nl/");
@@ -107,9 +109,9 @@ public class StartUp extends Application {
         jpa.insert(new Materiaal("/Users/donovandesmedt/NetBeansProjects/groep06Java/groep06Java/src/images/prisma.jpg", "Prisma Duits-Nederlands", "Pocketwoordenboek Duits-Nederlands Prisma", "B2.13", 4566, 22, 0, 9.50, true, prisma, new HashSet<Doelgroep>(Arrays.asList(lager, secundair)), new HashSet<Leergebied>(Arrays.asList(mens,maatschappij))));
         jpa.insert(new Materiaal("/Users/donovandesmedt/NetBeansProjects/groep06Java/groep06Java/src/images/geo.jpg", "Bordgeodriehoek", "Bordgeodriehoek Wissner 80cm", "B2.13", 5431, 4, 0, 26.15, true, wissner, new HashSet<Doelgroep>(Arrays.asList(lager, secundair)), new HashSet<Leergebied>(Arrays.asList(wiskunde, fysica, techniek))));
 
-        jpa.insert(new Reservatie(2,2,0,new Date(116, 4, 9), new Date(116,4,11),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Toon","toondetrue@gmail.com","ST"),wereldbol));
-        jpa.insert(new Reservatie(1,0,0,new Date(116, 4, 9), new Date(116,4,11),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Donovan","donovan.desmedt.v3759@student.hogent.be","ST"),wereldbol));
-        jpa.insert(new Reservatie(3,0,0,new Date(116, 4, 16), new Date(116,4,20),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Obama","obamam@us.gov","ST"),wereldbol));
+        jpa.insert(new Reservatie(2,2,0,new Date(116, 5, 20), new Date(116,5,24),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Toon","toondetrue@gmail.com","ST"),wereldbol));
+        jpa.insert(new Reservatie(1,0,0,new Date(116, 5, 20), new Date(116,5,24),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Donovan","donovan.desmedt.v3759@student.hogent.be","ST"),wereldbol));
+        jpa.insert(new Reservatie(3,0,0,new Date(116, 5, 20), new Date(116,5,24),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,lector,wereldbol));
         jpa.insert(new Reservatie(2,0,0,new Date(116, 4, 23), new Date(116,4,27),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Manu","manuschoenmakers@gmail.com","ST"),rekenMachine));
         jpa.insert(new Reservatie(3,0,0,new Date(116, 4, 23), new Date(116,4,27),new Date(),new HashSet<Dag>(),ReservatieStateEnum.Gereserveerd,new Gebruiker("Thomas","thomasledoux@gmail.com","ST"),rekenMachine));
 
@@ -120,13 +122,13 @@ public class StartUp extends Application {
                 + "_ITEMS"
                 + "</ul> ");
 
-        MailTemplate mail2 = new MailNaBlokkeringLector("Blokkering", "<p>Dag _NAAM</p>"
+        MailTemplate mail2 = new Blokkering("Blokkering", "<p>Dag _NAAM</p>"
                 + "U heeft volgende materialen gereserveerd op _DATUMS :"
                 + "<ul>"
                 + "_ITEMS"
                 + "</ul>");
 
-        MailTemplate mail3 = new MailNaBlokkeringStudent("Reservatie gewijzigd", "<p>Dag _NAAM</p>"
+        MailTemplate mail3 = new BlokkeringStudent("Reservatie gewijzigd", "<p>Dag _NAAM</p>"
                 + "Uw reservatie van volgend materiaal in de week van _STARTDATUM is geblokkeerd:"
                 + "<ul>"
                 + "_ITEMS"

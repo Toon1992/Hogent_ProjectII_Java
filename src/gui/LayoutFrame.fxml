@@ -42,7 +42,7 @@
             </ImageView>
             <ImageView fx:id="btnBeheerder" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarBeheerders" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="4" GridPane.halignment="CENTER">
                <image>
-                  <Image url="@../images/NieuweGebruikers.jpg" />
+                  <Image url="@../images/NieuweGebruikers.png" />
                </image>
             </ImageView>
             <ImageView fx:id="btnMails" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#gaNaarMails" pickOnBounds="true" preserveRatio="true" styleClass="StartButton" GridPane.columnIndex="5" GridPane.halignment="CENTER">
