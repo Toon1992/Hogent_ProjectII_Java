@@ -118,25 +118,7 @@ public class ReservatieNieuwSchermController extends GridPane {
     @FXML
     private void changeMateriaal(ActionEvent event) {
         Materiaal materiaal = cmbMateriaal.getSelectionModel().getSelectedItem();
-        Date startDate = Date.from(dtpOphaal.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Date endDate = Date.from(dtpTerugbreng.getValue().atStartOfDay(ZoneId.systemDefault()).toInstant());
-        Gebruiker gebruiker = cmbNaam.getValue();
-        int aantalGerserveerd;
-        try{
-            aantalGerserveerd = Integer.parseInt(txfAantalGereserveerd.getText());
-        }
-        catch(Exception e){
-            aantalGerserveerd = -1;
-        }
-
-        if(startDate != null && endDate != null && gebruiker != null && materiaal != null && aantalGerserveerd != -1){
-            int[] beschikbaarheden =  rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, 0, aantalGerserveerd);
-            txfMaxAantal.setText(String.format("%d", beschikbaarheden[0]));
-        }
-        else{
-            txfMaxAantal.setText(String.format("%d", materiaal.getAantal() - materiaal.getAantalOnbeschikbaar()));
-        }
-
+        txfMaxAantal.setText(String.format("%d", materiaal.getAantal() - materiaal.getAantalOnbeschikbaar()));
     }
 
     @FXML
