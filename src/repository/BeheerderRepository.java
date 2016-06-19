@@ -107,8 +107,6 @@ public class BeheerderRepository
         try {
             JSONArray jsonArray = new JSONArray(jsonString);
                 JSONObject jsonObject = jsonArray.getJSONObject(0);
-                System.out.println(jsonObject.get("VOORNAAM"));
-                System.out.println(jsonObject.get("TYPE"));
 
         } catch (JSONException e) {
             beheerder = null;

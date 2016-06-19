@@ -5,5 +5,9 @@
       <secret-storage>master_key</secret-storage>
       <user-name>sa</user-name>
     </data-source>
+    <data-source name="Derby (Remote) - DidactischeLeermiddelen@localhost" uuid="2c15c025-577a-44a7-8919-aec3dc2cf479">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+    </data-source>
   </component>
 </project>

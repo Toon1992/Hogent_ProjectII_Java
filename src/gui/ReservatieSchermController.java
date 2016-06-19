@@ -5,6 +5,7 @@
  */
 package gui;
 
+import com.sun.org.apache.regexp.internal.RE;
 import controller.*;
 import domein.Gebruiker;
 import domein.Materiaal;
@@ -12,11 +13,11 @@ import domein.Reservatie;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -26,6 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.util.Callback;
 import stateMachine.ReservatieStateEnum;
 
 /**
@@ -148,6 +150,31 @@ public class ReservatieSchermController extends HBox {
                 }
             }
 
+        });
+
+        ObservableList<Reservatie> conflicts = rc.geefConflictReservaties();
+
+        reservatieTable.setRowFactory(new Callback<TableView<Reservatie>, TableRow<Reservatie>>() {
+            @Override
+            public TableRow<Reservatie> call(TableView<Reservatie> tableView) {
+                    TableRow<Reservatie> row = new TableRow<Reservatie>() {
+                    @Override
+                    protected void updateItem(Reservatie reservatie, boolean empty){
+                        if(conflicts.size() == 0){
+                            getStyleClass().removeAll("highlightedRow");
+                        }
+                        else{
+                            super.updateItem(reservatie, empty);
+                            if (conflicts.contains(reservatie)) {
+                                if (! getStyleClass().contains("highlightedRow")) {
+                                    getStyleClass().add("highlightedRow");
+                                }
+                            }
+                        }
+                    }
+                };
+                return row;
+            }
         });
     }
 

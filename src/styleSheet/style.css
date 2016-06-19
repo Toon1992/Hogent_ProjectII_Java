@@ -277,3 +277,7 @@
 {
     -fx-alignment: center ;
 }*/
+.highlightedRow{
+    -fx-control-inner-background: rgba(255, 0, 0, .6);
+
+}

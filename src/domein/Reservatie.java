@@ -115,7 +115,6 @@ public class Reservatie
 
     public StringProperty statusProperty()
     {
-        System.out.println(getReservatieState().getClass().getSimpleName());
         return new SimpleStringProperty(getReservatieStateEnum().toString());
     }
 

@@ -172,7 +172,6 @@ public class MateriaalHulpController {
                 } else if (entry.getKey().equals("label")) {
                     ((Label) data.get("label")).getStyleClass().add("errorField");
                 } else {
-                    System.out.println(entry.getValue());
                     ((TextField) entry.getValue()).getStyleClass().add("errorField");
                 }
             });

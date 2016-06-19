@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.SortedList;
 import javafx.scene.control.DatePicker;
 import javafx.util.StringConverter;
@@ -52,6 +53,9 @@ public class ReservatieController
     public SortedList<Reservatie> getReservaties()
     {
         return repository.geefReservaties();
+    }
+    public ObservableList<Reservatie> geefConflictReservaties(){
+        return repository.geefConflictReservaties();
     }
 
     public void zoek(String zoekterm)
