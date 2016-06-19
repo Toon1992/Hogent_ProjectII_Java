@@ -131,10 +131,14 @@ public class ReservatieNieuwSchermController extends GridPane {
 
         if(startDate != null && endDate != null && gebruiker != null && materiaal != null && aantalGerserveerd != -1){
             int[] beschikbaarheden =  rc.berekenAantalBeschikbaar(gebruiker, startDate, endDate, materiaal, 0, aantalGerserveerd);
-            txfMaxAantal.setText(String.format("%d", beschikbaarheden[0]));
+            txfMaxAantal.setText(String.format("%d", beschikbaarheden[0]<0?0:beschikbaarheden[0]));
         }
         else{
-            txfMaxAantal.setText(String.format("%d", materiaal.getAantal() - materiaal.getAantalOnbeschikbaar()));
+            int aantal = materiaal.getAantal() - materiaal.getAantalOnbeschikbaar();
+            
+            if(aantal < 0)
+                aantal = 0;
+            txfMaxAantal.setText(String.format("%d", aantal));
         }
 
     }
